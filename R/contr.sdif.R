@@ -1,5 +1,5 @@
 # file MASS/R/contr.sdif.R
-# copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2009 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 #  A copy of the GNU General Public License is available at
 #  http://www.r-project.org/Licenses/
 #
-contr.sdif <- function(n, contrasts = TRUE)
+contr.sdif <- function(n, contrasts = TRUE, sparse = FALSE)
 {
     # contrasts generator giving 'successive difference' contrasts.
     if(is.numeric(n) && length(n) == 1L) {
@@ -28,10 +28,12 @@ contr.sdif <- function(n, contrasts = TRUE)
             stop("invalid number of levels")
     }
     if(contrasts) {
-        contr <- col(matrix(nrow = n, ncol = n - 1L))
-        upper.tri <- !lower.tri(contr)
-        contr[upper.tri] <- contr[upper.tri] - n
-        structure(contr/n,
-                  dimnames = list(lab, paste(lab[-1L], lab[-n], sep="-")))
-    } else structure(diag(n), dimnames = list(lab, lab))
+        cont <- col(matrix(nrow = n, ncol = n - 1L))
+        upper.tri <- !lower.tri(cont)
+        cont[upper.tri] <- cont[upper.tri] - n
+        cont <- structure(cont/n,
+                          dimnames = list(lab, paste(lab[-1L], lab[-n], sep="-")))
+        ## This will never be sparse, but return 'Matrix' form
+        if(sparse) stats:::.asSparse(cont) else cont
+    } else stats:::.Diag(lab, sparse = sparse)
 }

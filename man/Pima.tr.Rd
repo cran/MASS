@@ -63,7 +63,7 @@ Pima.te
   \emph{diabetes mellitus}.
   In \emph{Proceedings of the Symposium on Computer Applications in
     Medical Care (Washington, 1988),} ed. R. A. Greenes,
-  pp. 261--265. Los Alamitos, CA: IEEE Computer SocietyPress.
+  pp. 261--265. Los Alamitos, CA: IEEE Computer Society Press.
 
   Ripley, B.D. (1996)
   \emph{Pattern Recognition and Neural Networks.}

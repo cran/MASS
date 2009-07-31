@@ -87,8 +87,7 @@ house.mult2 <- multinom(Sat ~ Infl*Type*Cont, weights = Freq,
                         data = housing)
 anova(house.mult, house.mult2)
 
-house.pm <- predict(house.mult, expand.grid(hnames[-1]),
-                    type = "probs")
+house.pm <- predict(house.mult, expand.grid(hnames[-1]), type = "probs")
 cbind(expand.grid(hnames[-1]), round(house.pm, 2))
 
 # proportional odds model
@@ -101,8 +100,7 @@ mean(ratio)
 (house.plr <- polr(Sat ~ Infl + Type + Cont,
                    data = housing, weights = Freq))
 
-house.pr1 <- predict(house.plr, expand.grid(hnames[-1]),
-                   type = "probs")
+house.pr1 <- predict(house.plr, expand.grid(hnames[-1]), type = "probs")
 cbind(expand.grid(hnames[-1]), round(house.pr1, 2))
 
 Fr <- matrix(housing$Freq, ncol  =  3, byrow = TRUE)

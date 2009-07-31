@@ -1,5 +1,5 @@
 # file MASS/R/gamma.shape.R
-# copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2009 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ gamma.shape.glm <- function(object, it.lim = 10,
     Dbar <- object$deviance/object$df.residual
     alpha <- (6 + 2*Dbar)/(Dbar*(6 + Dbar))
     if(verbose) {
-	message("Initial estimate:", format(alpha))
+	message("Initial estimate: ", format(alpha))
 	utils::flush.console()
     }
     fixed <-  -y/u - log(u) + log(A) + 1 + log(y + (y == 0))
@@ -39,7 +39,7 @@ gamma.shape.glm <- function(object, it.lim = 10,
         inf <- sum(A * (A * trigamma(A * alpha) - 1/alpha))
         alpha <- alpha + (eps <- sc/inf)
         if(verbose) {
-	    message("Iter. ", itr, " Alpha:", alpha)
+	    message("Iter. ", itr, " Alpha: ", format(alpha))
 	    utils::flush.console()
 	}
     }

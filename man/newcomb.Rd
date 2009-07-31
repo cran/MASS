@@ -18,7 +18,7 @@ newcomb
 }
 \source{
   S. M. Stigler (1973)
-  Simon Newcombe, Percy Daniell, and the history of robust estimation
+  Simon Newcomb, Percy Daniell, and the history of robust estimation
   1885--1920.
   \emph{Journal of the American Statistical Association} \bold{68}, 872--879.
 

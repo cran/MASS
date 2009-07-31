@@ -47,7 +47,7 @@ A list of the \code{lambda} vector and the computed profile
 log-likelihood vector, invisibly if the result is plotted.
 }
 \section{Side Effects}{
-  If \code{plotit = TRUE} plots loglik \emph{vs} \code{lambda} and
+  If \code{plotit = TRUE} plots log-likelihood \emph{vs} \code{lambda} and
   indicates a 95\% confidence interval about the maximum observed value
   of \code{lambda}. If \code{interp = TRUE}, spline interpolation is
   used to give a smoother plot.

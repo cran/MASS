@@ -35,7 +35,7 @@ glmmPQL <- function(fixed, random, family, data, correlation, weights,
                          unlist(lapply(random, function(x) all.vars(formula(x)))))
         else c(all.vars(fixed), all.vars(random))
     ## allvars does not contain offset term.
-    Terms <- if(missing(data)) terms(fixed) else terms(fixed, data=data)
+    Terms <- if(missing(data)) terms(fixed) else terms(fixed, data = data)
     off <- attr(Terms, "offset")
     if(length(off<- attr(Terms, "offset"))) allvars <-
         c(allvars, as.character(attr(Terms, "variables"))[off+1])
@@ -48,9 +48,9 @@ glmmPQL <- function(fixed, random, family, data, correlation, weights,
     mf <- eval.parent(m)
     off <- model.offset(mf)
     if(is.null(off)) off <- 0
-    w <-  model.weights(mf)
-    if(is.null(w)) w <- rep(1, nrow(mf))
-    mf$wts <- w
+    wts <-  model.weights(mf)
+    if(is.null(wts)) wts <- rep(1, nrow(mf))
+    mf$wts <- wts
     fit0 <- glm(formula=fixed, family=family, data=mf, weights = wts, ...)
     w <- fit0$prior.weights
     eta <- fit0$linear.predictors
@@ -74,11 +74,11 @@ glmmPQL <- function(fixed, random, family, data, correlation, weights,
     mf$invwt <- 1/wz
     mcall$data <- mf
 
-    for(i in 1L:niter) {
+    for(i in seq_len(niter)) {
         if(verbose) message("iteration ", i)
         fit <- eval(mcall)
         etaold <- eta
-        ##update zz and invwt
+        ## update zz and invwt
         eta <- fitted(fit) + off
         if(sum((eta-etaold)^2) < 1e-6*sum(eta^2)) break;
         mu <- fam$linkinv(eta)

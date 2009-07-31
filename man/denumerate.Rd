@@ -35,7 +35,7 @@ remain fixed under the log-linear model.  It is convenient to
 allow the user to use dimension numbers, 1, 2, 3, \dots for the
 first, second, third, \dots, margins in a similar way to variable
 names.  As the model formula has to be parsed by \code{\link{terms}}, which
-treats \code{1} in a special way and requires parsable variable names,
+treats \code{1} in a special way and requires parseable variable names,
 these formulae have to be modified by giving genuine names for
 these margin, or dimension numbers.  \code{denumerate} replaces these
 numbers with names of a special form, namely \code{n} is replaced by

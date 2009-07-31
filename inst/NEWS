@@ -157,3 +157,5 @@ This file documents software changes since the third edition.
 - profile.glm() now works for binomial glm specified with a matrix response
   and a cmpletely zero row.
 - there is a "negbin" method for simulate()
+- the use of package mclust has been removed from the ch11.R script
+  because of the change of licence conditions for that package.

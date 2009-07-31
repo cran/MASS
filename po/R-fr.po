@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MASS 7.2-20\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
-"POT-Creation-Date: 2005-12-08 20:56\n"
+"POT-Creation-Date: 2009-05-05 14:20\n"
 "PO-Revision-Date: 2005-12-07 23:48+0100\n"
 "Last-Translator: Jean Thioulouse <j.thioulouse@biomserv.univ-lyon1.fr>\n"
 "Language-Team: French <R-core@r-project.org>\n"
@@ -21,6 +21,9 @@ msgstr "aucun terme dans la portée de la formule"
 
 msgid "no terms in scope for adding to object"
 msgstr "aucun terme dans la portée de la formule à ajouter à l'objet"
+
+msgid "trying +"
+msgstr ""
 
 msgid "number of rows in use has changed: remove missing values?"
 msgstr ""
@@ -39,8 +42,14 @@ msgid "scope is not a subset of term labels"
 msgstr ""
 "la portée de la formule n'est pas un sous-ensemble des étiquettes des termes"
 
+msgid "trying -"
+msgstr ""
+
 msgid "dropterm not implemented for \"mlm\" fits"
 msgstr "dropterm n'est pas implémenté pour les ajustements \"mlm\""
+
+msgid "F test assumes 'quasi%s' family"
+msgstr "le test F suppose la famille 'quasi%s'"
 
 msgid "iteration limit reached near x ="
 msgstr "nombre limite d'iterations atteint vers x ="
@@ -50,6 +59,9 @@ msgstr "n'a pas les composantes 'qr' et 'y'"
 
 msgid "response variable must be positive"
 msgstr "la variable réponse doit être positive"
+
+msgid "Waiting for profiling to be done..."
+msgstr ""
 
 msgid "invalid number of levels"
 msgstr "nombre de niveaux incorrect"
@@ -137,6 +149,15 @@ msgstr "l'optimisation a échoué"
 msgid "only 'REML = FALSE' is implemented"
 msgstr ""
 
+msgid "Initial estimate:"
+msgstr ""
+
+msgid "Iter."
+msgstr ""
+
+msgid "Alpha:"
+msgstr ""
+
 msgid "iteration limit reached"
 msgstr "nombre limite d'iterations atteint"
 
@@ -145,6 +166,12 @@ msgstr "le package 'nlme' est essentiel"
 
 msgid "'family' not recognized"
 msgstr "'family' non reconnu"
+
+msgid "iteration"
+msgstr ""
+
+msgid "'anova' is not available for PQL fits"
+msgstr ""
 
 msgid "cannot estimate scale: MAD is zero for this sample"
 msgstr "impossible d'estimer l'échelle : MAD est nul pour cet échantillon"
@@ -173,8 +200,18 @@ msgstr "la configuration initiale doit être complète"
 msgid "data vectors must be the same length"
 msgstr "les vecteurs de données doivent avoir la même longueur"
 
+msgid "missing or infinite values in the data are not allowed"
+msgstr "les valeurs manquantes ou infinies ne sont pas admises"
+
+#, fuzzy
+msgid "only finite values are allowed in 'lims'"
+msgstr "les valeurs manquantes ou infinies ne sont pas admises"
+
 msgid "'x' is not a matrix"
 msgstr "'x' n'est pas une matrice"
+
+msgid "infinite, NA or NaN values in 'x'"
+msgstr ""
 
 msgid "nrow(x) and length(grouping) are different"
 msgstr "nrow(x) et length(grouping) sont différents"
@@ -303,6 +340,21 @@ msgstr "tous les objets ne sont pas de la classe \"negbin\""
 msgid "unimplemented method:"
 msgstr "méthode non implémentée :"
 
+msgid "Initial fit:"
+msgstr ""
+
+msgid "Initial value for theta:"
+msgstr ""
+
+msgid "Theta("
+msgstr ""
+
+msgid ") ="
+msgstr ""
+
+msgid ", 2(Ls - Lm) ="
+msgstr ""
+
 msgid "alternation limit reached"
 msgstr "limite d'alternation atteinte"
 
@@ -321,6 +373,15 @@ msgstr "valeurs négatives non autorisées pour la famille binomiale négative"
 
 msgid "estimate truncated at zero"
 msgstr "estimation tronquée à zéro"
+
+msgid "theta.ml: initial theta ="
+msgstr ""
+
+msgid "theta.ml: iter"
+msgstr ""
+
+msgid "theta ="
+msgstr ""
 
 msgid "extra arguments discarded"
 msgstr "arguments supplémentaires ignorés"
@@ -343,6 +404,12 @@ msgstr "la recherche de valeurs de départ correctes a échouée"
 msgid "design appears to be rank-deficient, so dropping some coefs"
 msgstr "le plan ne semble pas de rang plein, des coefs seront ignorés"
 
+msgid "'start' is not of the correct length"
+msgstr "'start' n'a pas la bonne longueur"
+
+msgid "Re-fitting to get Hessian"
+msgstr ""
+
 msgid "not a \"polr\" object"
 msgstr "ce n'est pas un objet \"polr\""
 
@@ -355,6 +422,15 @@ msgstr "tous les objets ne sont pas de la classe \"polr\""
 msgid "models were not all fitted to the same size of dataset"
 msgstr ""
 "les modèles n'ont pas été ajustés à des jeux de données de même dimension"
+
+msgid "Parameter:"
+msgstr ""
+
+msgid "down"
+msgstr ""
+
+msgid "up"
+msgstr ""
 
 msgid ""
 "profiling has found a better solution, so original fit had not converged"
@@ -455,6 +531,13 @@ msgstr "les termes à 0 ddl changent l'AIC"
 
 msgid "AIC undefined for REML fit"
 msgstr "AIC non défini pour un ajustement REML"
+
+msgid "'nbins' must result in a positive integer"
+msgstr ""
+
+#, fuzzy
+msgid "'h' must be strictly positive"
+msgstr "'breaks' doit être strictement croissant"
 
 msgid "uneven breaks with 'prob = FALSE' will give a misleading plot"
 msgstr ""

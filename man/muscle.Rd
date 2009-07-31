@@ -35,8 +35,8 @@ muscle
 \source{
   Linder, A., Chakravarti, I. M. and Vuagnat, P. (1964)
   Fitting asymptotic regression curves with different asymptotes.  In
-  \emph{Contributions to Statistics. Presented to Professor P. C. Mahalanobis }
-  \emph{on the occasion of his 70th birthday,}
+  \emph{Contributions to Statistics. Presented to Professor P. C. Mahalanobis
+  on the occasion of his 70th birthday},
   ed. C. R. Rao, pp. 221--228. Oxford: Pergamon Press.
 }
 \references{
@@ -55,8 +55,7 @@ st <- list(alpha = B[2:22], beta = B[23], rho = B[1])
                   data = muscle, start = st))
 
 attach(muscle)
-Muscle <- expand.grid(Conc = sort(unique(Conc)),
-                     Strip = levels(Strip))
+Muscle <- expand.grid(Conc = sort(unique(Conc)), Strip = levels(Strip))
 Muscle$Yhat <- predict(rats.nls2, Muscle)
 Muscle <- cbind(Muscle, logLength = rep(as.numeric(NA), 126))
 ind <- match(paste(Strip, Conc),

@@ -68,24 +68,11 @@ clotting <- data.frame(
     lot2 = c(69,35,26,21,18,16,13,12,12))
 clot1 <- glm(lot1 ~ log(u), data = clotting, family = Gamma)
 gamma.shape(clot1)
-\dontrun{
-Alpha: 538.13
-   SE: 253.60
-}
+
 gm <- glm(Days + 0.1 ~ Age*Eth*Sex*Lrn,
 	  quasi(link=log, variance="mu^2"), quine,
           start = c(3, rep(0,31)))
 gamma.shape(gm, verbose = TRUE)
-\dontrun{
-Initial estimate: 1.0603
-Iter.  1  Alpha: 1.23840774338543
-Iter.  2  Alpha: 1.27699745778205
-Iter.  3  Alpha: 1.27834332265501
-Iter.  4  Alpha: 1.27834485787226
-
-Alpha: 1.27834
-   SE: 0.13452
-}
 summary(gm, dispersion = gamma.dispersion(gm))  # better summary
 }
 \keyword{models}

@@ -11,7 +11,7 @@ bcv                     Biased Cross-Validation for Bandwidth Selection
 boxcox                  Box-Cox Transformations for Linear Models
 con2tr                  Convert Lists to Data Frames for use by Trellis
 confint-MASS            Confidence Intervals for Model Parameters
-contr.sdif              Successive Differences contrast coding
+contr.sdif              Successive Differences Contrast Coding
 corresp                 Simple Correspondence Analysis
 cov.rob                 Resistant Estimation of Multivariate Location and
                           Scatter

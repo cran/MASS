@@ -2,7 +2,7 @@
 
 ## Script from Fourth Edition of `Modern Applied Statistics with S'
 
-options(echo = T, width=65, digits=5, height=9999)
+options(width=65, digits=5, height=9999)
 postscript(file="ch01.ps", width=8, height=6, pointsize=9)
 
 # Chapter 1   Introduction

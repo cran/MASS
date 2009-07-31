@@ -10,7 +10,7 @@
   Data from a foster feeding experiment with rat mothers and litters of
   four different genotypes: \code{A}, \code{B}, \code{I} and \code{J}.
   Rat litters were separated from their natural mothers at birth and
-  given to foster mothers torear.
+  given to foster mothers to rear.
 }
 \usage{
 genotype

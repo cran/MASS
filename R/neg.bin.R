@@ -1,5 +1,5 @@
 # file MASS/R/neg.bin.R
-# copyright (C) 1994-2003 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2009 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
 neg.bin <- function(theta = stop("'theta' must be given"))
 {
     ## use this to avoid capturing the MASS namespace
+    .Theta <- theta ## avoid codetools warnings
     env <- new.env(parent=.GlobalEnv)
     assign(".Theta", theta, envir=env)
     stats <- make.link("log")

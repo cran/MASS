@@ -81,16 +81,15 @@ glm.nb <- function(formula, data, weights,
 		   init.theta, link = log)
 {
     loglik <- function(n, th, mu, y, w)
-    {
         sum(w*(lgamma(th + y) - lgamma(th) - lgamma(y + 1) + th * log(th) +
                y * log(mu + (y == 0)) - (th + y) * log(th + mu)))
-    }
+
     link <- substitute(link)
-    if(missing(init.theta)) {
-        fam0 <- do.call("poisson", list(link = link))
-    } else {
-        fam0 <- do.call("negative.binomial", list(theta = init.theta, link = link))
-    }
+    fam0 <- if(missing(init.theta))
+        do.call("poisson", list(link = link))
+    else
+        do.call("negative.binomial", list(theta = init.theta, link = link))
+
     dots <- list(...)
     mf <- Call <- match.call()
     m <- match(c("formula", "data", "subset", "weights", "na.action",
@@ -191,7 +190,8 @@ glm.nb <- function(formula, data, weights,
     class(fit) <- c("negbin", "glm", "lm")
     fit$terms <- Terms
     fit$formula <- as.vector(attr(Terms, "formula"))
-    Call$init.theta <- as.vector(th)
+    ## make result somewhat reproducible
+    Call$init.theta <- signif(as.vector(th), 10)
     Call$link <- link
     fit$call <- Call
     if(model) fit$model <- mf
@@ -228,6 +228,7 @@ negative.binomial <-
         } else
             stop(linktemp, " link not available for negative binomial family; available links are \"identity\", \"log\" and \"sqrt\"")
     }
+    .Theta <- theta ## avoid codetools warnings
     env <- new.env(parent=.GlobalEnv)
     assign(".Theta", theta, envir=env)
     variance <- function(mu)
