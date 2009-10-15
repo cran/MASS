@@ -45,7 +45,7 @@ Confidence Intervals for Model Parameters
   1 - (1 - level)/2 in \% (by default 2.5\% and 97.5\%).
 }
 \details{
-  \code{\link[base]{confint}} is a generic function in package \code{base}.
+  \code{\link[stats]{confint}} is a generic function in package \code{stats}.
   
   These \code{confint} methods calls the appropriate profile method,
   then finds the confidence intervals by interpolation in the profile
@@ -57,7 +57,7 @@ Confidence Intervals for Model Parameters
   \emph{Modern Applied Statistics with S.} Fourth edition.  Springer.
 }
 \seealso{
-  \code{\link[base]{confint}} (the generic and \code{"lm"} method),
+  \code{\link[stats]{confint}} (the generic and \code{"lm"} method),
   \code{\link{profile}}
 }
 \examples{

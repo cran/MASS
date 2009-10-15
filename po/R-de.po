@@ -1,15 +1,15 @@
-# Translation of vr/R-MASS.pot to German
-# Copyright (C) 2007 The R Foundation
+# Translation of src/library/Recommended/MASS/R-MASS.pot to German
+# Copyright (C) 2007-2009 The R Foundation
 # This file is distributed under the same license as the lattice R package.
 # Chris Leick <c.leick@vollbio.de>, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: R 2.3.0\n"
+"Project-Id-Version: R 2.10.0 / MASS 7.3-2\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
 "POT-Creation-Date: 2009-05-05 14:20\n"
-"PO-Revision-Date: 2009-05-05 13:56+0100\n"
-"Last-Translator: Chris Leick <c.leick@vollbio.de>\n"
+"PO-Revision-Date: 2009-10-11 13:34+0200\n"
+"Last-Translator: Detlef Steuer <steuer@hsu-hh.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgid "no terms in scope for adding to object"
 msgstr "keine Bedingungen im Geltungsbereich, um ein Objekt hinzuzufügen"
 
 msgid "trying +"
-msgstr "+ wird versucht"
+msgstr "versuche +"
 
 msgid "number of rows in use has changed: remove missing values?"
 msgstr ""
@@ -33,7 +33,7 @@ msgid "using the %d/%d rows from a combined fit"
 msgstr "%d/%d Zeilen werden von einer kombinierten Näherung benutzt."
 
 msgid "F test assumes quasi%s family"
-msgstr ""
+msgstr "F-Test unterstellt eine quasi-%s Familie"
 
 msgid "no addterm method implemented for \"mlm\" models"
 msgstr ""
@@ -49,7 +49,7 @@ msgid "dropterm not implemented for \"mlm\" fits"
 msgstr "»dropterm« nicht für »mlm«-Annäherungen implementiert"
 
 msgid "F test assumes 'quasi%s' family"
-msgstr ""
+msgstr "F-Test unterstellt eine 'quasi-%s' Familie"
 
 msgid "iteration limit reached near x ="
 msgstr "Iterationsgrenzwert erreicht bei x ="
@@ -73,7 +73,7 @@ msgid "invalid table specification"
 msgstr "ungültige Tabellenangabe"
 
 msgid "higher-way table requested.  Only 2-way allowed"
-msgstr ""
+msgstr "Mehr als zwei-wege Tabelle angefordert, nur zwei-wege erlaubt"
 
 msgid "negative or non-integer entries in table"
 msgstr "negative oder nicht ganzzahlige Einträge in Tabelle"
@@ -227,7 +227,7 @@ msgid "'prior' is of incorrect length"
 msgstr "»prior« hat fehlerhafte Länge"
 
 msgid "cannot use leave-one-out CV with method"
-msgstr ""
+msgstr "kann leave-one-out Kreuszvalidierung nicht anwenden bei Methode"
 
 msgid "rank = 0: variables are numerically const"
 msgstr "rank = 0: Variablen sind numerisch konstant"
@@ -359,7 +359,7 @@ msgid ", 2(Ls - Lm) ="
 msgstr ", 2(Ls - Lm) ="
 
 msgid "alternation limit reached"
-msgstr ""
+msgstr "Grenze der Alternierungen erreicht"
 
 msgid "'theta' must be specified"
 msgstr "»theta« muss angegeben werden"
@@ -454,7 +454,7 @@ msgid "object not of class \"qda\""
 msgstr "Objekt nicht aus der Klasse »qda«"
 
 msgid "cannot have leave-one-out CV with 'newdata'"
-msgstr ""
+msgstr "kann mit 'newdata' keine leave-one-out Kreuzvalidierung durchführen"
 
 msgid "'x' is singular: singular fits are not implemented in rlm"
 msgstr "»x« ist singulär: singuläre Näherungen sind in rlm nicht implementiert"

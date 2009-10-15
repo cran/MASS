@@ -70,7 +70,7 @@ clot1 <- glm(lot1 ~ log(u), data = clotting, family = Gamma)
 gamma.shape(clot1)
 
 gm <- glm(Days + 0.1 ~ Age*Eth*Sex*Lrn,
-	  quasi(link=log, variance="mu^2"), quine,
+          quasi(link=log, variance="mu^2"), quine,
           start = c(3, rep(0,31)))
 gamma.shape(gm, verbose = TRUE)
 summary(gm, dispersion = gamma.dispersion(gm))  # better summary

@@ -62,7 +62,7 @@ corresp(x, \dots)
   and column scores.
 }
 \details{
-  See Venables \& Ripley (2002).  The \code{plot} method produces a graphical
+  See Venables & Ripley (2002).  The \code{plot} method produces a graphical
   representation of the table if \code{nf=1}, with the \emph{areas} of circles
   representing the numbers of points.  If \code{nf} is two or more the
   \code{biplot} method is called, which plots the second and third columns of
@@ -80,7 +80,7 @@ corresp(x, \dots)
   \emph{Modern Applied Statistics with S.} Fourth edition.  Springer.
 
   Gower, J. C. and Hand, D. J. (1996)
-  \emph{Biplots.}  Chapman \& Hall.
+  \emph{Biplots.}  Chapman & Hall.
 }
 \seealso{
   \code{\link{svd}}, \code{\link{princomp}}.

@@ -83,7 +83,7 @@ set.seed(123)
 x <- rgamma(100, shape = 5, rate = 0.1)
 fitdistr(x, "gamma")
 ## now do this directly with more control.
-fitdistr(x, dgamma, list(shape = 1, rate = 0.1), lower = 0.01)
+fitdistr(x, dgamma, list(shape = 1, rate = 0.1), lower = 0.001)
 
 set.seed(123)
 x2 <- rt(250, df = 9)
@@ -100,7 +100,7 @@ fitdistr(x3, "weibull")
 
 set.seed(123)
 x4 <- rnegbin(500, mu = 5, theta = 4)
-fitdistr(x4, "Negative Binomial") # R only
+fitdistr(x4, "Negative Binomial")
 }
 \keyword{distribution}
 \keyword{htest}

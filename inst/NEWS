@@ -159,3 +159,4 @@ This file documents software changes since the third edition.
 - there is a "negbin" method for simulate()
 - the use of package mclust has been removed from the ch11.R script
   because of the change of licence conditions for that package.
+- change ch13.R script for change in package 'survival' 2.35-x.

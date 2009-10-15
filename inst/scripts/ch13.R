@@ -183,7 +183,7 @@ summary(survfit(stan))
 #  follow-up for two years
 stan2 <- data.frame(start = c(0, 183), stop= c(183, 2*365),
     event = c(0, 0), year = c(4, 4), age = c(50, 50) - 48,
-    surgery = c(1, 1), transplant = c(0, 1))
+    surgery = c(1, 1), transplant = as.factor(c(0, 1)))
 summary(survfit(stan, stan2, individual = TRUE, conf.type = "log-log"))
 
 # Aids analysis
