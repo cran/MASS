@@ -160,3 +160,6 @@ This file documents software changes since the third edition.
 - the use of package mclust has been removed from the ch11.R script
   because of the change of licence conditions for that package.
 - change ch13.R script for change in package 'survival' 2.35-x.
+- glmmPQL looks up variables in its 'correlation' argument (if a formula)
+  in the usual scope (wish of Ben Bolker: such arguments are unsupported).
+- added a simulate() method for unweighted polr() fits.

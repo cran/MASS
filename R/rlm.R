@@ -1,5 +1,5 @@
 # file MASS/R/rlm.R
-# copyright (C) 1994-2005 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2009 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -363,7 +363,8 @@ psi.bisquare <- function(u, c = 4.685, deriv=0)
 }
 
 se.contrast.rlm <-
-    function(object, contrast.obj, coef = contr.helmert(ncol(contrast))[, 1],
+    function(object, contrast.obj,
+             coef = contr.helmert(ncol(contrast))[, 1L],
              data = NULL, ...)
 {
     contrast.weight.aov <- function(object, contrast)
@@ -385,30 +386,34 @@ se.contrast.rlm <-
     if(is.null(data)) contrast.obj <- eval(contrast.obj)
     else contrast.obj <- eval(substitute(contrast.obj), data, parent.frame())
     if(!is.matrix(contrast.obj)) { # so a list
-        if(sum(coef) != 0)
-            stop("'coef' must define a contrast, i.e., sum to 0")
-        if(length(coef) != length(contrast.obj))
-            stop("'coef' must have same length as 'contrast.obj'")
+        if(!missing(coef)) {
+            if(sum(coef) != 0)
+                stop("'coef' must define a contrast, i.e., sum to 0")
+            if(length(coef) != length(contrast.obj))
+                stop("'coef' must have same length as 'contrast.obj'")
+        }
         contrast <-
             sapply(contrast.obj, function(x)
                {
                    if(!is.logical(x))
-                       stop(gettextf("each element of %s must be logical",
-                                     substitute(contrasts.list)), domain = NA)
+                       stop(gettextf("each element of '%s' must be logical",
+                                     substitute(contrasts.list)),
+                            domain = NA)
                    x/sum(x)
                })
-        contrast <- contrast %*% coef
-        if(!any(contrast) || all(is.na(contrast)))
+        if(!length(contrast) || all(is.na(contrast)))
             stop("the contrast defined is empty (has no TRUE elements)")
+        contrast <- contrast %*% coef
     } else {
         contrast <- contrast.obj
         if(any(abs(colSums(contrast)) > 1e-8))
             stop("columns of 'contrast.obj' must define a contrast (sum to zero)")
-        if(length(colnames(contrast)) == 0L)
+        if(!length(colnames(contrast)))
             colnames(contrast) <- paste("Contrast", seq(ncol(contrast)))
     }
     weights <- contrast.weight.aov(object, contrast)
-    object$stddev * if(!is.matrix(contrast.obj)) sqrt(sum(weights)) else sqrt(colSums(weights))
+    summary(object)$stddev *
+        if(!is.matrix(contrast.obj)) sqrt(sum(weights)) else sqrt(colSums(weights))
 }
 
 predict.rlm <- function (object, newdata = NULL, scale = NULL, ...)

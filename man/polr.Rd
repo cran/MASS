@@ -75,13 +75,13 @@ polr(formula, data, weights, start, \dots, subset, na.action,
 }
 }
 \details{
+
   This model is what Agresti (2002) calls a \emph{cumulative link}
   model.  The basic interpretation is as a \emph{coarsened} version of a
   latent variable \eqn{Y_i} which has a logistic or normal or
-  extreme-value or Cauchy distribution
-  with scale parameter one and a linear model for the mean.  The ordered
-  factor which is observed is which bin \eqn{Y_i} falls into with
-  breakpoints
+  extreme-value or Cauchy distribution with scale parameter one and a
+  linear model for the mean.  The ordered factor which is observed is
+  which bin \eqn{Y_i} falls into with breakpoints
   \deqn{\zeta_0 = -\infty < \zeta_1 < \cdots < \zeta_K = \infty}{zeta_0 = -Inf < zeta_1 < \dots < zeta_K = Inf}
   This leads to the model
   \deqn{\mbox{logit} P(Y \le k | x) = \zeta_k - \eta}{logit P(Y <= k | x) = zeta_k - eta}

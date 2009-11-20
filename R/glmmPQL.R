@@ -39,6 +39,9 @@ glmmPQL <- function(fixed, random, family, data, correlation, weights,
     off <- attr(Terms, "offset")
     if(length(off<- attr(Terms, "offset"))) allvars <-
         c(allvars, as.character(attr(Terms, "variables"))[off+1])
+    ## add variables in correlation argument, if any
+    if (!missing(correlation) && !is.null(attr(correlation,"formula")))
+        allvars <- c(allvars, all.vars(attr(correlation,"formula")))
     ## substitute back actual formula (rather than a variable name)
     Call$fixed <- eval(fixed); Call$random <- eval(random)
     m$formula <- as.formula(paste("~", paste(allvars, collapse="+")))

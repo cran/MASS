@@ -23,7 +23,8 @@ a GLM family.
 }
 \item{data}{
 an optional data frame used as the first place to find
-variables in the formulae.
+variables in the formulae, \code{weights} and if present in
+\code{\dots}, \code{subset}.
 }
 \item{correlation}{
 an optional correlation structure.

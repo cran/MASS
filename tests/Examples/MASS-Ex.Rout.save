@@ -1,5 +1,5 @@
 
-R version 2.10.0 Under development (unstable) (2009-08-27 r49466)
+R version 2.10.0 Patched (2009-11-20 r50512)
 Copyright (C) 2009 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 
@@ -15,79 +15,14 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> ### * <HEADER>
-> ###
-> attach(NULL, name = "CheckExEnv")
-> assign("nameEx",
-+        local({
-+ 	   s <- "__{must remake R-ex/*.R}__"
-+            function(new) {
-+                if(!missing(new)) s <<- new else s
-+            }
-+        }),
-+        pos = "CheckExEnv")
-> ## Add some hooks to label plot pages for base and grid graphics
-> assign("base_plot_hook",
-+        function() {
-+            pp <- par(c("mfg","mfcol","oma","mar"))
-+            if(all(pp$mfg[1:2] == c(1, pp$mfcol[2]))) {
-+                outer <- (oma4 <- pp$oma[4]) > 0; mar4 <- pp$mar[4]
-+                mtext(sprintf("help(\"%s\")", nameEx()), side = 4,
-+                      line = if(outer)max(1, oma4 - 1) else min(1, mar4 - 1),
-+                outer = outer, adj = 1, cex = .8, col = "orchid", las=3)
-+            }
-+        },
-+        pos = "CheckExEnv")
-> assign("grid_plot_hook",
-+        function() {
-+            grid::pushViewport(grid::viewport(width=grid::unit(1, "npc") -
-+                               grid::unit(1, "lines"), x=0, just="left"))
-+            grid::grid.text(sprintf("help(\"%s\")", nameEx()),
-+                            x=grid::unit(1, "npc") + grid::unit(0.5, "lines"),
-+                            y=grid::unit(0.8, "npc"), rot=90,
-+                            gp=grid::gpar(col="orchid"))
-+        },
-+        pos = "CheckExEnv")
-> setHook("plot.new",     get("base_plot_hook", pos = "CheckExEnv"))
-> setHook("persp",        get("base_plot_hook", pos = "CheckExEnv"))
-> setHook("grid.newpage", get("grid_plot_hook", pos = "CheckExEnv"))
-> assign("cleanEx",
-+        function(env = .GlobalEnv) {
-+ 	   rm(list = ls(envir = env, all.names = TRUE), envir = env)
-+            RNGkind("default", "default")
-+ 	   set.seed(1)
-+    	   options(warn = 1)
-+ 	   .CheckExEnv <- as.environment("CheckExEnv")
-+ 	   delayedAssign("T", stop("T used instead of TRUE"),
-+ 		  assign.env = .CheckExEnv)
-+ 	   delayedAssign("F", stop("F used instead of FALSE"),
-+ 		  assign.env = .CheckExEnv)
-+ 	   sch <- search()
-+ 	   newitems <- sch[! sch %in% .oldSearch]
-+ 	   for(item in rev(newitems))
-+                eval(substitute(detach(item), list(item=item)))
-+ 	   missitems <- .oldSearch[! .oldSearch %in% sch]
-+ 	   if(length(missitems))
-+ 	       warning("items ", paste(missitems, collapse=", "),
-+ 		       " have been removed from the search path")
-+        },
-+        pos = "CheckExEnv")
-> assign("ptime", proc.time(), pos = "CheckExEnv")
-> ## at least one package changes these via ps.options(), so do this
-> ## before loading the package.
-> ## Use postscript as incomplete files may be viewable, unlike PDF.
-> ## Choose a size that is close to on-screen devices, fix paper
-> grDevices::ps.options(width = 7, height = 7, paper = "a4", reset = TRUE)
-> grDevices::postscript("MASS-Ex.ps")
-> 
-> assign("par.postscript", graphics::par(no.readonly = TRUE), pos = "CheckExEnv")
-> options(contrasts = c(unordered = "contr.treatment", ordered = "contr.poly"))
+> pkgname <- "MASS"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > library('MASS')
 > 
 > assign(".oldSearch", search(), pos = 'CheckExEnv')
-> assign(".oldNS", loadedNamespaces(), pos = 'CheckExEnv')
-> cleanEx(); nameEx("Insurance")
+> cleanEx()
+> nameEx("Insurance")
 > ### * Insurance
 > 
 > flush(stderr()); flush(stdout())
@@ -129,7 +64,8 @@ Pearson          48.62933 54 0.6809086
 > 
 > 
 > 
-> cleanEx(); nameEx("Null")
+> cleanEx()
+> nameEx("Null")
 > ### * Null
 > 
 > flush(stderr()); flush(stdout())
@@ -144,9 +80,9 @@ Pearson          48.62933 54 0.6809086
 > # The function is currently defined as
 > function(M)
 + {
-+ 	tmp <- qr(M)
-+ 	set <- if(tmp$rank == 0) 1:ncol(M) else  - (1:tmp$rank)
-+ 	qr.Q(tmp, complete = TRUE)[, set, drop = FALSE]
++     tmp <- qr(M)
++     set <- if(tmp$rank == 0) 1:ncol(M) else  - (1:tmp$rank)
++     qr.Q(tmp, complete = TRUE)[, set, drop = FALSE]
 + }
 function (M) 
 {
@@ -159,7 +95,8 @@ function (M)
 > 
 > 
 > 
-> cleanEx(); nameEx("OME")
+> cleanEx()
+> nameEx("OME")
 > ### * OME
 > 
 > flush(stderr()); flush(stdout())
@@ -378,7 +315,8 @@ Achieved convergence tolerance: 4.55e-06
 > ## End(Not run)
 > 
 > 
-> cleanEx(); nameEx("Skye")
+> cleanEx()
+> nameEx("Skye")
 > ### * Skye
 > 
 > flush(stderr()); flush(stdout())
@@ -427,7 +365,8 @@ Achieved convergence tolerance: 4.55e-06
 > 
 > 
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
-> cleanEx(); nameEx("addterm")
+> cleanEx()
+> nameEx("addterm")
 > ### * addterm
 > 
 > flush(stderr()); flush(stdout())
@@ -486,7 +425,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 > 
 > 
 > 
-> cleanEx(); nameEx("anova.negbin")
+> cleanEx()
+> nameEx("anova.negbin")
 > ### * anova.negbin
 > 
 > flush(stderr()); flush(stdout())
@@ -542,7 +482,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 > 
 > 
 > 
-> cleanEx(); nameEx("area")
+> cleanEx()
+> nameEx("area")
 > ### * area
 > 
 > flush(stderr()); flush(stdout())
@@ -559,7 +500,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 > 
 > 
 > 
-> cleanEx(); nameEx("bacteria")
+> cleanEx()
+> nameEx("bacteria")
 > ### * bacteria
 > 
 > flush(stderr()); flush(stdout())
@@ -740,7 +682,8 @@ Number of Groups: 50
 > 
 > 
 > 
-> cleanEx(); nameEx("bandwidth.nrd")
+> cleanEx()
+> nameEx("bandwidth.nrd")
 > ### * bandwidth.nrd
 > 
 > flush(stderr()); flush(stdout())
@@ -755,9 +698,9 @@ Number of Groups: 50
 > # The function is currently defined as
 > function(x)
 + {
-+ 	r <- quantile(x, c(0.25, 0.75))
-+ 	h <- (r[2] - r[1])/1.34
-+ 	4 * 1.06 * min(sqrt(var(x)), h) * length(x)^(-1/5)
++     r <- quantile(x, c(0.25, 0.75))
++     h <- (r[2] - r[1])/1.34
++     4 * 1.06 * min(sqrt(var(x)), h) * length(x)^(-1/5)
 + }
 function (x) 
 {
@@ -768,7 +711,8 @@ function (x)
 > 
 > 
 > 
-> cleanEx(); nameEx("bcv")
+> cleanEx()
+> nameEx("bcv")
 > ### * bcv
 > 
 > flush(stderr()); flush(stdout())
@@ -785,7 +729,8 @@ function (x)
 > 
 > 
 > 
-> cleanEx(); nameEx("beav1")
+> cleanEx()
+> nameEx("beav1")
 > ### * beav1
 > 
 > flush(stderr()); flush(stdout())
@@ -856,7 +801,8 @@ F-statistic: 1.81e+05 on 5 and 104 DF,  p-value: < 2.2e-16
 > 
 > 
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
-> cleanEx(); nameEx("beav2")
+> cleanEx()
+> nameEx("beav2")
 > ### * beav2
 > 
 > flush(stderr()); flush(stdout())
@@ -987,7 +933,8 @@ Degrees of freedom: 95 total; 93 residual
 > 
 > 
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
-> cleanEx(); nameEx("birthwt")
+> cleanEx()
+> nameEx("birthwt")
 > ### * birthwt
 > 
 > flush(stderr()); flush(stdout())
@@ -1025,7 +972,8 @@ Residual Deviance: 195.5 	AIC: 217.5
 > 
 > 
 > options(contrasts = c(unordered = "contr.treatment",ordered = "contr.poly"))
-> cleanEx(); nameEx("boxcox")
+> cleanEx()
+> nameEx("boxcox")
 > ### * boxcox
 > 
 > flush(stderr()); flush(stdout())
@@ -1045,7 +993,8 @@ Residual Deviance: 195.5 	AIC: 217.5
 > 
 > 
 > 
-> cleanEx(); nameEx("caith")
+> cleanEx()
+> nameEx("caith")
 > ### * caith
 > 
 > flush(stderr()); flush(stdout())
@@ -1077,7 +1026,8 @@ First canonical correlation(s): 0.4463684
 > 
 > 
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
-> cleanEx(); nameEx("cement")
+> cleanEx()
+> nameEx("cement")
 > ### * cement
 > 
 > flush(stderr()); flush(stdout())
@@ -1101,7 +1051,8 @@ Coefficients:
 > 
 > 
 > 
-> cleanEx(); nameEx("confint")
+> cleanEx()
+> nameEx("confint")
 > ### * confint
 > 
 > flush(stderr()); flush(stdout())
@@ -1164,7 +1115,8 @@ Waiting for profiling to be done...
 > 
 > 
 > 
-> cleanEx(); nameEx("contr.sdif")
+> cleanEx()
+> nameEx("contr.sdif")
 > ### * contr.sdif
 > 
 > flush(stderr()); flush(stdout())
@@ -1194,7 +1146,8 @@ Waiting for profiling to be done...
 > 
 > 
 > 
-> cleanEx(); nameEx("corresp")
+> cleanEx()
+> nameEx("corresp")
 > ### * corresp
 > 
 > flush(stderr()); flush(stdout())
@@ -1233,7 +1186,8 @@ First canonical correlation(s): 0.4463684
 > 
 > 
 > 
-> cleanEx(); nameEx("cov.rob")
+> cleanEx()
+> nameEx("cov.rob")
 > ### * cov.rob
 > 
 > flush(stderr()); flush(stdout())
@@ -1296,7 +1250,8 @@ $n.obs
 > 
 > 
 > 
-> cleanEx(); nameEx("cov.trob")
+> cleanEx()
+> nameEx("cov.trob")
 > ### * cov.trob
 > 
 > flush(stderr()); flush(stdout())
@@ -1332,7 +1287,8 @@ $iter
 > 
 > 
 > 
-> cleanEx(); nameEx("denumerate")
+> cleanEx()
+> nameEx("denumerate")
 > ### * denumerate
 > 
 > flush(stderr()); flush(stdout())
@@ -1350,7 +1306,8 @@ $iter
 > 
 > 
 > 
-> cleanEx(); nameEx("dose.p")
+> cleanEx()
+> nameEx("dose.p")
 > ### * dose.p
 > 
 > flush(stderr()); flush(stdout())
@@ -1382,7 +1339,8 @@ p = 0.75: 4.324177 0.2668745
 > 
 > 
 > 
-> cleanEx(); nameEx("dropterm")
+> cleanEx()
+> nameEx("dropterm")
 > ### * dropterm
 > 
 > flush(stderr()); flush(stdout())
@@ -1490,7 +1448,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 > 
 > 
 > 
-> cleanEx(); nameEx("eagles")
+> cleanEx()
+> nameEx("eagles")
 > ### * eagles
 > 
 > flush(stderr()); flush(stdout())
@@ -1519,7 +1478,8 @@ P:A     1    6.956 27.696
 > 
 > 
 > 
-> cleanEx(); nameEx("epil")
+> cleanEx()
+> nameEx("epil")
 > ### * epil
 > 
 > flush(stderr()); flush(stdout())
@@ -1746,7 +1706,8 @@ Number of Groups: 59
 > 
 > 
 > 
-> cleanEx(); nameEx("farms")
+> cleanEx()
+> nameEx("farms")
 > ### * farms
 > 
 > flush(stderr()); flush(stdout())
@@ -1765,7 +1726,8 @@ Number of Groups: 59
 > 
 > 
 > 
-> cleanEx(); nameEx("fitdistr")
+> cleanEx()
+> nameEx("fitdistr")
 > ### * fitdistr
 > 
 > flush(stderr()); flush(stdout())
@@ -1824,7 +1786,8 @@ Warning in dt(x, df, log) : NaNs produced
 > 
 > 
 > 
-> cleanEx(); nameEx("fractions")
+> cleanEx()
+> nameEx("fractions")
 > ### * fractions
 > 
 > flush(stderr()); flush(stdout())
@@ -1863,7 +1826,8 @@ Warning in dt(x, df, log) : NaNs produced
 > 
 > 
 > 
-> cleanEx(); nameEx("galaxies")
+> cleanEx()
+> nameEx("galaxies")
 > ### * galaxies
 > 
 > flush(stderr()); flush(stdout())
@@ -1886,7 +1850,8 @@ Warning in dt(x, df, log) : NaNs produced
 > 
 > 
 > 
-> cleanEx(); nameEx("gamma.shape.glm")
+> cleanEx()
+> nameEx("gamma.shape.glm")
 > ### * gamma.shape.glm
 > 
 > flush(stderr()); flush(stdout())
@@ -1910,7 +1875,7 @@ Alpha: 538.1315
 SE:    253.5991
 > 
 > gm <- glm(Days + 0.1 ~ Age*Eth*Sex*Lrn,
-+ 	  quasi(link=log, variance="mu^2"), quine,
++           quasi(link=log, variance="mu^2"), quine,
 +           start = c(3, rep(0,31)))
 > gamma.shape(gm, verbose = TRUE)
 Initial estimate: 1.060344
@@ -1979,7 +1944,8 @@ Number of Fisher Scoring iterations: 7
 > 
 > 
 > 
-> cleanEx(); nameEx("gehan")
+> cleanEx()
+> nameEx("gehan")
 > ### * gehan
 > 
 > flush(stderr()); flush(stdout())
@@ -2101,7 +2067,8 @@ Score (logrank) test = 17.25  on 1 df,   p=3.283e-05
 > 
 > 
 > 
-> cleanEx(); nameEx("ginv")
+> cleanEx()
+> nameEx("ginv")
 > ### * ginv
 > 
 > flush(stderr()); flush(stdout())
@@ -2129,7 +2096,8 @@ Score (logrank) test = 17.25  on 1 df,   p=3.283e-05
 > ## End(Not run)
 > 
 > 
-> cleanEx(); nameEx("glm.convert")
+> cleanEx()
+> nameEx("glm.convert")
 > ### * glm.convert
 > 
 > flush(stderr()); flush(stdout())
@@ -2155,7 +2123,8 @@ Model 2: Days ~ Sex + Sex:Age + Sex:Eth + Sex:Lrn + Sex:Eth:Lrn + Sex:Age:Lrn
 > 
 > 
 > 
-> cleanEx(); nameEx("glm.nb")
+> cleanEx()
+> nameEx("glm.nb")
 > ### * glm.nb
 > 
 > flush(stderr()); flush(stdout())
@@ -2247,7 +2216,8 @@ Residual Deviance: 50.09 	AIC: 215.9
 > ## End Don't show
 > 
 > 
-> cleanEx(); nameEx("glmmPQL")
+> cleanEx()
+> nameEx("glmmPQL")
 > ### * glmmPQL
 > 
 > flush(stderr()); flush(stdout())
@@ -2382,7 +2352,8 @@ Number of Groups: 50
 > ## End Don't show
 > 
 > 
-> cleanEx(); nameEx("housing")
+> cleanEx()
+> nameEx("housing")
 > ### * housing
 > 
 > flush(stderr()); flush(stdout())
@@ -2786,7 +2757,8 @@ Sat ~ Infl + Type + Cont + Infl:Type + Type:Cont
 > 
 > 
 > options(contrasts = c(unordered = "contr.treatment",ordered = "contr.poly"))
-> cleanEx(); nameEx("huber")
+> cleanEx()
+> nameEx("huber")
 > ### * huber
 > 
 > flush(stderr()); flush(stdout())
@@ -2808,7 +2780,8 @@ $s
 > 
 > 
 > 
-> cleanEx(); nameEx("hubers")
+> cleanEx()
+> nameEx("hubers")
 > ### * hubers
 > 
 > flush(stderr()); flush(stdout())
@@ -2837,7 +2810,8 @@ $s
 > 
 > 
 > 
-> cleanEx(); nameEx("immer")
+> cleanEx()
+> nameEx("immer")
 > ### * immer
 > 
 > flush(stderr()); flush(stdout())
@@ -2894,7 +2868,8 @@ replic.     6
 > 
 > 
 > 
-> cleanEx(); nameEx("isoMDS")
+> cleanEx()
+> nameEx("isoMDS")
 > ### * isoMDS
 > 
 > flush(stderr()); flush(stdout())
@@ -2922,7 +2897,8 @@ converged
 > 
 > 
 > 
-> cleanEx(); nameEx("kde2d")
+> cleanEx()
+> nameEx("kde2d")
 > ### * kde2d
 > 
 > flush(stderr()); flush(stdout())
@@ -2961,7 +2937,8 @@ converged
 > 
 > 
 > 
-> cleanEx(); nameEx("lda")
+> cleanEx()
+> nameEx("lda")
 > ### * lda
 > 
 > flush(stderr()); flush(stdout())
@@ -3019,7 +2996,8 @@ Proportion of trace:
 > 
 > 
 > 
-> cleanEx(); nameEx("leuk")
+> cleanEx()
+> nameEx("leuk")
 > ### * leuk
 > 
 > flush(stderr()); flush(stdout())
@@ -3061,7 +3039,8 @@ Score (logrank) test = 16.49  on 2 df,   p=0.0002629
 > 
 > 
 > 
-> cleanEx(); nameEx("lm.ridge")
+> cleanEx()
+> nameEx("lm.ridge")
 > ### * lm.ridge
 > 
 > flush(stderr()); flush(stdout())
@@ -3107,7 +3086,8 @@ smallest value of GCV  at 0.0057
 > 
 > 
 > 
-> cleanEx(); nameEx("loglm")
+> cleanEx()
+> nameEx("loglm")
 > ### * loglm
 > 
 > flush(stderr()); flush(stdout())
@@ -3213,7 +3193,8 @@ Pearson          14.07985  5 0.01511005
 > 
 > 
 > 
-> cleanEx(); nameEx("logtrans")
+> cleanEx()
+> nameEx("logtrans")
 > ### * logtrans
 > 
 > flush(stderr()); flush(stdout())
@@ -3230,7 +3211,8 @@ Pearson          14.07985  5 0.01511005
 > 
 > 
 > 
-> cleanEx(); nameEx("lqs")
+> cleanEx()
+> nameEx("lqs")
 > ### * lqs
 > 
 > flush(stderr()); flush(stdout())
@@ -3267,7 +3249,8 @@ Scale estimates 1.912
 > 
 > 
 > 
-> cleanEx(); nameEx("mca")
+> cleanEx()
+> nameEx("mca")
 > ### * mca
 > 
 > flush(stderr()); flush(stdout())
@@ -3291,7 +3274,8 @@ Correlations 0.806 0.745  cumulative % explained 26.87 51.71
 > 
 > 
 > 
-> cleanEx(); nameEx("menarche")
+> cleanEx()
+> nameEx("menarche")
 > ### * menarche
 > 
 > flush(stderr()); flush(stdout())
@@ -3308,7 +3292,8 @@ Correlations 0.806 0.745  cumulative % explained 26.87 51.71
 > 
 > 
 > 
-> cleanEx(); nameEx("motors")
+> cleanEx()
+> nameEx("motors")
 > ### * motors
 > 
 > flush(stderr()); flush(stdout())
@@ -3388,7 +3373,8 @@ Call: survfit(formula = motor.cox, newdata = data.frame(temp = 130))
 > 
 > 
 > 
-> cleanEx(); nameEx("muscle")
+> cleanEx()
+> nameEx("muscle")
 > ### * muscle
 > 
 > flush(stderr()); flush(stdout())
@@ -3461,7 +3447,8 @@ Loading required package: lattice
 > 
 > 
 > 
-> cleanEx(); nameEx("mvrnorm")
+> cleanEx()
+> nameEx("mvrnorm")
 > ### * mvrnorm
 > 
 > flush(stderr()); flush(stdout())
@@ -3489,7 +3476,8 @@ Loading required package: lattice
 > 
 > 
 > 
-> cleanEx(); nameEx("negative.binomial")
+> cleanEx()
+> nameEx("negative.binomial")
 > ### * negative.binomial
 > 
 > flush(stderr()); flush(stdout())
@@ -3538,7 +3526,8 @@ Residual Deviance: 172 	AIC: 1095
 > 
 > 
 > 
-> cleanEx(); nameEx("nlschools")
+> cleanEx()
+> nameEx("nlschools")
 > ### * nlschools
 > 
 > flush(stderr()); flush(stdout())
@@ -3601,7 +3590,8 @@ Number of Groups: 133
 > 
 > 
 > 
-> cleanEx(); nameEx("npk")
+> cleanEx()
+> nameEx("npk")
 > ### * npk
 > 
 > flush(stderr()); flush(stdout())
@@ -3716,7 +3706,8 @@ replic.     4    12    12
 > 
 > 
 > options(contrasts = c(unordered = "contr.treatment",ordered = "contr.poly"))
-> cleanEx(); nameEx("oats")
+> cleanEx()
+> nameEx("oats")
 > ### * oats
 > 
 > flush(stderr()); flush(stdout())
@@ -3800,7 +3791,8 @@ Golden.rain  Marvellous     Victory
 > 
 > 
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
-> cleanEx(); nameEx("parcoord")
+> cleanEx()
+> nameEx("parcoord")
 > ### * parcoord
 > 
 > flush(stderr()); flush(stdout())
@@ -3821,7 +3813,8 @@ Warning in matplot(1L:ncol(x), t(x), type = "l", col = col, lty = lty, xlab = ""
 > 
 > 
 > 
-> cleanEx(); nameEx("petrol")
+> cleanEx()
+> nameEx("petrol")
 > ### * petrol
 > 
 > flush(stderr()); flush(stdout())
@@ -3847,7 +3840,8 @@ pet3.lme     2  7 149.3833 159.6435 -67.69166 1 vs 2 4.22855  0.1207
 > 
 > 
 > 
-> cleanEx(); nameEx("plot.mca")
+> cleanEx()
+> nameEx("plot.mca")
 > ### * plot.mca
 > 
 > flush(stderr()); flush(stdout())
@@ -3863,7 +3857,8 @@ pet3.lme     2  7 149.3833 159.6435 -67.69166 1 vs 2 4.22855  0.1207
 > 
 > 
 > 
-> cleanEx(); nameEx("plot.profile")
+> cleanEx()
+> nameEx("plot.profile")
 > ### * plot.profile
 > 
 > flush(stderr()); flush(stdout())
@@ -3891,7 +3886,8 @@ pet3.lme     2  7 149.3833 159.6435 -67.69166 1 vs 2 4.22855  0.1207
 > 
 > 
 > 
-> cleanEx(); nameEx("polr")
+> cleanEx()
+> nameEx("polr")
 > ### * polr
 > 
 > flush(stderr()); flush(stdout())
@@ -4154,7 +4150,8 @@ ContHigh       0.1733589  0.54792854
 > 
 > 
 > options(contrasts = c(unordered = "contr.treatment",ordered = "contr.poly"))
-> cleanEx(); nameEx("predict.glmmPQL")
+> cleanEx()
+> nameEx("predict.glmmPQL")
 > ### * predict.glmmPQL
 > 
 > flush(stderr()); flush(stdout())
@@ -4272,7 +4269,8 @@ attr(,"label")
 > 
 > 
 > 
-> cleanEx(); nameEx("predict.lda")
+> cleanEx()
+> nameEx("predict.lda")
 > ### * predict.lda
 > 
 > flush(stderr()); flush(stdout())
@@ -4296,7 +4294,8 @@ Levels: c s v
 > 
 > 
 > 
-> cleanEx(); nameEx("predict.lqs")
+> cleanEx()
+> nameEx("predict.lqs")
 > ### * predict.lqs
 > 
 > flush(stderr()); flush(stdout())
@@ -4320,7 +4319,8 @@ Levels: c s v
 > 
 > 
 > 
-> cleanEx(); nameEx("predict.qda")
+> cleanEx()
+> nameEx("predict.qda")
 > ### * predict.qda
 > 
 > flush(stderr()); flush(stdout())
@@ -4344,7 +4344,8 @@ Levels: c s v
 > 
 > 
 > 
-> cleanEx(); nameEx("profile.glm")
+> cleanEx()
+> nameEx("profile.glm")
 > ### * profile.glm
 > 
 > flush(stderr()); flush(stdout())
@@ -4369,7 +4370,8 @@ Levels: c s v
 > 
 > 
 > options(contrasts = c(unordered = "contr.treatment",ordered = "contr.poly"))
-> cleanEx(); nameEx("qda")
+> cleanEx()
+> nameEx("qda")
 > ### * qda
 > 
 > flush(stderr()); flush(stdout())
@@ -4394,7 +4396,8 @@ Levels: c s v
 > 
 > 
 > 
-> cleanEx(); nameEx("rational")
+> cleanEx()
+> nameEx("rational")
 > ### * rational
 > 
 > flush(stderr()); flush(stdout())
@@ -4424,7 +4427,8 @@ Levels: c s v
 > 
 > 
 > 
-> cleanEx(); nameEx("renumerate")
+> cleanEx()
+> nameEx("renumerate")
 > ### * renumerate
 > 
 > flush(stderr()); flush(stdout())
@@ -4445,7 +4449,8 @@ Levels: c s v
 > 
 > 
 > 
-> cleanEx(); nameEx("rlm")
+> cleanEx()
+> nameEx("rlm")
 > ### * rlm
 > 
 > flush(stderr()); flush(stdout())
@@ -4499,7 +4504,8 @@ Scale estimate: 2.28
 > 
 > 
 > 
-> cleanEx(); nameEx("rms.curv")
+> cleanEx()
+> nameEx("rms.curv")
 > ### * rms.curv
 > 
 > flush(stderr()); flush(stdout())
@@ -4534,7 +4540,8 @@ Parameter effects: c^theta x sqrt(F) = 0.2121
 > 
 > 
 > 
-> cleanEx(); nameEx("rnegbin")
+> cleanEx()
+> nameEx("rnegbin")
 > ### * rnegbin
 > 
 > flush(stderr()); flush(stdout())
@@ -4552,7 +4559,8 @@ Parameter effects: c^theta x sqrt(F) = 0.2121
 > 
 > 
 > 
-> cleanEx(); nameEx("sammon")
+> cleanEx()
+> nameEx("sammon")
 > ### * sammon
 > 
 > flush(stderr()); flush(stdout())
@@ -4575,7 +4583,8 @@ stress after  30 iters: 0.00383, magic = 0.500
 > 
 > 
 > 
-> cleanEx(); nameEx("stepAIC")
+> cleanEx()
+> nameEx("stepAIC")
 > ### * stepAIC
 > 
 > flush(stderr()); flush(stdout())
@@ -4757,7 +4766,8 @@ Days ~ Eth + Sex + Age + Lrn + Eth:Sex + Eth:Age + Eth:Lrn +
 > 
 > 
 > 
-> cleanEx(); nameEx("summary.negbin")
+> cleanEx()
+> nameEx("summary.negbin")
 > ### * summary.negbin
 > 
 > flush(stderr()); flush(stdout())
@@ -4832,7 +4842,8 @@ Number of Fisher Scoring iterations: 1
 > 
 > 
 > 
-> cleanEx(); nameEx("summary.rlm")
+> cleanEx()
+> nameEx("summary.rlm")
 > ### * summary.rlm
 > 
 > flush(stderr()); flush(stdout())
@@ -4878,7 +4889,8 @@ Residual standard error: 9.032 on 22 degrees of freedom
 > ## End(Not run)
 > 
 > 
-> cleanEx(); nameEx("theta.md")
+> cleanEx()
+> nameEx("theta.md")
 > ### * theta.md
 > 
 > flush(stderr()); flush(stdout())
@@ -4950,7 +4962,8 @@ attr(,"SE")
 > 
 > 
 > 
-> cleanEx(); nameEx("ucv")
+> cleanEx()
+> nameEx("ucv")
 > ### * ucv
 > 
 > flush(stderr()); flush(stdout())
@@ -4969,7 +4982,8 @@ Warning in ucv(geyser$duration) :
 > 
 > 
 > 
-> cleanEx(); nameEx("waders")
+> cleanEx()
+> nameEx("waders")
 > ### * waders
 > 
 > flush(stderr()); flush(stdout())
@@ -4985,7 +4999,8 @@ Warning in ucv(geyser$duration) :
 > 
 > 
 > 
-> cleanEx(); nameEx("whiteside")
+> cleanEx()
+> nameEx("whiteside")
 > ### * whiteside
 > 
 > flush(stderr()); flush(stdout())
@@ -5108,7 +5123,8 @@ InsulAfter:Temp  0.1153039 0.03211212   3.590665 7.306852e-04
 > 
 > 
 > options(contrasts = c(unordered = "contr.treatment",ordered = "contr.poly"))
-> cleanEx(); nameEx("width.SJ")
+> cleanEx()
+> nameEx("width.SJ")
 > ### * width.SJ
 > 
 > flush(stderr()); flush(stdout())
@@ -5134,7 +5150,8 @@ InsulAfter:Temp  0.1153039 0.03211212   3.590665 7.306852e-04
 > 
 > 
 > 
-> cleanEx(); nameEx("wtloss")
+> cleanEx()
+> nameEx("wtloss")
 > ### * wtloss
 > 
 > flush(stderr()); flush(stdout())

@@ -146,7 +146,7 @@ polr <- function(formula, data, weights, start, ..., subset,
                 df.residual = sum(wt) - pc - q, edf = pc + q, n = sum(wt),
                 nobs = sum(wt),
                 call = match.call(), method = method,
-		convergence = res$convergence, niter = niter)
+		convergence = res$convergence, niter = niter, lp = eta)
     if(Hess) {
         dn <- c(names(beta), names(zeta))
         H <- res$hessian
@@ -328,6 +328,7 @@ pgumbel <- function(q, loc = 0, scale = 1, lower.tail = TRUE)
 
 dgumbel <- function (x, loc = 0, scale = 1, log = FALSE)
 {
+    x <- (x - loc)/scale
     d <- log(1/scale) - x - exp(-x)
     if (!log) exp(d) else d
 }
@@ -536,3 +537,37 @@ confint.profile.polr <-
 
 logLik.polr <- function(object, ...)
     structure(-0.5 * object$deviance, df = object$edf, class = "logLik")
+
+simulate.polr <- function(object, nsim = 1, seed = NULL, ...)
+{
+    if(!is.null(object$model) && any(model.weights(object$model) != 1))
+        stop("weighted fits are not supported")
+
+    rgumbel <- function(n, loc = 0, scale = 1) loc - scale*log(rexp(n))
+
+    ## start the same way as simulate.lm
+    if(!exists(".Random.seed", envir = .GlobalEnv, inherits = FALSE))
+        runif(1)                     # initialize the RNG if necessary
+    if(is.null(seed))
+        RNGstate <- get(".Random.seed", envir = .GlobalEnv)
+    else {
+        R.seed <- get(".Random.seed", envir = .GlobalEnv)
+	set.seed(seed)
+        RNGstate <- structure(seed, kind = as.list(RNGkind()))
+        on.exit(assign(".Random.seed", R.seed, envir = .GlobalEnv))
+    }
+    rfun <- switch(object$method, logistic = rlogis, probit = rnorm,
+                   cloglog = rgumbel, cauchit = rcauchy)
+    eta <- object$lp
+    n <- length(eta)
+    res <- cut(rfun(n*nsim, eta),
+               c(-Inf, object$zeta, Inf),
+               labels = colnames(fitted(object)),
+               ordered_result = TRUE)
+    val <- split(res, rep(seq_len(nsim), each=n))
+    names(val) <- paste("sim", seq_len(nsim), sep="_")
+    val <- as.data.frame(val)
+    if (!is.null(nm <- rownames(fitted(object)))) row.names(val) <- nm
+    attr(val, "seed") <- RNGstate
+    val
+}
