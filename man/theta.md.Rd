@@ -56,8 +56,8 @@ theta.mm(y, mu, dfr, weights, limit = 10, eps = .Machine$double.eps^0.25)
 
   \code{theta.mm} calculates the moment estimator of \code{theta} by
   equating the Pearson chi-square
-  \eqn{sum((y-\mu)^2/(\mu+\mu^2/\theta))} to the residual
-  degrees of freedom.
+  \eqn{\sum (y-\mu)^2/(\mu+\mu^2/\theta)}{sum((y-mu)^2/(mu+mu^2/theta))}
+  to the residual degrees of freedom.
 }
 \value{
   The required estimate of \code{theta}, as a scalar.

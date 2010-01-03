@@ -89,7 +89,7 @@ polr(formula, data, weights, start, \dots, subset, na.action,
   variable, and \eqn{\eta}{eta} being the linear predictor, a linear
   function of the explanatory variables (with no intercept).  Note
   that it is quite common for other software to use the opposite sign
-  for \eqn{\eta} (and hence the coefficients \code{beta}).
+  for \eqn{\eta}{eta} (and hence the coefficients \code{beta}).
 
   In the logistic case, the left-hand side of the last display is the
   log odds of category \eqn{k} or less, and since these are log odds

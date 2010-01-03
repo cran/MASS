@@ -1,21 +1,24 @@
+% file MASS/man/fitdistr.Rd
+% copyright (C) 2001-10 W. N. Venables and B. D. Ripley
+%
 \name{fitdistr}
 \alias{fitdistr}
-\alias{print.fitdistr}
-\alias{coef.fitdistr}
-\alias{logLik.fitdistr}
+%\alias{print.fitdistr}
+%\alias{coef.fitdistr}
+%\alias{logLik.fitdistr}
 \title{
-Maximum-likelihood Fitting of Univariate Distributions
+  Maximum-likelihood Fitting of Univariate Distributions
 }
 \description{
-Maximum-likelihood fitting of univariate distributions, allowing
-parameters to be held fixed if desired.
+  Maximum-likelihood fitting of univariate distributions, allowing
+  parameters to be held fixed if desired.
 }
 \usage{
 fitdistr(x, densfun, start, \dots)
 }
 \arguments{
 \item{x}{
-A numeric vector.
+  A numeric vector of length at least one containing only \link{finite} values.
 }
 \item{densfun}{
   Either a character string or a function returning a density evaluated
@@ -56,8 +59,8 @@ A numeric vector.
   errors are taken from the observed information matrix, calculated by a
   numerical approximation.  For one-dimensional problems the Nelder-Mead
   method is used and for multi-dimensional problems the BFGS method,
-  unless arguments named \code{lower} or \code{upper} are supplied when
-  \code{L-BFGS-B} is used or \code{method} is supplied explicitly.
+  unless arguments named \code{lower} or \code{upper} are supplied (when
+  \code{L-BFGS-B} is used) or \code{method} is supplied explicitly.
 
   For the \code{"t"} named distribution the density is taken to be the
   location-scale family with location \code{m} and scale \code{s}.

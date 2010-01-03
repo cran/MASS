@@ -26,6 +26,7 @@ fitdistr <- function(x, densfun, start, ...)
     dots <- dots[!is.element(dots, c("upper", "lower"))]
     if(missing(x) || length(x) == 0L || mode(x) != "numeric")
         stop("'x' must be a non-empty numeric vector")
+    if(any(!is.finite(x))) stop("'x' contains missing or infinite values")
     if(missing(densfun) || !(is.function(densfun) || is.character(densfun)))
         stop("'densfun' must be supplied as a function or name")
     n <- length(x)

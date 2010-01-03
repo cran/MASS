@@ -1,5 +1,5 @@
 % file MASS/man/rms.curv.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2009 W. N. Venables and B. D. Ripley
 %
 \name{rms.curv}
 \alias{rms.curv}
@@ -9,8 +9,9 @@ Relative Curvature Measures for Non-Linear Regression
 }
 \description{
 Calculates the root mean square parameter effects and intrinsic relative
-curvatures, \eqn{c^\theta} and \eqn{c^\iota}, for a fitted nonlinear regression, as
-defined in Bates & Watts, section 7.3, p. 253 et seq.
+curvatures, \eqn{c^\theta}{c^theta} and \eqn{c^\iota}{c^iota}, for a
+fitted nonlinear regression, as defined in Bates & Watts, section 7.3,
+p. 253ff
 }
 \usage{
 rms.curv(obj)

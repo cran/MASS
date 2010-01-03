@@ -21,11 +21,13 @@ x coordinate of data
 y coordinate of data
 }
 \item{h}{
-vector of bandwidths for x and y directions. Defaults to
-normal reference bandwidth (see \code{\link{bandwidth.nrd}}).
+vector of bandwidths for x and y directions.  Defaults to
+normal reference bandwidth (see \code{\link{bandwidth.nrd}}). A scalar
+value will be taken to apply to both directions.
 }
 \item{n}{
-Number of grid points in each direction.
+Number of grid points in each direction.  Can be scalar or a length-2
+integer vector.
 }
 \item{lims}{
 The limits of the rectangle covered by the grid as \code{c(xl, xu, yl, yu)}.
@@ -37,7 +39,8 @@ A list of three components.
 The x and y coordinates of the grid points, vectors of length \code{n}.
 }
 \item{z}{
-An \code{n}  x  \code{n} matrix of the evaluated density.
+An \code{n[1]} by \code{n[2]} matrix of the estimated density: rows
+correspond to the value of \code{x}, columns to the value of \code{y}. 
 }}
 \references{
   Venables, W. N. and Ripley, B. D. (2002)

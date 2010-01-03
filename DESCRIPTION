@@ -1,8 +1,8 @@
 Package: MASS
 Priority: recommended
-Version: 7.3-4
-Date: 2009-11-20
-Depends: R (>= 2.10.0), grDevices, graphics, stats, utils
+Version: 7.3-5
+Date: 2010-01-03
+Depends: R (>= 2.10.1), grDevices, graphics, stats, utils
 Suggests: lattice, nlme, survival
 Author: S original by Venables & Ripley. R port by Brian Ripley
         <ripley@stats.ox.ac.uk>, following earlier work by Kurt Hornik
@@ -15,6 +15,6 @@ License: GPL-2 | GPL-3
 URL: http://www.stats.ox.ac.uk/pub/MASS4/
 LazyLoad: yes
 LazyData: yes
-Packaged: 2009-11-23 07:38:54 UTC; ripley
+Packaged: 2010-01-03 10:50:27 UTC; ripley
 Repository: CRAN
-Date/Publication: 2009-11-23 09:11:04
+Date/Publication: 2010-01-03 14:05:40

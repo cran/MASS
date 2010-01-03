@@ -153,11 +153,9 @@ sqrt(diag(vcov(OME.nls2)))
 
 # Now allow random effects by using NLME
 OMEf <- OME[rep(1:nrow(OME), OME$Trials),]
-attach(OME)
-OMEf$Resp <- rep(rep(c(1,0), length(Trials)),
-                 t(cbind(Correct, Trials-Correct)))
+OMEf$Resp <- with(OME, rep(rep(c(1,0), length(Trials)),
+                          t(cbind(Correct, Trials-Correct))))
 OMEf <- OMEf[, -match(c("Correct", "Trials"), names(OMEf))]
-detach("OME")
 
 \dontrun{## this fails in R on some platforms
 fp2 <- deriv(~ 0.5 + 0.5/(1 + exp(-(x-L75)/exp(lsc))),

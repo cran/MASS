@@ -163,3 +163,4 @@ This file documents software changes since the third edition.
 - glmmPQL looks up variables in its 'correlation' argument (if a formula)
   in the usual scope (wish of Ben Bolker: such arguments are unsupported).
 - added a simulate() method for unweighted polr() fits.
+- kde2d() allows a length-2 argument 'n'.

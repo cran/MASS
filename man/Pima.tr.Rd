@@ -52,7 +52,7 @@ Pima.te
 }
 \details{
   The training set \code{Pima.tr} contains a randomly selected set of 200
-  subjects, and \code{Pima.te} contains the remaining 322 subjects.
+  subjects, and \code{Pima.te} contains the remaining 332 subjects.
   \code{Pima.tr2} contains \code{Pima.tr} plus 100 subjects with
   missing values in the explanatory variables.
 }
