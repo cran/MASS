@@ -43,10 +43,11 @@ fitdistr(x, densfun, start, \dots)
   they will be held fixed.
 }}
 \value{
-  An object of class \code{"fitdistr"}, a list with three components,
+  An object of class \code{"fitdistr"}, a list with four components,
 
   \item{estimate}{the parameter estimates,}
-  \item{sd}{the estimated standard errors, and}
+  \item{sd}{the estimated standard errors,}
+  \item{vcov}{the estimated variance-covariance matrix, and}
   \item{loglik}{the log-likelihood.}
 }
 \details{
@@ -74,8 +75,8 @@ fitdistr(x, densfun, start, \dots)
   particular they are not resistant to outliers unless the fitted
   distribution is long-tailed.
 
-  There are \code{\link{print}}, \code{\link{coef}} and
-  \code{\link{logLik}} methods for class \code{"fitdistr"}.
+  There are \code{\link{print}}, \code{\link{coef}}, \code{\link{vcov}}
+  and \code{\link{logLik}} methods for class \code{"fitdistr"}.
 }
 \references{
   Venables, W. N. and Ripley, B. D. (2002)

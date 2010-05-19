@@ -17,7 +17,7 @@
 "truehist"<-
 function(data, nbins = "Scott", h, x0 = -h/1000, breaks,
          prob = TRUE, xlim = range(breaks), ymax = max(est),
-	 col = 5,
+	 col = "cyan",
 	 xlab = deparse(substitute(data)), bty = "n", ...)
 {
     plot.truehist <-

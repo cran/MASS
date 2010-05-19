@@ -89,6 +89,7 @@ fitdistr <- function(x, densfun, start, ...)
                              class = "fitdistr"))
         }
         if(distname == "exponential") {
+            if(any(x < 0)) stop("Exponential values must be >= 0")
             if(!is.null(start))
                 stop("supplying pars for the exponential is not supported")
             estimate <- 1/mean(x)
@@ -110,12 +111,16 @@ fitdistr <- function(x, densfun, start, ...)
         }
         if(distname == "weibull" && is.null(start)) {
             ## log-Weibull is Gumbel, so start from that
-            m <- mean(log(x)); v <- var(log(x))
+            ## but some people think Weibull range is [0, \infty)
+            if(any(x <= 0)) stop("Weibull values must be > 0")
+            lx <- log(x)
+            m <- mean(lx); v <- var(lx)
             shape <- 1.2/sqrt(v); scale <- exp(m + 0.572/shape)
             start <- list(shape = shape, scale = scale)
             start <- start[!is.element(names(start), dots)]
         }
         if(distname == "gamma" && is.null(start)) {
+            if(any(x < 0)) stop("gamma values must be >= 0")
             m <- mean(x); v <- var(x)
             start <- list(shape = m^2/v, rate = m/v)
             start <- start[!is.element(names(start), dots)]
@@ -164,10 +169,13 @@ fitdistr <- function(x, densfun, start, ...)
     }
     res <- eval.parent(Call)
     if(res$convergence > 0L) stop("optimization failed")
-    sds <- sqrt(diag(solve(res$hessian)))
-    structure(list(estimate = res$par, sd = sds,
+    vc <- solve(res$hessian)
+    sds <- sqrt(diag(vc))
+    structure(list(estimate = res$par, sd = sds, vcov = vc,
                    loglik = - res$value, n = n), class = "fitdistr")
 }
+
+vcov.fitdistr <- function(object, ...) object$vcov
 
 logLik.fitdistr <- function(object, REML = FALSE, ...)
 {

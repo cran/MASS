@@ -153,7 +153,7 @@ This file documents software changes since the third edition.
 - removed unused argument 'nseg' to plot.profile.
 - 'alpha' in the "glm" and "polr" methods for profile() is now interpreted
   as two-tailed univariate for consistency with other profile methods.
-- 'mammals': corrected typos in names, some thanks to Arni Magnusson
+- 'mammals': corrected typos in names, some thanks to Arni Magnusson.
 - profile.glm() now works for binomial glm specified with a matrix response
   and a cmpletely zero row.
 - there is a "negbin" method for simulate()
@@ -164,3 +164,9 @@ This file documents software changes since the third edition.
   in the usual scope (wish of Ben Bolker: such arguments are unsupported).
 - added a simulate() method for unweighted polr() fits.
 - kde2d() allows a length-2 argument 'n'.
+- the default for truehist(col=) is now set to a colour, not a colour number.
+- the returned fitted values and (undocumented) linear predictor for
+  polr() did not take any offset into account (reported by Ioannis Kosmides).
+- the vcov() method for polr() now returns on the zeta scale (suggested by
+  Achim Zeileis).
+- fitdistr() gains a vcov() method (suggested by Achim Zeileis).

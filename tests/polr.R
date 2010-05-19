@@ -33,3 +33,12 @@ tonsils <- data.frame(carrier = factor(rep(c('yes', 'no'), each=3)),
                       count = c(19,29,24,497,560,269))
 m <- polr(size ~ carrier, data = tonsils, weights = count)
 confint(m)
+
+
+## refitting needs transformed starting values (Achim Zeileis Mar 2010)
+if(require("AER")) {
+    data("BankWages", package = "AER")
+    bw <- polr(job ~ education, data = BankWages)
+    summary(bw)
+}
+## failed due to incorrect restarting values

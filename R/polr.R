@@ -122,7 +122,7 @@ polr <- function(formula, data, weights, start, ..., subset,
     } else if(length(start) != pc + q)
 	stop("'start' is not of the correct length")
     else {
-        s0 <- if(pc > 0) c(start[seq_len(pc+1)], diff(start[-seq_len(pc)]))
+        s0 <- if(pc > 0) c(start[seq_len(pc+1)], log(diff(start[-seq_len(pc)])))
         else c(start[1L], diff(start))
         }
     res <- optim(s0, fmin, gmin, method="BFGS", hessian = Hess, ...)
@@ -134,10 +134,9 @@ polr <- function(formula, data, weights, start, ..., subset,
     names(zeta) <- paste(lev[-length(lev)], lev[-1L], sep="|")
     if(pc > 0) {
         names(beta) <- colnames(x)
-        eta <- drop(x %*% beta)
-    } else {
-        eta <- rep(0, n)
-    }
+        eta <- offset + drop(x %*% beta)
+    } else eta <- offset + rep(0, n)
+
     cumpr <- matrix(pfun(matrix(zeta, n, q, byrow=TRUE) - eta), , q)
     fitted <- t(apply(cumpr, 1L, function(x) diff(c(0, x, 1))))
     dimnames(fitted) <- list(row.names(m), lev)
@@ -185,14 +184,31 @@ print.polr <- function(x, ...)
 
 vcov.polr <- function(object, ...)
 {
+    jacobian <- function(theta) { ## dgamma by dtheta matrix
+        k <- length(theta)
+        etheta <- exp(theta)
+        mat <- matrix(0 , k, k)
+        mat[, 1] <- rep(1, k)
+        for (i in 2:k) mat[i:k, i] <- etheta[i]
+        mat
+    }
+
     if(is.null(object$Hessian)) {
         message("\nRe-fitting to get Hessian\n")
 	utils::flush.console()
         object <- update(object, Hess=TRUE,
                          start=c(object$coefficients, object$zeta))
     }
-    structure(ginv(object$Hessian), dimnames = dimnames(object$Hessian))
-
+    vc <- ginv(object$Hessian)
+    pc <- length(coef(object))
+    gamma <- object$zeta
+    z.ind <- pc + seq_along(gamma)
+    theta <- c(gamma[1L], log(diff(gamma)))
+    J <- jacobian(theta)
+    A <- diag(pc + length(gamma))
+    A[z.ind, z.ind] <- J
+    V <- A %*% vc %*% t(A)
+    structure(V,  dimnames = dimnames(object$Hessian))
 }
 
 summary.polr <- function(object, digits = max(3, .Options$digits - 3),
@@ -205,21 +221,6 @@ summary.polr <- function(object, digits = max(3, .Options$digits - 3),
                                c("Value", "Std. Error", "t value")))
     coef[, 1] <- cc
     vc <- vcov(object)
-    z.ind <- (pc + 1):(pc + q)
-    gamma <- object$zeta
-    theta <- c(gamma[1L], log(diff(gamma)))
-
-    jacobian <- function(theta) { ## dgamma by dtheta matrix
-        k <- length(theta)
-        etheta <- exp(theta)
-        mat <- matrix(0 , k, k)
-        mat[, 1] <- rep(1, k)
-        for (i in 2:k) mat[i:k, i] <- etheta[i]
-        mat
-    }
-
-    J <- jacobian(theta)
-    vc[z.ind, z.ind] <- J %*% vc[z.ind, z.ind] %*% t(J)
     coef[, 2] <- sd <- sqrt(diag(vc))
     coef[, 3] <- coef[, 1]/coef[, 2]
     object$coefficients <- coef
@@ -241,12 +242,14 @@ print.summary.polr <- function(x, digits = x$digits, ...)
     pc <- x$pc
     if(pc > 0) {
         cat("\nCoefficients:\n")
-        print(x$coefficients[seq_len(pc), , drop=FALSE], quote = FALSE, ...)
+        print(x$coefficients[seq_len(pc), , drop=FALSE], quote = FALSE,
+              digits = digits, ...)
     } else {
         cat("\nNo coefficients\n")
     }
     cat("\nIntercepts:\n")
-    print(coef[(pc+1):nrow(coef), , drop=FALSE], quote = FALSE, ...)
+    print(coef[(pc+1):nrow(coef), , drop=FALSE], quote = FALSE,
+          digits = digits, ...)
     cat("\nResidual Deviance:", format(x$deviance, nsmall=2), "\n")
     cat("AIC:", format(x$deviance + 2*x$edf, nsmall=2), "\n")
     if(nzchar(mess <- naprint(x$na.action))) cat("(", mess, ")\n", sep="")

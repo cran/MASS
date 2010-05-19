@@ -12,7 +12,7 @@ Creates a histogram on the current graphics device.
 \usage{
 truehist(data, nbins = "Scott", h, x0 = -h/1000,
          breaks, prob = TRUE, xlim = range(breaks),
-         ymax = max(est), col,
+         ymax = max(est), col = "cyan",
          xlab = deparse(substitute(data)), bty = "n", \dots)
 }
 \arguments{
@@ -52,7 +52,7 @@ The limits for the x-axis.
 The upper limit for the y-axis.
 }
 \item{col}{
-The colour number for the bar fill.
+The colour for the bar fill: the default is colour 5 in the default \R palette.
 }
 \item{xlab}{
 label for the plot x-axis. By default, this will be the name of \code{data}.

@@ -1,6 +1,6 @@
 
-R version 2.10.1 (2009-12-14)
-Copyright (C) 2009 The R Foundation for Statistical Computing
+R version 2.11.0 Patched (2010-05-20 r52056)
+Copyright (C) 2010 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -306,6 +306,9 @@ Achieved convergence tolerance: 4.55e-06
 > 
 > 
 > cleanEx()
+
+detaching ‘package:nlme’
+
 > nameEx("Skye")
 > ### * Skye
 > 
@@ -673,6 +676,9 @@ Number of Groups: 50
 > 
 > 
 > cleanEx()
+
+detaching ‘package:nlme’, ‘package:survival’, ‘package:splines’
+
 > nameEx("bandwidth.nrd")
 > ### * bandwidth.nrd
 > 
@@ -924,6 +930,9 @@ Degrees of freedom: 95 total; 93 residual
 > 
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
+
+detaching ‘package:nlme’
+
 > nameEx("birthwt")
 > ### * birthwt
 > 
@@ -1697,6 +1706,9 @@ Number of Groups: 59
 > 
 > 
 > cleanEx()
+
+detaching ‘package:nlme’
+
 > nameEx("farms")
 > ### * farms
 > 
@@ -2058,6 +2070,9 @@ Score (logrank) test = 17.25  on 1 df,   p=3.283e-05
 > 
 > 
 > cleanEx()
+
+detaching ‘package:survival’, ‘package:splines’
+
 > nameEx("ginv")
 > ### * ginv
 > 
@@ -2343,6 +2358,9 @@ Number of Groups: 50
 > 
 > 
 > cleanEx()
+
+detaching ‘package:nlme’
+
 > nameEx("housing")
 > ### * housing
 > 
@@ -2748,6 +2766,9 @@ Sat ~ Infl + Type + Cont + Infl:Type + Type:Cont
 > 
 > options(contrasts = c(unordered = "contr.treatment",ordered = "contr.poly"))
 > cleanEx()
+
+detaching ‘package:nnet’
+
 > nameEx("huber")
 > ### * huber
 > 
@@ -3030,6 +3051,9 @@ Score (logrank) test = 16.49  on 2 df,   p=0.0002629
 > 
 > 
 > cleanEx()
+
+detaching ‘package:survival’, ‘package:splines’
+
 > nameEx("lm.ridge")
 > ### * lm.ridge
 > 
@@ -3364,6 +3388,9 @@ Call: survfit(formula = motor.cox, newdata = data.frame(temp = 130))
 > 
 > 
 > cleanEx()
+
+detaching ‘package:survival’, ‘package:splines’
+
 > nameEx("muscle")
 > ### * muscle
 > 
@@ -3438,6 +3465,9 @@ Loading required package: lattice
 > 
 > 
 > cleanEx()
+
+detaching ‘package:lattice’
+
 > nameEx("mvrnorm")
 > ### * mvrnorm
 > 
@@ -3581,6 +3611,9 @@ Number of Groups: 133
 > 
 > 
 > cleanEx()
+
+detaching ‘package:nlme’
+
 > nameEx("npk")
 > ### * npk
 > 
@@ -3831,6 +3864,9 @@ pet3.lme     2  7 149.3833 159.6435 -67.69166 1 vs 2 4.22855  0.1207
 > 
 > 
 > cleanEx()
+
+detaching ‘package:nlme’
+
 > nameEx("plot.mca")
 > ### * plot.mca
 > 
@@ -3907,7 +3943,7 @@ Intercepts:
 
 Residual Deviance: 3479.149 
 AIC: 3495.149 
-> summary(house.plr)
+> summary(house.plr, digits = 3)
 
 Re-fitting to get Hessian
 
@@ -3915,68 +3951,62 @@ Call:
 polr(formula = Sat ~ Infl + Type + Cont, data = housing, weights = Freq)
 
 Coefficients:
-                   Value Std. Error   t value
-InflMedium     0.5663937 0.10465285  5.412120
-InflHigh       1.2888191 0.12715641 10.135699
-TypeApartment -0.5723501 0.11923824 -4.800055
-TypeAtrium    -0.3661866 0.15517362 -2.359851
-TypeTerrace   -1.0910149 0.15148617 -7.202076
-ContHigh       0.3602841 0.09553587  3.771192
+               Value Std. Error t value
+InflMedium     0.566     0.1047    5.41
+InflHigh       1.289     0.1272   10.14
+TypeApartment -0.572     0.1192   -4.80
+TypeAtrium    -0.366     0.1552   -2.36
+TypeTerrace   -1.091     0.1515   -7.20
+ContHigh       0.360     0.0955    3.77
 
 Intercepts:
-            Value   Std. Error t value
-Low|Medium  -0.4961  0.1248    -3.9739
-Medium|High  0.6907  0.1255     5.5049
+            Value  Std. Error t value
+Low|Medium  -0.496  0.125     -3.974 
+Medium|High  0.691  0.125      5.505 
 
 Residual Deviance: 3479.149 
 AIC: 3495.149 
 > ## slightly worse fit from
-> summary(update(house.plr, method = "probit"))
-
-Re-fitting to get Hessian
-
+> summary(update(house.plr, method = "probit", Hess = TRUE), digits = 3)
 Call:
 polr(formula = Sat ~ Infl + Type + Cont, data = housing, weights = Freq, 
-    method = "probit")
+    Hess = TRUE, method = "probit")
 
 Coefficients:
-                   Value Std. Error   t value
-InflMedium     0.3464227 0.06413706  5.401288
-InflHigh       0.7829142 0.07642619 10.244056
-TypeApartment -0.3475368 0.07229092 -4.807475
-TypeAtrium    -0.2178876 0.09476606 -2.299216
-TypeTerrace   -0.6641736 0.09180003 -7.235004
-ContHigh       0.2223858 0.05812266  3.826147
+               Value Std. Error t value
+InflMedium     0.346     0.0641    5.40
+InflHigh       0.783     0.0764   10.24
+TypeApartment -0.348     0.0723   -4.81
+TypeAtrium    -0.218     0.0948   -2.30
+TypeTerrace   -0.664     0.0918   -7.24
+ContHigh       0.222     0.0581    3.83
 
 Intercepts:
-            Value   Std. Error t value
-Low|Medium  -0.2998  0.0762    -3.9371
-Medium|High  0.4267  0.0764     5.5851
+            Value  Std. Error t value
+Low|Medium  -0.300  0.076     -3.937 
+Medium|High  0.427  0.076      5.585 
 
 Residual Deviance: 3479.689 
 AIC: 3495.689 
 > ## although it is not really appropriate, can fit
-> summary(update(house.plr, method = "cloglog"))
-
-Re-fitting to get Hessian
-
+> summary(update(house.plr, method = "cloglog", Hess = TRUE), digits = 3)
 Call:
 polr(formula = Sat ~ Infl + Type + Cont, data = housing, weights = Freq, 
-    method = "cloglog")
+    Hess = TRUE, method = "cloglog")
 
 Coefficients:
-                   Value Std. Error   t value
-InflMedium     0.3669973 0.07265235  5.051417
-InflHigh       0.7903238 0.08055419  9.811082
-TypeApartment -0.3487371 0.07566309 -4.609078
-TypeAtrium    -0.1957327 0.09876474 -1.981807
-TypeTerrace   -0.6981307 0.10429569 -6.693764
-ContHigh       0.2679565 0.06364299  4.210306
+               Value Std. Error t value
+InflMedium     0.367     0.0727    5.05
+InflHigh       0.790     0.0806    9.81
+TypeApartment -0.349     0.0757   -4.61
+TypeAtrium    -0.196     0.0988   -1.98
+TypeTerrace   -0.698     0.1043   -6.69
+ContHigh       0.268     0.0636    4.21
 
 Intercepts:
-            Value   Std. Error t value
-Low|Medium   0.0864  0.0833     1.0377
-Medium|High  0.8922  0.0873    10.2234
+            Value  Std. Error t value
+Low|Medium   0.086  0.083      1.038 
+Medium|High  0.892  0.087     10.223 
 
 Residual Deviance: 3491.41 
 AIC: 3507.41 
@@ -4260,6 +4290,9 @@ attr(,"label")
 > 
 > 
 > cleanEx()
+
+detaching ‘package:nlme’
+
 > nameEx("predict.lda")
 > ### * predict.lda
 > 
@@ -5114,6 +5147,9 @@ InsulAfter:Temp  0.1153039 0.03211212   3.590665 7.306852e-04
 > 
 > options(contrasts = c(unordered = "contr.treatment",ordered = "contr.poly"))
 > cleanEx()
+
+detaching ‘package:lattice’
+
 > nameEx("width.SJ")
 > ### * width.SJ
 > 
@@ -5166,7 +5202,7 @@ InsulAfter:Temp  0.1153039 0.03211212   3.590665 7.306852e-04
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  14.398 0.101 14.508 0 0 
+Time elapsed:  17.701 0.124 25.008 0 0 
 > grDevices::dev.off()
 null device 
           1 

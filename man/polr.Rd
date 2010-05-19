@@ -126,6 +126,7 @@ polr(formula, data, weights, start, \dots, subset, na.action,
   \item{convergence}{the convergence code returned by \code{optim}.}
   \item{niter}{the number of function and gradient evaluations used by
     \code{optim}.}
+  \item{lp}{the linear predictor (including any offset).}
   \item{Hessian}{(if \code{Hess} is true).}
   \item{model}{(if \code{model} is true).}
 }
@@ -142,11 +143,11 @@ polr(formula, data, weights, start, \dots, subset, na.action,
 options(contrasts = c("contr.treatment", "contr.poly"))
 house.plr <- polr(Sat ~ Infl + Type + Cont, weights = Freq, data = housing)
 house.plr
-summary(house.plr)
+summary(house.plr, digits = 3)
 ## slightly worse fit from
-summary(update(house.plr, method = "probit"))
+summary(update(house.plr, method = "probit", Hess = TRUE), digits = 3)
 ## although it is not really appropriate, can fit
-summary(update(house.plr, method = "cloglog"))
+summary(update(house.plr, method = "cloglog", Hess = TRUE), digits = 3)
 
 predict(house.plr, housing, type = "p")
 addterm(house.plr, ~.^2, test = "Chisq")
