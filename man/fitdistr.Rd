@@ -51,9 +51,9 @@ fitdistr(x, densfun, start, \dots)
   \item{loglik}{the log-likelihood.}
 }
 \details{
-  For the Normal, log-Normal, exponential and Poisson distributions the
-  closed-form MLEs (and exact standard errors) are used, and
-  \code{start} should not be supplied.
+  For the Normal, log-Normal, geometric, exponential and Poisson
+  distributions the closed-form MLEs (and exact standard errors) are
+  used, and \code{start} should not be supplied.
 
   For all other distributions, direct optimization of the log-likelihood
   is performed using \code{\link{optim}}.  The estimated standard

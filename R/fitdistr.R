@@ -1,5 +1,5 @@
 # file MASS/R/fitdistr.R
-# copyright (C) 2002-2007 W. N. Venables and B. D. Ripley
+# copyright (C) 2002-2010 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -14,6 +14,7 @@
 #  A copy of the GNU General Public License is available at
 #  http://www.r-project.org/Licenses/
 #
+
 fitdistr <- function(x, densfun, start, ...)
 {
     myfn <- function(parm, ...) -sum(log(dens(parm, ...)))
@@ -62,7 +63,10 @@ fitdistr <- function(x, densfun, start, ...)
             estimate <- c(mx, sd0)
             sds <- c(sd0/sqrt(n), sd0/sqrt(2*n))
             names(estimate) <- names(sds) <- c("meanlog", "sdlog")
-            return(structure(list(estimate = estimate, sd = sds, n = n,
+            vc <- matrix(c(sds[1]^2, 0, 0, sds[2]^2), ncol = 2,
+                         dimnames = list(names(sds), names(sds)))
+            names(estimate) <- names(sds) <- c("meanlog", "sdlog")
+            return(structure(list(estimate = estimate, sd = sds, vcov = vc, n = n,
 				  loglik = sum(dlnorm(x, mx, sd0, log=TRUE))),
                              class = "fitdistr"))
         }
@@ -74,7 +78,9 @@ fitdistr <- function(x, densfun, start, ...)
             estimate <- c(mx, sd0)
             sds <- c(sd0/sqrt(n), sd0/sqrt(2*n))
             names(estimate) <- names(sds) <- c("mean", "sd")
-            return(structure(list(estimate = estimate, sd = sds, n = n,
+            vc <- matrix(c(sds[1]^2, 0, 0, sds[2]^2), ncol = 2,
+                         dimnames = list(names(sds), names(sds)))
+            return(structure(list(estimate = estimate, sd = sds, vcov = vc, n = n,
 				  loglik = sum(dnorm(x, mx, sd0, log=TRUE))),
                              class = "fitdistr"))
         }
@@ -84,7 +90,9 @@ fitdistr <- function(x, densfun, start, ...)
             estimate <- mean(x)
             sds <- sqrt(estimate/n)
             names(estimate) <- names(sds) <- "lambda"
-            return(structure(list(estimate = estimate, sd = sds, n = n,
+	    vc <- matrix(sds^2, ncol = 1, nrow = 1,
+                         dimnames = list("lambda", "lambda"))
+            return(structure(list(estimate = estimate, sd = sds, vcov = vc, n = n,
 				  loglik = sum(dpois(x, estimate, log=TRUE))),
                              class = "fitdistr"))
         }
@@ -94,8 +102,10 @@ fitdistr <- function(x, densfun, start, ...)
                 stop("supplying pars for the exponential is not supported")
             estimate <- 1/mean(x)
             sds <- estimate/sqrt(n)
+	    vc <- matrix(sds^2, ncol = 1, nrow = 1,
+                         dimnames = list("rate", "rate"))
             names(estimate) <- names(sds) <- "rate"
-            return(structure(list(estimate = estimate, sd = sds, n = n,
+            return(structure(list(estimate = estimate, sd = sds, vcov = vc, n = n,
 				  loglik = sum(dexp(x, estimate, log=TRUE))),
                              class = "fitdistr"))
         }
@@ -104,8 +114,10 @@ fitdistr <- function(x, densfun, start, ...)
                 stop("supplying pars for the geometric is not supported")
             estimate <- 1/(1 + mean(x))
             sds <- estimate * sqrt((1-estimate)/n)
+	    vc <- matrix(sds^2, ncol = 1, nrow = 1,
+                         dimnames = list("prob", "prob"))
             names(estimate) <- names(sds) <- "prob"
-            return(structure(list(estimate = estimate, sd = sds, n = n,
+            return(structure(list(estimate = estimate, sd = sds, vcov = vc, n = n,
 				  loglik = sum(dexp(x, estimate, log=TRUE))),
                              class = "fitdistr"))
         }
