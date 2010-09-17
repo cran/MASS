@@ -1,5 +1,4 @@
 library(MASS)
-pdf("confint.pdf")
 
 PropCI <- function(x, n, conf = 0.95)
 {

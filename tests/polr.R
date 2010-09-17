@@ -1,7 +1,5 @@
 ## tests from David Firth 2004-Oct-13
 
-pdf("polr.pdf")
-
 library(MASS)
 y <- structure(as.integer(c(1, 2, 3, 1, 2, 3)), .Label = c("1", "2", "3"),
                class = c("ordered", "factor"))
@@ -38,13 +36,9 @@ confint(m)
 
 
 ## refitting needs transformed starting values (Achim Zeileis Mar 2010)
-load("BankWages.rda") # from AER
-bw <- polr(job ~ education, data = BankWages)
-summary(bw)
+if(require("AER")) {
+    data("BankWages", package = "AER")
+    bw <- polr(job ~ education, data = BankWages)
+    summary(bw)
+}
 ## failed due to incorrect restarting values
-
-## missing drop = FALSE in profiling (Joris Meys, Sep 2012)
-house.plr <- polr(Sat ~ Cont, weights = Freq, data = housing)
-pr <- profile(house.plr)
-plot(pr)
-

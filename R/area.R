@@ -1,5 +1,5 @@
 # file MASS/R/area.R
-# copyright (C) 1994-2021 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-9 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -26,8 +26,7 @@ function(f, a, b, ..., fa = f(a, ...), fb = f(b, ...), limit
     if(abs(a1 - a2) < eps)
         return(a2)
     if(limit == 0) {
-        warning(gettextf("iteration limit reached near 'x = %f'", d),
-                domain = NA)
+        warning("iteration limit reached near x = ", d)
         return(a2)
     }
     Recall(f, a, d, ..., fa = fa, fb = fd, limit = limit - 1,

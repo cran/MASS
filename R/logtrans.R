@@ -22,8 +22,8 @@ function(object, ..., alpha = seq(0.5, 6, by = 0.25) - min(y),
 	100)), xlab = "alpha", ylab = "log Likelihood")
 {
     if(is.null(object$y) || is.null(object$qr))
-        stop(gettextf("%s does not have both 'qr' and 'y' components",
-                      sQuote(deparse(substitute(object)))), domain = NA)
+        stop(paste(deparse(substitute(object)),
+                   "does not have both 'qr' and 'y' components"))
     y <- object$y
     n <- length(y)
     if(any(y + min(alpha) <= 0))
@@ -45,7 +45,6 @@ function(object, ..., alpha = seq(0.5, 6, by = 0.25) - min(y),
         mx <- (1L:m)[loglik == max(loglik)][1L]
         Lmax <- loglik[mx]
         lim <- Lmax - qchisq(19/20, 1)/2
-        dev.hold(); on.exit(dev.flush())
         plot(xl, loglik, xlab = xlab, ylab = ylab, type
              = "l", ylim = range(loglik, lim))
         plims <- par("usr")

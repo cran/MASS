@@ -1,5 +1,5 @@
 # file MASS/R/neg.bin.R
-# copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2009 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -35,13 +35,13 @@ neg.bin <- function(theta = stop("'theta' must be given"))
     }
     initialize <- expression({
         if (any(y < 0))
-            stop("negative values not allowed for the negative binomial family")
+            stop("negative values not allowed for the Negative Binomal family")
         n <- rep(1, nobs)
         mustart <- y + (y == 0)/6
     })
     simfun <- function(object, nsim) {
         ftd <- fitted(object)
-        rnegbin(nsim * length(ftd), ftd, .Theta)
+        val <- rnegbin(nsim * length(ftd), ftd, .Theta)
     }
     environment(variance) <- environment(validmu) <-
         environment(dev.resids) <- environment(aic) <-

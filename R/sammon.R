@@ -14,11 +14,12 @@
 #  A copy of the GNU General Public License is available at
 #  http://www.r-project.org/Licenses/
 #
-sammon <- function(d, y = cmdscale(d, k), k = 2, niter = 100, trace = TRUE,
-                   magic = 0.2, tol = 1e-4)
+sammon <- function(d, y= cmdscale(d, k), k=2, niter=100, trace=TRUE,
+                   magic=0.2, tol=1e-4)
 {
     call <- match.call()
-    if(any(is.infinite(d))) stop("Infs not allowed in 'd'")
+    if(any(is.infinite(as.vector(d))))
+        stop("Infs not allowed in 'd'")
     if(any(is.na(d)) && missing(y))
         stop("an initial configuration must be supplied if there are NAs in 'd'")
     if(!is.matrix(y)) stop("'y' must be a matrix")
@@ -26,7 +27,7 @@ sammon <- function(d, y = cmdscale(d, k), k = 2, niter = 100, trace = TRUE,
     if(is.null(n <- attr(d, "Size"))) {
         x <- as.matrix(d)
         if((n <- nrow(x)) != ncol(x))
-            stop("distances must be result of 'dist' or a square matrix")
+            stop("distances must be result of dist or a square matrix")
         rn <- rownames(x)
     } else {
         x <- matrix(0, n, n)
@@ -34,8 +35,6 @@ sammon <- function(d, y = cmdscale(d, k), k = 2, niter = 100, trace = TRUE,
         x <- x + t(x)
         rn <- attr(d, "Labels")
     }
-    n <- as.integer(n)
-    if(is.na(n)) stop("invalid size")
     ab <- x[row(x) < col(x)] <= 0
     if (any(ab, na.rm = TRUE)) {
         ab <- !is.na(ab) & ab
@@ -54,7 +53,7 @@ sammon <- function(d, y = cmdscale(d, k), k = 2, niter = 100, trace = TRUE,
     storage.mode(y) <- "double"
     z <- .C(VR_sammon,
             x = x,
-            n,
+            as.integer(n),
             as.integer(k),
             y = y,
             as.integer(niter),

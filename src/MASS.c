@@ -1,5 +1,5 @@
 /*
- *  MASS/src/MASS.c by W. N. Venables and B. D. Ripley  Copyright (C) 1994-2022
+ *  MASS/src/MASS.c by W. N. Venables and B. D. Ripley  Copyright (C) 1994-2004
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,11 +14,6 @@
  *  A copy of the GNU General Public License is available at
  *  http://www.r-project.org/Licenses/
  */
-
-#include <stdlib.h>
-#include <math.h>
-#include <stddef.h>
-#include <limits.h> // for INT_MAX
 
 #include <R.h>
 #include <R_ext/Applic.h>
@@ -35,8 +30,8 @@
  */
 
 void
-VR_sammon(double *dd, int *nn, int *kd, double *Y, int *niter,
-	  double *stress, int *trace, double *aa, double *tol)
+VR_sammon(double *dd, Sint *nn, Sint *kd, double *Y, Sint *niter,
+	  double *stress, Sint *trace, double *aa, double *tol)
 {
     int   i, j, k, m, n = *nn, nd = *kd;
     double *xu, *xv, *e1, *e2;
@@ -44,12 +39,13 @@ VR_sammon(double *dd, int *nn, int *kd, double *Y, int *niter,
     double xd, xx;
     double e, epast, eprev, tot, d, d1, ee, magic = *aa;
 
-    xu = R_Calloc(nd * n, double);
-    xv = R_Calloc(nd, double);
-    e1 = R_Calloc(nd, double);
-    e2 = R_Calloc(nd, double);
+    xu = Calloc(nd * n, double);
+    xv = Calloc(nd, double);
+    e1 = Calloc(nd, double);
+    e2 = Calloc(nd, double);
 
     epast = eprev = 1.0;
+    magic = magic;
 
     /* Error in distances */
     e = tot = 0.0;
@@ -64,7 +60,7 @@ VR_sammon(double *dd, int *nn, int *kd, double *Y, int *niter,
 		d1 += xd * xd;
 	    }
 	    ee = d - sqrt(d1);
-	    if(d1 == 0) error("initial configuration has duplicates");
+	    if(d1 == 0) error("configuration has duplicates");
 	    e += (ee * ee / d);
 	}
     e /= tot;
@@ -151,10 +147,10 @@ CORRECT:
 	}
     }
     *stress = e;
-    R_Free(xu);
-    R_Free(xv);
-    R_Free(e1);
-    R_Free(e2);
+    Free(xu);
+    Free(xv);
+    Free(e1);
+    Free(e2);
 }
 
 /*
@@ -166,11 +162,11 @@ CORRECT:
  *
  */
 
-static int *ord;		/* ranks of dissimilarities */
-static int *ord2;		/* inverse ordering (which one is rank i?) */
-static int n;			/* number of  dissimilarities */
-static int nr;			/* number of data points */
-static int nc;			/* # cols of  fitted configuration */
+static Sint *ord;		/* ranks of dissimilarities */
+static Sint *ord2;		/* inverse ordering (which one is rank i?) */
+static Sint n;			/* number of  dissimilarities */
+static Sint nr;			/* number of data points */
+static Sint nc;			/* # cols of  fitted configuration */
 static int dimx;		/* Size of configuration array */
 static double *x;		/* configuration */
 static double *d;		/* dissimilarities */
@@ -179,15 +175,15 @@ static double *yf;		/* isotonic regression fitted values (ditto) */
 static double mink_pow;
 
 void
-VR_mds_fn(double *, double *, int *, double *, int *,
-	  double *, int *, int *, double *, int *, double *);
+VR_mds_fn(double *, double *, Sint *, double *, Sint *,
+	  double *, Sint *, Sint *, double *, Sint *, double *);
 
 /*
  *  Download the data.
  */
 void
-VR_mds_init_data(int *pn, int *pc, int *pr, int *orde,
-		 int *ordee, double *xx, double *p)
+VR_mds_init_data(Sint *pn, Sint *pc, Sint *pr, Sint *orde,
+		 Sint *ordee, double *xx, double *p)
 {
     int   i;
 
@@ -195,12 +191,12 @@ VR_mds_init_data(int *pn, int *pc, int *pr, int *orde,
     nr = *pr;
     nc = *pc;
     dimx = nr * nc;
-    ord = R_Calloc(n, int);
-    ord2 = R_Calloc(n, int);
-    x = R_Calloc(dimx, double);
-    d = R_Calloc(n, double);
-    y = R_Calloc(n, double);
-    yf = R_Calloc(n, double);
+    ord = Calloc(n, Sint);
+    ord2 = Calloc(n, Sint);
+    x = Calloc(dimx, double);
+    d = Calloc(n, double);
+    y = Calloc(n, double);
+    yf = Calloc(n, double);
     for (i = 0; i < n; i++) ord[i] = orde[i];
     for (i = 0; i < n; i++) ord2[i] = ordee[i];
     for (i = 0; i < dimx; i++) x[i] = xx[i];
@@ -210,7 +206,7 @@ VR_mds_init_data(int *pn, int *pc, int *pr, int *orde,
 void
 VR_mds_unload(void)
 {
-    R_Free(ord); R_Free(ord2); R_Free(x); R_Free(d); R_Free(y); R_Free(yf);
+    Free(ord); Free(ord2); Free(x); Free(d); Free(y); Free(yf);
 }
 
 
@@ -238,7 +234,7 @@ static double
 fminfn(int nn, double *x, void *dummy)
 {
     double ssq;
-    int  do_derivatives = 0;
+    Sint  do_derivatives = 0;
 
     calc_dist(x);
     VR_mds_fn(y, yf, &n, &ssq, ord2, x, &nr, &nc, 0, &do_derivatives, 
@@ -250,7 +246,7 @@ static void
 fmingr(int nn, double *x, double *der, void *dummy)
 {
     double ssq;
-    int  do_derivatives = 1;
+    Sint  do_derivatives = 1;
 
     calc_dist(x);
     VR_mds_fn(y, yf, &n, &ssq, ord2, x, &nr, &nc, der, &do_derivatives, 
@@ -261,11 +257,11 @@ fmingr(int nn, double *x, double *der, void *dummy)
 #define REPORT		5
 
 void
-VR_mds_dovm(double *val, int *maxit, int *trace, double *xx, double *tol)
+VR_mds_dovm(double *val, Sint *maxit, Sint *trace, double *xx, double *tol)
 {
     int   i, ifail, fncount, grcount, *mask;
 
-    mask = (int *) R_alloc((size_t) dimx, sizeof(int));
+    mask = (int *) R_alloc(dimx, sizeof(int));
     for (i = 0; i < dimx; i++) mask[i] = 1;
     vmmin(dimx, x, val, fminfn, fmingr, (int) *maxit, (int) *trace, mask,
 	  abstol, *tol, REPORT, NULL, &fncount, &grcount, &ifail);
@@ -278,15 +274,15 @@ VR_mds_dovm(double *val, int *maxit, int *trace, double *xx, double *tol)
  */
 
 void
-VR_mds_fn(double *y, double *yf, int *pn, double *pssq, int *pd,
-	  double *x, int *pr, int *pncol, double *der,
-	  int *do_derivatives, double *p)
+VR_mds_fn(double *y, double *yf, Sint *pn, double *pssq, Sint *pd,
+	  double *x, Sint *pr, Sint *pncol, double *der,
+	  Sint *do_derivatives, double *p)
 {
     int   n = *pn, i, ip=0, known, u, s, r = *pr, ncol = *pncol, k=0;
     double tmp, tmp1, sgn, ssq, *yc, slope, tstar, sstar, mink = *p;
     int  euclid = (mink == 2.);
 
-    yc = R_Calloc((n + 1), double);
+    yc = Calloc((n + 1), double);
     yc[0] = 0.0;
     tmp = 0.0;
     for (i = 0; i < n; i++) {
@@ -316,7 +312,7 @@ VR_mds_fn(double *y, double *yf, int *pn, double *pssq, int *pd,
     }
     ssq = 100 * sqrt(sstar / tstar);
     *pssq = ssq;
-    R_Free(yc);
+    Free(yc);
     if (!(*do_derivatives)) return;
     /* get derivatives */
     for (u = 0; u < r; u++) {
@@ -354,27 +350,27 @@ VR_mds_fn(double *y, double *yf, int *pn, double *pssq, int *pd,
 /* Formulae (6.67) and (6.69) of Scott (1992), the latter corrected. */
 
 void
-VR_ucv_bin(int *n, int *nb, double *d, int *x, double *h, double *u)
+VR_ucv_bin(Sint *n, Sint *nb, Sfloat *d, Sint *x, Sfloat *h, Sfloat *u)
 {
     int   i, nn = *n, nbin = *nb;
-    double delta, hh = (*h) / 4, sum, term;
+    Sfloat delta, hh = (*h) / 4, sum, term;
 
     sum = 0.0;
     for (i = 0; i < nbin; i++) {
 	delta = i * (*d) / hh;
 	delta *= delta;
 	if (delta >= DELMAX) break;
-	term = exp(-delta / 4.) - sqrt(8.0) * exp(-delta / 2.);
+	term = exp(-delta / 4) - sqrt(8.0) * exp(-delta / 2);
 	sum += term * x[i];
     }
-    *u = 1 / (2. * nn * hh * sqrt(M_PI)) + sum / ((double)nn * nn * hh * sqrt(M_PI));
+    *u = 1 / (2 * nn * hh * sqrt(M_PI)) + sum / (nn * nn * hh * sqrt(M_PI));
 }
 
 void
-VR_bcv_bin(int *n, int *nb, double *d, int *x, double *h, double *u)
+VR_bcv_bin(Sint *n, Sint *nb, Sfloat *d, Sint *x, Sfloat *h, Sfloat *u)
 {
     int   i, nn = *n, nbin = *nb;
-    double delta, hh = (*h) / 4, sum, term;
+    Sfloat delta, hh = (*h) / 4, sum, term;
 
     sum = 0.0;
     for (i = 0; i < nbin; i++) {
@@ -384,33 +380,33 @@ VR_bcv_bin(int *n, int *nb, double *d, int *x, double *h, double *u)
 	term = exp(-delta / 4) * (delta * delta - 12 * delta + 12);
 	sum += term * x[i];
     }
-    *u = 1 / (2. * nn * hh * sqrt(M_PI)) + sum / (64. * nn * nn * hh * sqrt(M_PI));
+    *u = 1 / (2 * nn * hh * sqrt(M_PI)) + sum / (64 * nn * nn * hh * sqrt(M_PI));
 }
 
 
 void
-VR_phi4_bin(int *n, int *nb, double *d, int *x, double *h, double *u)
+VR_phi4_bin(Sint *n, Sint *nb, Sfloat *d, Sint *x, Sfloat *h, Sfloat *u)
 {
     int   i, nn = *n, nbin = *nb;
-    double delta, sum, term;
+    Sfloat delta, sum, term;
 
     sum = 0.0;
     for (i = 0; i < nbin; i++) {
 	delta = i * (*d) / (*h);
 	delta *= delta;
 	if (delta >= DELMAX) break;
-	term = exp(-delta / 2.) * (delta * delta - 6. * delta + 3.);
+	term = exp(-delta / 2) * (delta * delta - 6 * delta + 3);
 	sum += term * x[i];
     }
-    sum = 2. * sum + nn * 3.;	/* add in diagonal */
-    *u = sum / (nn * (nn - 1.) * pow(*h, 5.0) * sqrt(2 * M_PI));
+    sum = 2 * sum + nn * 3;	/* add in diagonal */
+    *u = sum / (nn * (nn - 1) * pow(*h, 5.0) * sqrt(2 * M_PI));
 }
 
 void
-VR_phi6_bin(int *n, int *nb, double *d, int *x, double *h, double *u)
+VR_phi6_bin(Sint *n, Sint *nb, Sfloat *d, Sint *x, Sfloat *h, Sfloat *u)
 {
     int   i, nn = *n, nbin = *nb;
-    double delta, sum, term;
+    Sfloat delta, sum, term;
 
     sum = 0.0;
     for (i = 0; i < nbin; i++) {
@@ -421,15 +417,15 @@ VR_phi6_bin(int *n, int *nb, double *d, int *x, double *h, double *u)
 	    (delta * delta * delta - 15 * delta * delta + 45 * delta - 15);
 	sum += term * x[i];
     }
-    sum = 2. * sum - 15. * nn;	/* add in diagonal */
-    *u = sum / (nn * (nn - 1.) * pow(*h, 7.0) * sqrt(2 * M_PI));
+    sum = 2 * sum - 15 * nn;	/* add in diagonal */
+    *u = sum / (nn * (nn - 1) * pow(*h, 7.0) * sqrt(2 * M_PI));
 }
 
 void
-VR_den_bin(int *n, int *nb, double *d, double *x, int *cnt)
+VR_den_bin(Sint *n, Sint *nb, Sfloat *d, Sfloat *x, Sint *cnt)
 {
     int   i, j, ii, jj, iij, nn = *n;
-    double xmin, xmax, rang, dd;
+    Sfloat xmin, xmax, rang, dd;
 
     for (i = 0; i < *nb; i++) cnt[i] = 0;
     xmin = xmax = x[0];
@@ -443,9 +439,7 @@ VR_den_bin(int *n, int *nb, double *d, double *x, int *cnt)
 	ii = (int) (x[i] / dd);
 	for (j = 0; j < i; j++) {
 	    jj = (int) (x[j] / dd);
-	    iij = abs((ii - jj));
-	    if(cnt[iij] == INT_MAX)
-		error("maximum count exceeded in pairwise distance binning");
+	    iij = abs9((ii - jj));
 	    cnt[iij]++;
 	}
     }
@@ -479,10 +473,8 @@ static const R_CMethodDef CEntries[] = {
     {NULL, NULL, 0}
 };
 
-
 void R_init_MASS(DllInfo *dll)
 {
     R_registerRoutines(dll, CEntries, NULL, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
-    R_forceSymbols(dll, TRUE);
 }

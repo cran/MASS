@@ -6,7 +6,7 @@
 
 library(MASS)
 library(lattice)
-pdf(file="ch10.pdf", width=8, height=6, pointsize=9)
+trellis.device(postscript, file="ch10.ps", width=8, height=6, pointsize=9)
 options(width=65, digits=5)
 library(nlme)
 
@@ -232,9 +232,7 @@ fit <- glm(y ~ trt + I(week> 2), binomial, data = bacteria)
 summary(fit)
 sum(residuals(fit, type = "pearson")^2)
 
-if(FALSE) { # slow
-## package available from http://www.stats.ox.ac.uk/pub/RWin
-## but these examples fail
+if(FALSE) { # very slow
 library(GLMMGibbs)
 # declare a random intercept for each subject
 epil$subject <- Ra(data = factor(epil$subject))
@@ -258,14 +256,18 @@ summary(glmmPQL(y ~ pred, random = ~1 | subject,
 
 # 10.5  GEE models
 
-## modified for YAGS >= 3.21-3
-## package available from http://www.stats.ox.ac.uk/pub/RWin
-if(require(yags)) {
-print(yags(y == "y" ~ trt + I(week > 2), family = binomial, alphainit=0,
-           id = ID, corstr = "exchangeable", data = bacteria))
+if(FALSE) {
+## modified for YAGS 3.21-3
+library(yags)
+attach(bacteria)
+yags(y == "y" ~ trt + I(week > 2), family = binomial, alphainit=0,
+     id = ID, corstr = "exchangeable")
+detach("bacteria")
 
-print(yags(y ~ lbase*trt + lage + V4, family = poisson, alphainit=0,
-           id = subject, corstr = "exchangeable", data = epil))
+attach(epil)
+yags(y ~ lbase*trt + lage + V4, family = poisson, alphainit=0,
+     id = subject, corstr = "exchangeable")
+detach("epil")
 }
 
 options(contrasts = c("contr.sum", "contr.poly"))

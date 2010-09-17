@@ -1,5 +1,5 @@
 % file MASS/man/OME.Rd
-% copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
 %
 \name{OME}
 \alias{OME}
@@ -121,7 +121,7 @@ OMEif <- OMEif[OMEif$L75 > 30,]
 summary(lm(L75 ~ Noise/Age, data = OMEif, na.action = na.omit))
 summary(lm(L75 ~ Noise/(Age + OME), data = OMEif,
            subset = (Age >= 30 & Age <= 60),
-           na.action = na.omit), correlation = FALSE)
+           na.action = na.omit), cor = FALSE)
 
 # Or fit by weighted least squares
 fpl75 <- deriv(~ sqrt(n)*(r/n - 0.5 - 0.5/(1 + exp(-(x-L75)/scal))),
@@ -157,20 +157,22 @@ OMEf$Resp <- with(OME, rep(rep(c(1,0), length(Trials)),
                           t(cbind(Correct, Trials-Correct))))
 OMEf <- OMEf[, -match(c("Correct", "Trials"), names(OMEf))]
 
-\dontrun{## these fail in R on most platforms
+\dontrun{## this fails in R on some platforms
 fp2 <- deriv(~ 0.5 + 0.5/(1 + exp(-(x-L75)/exp(lsc))),
              c("L75", "lsc"),
              function(x, L75, lsc) NULL)
-try(summary(nlme(Resp ~ fp2(Loud, L75, lsc),
+G1.nlme <- nlme(Resp ~ fp2(Loud, L75, lsc),
      fixed = list(L75 ~ Age, lsc ~ 1),
      random = L75 + lsc ~ 1 | UID,
      data = OMEf[OMEf$Noise == "coherent",], method = "ML",
-     start = list(fixed=c(L75=c(48.7, -0.03), lsc=0.24)), verbose = TRUE)))
+     start = list(fixed=c(L75=c(48.7, -0.03), lsc=0.24)), verbose = TRUE)
+summary(G1.nlme)
 
-try(summary(nlme(Resp ~ fp2(Loud, L75, lsc),
+G2.nlme <- nlme(Resp ~ fp2(Loud, L75, lsc),
      fixed = list(L75 ~ Age, lsc ~ 1),
      random = L75 + lsc ~ 1 | UID,
-     data = OMEf[OMEf$Noise == "incoherent",], method = "ML",
-     start = list(fixed=c(L75=c(41.5, -0.1), lsc=0)), verbose = TRUE)))
+     data = OMEf[OMEf$Noise == "incoherent",], method="ML",
+     start = list(fixed=c(L75=c(41.5, -0.1), lsc=0)), verbose = TRUE)
+summary(G2.nlme)
 }}
 \keyword{datasets}

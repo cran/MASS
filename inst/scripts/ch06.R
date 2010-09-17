@@ -7,7 +7,7 @@
 library(MASS)
 library(lattice)
 options(width=65, digits=5, height=9999)
-pdf(file="ch06.pdf", width=8, height=6, pointsize=9)
+trellis.device(postscript, file="ch06.ps", width=8, height=6, pointsize=9)
 options(contrasts = c("contr.helmert", "contr.poly"))
 
 
@@ -203,7 +203,7 @@ model.tables(npk.aov1, type = "means", se = TRUE)
 mp <- c("-", "+")
 (NPK <- expand.grid(N = mp, P = mp, K = mp))
 
-if(FALSE) { ## fac.design is part of S-PLUS.
+if(FALSE) {
 blocks13 <- fac.design(levels = c(2, 2, 2),
     factor= list(N=mp, P=mp, K=mp), rep = 3, fraction = 1/2)
 
@@ -222,16 +222,6 @@ factors <- list(S=mp, D=mp, H=mp, G=mp, R=mp, B=mp, P=mp)
 replications(~ .^2, data=Bike)
 }
 
-if(require("FrF2")) {
-NPK <- FrF2(8, factor.names = c("N", "P", "K"), default.levels = 0:1,
-            blocks = 2, replications = 3)
-print(NPK)
-print(as.data.frame(NPK))
-
-print(Bike <- FrF2(factor.names = c("S", "D", "H", "G", "R", "B", "P"),
-                   default.levels = c("+", "-"), resolution = 3))
-print(replications(~ .^2, data=Bike))
-}
 
 # 6.8  An unbalanced four-way layout
 

@@ -1,5 +1,5 @@
 # file MASS/R/add.R
-# copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2008 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -28,6 +28,7 @@ safe_pf <- function(q, df1, ...)
     pf(q=q, df1=df1, ...)
 }
 
+
 addterm <-
     function(object, ...) UseMethod("addterm")
 
@@ -48,23 +49,20 @@ addterm.default <-
     ans <- matrix(nrow = ns + 1L, ncol = 2L,
                   dimnames = list(c("<none>", scope), c("df", "AIC")))
     ans[1L,  ] <- extractAIC(object, scale, k = k, ...)
-    n0 <- nobs(object, use.fallback = TRUE)
+    n0 <- length(object$residuals)
     env <- environment(formula(object))
-    for(i in seq_len(ns)) {
+    for(i in seq(ns)) {
         tt <- scope[i]
         if(trace) {
-            message(gettextf("trying + %s", tt), domain = NA)
+	    message("trying +", tt)
 	    utils::flush.console()
         }
         nfit <- update(object, as.formula(paste("~ . +", tt)),
                        evaluate = FALSE)
-	nfit <- try(eval(nfit, envir = env), silent = TRUE)
-        ans[i + 1L, ] <- if (!inherits(nfit, "try-error")) {
-            nnew <- nobs(nfit, use.fallback = TRUE)
-            if (all(is.finite(c(n0, nnew))) && nnew != n0)
-                stop("number of rows in use has changed: remove missing values?")
-            extractAIC(nfit, scale, k = k, ...)
-        } else NA_real_
+	nfit <- eval(nfit, envir=env) # was  eval.parent(nfit)
+	ans[i+1L, ] <- extractAIC(nfit, scale, k = k, ...)
+        if(length(nfit$residuals) != n0)
+            stop("number of rows in use has changed: remove missing values?")
     }
     dfs <- ans[, 1L] - ans[1L, 1L]
     dfs[1L] <- NA
@@ -80,7 +78,8 @@ addterm.default <-
 	aod[, c("LRT", "Pr(Chi)")] <- list(dev, P)
     }
     aod <- aod[o, ]
-    head <- c("Single term additions", "\nModel:", deparse(formula(object)))
+    head <- c("Single term additions", "\nModel:",
+              deparse(as.vector(formula(object))))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -105,7 +104,7 @@ addterm.lm <-
     }
 
     if(missing(scope) || is.null(scope)) stop("no terms in scope")
-    aod <- add1(object, scope=scope, scale=scale)[ , -4L]
+    aod <- stats:::add1.lm(object, scope=scope, scale=scale)[ , -4L]
     dfs <- c(0, aod$Df[-1L]) + object$rank; RSS <- aod$RSS
     n <- length(object$residuals)
     if(scale > 0) aic <- RSS/scale - n + k*dfs
@@ -130,7 +129,8 @@ addterm.lm <-
         aod[, c("F Value", "Pr(F)")] <- Fstat(aod, aod$RSS[1L], rdf)
     }
     aod <- aod[o, ]
-    head <- c("Single term additions", "\nModel:", deparse(formula(object)))
+    head <- c("Single term additions", "\nModel:",
+              deparse(as.vector(formula(object))))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -149,7 +149,7 @@ addterm.glm <-
 	dev <- table$Deviance
 	df <- table$Df
 	diff <- pmax(0, (dev[1L] - dev)/df)
-	Fs <- diff/(dev/(rdf-df))
+	Fs <- (diff/df)/(dev/(rdf-df))
 	Fs[df < .Machine$double.eps] <- NA
 	P <- Fs
 	nnas <- !is.na(Fs)
@@ -176,16 +176,14 @@ addterm.glm <-
     fob <- list(call = oc, terms=Terms)
     class(fob) <- class(object)
     x <- model.matrix(Terms, model.frame(fob, xlev = object$xlevels),
-                      contrasts.arg = object$contrasts)
+                      contrasts = object$contrasts)
     n <- nrow(x)
     oldn <- length(object$residuals)
     y <- object$y
     newn <- length(y)
     if(newn < oldn)
-        warning(sprintf(ngettext(newn,
-                                 "using the %d/%d row from a combined fit",
-                                 "using the %d/%d rows from a combined fit"),
-                        newn, oldn), domain = NA)
+        warning(gettextf("using the %d/%d rows from a combined fit",
+                         newn, oldn), domain = NA)
     wt <- object$prior.weights
     if(is.null(wt)) wt <- rep(1, n)
     Terms <- attr(Terms, "term.labels")
@@ -202,7 +200,7 @@ addterm.glm <-
                      function(x) paste(sort(x), collapse=":"))
     for(tt in scope) {
         if(trace) {
-            message(gettextf("trying + %s", tt), domain = NA)
+	    message("trying +", tt)
 	    utils::flush.console()
 	}
         stt <- paste(sort(strsplit(tt, ":")[[1L]]), collapse=":")
@@ -240,13 +238,14 @@ addterm.glm <-
         aod[, "Pr(Chi)"] <- dev
     } else if(test == "F") {
         if(fam == "binomial" || fam == "poisson")
-            warning(gettextf("F test assumes 'quasi%s' family", fam),
+            warning(gettextf("F test assumes quasi%s family", fam),
                     domain = NA)
 	rdf <- object$df.residual
 	aod[, c("F value", "Pr(F)")] <- Fstat(aod, rdf)
     }
     aod <- aod[o, ]
-    head <- c("Single term additions", "\nModel:", deparse(formula(object)))
+    head <- c("Single term additions", "\nModel:",
+              deparse(as.vector(formula(object))))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -255,7 +254,7 @@ addterm.glm <-
 }
 
 addterm.mlm <- function(object, ...)
-    stop("no 'addterm' method implemented for \"mlm\" models")
+    stop("no addterm method implemented for \"mlm\" models")
 
 dropterm <- function(object, ...) UseMethod("dropterm")
 
@@ -275,20 +274,19 @@ dropterm.default <-
     ans <- matrix(nrow = ns + 1L, ncol = 2L,
                   dimnames =  list(c("<none>", scope), c("df", "AIC")))
     ans[1,  ] <- extractAIC(object, scale, k = k, ...)
-    n0 <- nobs(object, use.fallback = TRUE)
     env <- environment(formula(object))
-    for(i in seq_len(ns)) {
+    n0 <- length(object$residuals)
+    for(i in seq(ns)) {
         tt <- scope[i]
         if(trace) {
-            message(gettextf("trying - %s", tt), domain = NA)
+	    message("trying -", tt)
 	    utils::flush.console()
 	}
         nfit <- update(object, as.formula(paste("~ . -", tt)),
                        evaluate = FALSE)
 	nfit <- eval(nfit, envir=env) # was  eval.parent(nfit)
 	ans[i+1, ] <- extractAIC(nfit, scale, k = k, ...)
-        nnew <- nobs(nfit, use.fallback = TRUE)
-        if(all(is.finite(c(n0, nnew))) && nnew != n0)
+        if(length(nfit$residuals) != n0)
             stop("number of rows in use has changed: remove missing values?")
     }
     dfs <- ans[1L , 1L] - ans[, 1L]
@@ -305,7 +303,8 @@ dropterm.default <-
         aod[, c("LRT", "Pr(Chi)")] <- list(dev, P)
     }
     aod <- aod[o, ]
-    head <- c("Single term deletions", "\nModel:", deparse(formula(object)))
+    head <- c("Single term deletions", "\nModel:",
+              deparse(as.vector(formula(object))))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -317,7 +316,7 @@ dropterm.lm <-
   function(object, scope = drop.scope(object), scale = 0,
            test = c("none", "Chisq", "F"), k = 2, sorted = FALSE, ...)
 {
-    aod <- drop1(object, scope=scope, scale=scale)[, -4]
+    aod <- stats:::drop1.lm(object, scope=scope, scale=scale)[, -4]
     dfs <-  object$rank - c(0, aod$Df[-1L]); RSS <- aod$RSS
     n <- length(object$residuals)
     aod$AIC <- if(scale > 0)RSS/scale - n + k*dfs
@@ -343,7 +342,8 @@ dropterm.lm <-
         aod[, c("F Value", "Pr(F)")] <- list(Fs, P)
     }
     aod <- aod[o, ]
-    head <- c("Single term deletions", "\nModel:", deparse(formula(object)))
+    head <- c("Single term deletions", "\nModel:",
+              deparse(as.vector(formula(object))))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -352,7 +352,7 @@ dropterm.lm <-
 }
 
 dropterm.mlm <- function(object, ...)
-  stop("'dropterm' not implemented for \"mlm\" fits")
+  stop("dropterm not implemented for \"mlm\" fits")
 
 dropterm.glm <-
   function(object, scope, scale = 0, test = c("none", "Chisq", "F"),
@@ -382,9 +382,9 @@ dropterm.glm <-
     }
     wt <- object$prior.weights
     if(is.null(wt)) wt <- rep.int(1, n)
-    for(i in seq_len(ns)) {
+    for(i in 1L:ns) {
         if(trace) {
-            message(gettextf("trying - %s", scope[i]), domain = NA)
+	    message("trying -", scope[i])
 	    utils::flush.console()
 	}
         ii <- seq_along(asgn)[asgn == ndrop[i]]
@@ -439,7 +439,8 @@ dropterm.glm <-
 	aod[, c("F value", "Pr(F)")] <- list(Fs, P)
     }
     aod <- aod[o, ]
-    head <- c("Single term deletions", "\nModel:", deparse(formula(object)))
+    head <- c("Single term deletions", "\nModel:",
+              deparse(as.vector(formula(object))))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")

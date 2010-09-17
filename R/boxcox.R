@@ -46,15 +46,17 @@ function(object, lambda = seq(-2, 2, 1/10), plotit = TRUE,
          interp = (plotit && (m < 100)), eps = 1/
          50, xlab = expression(lambda), ylab = "log-Likelihood", ...)
 {
-    if(is.null(y <- object$y) || is.null(xqr <- object$qr))
-        stop(gettextf("%s does not have both 'qr' and 'y' components",
-                      sQuote(deparse(substitute(object)))), domain = NA)
+    if(is.null(object$y) || is.null(object$qr))
+        stop(paste(deparse(substitute(object)),
+                   "does not have both 'qr' and 'y' components"
+                   ))
+    y <- object$y
+    n <- length(y)
     if(any(y <= 0))
         stop("response variable must be positive")
-    n <- length(y)
-    ## scale y[]  {for accuracy in  y^la - 1 }:
-    y <- y / exp(mean(log(y)))
-    logy <- log(y) # now  ydot = exp(mean(log(y))) == 1
+    xqr <- object$qr
+    logy <- log(y)
+    ydot <- exp(mean(logy))
     xl <- loglik <- as.vector(lambda)
     m <- length(xl)
     for(i in 1L:m) {
@@ -62,7 +64,7 @@ function(object, lambda = seq(-2, 2, 1/10), plotit = TRUE,
             yt <- (y^la - 1)/la
         else yt <- logy * (1 + (la * logy)/2 *
                            (1 + (la * logy)/3 * (1 + (la * logy)/4)))
-        loglik[i] <- - n/2 * log(sum(qr.resid(xqr, yt)^2))
+        loglik[i] <-  - n/2 * log(sum(qr.resid(xqr, yt/ydot^(la - 1))^2))
     }
     if(interp) {
         sp <- spline(xl, loglik, n = 100)
@@ -74,7 +76,6 @@ function(object, lambda = seq(-2, 2, 1/10), plotit = TRUE,
         mx <- (1L:m)[loglik == max(loglik)][1L]
         Lmax <- loglik[mx]
         lim <- Lmax - qchisq(19/20, 1)/2
-        dev.hold(); on.exit(dev.flush())
         plot(xl, loglik, xlab = xlab, ylab = ylab, type
              = "l", ylim = range(loglik, lim))
         plims <- par("usr")
@@ -82,7 +83,7 @@ function(object, lambda = seq(-2, 2, 1/10), plotit = TRUE,
         y0 <- plims[3L]
         scal <- (1/10 * (plims[4L] - y0))/par("pin")[2L]
         scx <- (1/10 * (plims[2L] - plims[1L]))/par("pin")[1L]
-        text(xl[1L] + scx, lim + scal, " 95%", xpd = TRUE)
+        text(xl[1L] + scx, lim + scal, " 95%")
         la <- xl[mx]
         if(mx > 1 && mx < m)
             segments(la, y0, la, Lmax, lty = 3)

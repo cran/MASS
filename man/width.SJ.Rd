@@ -1,5 +1,5 @@
 % file MASS/man/width.SJ.Rd
-% copyright (C) 1994-2017 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
 %
 \name{width.SJ}
 \alias{width.SJ}
@@ -30,11 +30,6 @@ range over which to search for solution if \code{method = "ste"}.
 \value{
 a bandwidth.
 }
-\note{
-  A faster version for large \code{n} (thousands) is available in \R
-  \eqn{\ge}{>=} 3.4.0 as part of \code{\link{bw.SJ}}: quadruple its
-  value for comparability with this version.
-}
 \references{
 Sheather, S. J. and Jones, M. C. (1991) A reliable data-based bandwidth
 selection method for kernel density estimation.
@@ -53,8 +48,10 @@ Chapman & Hall.
 \code{\link{ucv}}, \code{\link{bcv}}, \code{\link{density}}
 }
 \examples{
-width.SJ(geyser$duration, method = "dpi")
-width.SJ(geyser$duration)
+attach(geyser)
+width.SJ(duration, method = "dpi")
+width.SJ(duration)
+detach()
 
 width.SJ(galaxies, method = "dpi")
 width.SJ(galaxies)

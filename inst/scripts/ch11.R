@@ -5,7 +5,7 @@
 # Chapter 11   Exploratory Multivariate Analysis
 
 library(MASS)
-pdf(file="ch11.pdf", width=8, height=6, pointsize=9)
+postscript(file="ch11.ps", width=8, height=6, pointsize=9)
 options(width=65, digits=5)
 
 
@@ -31,20 +31,11 @@ loadings(lcrabs.pca)
 lcrabs.pc <- predict(lcrabs.pca)
 dimnames(lcrabs.pc) <- list(NULL, paste("PC", 1:5, sep = ""))
 
-if(FALSE) { ## needs interaction with XGobi, or, better, rggobi
-    ## Both have been withdrawn for R.
+if(FALSE) { # needs interaction with XGobi
 library(xgobi)
 xgobi(lcrabs, colors = c("SkyBlue", "SlateBlue", "Orange",
      "Red")[rep(1:4, each = 50)])
 xgobi(lcrabs, glyphs = 12 + 5*rep(0:3, each = 50, 4))
-
-library(rggobi)
-g <- ggobi(lcrabs)
-d <- displays(g)[[1]]
-pmode(d) <- "2D Tour"
-crabs.grp <- factor(c("B", "b", "O", "o")[rep(1:4, each = 50)])
-glyph_colour(g$lcrabs) <- crabs.grp
-colorscheme(g) <- "Paired 4"
 }
 
 ir.scal <- cmdscale(dist(ir), k = 2, eig = TRUE)
@@ -132,9 +123,9 @@ parcoord(log(ir)[, c(3, 4, 2, 1)], col = 1 + (0:149)%/%50)
 
 swiss.x <- as.matrix(swiss[,-1])
 library(cluster)
-# S: h <- hclust(dist(swiss.x), method = "connected")
+# h <- hclust(dist(swiss.x), method = "connected")
 h <- hclust(dist(swiss.x), method = "single")
-plot(h)
+plclust(h)
 cutree(h, 3)
 # S: plclust( clorder(h, cutree(h, 3) ))
 
@@ -174,9 +165,24 @@ fanny(swiss.px, 3)
 ##   use, and the code given in the first printing does not work in R's
 ##   mclust-2.x.'
 ##
+## And now mclust has been given a restrictive licence, so
+## this code is not run by default.
+if(require(mclust)) {
+h <- hc(modelName = "VVV", swiss.x)
+print(mh <- as.vector(hclass(h, 3)))
+z <- me(modelName = "VVV", swiss.x,  z = 0.5*(unmap(mh)+1/3))
+eqscplot(swiss.px[, 1:2], type = "n",
+         xlab = "first principal component",
+         ylab = "second principal component")
+text(swiss.px[, 1:2], labels = max.col(z$z))
 
-## And later mclust was given a restrictive licence, so this example
-## has been removed.  Finally in 2012 it was given an OpenSource licence.
+vals <- EMclust(swiss.x) # all possible models, 0:9 clusters.
+print(sm <- summary(vals, swiss.x))
+eqscplot(swiss.px[, 1:2], type = "n",
+         xlab = "first principal component",
+         ylab = "second principal component")
+text(swiss.px[, 1:2], labels = sm$classification)
+}
 
 
 # 11.3 Factor analysis
@@ -187,16 +193,16 @@ ability.FA
 #summary(ability.FA)
 round(loadings(ability.FA) %*% t(loadings(ability.FA)) +
            diag(ability.FA$uniq), 3)
-
-if(require("GPArotation")) {
 # loadings(rotate(ability.FA, rotation = "oblimin"))
-    L <- loadings(ability.FA)
-    print(oblirot <- oblimin(L))
-    par(pty = "s")
-    eqscplot(L, xlim = c(0,1), ylim = c(0,1))
-    if(interactive()) identify(L, dimnames(L)[[1]])
-    naxes <- oblirot$Th
-    arrows(rep(0, 2), rep(0, 2), naxes[,1], naxes[,2])
+
+if(FALSE) {
+par(pty = "s")
+L <- loadings(ability.FA)
+eqscplot(L, xlim = c(0,1), ylim = c(0,1))
+if(interactive()) identify(L, dimnames(L)[[1]])
+oblirot <- rotate(loadings(ability.FA), rotation = "oblimin")
+naxes <- solve(oblirot$tmat)
+arrows(rep(0, 2), rep(0, 2), naxes[,1], naxes[,2])
 }
 
 

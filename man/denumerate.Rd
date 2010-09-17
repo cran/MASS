@@ -1,5 +1,5 @@
 % file MASS/man/denumerate.Rd
-% copyright (C) 2000-2015 W. N. Venables and B. D. Ripley
+% copyright (C) 2000 W. N. Venables and B. D. Ripley
 %
 \name{denumerate}
 \alias{denumerate}
@@ -46,6 +46,6 @@ numbers with names of a special form, namely \code{n} is replaced by
 }
 \examples{
 denumerate(~(1+2+3)^3 + a/b)
-## which gives ~ (.v1 + .v2 + .v3)^3 + a/b
+\dontrun{~ (.v1 + .v2 + .v3)^3 + a/b}
 }
 \keyword{models}

@@ -1,16 +1,17 @@
 # file MASS/R/negbin.R
-# copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2009 W. N. Venables and B. D. Ripley
 #
 anova.negbin <- function(object, ..., test = "Chisq")
 {
   dots <- list(...)
   if(length(dots) == 0L) {
     warning("tests made without re-estimating 'theta'")
-    object$call[[1L]] <- quote(stats::glm)
-    if(is.null(object$link)) object$link <- as.name("log")
-    object$call$family <-
-        call("negative.binomial", theta = object$ theta, link = object$link)
-    NextMethod(object, test = test)
+    object$call[[1L]] <- as.name("glm")
+    if(is.null(object$link))
+      object$link <- as.name("log")
+    object$call$family <- call("negative.binomial", theta = object$
+                               theta, link = object$link)
+    anova.glm(object, test = test)
   } else {
     if(test != "Chisq")
       warning("only Chi-squared LR tests are implemented")
@@ -26,7 +27,7 @@ anova.negbin <- function(object, ..., test = "Chisq")
     ths <- sapply(mlist, function(x) x$theta)
     dfs <- dflis[s]
     lls <- sapply(mlist, function(x) x$twologlik)
-    tss <- c("", paste(1L:(nt - 1L), 2:nt, sep = " vs "))
+    tss <- c("", paste(1L:(nt - 1), 2:nt, sep = " vs "))
     df <- c(NA,  - diff(dfs))
     x2 <- c(NA, diff(lls))
     pr <- c(NA, 1 - pchisq(x2[-1L], df[-1L]))
@@ -63,7 +64,7 @@ family.negbin <- function(object, ...) object$family
 
 glm.convert <- function(object)
 {
-    object$call[[1L]] <- quote(stats::glm)
+    object$call[[1L]] <- as.name("glm")
     if(is.null(object$link))
         object$link <- as.name("log")
     object$call$family <- call("negative.binomial", theta = object$theta,
@@ -89,12 +90,13 @@ glm.nb <- function(formula, data, weights,
     else
         do.call("negative.binomial", list(theta = init.theta, link = link))
 
+    dots <- list(...)
     mf <- Call <- match.call()
     m <- match(c("formula", "data", "subset", "weights", "na.action",
         "etastart", "mustart", "offset"), names(mf), 0)
     mf <- mf[c(1, m)]
     mf$drop.unused.levels <- TRUE
-    mf[[1L]] <- quote(stats::model.frame)
+    mf[[1L]] <- as.name("model.frame")
     mf <- eval.parent(mf)
     Terms <- attr(mf, "terms")
     if(method == "model.frame") return(mf)
@@ -111,15 +113,14 @@ glm.nb <- function(formula, data, weights,
     n <- length(Y)
     if(!missing(method)) {
         if(!exists(method, mode = "function"))
-            stop(gettextf("unimplemented method: %s", sQuote(method)),
-                 domain = NA)
+            stop("unimplemented method: ", sQuote(method))
         glm.fitter <- get(method)
     } else {
         method <- "glm.fit"
         glm.fitter <- stats::glm.fit
     }
     if(control$trace > 1) message("Initial fit:")
-    fit <- glm.fitter(x = X, y = Y, weights = w, start = start,
+    fit <- glm.fitter(x = X, y = Y, w = w, start = start,
                       etastart = etastart, mustart = mustart,
                       offset = offset, family = fam0,
                       control = list(maxit=control$maxit,
@@ -129,10 +130,9 @@ glm.nb <- function(formula, data, weights,
     class(fit) <- c("glm", "lm")
     mu <- fit$fitted.values
     th <- as.vector(theta.ml(Y, mu, sum(w), w, limit = control$maxit, trace =
-                             control$trace> 2)) # drop attributes
+                             control$trace> 2))
     if(control$trace > 1)
-        message(gettextf("Initial value for 'theta': %f", signif(th)),
-                domain = NA)
+        message("Initial value for theta:", signif(th))
     fam <- do.call("negative.binomial", list(theta = th, link = link))
     iter <- 0
     d1 <- sqrt(2 * max(1, fit$df.residual))
@@ -143,7 +143,7 @@ glm.nb <- function(formula, data, weights,
     while((iter <- iter + 1) <= control$maxit &&
           (abs(Lm0 - Lm)/d1 + abs(del)/d2) > control$epsilon) {
         eta <- g(mu)
-        fit <- glm.fitter(x = X, y = Y, weights = w, etastart =
+        fit <- glm.fitter(x = X, y = Y, w = w, etastart =
                           eta, offset = offset, family = fam,
                           control = list(maxit=control$maxit,
                           epsilon = control$epsilon,
@@ -160,8 +160,8 @@ glm.nb <- function(formula, data, weights,
         if(control$trace) {
             Ls <- loglik(n, th, Y, Y, w)
             Dev <- 2 * (Ls - Lm)
-            message(sprintf("Theta(%d) = %f, 2(Ls - Lm) = %f",
-                            iter, signif(th), signif(Dev)), domain = NA)
+            message("Theta(", iter, ") =", signif(th),
+                    ", 2(Ls - Lm) =", signif(Dev))
         }
     }
     if(!is.null(attr(th, "warn"))) fit$th.warn <- attr(th, "warn")
@@ -226,7 +226,7 @@ negative.binomial <-
             stats <- link
             if(!is.null(stats$name)) linktemp <- stats$name
         } else
-            stop(gettextf("\"%s\" link not available for negative binomial family; available links are \"identity\", \"log\" and \"sqrt\"", linktemp))
+            stop(linktemp, " link not available for negative binomial family; available links are \"identity\", \"log\" and \"sqrt\"")
     }
     .Theta <- theta ## avoid codetools warnings
     env <- new.env(parent=.GlobalEnv)
@@ -251,7 +251,7 @@ negative.binomial <-
     })
     simfun <- function(object, nsim) {
         ftd <- fitted(object)
-        rnegbin(nsim * length(ftd), ftd, .Theta)
+        val <- rnegbin(nsim * length(ftd), ftd, .Theta)
     }
     environment(variance) <- environment(validmu) <-
         environment(dev.resids) <- environment(aic) <-
@@ -344,8 +344,7 @@ theta.ml <-
     t0 <- n/sum(weights*(y/mu - 1)^2)
     it <- 0
     del <- 1
-    if(trace) message(sprintf("theta.ml: iter %d 'theta = %f'",
-                              it, signif(t0)), domain = NA)
+    if(trace) message("theta.ml: initial theta =", signif(t0))
     while((it <- it + 1) < limit && abs(del) > eps) {
         t0 <- abs(t0)
         del <- score(n, t0, mu, y, weights)/(i <- info(n, t0, mu, y, weights))
@@ -394,13 +393,14 @@ theta.mm <- function(y, mu, dfr, weights, limit = 10,
 
 logLik.negbin <- function(object, ...)
 {
-    if (nargs() > 1L) warning("extra arguments discarded")
-    p <- object$rank + 1L # for theta
+    if (length(list(...)))
+        warning("extra arguments discarded")
+    p <- object$rank + 1 # for theta
     val <- object$twologlik/2
     attr(val, "df") <- p
-    attr(val, "nobs") <- sum(!is.na(object$residuals)) # as for glm
     class(val) <- "logLik"
     val
+
 }
 
 vcov.negbin <- function(object, ...)

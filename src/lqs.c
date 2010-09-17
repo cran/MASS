@@ -1,6 +1,6 @@
 /*
  *  R : A Computer Language for Statistical Data Analysis
- *  Copyright (C) 1998-2022	B. D. Ripley
+ *  Copyright (C) 1998-2007	B. D. Ripley
  *  Copyright (C) 1999          R Development Core Team
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -23,15 +23,16 @@
  *
  * to be called as  .C(.)  in ../R/lqs.R
  */
- 
-#include <math.h>  // currently in R.h
-#include <stddef.h>  // currently in R.h
+
+/* in R.h
+#include <math.h>
+#include <limits.h> */
 
 #include <R.h>
+#include <float.h>
 #include <R_ext/Linpack.h>
 #include <R_ext/Applic.h>	/* for the QR	  routines */
 #include <R_ext/Utils.h>	/* for the *sort() routines */
-#include <float.h>
 #define BIG DBL_MAX
 
 /* GLOBAL Variables, explicitly allocated and freed: */
@@ -63,34 +64,25 @@ static void sample_noreplace(int *x, int n, int k)
 
     for (i = 0; i < n; i++) ind[i] = i;
     for (i = 0; i < k; i++) {
-	j = (int)(nn * unif_rand());
+	j = nn * unif_rand();
 	x[i] = ind[j];
 	ind[j] = ind[--nn];
     }
 }
 
 /*
-   Find all subsets of size k of n in order: this gets a new one each call
+   Find all subsets of size k in order: this gets a new one each call
  */
-// mis-compiled by GCC 11.[012] at -O3, so avoid it. 11.3 should be OK.
-// also GCC pre-12 at -O2 only up to Apr 2022 so releases should be OK.
-// clang defines __GNUC__ but not these pragmas,
-// AND uses its version (LLVM or Apple) for __GNUC__
-#if !defined __clang__ && defined __GNUC__ && __GNUC__ == 12 && __GNUC_MINOR__ < 1
-#pragma GCC optimize "-O1"
-#elif !defined __clang__ && defined __GNUC__ && __GNUC__ == 11 && __GNUC_MINOR__ <= 2
-#pragma GCC optimize "-O2"
-#endif
 static void next_set(int *x, int n, int k)
 {
-    int j = k - 1;
-    int tmp = x[j]++;
+    int i, j, tmp;
+
+    j = k - 1;
+    tmp = x[j]++;
     while(j > 0 && x[j] >= n - (k - 1 -j)) tmp = ++x[--j];
-    for(int i = j + 1; i < k; i++)  x[i] = ++tmp;
+    for(i = j+1; i < k; i++)  x[i] =  ++tmp;
 }
-#if !defined __clang__ && defined __GNUC__
-#pragma GCC reset_options
-#endif
+
 
 /*
    Adjust the constant for an LMS fit. This is the midpoint of the
@@ -365,8 +357,8 @@ mve_fitlots(double *x, int *n, int *p, int *qn, int *mcd,
 	if(!(*sample)) {if(trial > 0) next_set(which, nn, nnew);}
 	else sample_noreplace(which, nn, nnew);
 
-	/* for(i = 0; i < nnew; i++) printf("%d ", 1+which[i]);
-	   printf("\n"); fflush(stdout); */
+	/* for(i = 0; i < nnew; i++) printf("%d ", which[i]); printf("\n");
+	   fflush(stdout);*/
 
 
 	/* Find the mean and covariance matrix of the sample. Check if singular.
@@ -405,7 +397,7 @@ mve_fitlots(double *x, int *n, int *p, int *qn, int *mcd,
 	    }
 
 	}
-	/* printf("this %f\n", thiscrit); */
+	/*   printf("this %f\n", thiscrit);*/
 
 
 	if(thiscrit < best) { /* warning: first might be singular */

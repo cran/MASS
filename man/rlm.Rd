@@ -1,5 +1,5 @@
 % file MASS/man/rlm.Rd
-% copyright (C) 1998-2020 B. D. Ripley
+% copyright (C) 1998,9, 2004 B. D. Ripley
 %
 \name{rlm}
 \alias{rlm}
@@ -39,8 +39,8 @@ psi.bisquare(u, c = 4.685, deriv = 0)
     a formula of the form \code{y ~ x1 + x2 + \dots}.
   }
   \item{data}{
-    an optional data frame, list or environment from which variables
-    specified in \code{formula} are preferentially to be taken.
+    data frame from which variables specified in \code{formula} are
+    preferentially to be taken.
   }
   \item{weights}{
     a vector of prior weights for each case.
@@ -81,7 +81,7 @@ psi.bisquare(u, c = 4.685, deriv = 0)
     should the response be returned in the object?
   }
   \item{contrasts}{
-    optional contrast specifications: see \code{\link{lm}}.
+    optional contrast specifications: se \code{\link{lm}}.
   }
   \item{w}{
     (optional) initial down-weighting for each case.
@@ -181,10 +181,6 @@ psi.bisquare(u, c = 4.685, deriv = 0)
   this is true for the default value of \code{c} that corresponds to
   95\% relative efficiency at the normal.  Case weights are not
   supported for \code{method = "MM"}.
-}
-\note{
-  Prior to version \code{7.3-52}, offset terms in \code{formula}
-  were omitted from fitted and predicted values.
 }
 \references{
   P. J. Huber (1981)

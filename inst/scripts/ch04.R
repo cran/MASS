@@ -6,7 +6,7 @@
 
 library(MASS)
 library(lattice)
-pdf(file="ch04.pdf", width=8, height=6, pointsize=9)
+trellis.device(postscript, file="ch04.ps", width=8, height=6, pointsize=9)
 options(width=65, digits=5)
 
 

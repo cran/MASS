@@ -1,5 +1,5 @@
 # file MASS/R/loglm.R
-# copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2006 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ loglm <-
     if(missing(data) || inherits(data, "data.frame")) {
         m <- match.call(expand.dots = FALSE)
         m$... <- NULL
-        m[[1L]] <- quote(stats::model.frame)
+        m[[1L]] <- as.name("model.frame")
         data <- eval.parent(m)
         .formula <- as.formula(attr(data, "terms"))
     } else {
@@ -170,7 +170,7 @@ anova.loglm <- function(object, ..., test = c("Chisq", "chisq", "LR"))
     o <- order( - dfs)
     objs <- objs[o]
     dfs <- c(dfs[o], 0)
-    forms <- lapply(objs, function(x) x$call$formula)
+    forms <- lapply(objs, formula)
     dev <- c(sapply(objs, "[[", "lrt"), 0)
     M <- array(0, c(k + 2L, 5L),
                list(c(paste("Model", 1L:(k + 1L)), "Saturated"),
@@ -201,11 +201,13 @@ print.anova.loglm <- function(x, ...)
         colnames(R)[j] <- colj[1L]
     }
     R[1L, 3L:5L] <- ""
+    pform <- function(form)
+        if(length(form) == 2L) form else form[c(2L, 1L, 3L)]
     forms <- attr(x, "formulae")
     cat("LR tests for hierarchical log-linear models\n\n")
     for(i in seq_along(forms))
         cat(paste("Model ", i, ":\n", sep = ""),
-            deparse(forms[[i]], width.cutoff = 500L), "\n")
+            deparse(pform(forms[[i]])), "\n")
     cat("\n")
     print(R, quote = FALSE)
     invisible(x)
@@ -242,9 +244,9 @@ summary.loglm <- function(object, fitted = FALSE, ...)
             cat("Re-fitting to find fitted values\n")
             object <- update(object, fitted = TRUE, keep.frequencies = TRUE)
         }
-        fit <- format(round(object$fitted, 1L))
-        OE <- array(paste(format(object$frequnecies), " (", fit, ")", sep = ""),
-                    dim(fit), dimnames(object$frequnencies))
+        fit <- format(round(object$fit, 1L))
+        OE <- array(paste(format(object$freq), " (", fit, ")", sep = ""),
+                    dim(fit), dimnames(object$freq))
     }  else OE <- NULL
     structure(list(formula = formula(object), tests = ts.array, oe = OE),
               class = "summary.loglm")
@@ -267,10 +269,10 @@ update.loglm <- function (object, formula, ...)
 {
     if (is.null(call <- object$call))
         stop("'object' has no 'call' component.  Updating not possible")
-    if (!missing(formula)) {
+    if (fix <- !missing(formula)) {
         object$formula <- denumerate(object$formula)
         formula <- denumerate(as.formula(formula))
-        call$formula <- renumerate(update.formula(formula(object), formula))
+        call$formula <- update.formula(formula(object), formula)
     }
     extras <- match.call(expand.dots = FALSE)$...
     if (length(extras) > 0L) {
@@ -283,13 +285,17 @@ update.loglm <- function (object, formula, ...)
         }
     }
     result <- eval.parent(call)
+    if (fix) {
+        form <- renumerate(result$formula)
+        result$call$formula <- unclass(result$formula <- form)
+    }
     result
 }
 
 fitted.loglm <- function(object, ...)
 {
-    if(!is.null(object$fitted))
-        return(unclass(object$fitted))
+    if(!is.null(object$fit))
+        return(unclass(object$fit))
     cat("Re-fitting to get fitted values\n")
     unclass(update(object, fitted = TRUE, keep.frequencies = FALSE)$fitted)
 }
@@ -298,12 +304,12 @@ residuals.loglm <-
     function(object, type = c("deviance", "pearson", "response"), ...)
 {
     type <- match.arg(type)
-    if(is.null(object$fitted) || is.null(object$frequencies)) {
+    if(is.null(object$fit) || is.null(object$freq)) {
         cat("Re-fitting to get frequencies and fitted values\n")
         object <- update(object, fitted = TRUE, keep.frequencies = TRUE)
     }
-    y <- object$frequencies
-    mu <- object$fitted
+    y <- object$freq
+    mu <- object$fit
     res <- y - mu
     nz <- mu > 0
     y <- y[nz]
@@ -323,6 +329,3 @@ coef.loglm <- function(object, ...)
     cat("Re-fitting to calculate missing coefficients\n")
     update(object, param = TRUE)$param
 }
-
-nobs.loglm  <- function(object, ...) object[["nobs"]]
-

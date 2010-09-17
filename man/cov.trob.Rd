@@ -72,8 +72,9 @@ The number of iterations used.
   \emph{Communications in Statistics---Simulation and Computation}
   \bold{23}, 441--453.
 
-  Venables, W. N. and Ripley, B. D. (2002)
-  \emph{Modern Applied Statistics with S-PLUS.} Fourth Edition. Springer.
+  Venables, W. N. and Ripley, B. D. (1999)
+  \emph{Modern Applied Statistics with S-PLUS.} Third
+  Edition. Springer.
 }
 \seealso{
 \code{\link{cov}}, \code{\link{cov.wt}}, \code{\link{cov.mve}}

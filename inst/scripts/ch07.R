@@ -6,7 +6,7 @@
 
 library(MASS)
 options(width=65, digits=5, height=9999)
-pdf(file="ch07.pdf", width=8, height=6, pointsize=9)
+postscript(file="ch07.ps", width=8, height=6, pointsize=9)
 options(contrasts = c("contr.treatment", "contr.poly"))
 
 ax.1 <- glm(Postwt ~ Prewt + Treat + offset(Prewt),

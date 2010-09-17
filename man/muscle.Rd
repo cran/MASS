@@ -44,33 +44,33 @@ muscle
   \emph{Modern Applied Statistics with S.} Fourth Edition. Springer.
 }
 \examples{
-## IGNORE_RDIFF_BEGIN
 A <- model.matrix(~ Strip - 1, data=muscle)
 rats.nls1 <- nls(log(Length) ~ cbind(A, rho^Conc),
    data = muscle, start = c(rho=0.1), algorithm="plinear")
-(B <- coef(rats.nls1))
+B <- coef(rats.nls1)
+B
 
 st <- list(alpha = B[2:22], beta = B[23], rho = B[1])
 (rats.nls2 <- nls(log(Length) ~ alpha[Strip] + beta*rho^Conc,
                   data = muscle, start = st))
-## IGNORE_RDIFF_END
 
-Muscle <- with(muscle, {
+attach(muscle)
 Muscle <- expand.grid(Conc = sort(unique(Conc)), Strip = levels(Strip))
 Muscle$Yhat <- predict(rats.nls2, Muscle)
 Muscle <- cbind(Muscle, logLength = rep(as.numeric(NA), 126))
 ind <- match(paste(Strip, Conc),
             paste(Muscle$Strip, Muscle$Conc))
 Muscle$logLength[ind] <- log(Length)
-Muscle})
+detach()
 
-lattice::xyplot(Yhat ~ Conc | Strip, Muscle, as.table = TRUE,
+require(lattice)
+xyplot(Yhat ~ Conc | Strip, Muscle, as.table = TRUE,
    ylim = range(c(Muscle$Yhat, Muscle$logLength), na.rm = TRUE),
    subscripts = TRUE, xlab = "Calcium Chloride concentration (mM)",
    ylab = "log(Length in mm)", panel =
    function(x, y, subscripts, ...) {
+      lines(spline(x, y))
       panel.xyplot(x, Muscle$logLength[subscripts], ...)
-      llines(spline(x, y))
    })
 }
 \keyword{datasets}

@@ -27,8 +27,7 @@ loglm1(formula, data, \dots)
     See \code{\link{loglm}} for its interpretation.}
 
   \item{data}{
-    Numeric array or data frame (or list or environment).
-    In the first case it specifies the
+    Numeric array or data frame.  In the first case it specifies the
     array of frequencies; in then second it provides the data frame
     from which the variables occurring in the formula are
     preferentially obtained in the usual way.

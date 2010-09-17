@@ -16,10 +16,9 @@
 #
 hubers <- function(y, k = 1.5, mu, s, initmu = median(y), tol = 1.0e-6)
 {
-    mmu <- missing(mu); ms <- missing(s)
     y <- y[!is.na(y)]
     n <- length(y)
-    if(mmu) {
+    if(missing(mu)) {
         mu0 <- initmu
         n1 <- n - 1
     } else {
@@ -27,16 +26,13 @@ hubers <- function(y, k = 1.5, mu, s, initmu = median(y), tol = 1.0e-6)
         mu1 <- mu
         n1 <- n
     }
-    if(ms) { # middle 50% of data is constant
-	s0 <- mad(y)
-	if(s0 == 0.0) return(list(mu=mu0, s = 0))
-    } else {s0 <- s;s1 <- s}
+    if(missing(s)) s0 <- mad(y) else {s0 <- s;s1 <- s}
     th <- 2*pnorm(k)-1
     beta <- th + k^2*(1-th) - 2*k*dnorm(k)
-    for(i in 1:30) { # avoid infinite loop
+    repeat{
         yy <- pmin(pmax(mu0-k*s0,y), mu0+k*s0)
-        if(mmu) mu1 <- sum(yy)/n
-        if(ms) {
+        if(missing(mu)) mu1 <- sum(yy)/n
+        if(missing(s)) {
             ss <- sum((yy-mu1)^2)/n1
             s1 <- sqrt(ss/beta)
         }

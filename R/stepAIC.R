@@ -50,8 +50,8 @@ stepAIC <-
         ddf <- c(NA, abs(diff(rdf)))
         AIC <- sapply(models, "[[", "AIC")
         heading <- c("Stepwise Model Path \nAnalysis of Deviance Table",
-                     "\nInitial Model:", deparse(formula(object)),
-                     "\nFinal Model:", deparse(formula(fit)),
+                     "\nInitial Model:", deparse(as.vector(formula(object))),
+                     "\nFinal Model:", deparse(as.vector(formula(fit))),
                      "\n")
         aod <-
             if(usingCp)
@@ -72,44 +72,45 @@ stepAIC <-
     if(inherits(object, "lme")) object$call$fixed <- Terms
     else if(inherits(object, "gls")) object$call$model <- Terms
     else object$call$formula <- Terms
-    if(use.start) warning("'use.start' cannot be used with R's version of 'glm'")
+    if(use.start) warning("'use.start' cannot be used with R's version of glm")
     md <- missing(direction)
     direction <- match.arg(direction)
     backward <- direction == "both" | direction == "backward"
     forward <- direction == "both" | direction == "forward"
     if(missing(scope)) {
-	fdrop <- numeric()
+        fdrop <- numeric(0)
         fadd <- attr(Terms, "factors")
         if(md) forward <- FALSE
     } else {
         if(is.list(scope)) {
             fdrop <- if(!is.null(fdrop <- scope$lower))
                 attr(terms(update.formula(object, fdrop)), "factors")
-            else numeric()
+            else numeric(0)
             fadd <- if(!is.null(fadd <- scope$upper))
                 attr(terms(update.formula(object, fadd)), "factors")
         } else {
             fadd <- if(!is.null(fadd <- scope))
                 attr(terms(update.formula(object, scope)), "factors")
-            fdrop <- numeric()
+            fdrop <- numeric(0)
         }
     }
     models <- vector("list", steps)
     if(!is.null(keep)) keep.list <- vector("list", steps)
-    n <- nobs(object, use.fallback = TRUE)  # might be NA
+    ## watch out for partial matching here.
+    if(is.list(object) && (nmm <- match("nobs", names(object), 0)) > 0)
+        n <- object[[nmm]]
+    else n <- length(residuals(object))
     fit <- object
     bAIC <- extractAIC(fit, scale, k = k, ...)
     edf <- bAIC[1L]
     bAIC <- bAIC[2L]
     if(is.na(bAIC))
-        stop("AIC is not defined for this model, so 'stepAIC' cannot proceed")
-    if(bAIC == -Inf)
-        stop("AIC is -infinity for this model, so 'stepAIC' cannot proceed")
-   nm <- 1
+        stop("AIC is not defined for this model, so stepAIC cannot proceed")
+    nm <- 1
     Terms <- terms(fit)
     if(trace) {
         cat("Start:  AIC=", format(round(bAIC, 2)), "\n",
-            cut.string(deparse(formula(fit))), "\n\n", sep='')
+            cut.string(deparse(as.vector(formula(fit)))), "\n\n", sep='')
 	utils::flush.console()
     }
     models[[nm]] <- list(deviance = mydeviance(fit), df.resid = n - edf,
@@ -137,7 +138,7 @@ stepAIC <-
                 nc <- match(c("Cp", "AIC"), names(aod))
                 nc <- nc[!is.na(nc)][1L]
                 ch <- abs(aod[zdf, nc] - aod[1, nc]) > 0.01
-                if(any(is.finite(ch) & ch)) {
+                if(any(ch)) {
                     warning("0 df terms are changing AIC")
                     zdf <- zdf[!ch]
                 }
@@ -177,8 +178,10 @@ stepAIC <-
         ## may need to look for a 'data' argument in parent
 	fit <- update(fit, paste("~ .", change), evaluate = FALSE)
         fit <- eval.parent(fit)
-        nnew <- nobs(fit, use.fallback = TRUE)
-        if(all(is.finite(c(n, nnew))) && nnew != n)
+        if(is.list(fit) && (nmm <- match("nobs", names(fit), 0)) > 0)
+            nnew <- fit[[nmm]]
+        else nnew <- length(residuals(fit))
+        if(nnew != n)
             stop("number of rows in use has changed: remove missing values?")
         Terms <- terms(fit)
         bAIC <- extractAIC(fit, scale, k = k, ...)
@@ -186,7 +189,7 @@ stepAIC <-
         bAIC <- bAIC[2L]
         if(trace) {
             cat("\nStep:  AIC=", format(round(bAIC, 2)), "\n",
-                cut.string(deparse(formula(fit))), "\n\n", sep='')
+                cut.string(deparse(as.vector(formula(fit)))), "\n\n", sep='')
 	    utils::flush.console()
 	}
         ## add a tolerance as dropping 0-df terms might increase AIC slightly
@@ -207,8 +210,6 @@ extractAIC.loglm <- function(fit, scale, k = 2, ...)
     c(edf,  fit$deviance + k * edf)
 }
 
-## defer to nlme
-if(FALSE) {
 extractAIC.lme <- function(fit, scale, k = 2, ...)
 {
     if(fit$method != "ML") stop("AIC undefined for REML fit")
@@ -226,4 +227,3 @@ extractAIC.gls <- function(fit, scale, k = 2, ...)
 }
 
 terms.gls <- terms.lme <- function(x, ...) terms(formula(x), ...)
-}

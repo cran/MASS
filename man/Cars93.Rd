@@ -1,5 +1,5 @@
 % file MASS/man/Cars93.Rd
-% copyright (C) 1994-2022 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
 %
 \name{Cars93}
 \alias{Cars93}
@@ -26,14 +26,14 @@ Cars93
       \code{"Compact"}, \code{"Midsize"}, \code{"Large"} and \code{"Van"}.
     }
     \item{\code{Min.Price}}{
-      Minimum Price (in $1,000): price for a basic version.
+      Minimum Price (in \$1,000): price for a basic version.
     }
     \item{\code{Price}}{
-      Midrange Price (in $1,000): average of \code{Min.Price} and
+      Midrange Price (in \$1,000): average of \code{Min.Price} and
       \code{Max.Price}.
     }
     \item{\code{Max.Price}}{
-      Maximum Price (in $1,000): price for \dQuote{a premium version}.
+      Maximum Price (in \$1,000): price for \dQuote{a premium version}.
     }
     \item{\code{MPG.city}}{
       City MPG (miles per US gallon by EPA rating).
@@ -115,11 +115,11 @@ Cars93
   1993 New Car Data.
   \emph{Journal of Statistics Education}
   \bold{1}(1).
-  \doi{10.1080/10691898.1993.11910459}
-%  \url{http://www.amstat.org/publications/jse/v1n1/datasets.lock.html}.  
+  \url{http://www.amstat.org/publications/jse/v1n1/datasets.lock.html}.  
 }
 \references{
-  Venables, W. N. and Ripley, B. D. (2002)
-  \emph{Modern Applied Statistics with S-PLUS.} Fourth Edition. Springer.
+  Venables, W. N. and Ripley, B. D. (1999)
+  \emph{Modern Applied Statistics with S-PLUS.} Third
+  Edition. Springer.
 }
 \keyword{datasets}
