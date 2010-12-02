@@ -31,11 +31,20 @@ loadings(lcrabs.pca)
 lcrabs.pc <- predict(lcrabs.pca)
 dimnames(lcrabs.pc) <- list(NULL, paste("PC", 1:5, sep = ""))
 
-if(FALSE) { # needs interaction with XGobi
+if(FALSE) { # needs interaction with XGobi, or, better, rggobi
 library(xgobi)
 xgobi(lcrabs, colors = c("SkyBlue", "SlateBlue", "Orange",
      "Red")[rep(1:4, each = 50)])
 xgobi(lcrabs, glyphs = 12 + 5*rep(0:3, each = 50, 4))
+
+library(rggobi)
+g <- ggobi(lcrabs)
+d <- displays(g)[[1]]
+pmode(d) <- "2D Tour"
+variables(d) <- list(X=3:7) # 0-based
+crabs.grp <- factor(c("B", "b", "O", "o")[rep(1:4, each = 50)])
+glyph_colour(g$lcrabs) <- crabs.grp
+colorscheme(g) <- "Paired 4"
 }
 
 ir.scal <- cmdscale(dist(ir), k = 2, eig = TRUE)
@@ -165,24 +174,9 @@ fanny(swiss.px, 3)
 ##   use, and the code given in the first printing does not work in R's
 ##   mclust-2.x.'
 ##
-## And now mclust has been given a restrictive licence, so
-## this code is not run by default.
-if(require(mclust)) {
-h <- hc(modelName = "VVV", swiss.x)
-print(mh <- as.vector(hclass(h, 3)))
-z <- me(modelName = "VVV", swiss.x,  z = 0.5*(unmap(mh)+1/3))
-eqscplot(swiss.px[, 1:2], type = "n",
-         xlab = "first principal component",
-         ylab = "second principal component")
-text(swiss.px[, 1:2], labels = max.col(z$z))
 
-vals <- EMclust(swiss.x) # all possible models, 0:9 clusters.
-print(sm <- summary(vals, swiss.x))
-eqscplot(swiss.px[, 1:2], type = "n",
-         xlab = "first principal component",
-         ylab = "second principal component")
-text(swiss.px[, 1:2], labels = sm$classification)
-}
+## And later mclust was given a restrictive licence, so this example
+## has been removed.
 
 
 # 11.3 Factor analysis
@@ -193,16 +187,16 @@ ability.FA
 #summary(ability.FA)
 round(loadings(ability.FA) %*% t(loadings(ability.FA)) +
            diag(ability.FA$uniq), 3)
-# loadings(rotate(ability.FA, rotation = "oblimin"))
 
-if(FALSE) {
-par(pty = "s")
-L <- loadings(ability.FA)
-eqscplot(L, xlim = c(0,1), ylim = c(0,1))
-if(interactive()) identify(L, dimnames(L)[[1]])
-oblirot <- rotate(loadings(ability.FA), rotation = "oblimin")
-naxes <- solve(oblirot$tmat)
-arrows(rep(0, 2), rep(0, 2), naxes[,1], naxes[,2])
+if(require("GPArotation")) {
+# loadings(rotate(ability.FA, rotation = "oblimin"))
+    L <- loadings(ability.FA)
+    print(oblirot <- oblimin(L))
+    par(pty = "s")
+    eqscplot(L, xlim = c(0,1), ylim = c(0,1))
+    if(interactive()) identify(L, dimnames(L)[[1]])
+    naxes <- oblirot$Th
+    arrows(rep(0, 2), rep(0, 2), naxes[,1], naxes[,2])
 }
 
 

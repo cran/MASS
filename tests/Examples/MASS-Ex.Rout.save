@@ -1,7 +1,8 @@
 
-R version 2.11.0 Patched (2010-05-20 r52056)
+R version 2.13.0 Under development (unstable) (2010-11-22 r53649)
 Copyright (C) 2010 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -40,7 +41,8 @@ Type 'q()' to quit R.
 > glm(Claims ~ District + Group + Age + offset(log(Holders)),
 +     data = Insurance, family = poisson)
 
-Call:  glm(formula = Claims ~ District + Group + Age + offset(log(Holders)),      family = poisson, data = Insurance) 
+Call:  glm(formula = Claims ~ District + Group + Age + offset(log(Holders)), 
+    family = poisson, data = Insurance)
 
 Coefficients:
 (Intercept)    District2    District3    District4      Group.L      Group.Q  
@@ -208,8 +210,8 @@ lm(formula = L75 ~ Noise/(Age + OME), data = OMEif, subset = (Age >=
     30 & Age <= 60), na.action = na.omit)
 
 Residuals:
-      Min        1Q    Median        3Q       Max 
--10.45139  -2.05880   0.01937   1.68274  15.97376 
+     Min       1Q   Median       3Q      Max 
+-10.4514  -2.0588   0.0194   1.6827  15.9738 
 
 Coefficients:
                        Estimate Std. Error t value Pr(>|t|)    
@@ -516,7 +518,7 @@ glm(formula = y ~ trt * week, family = binomial, data = bacteria)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
--2.2143   0.4245   0.5373   0.6750   1.0697  
+-2.2144   0.4245   0.5373   0.6750   1.0697  
 
 Coefficients:
                   Estimate Std. Error z value Pr(>|z|)    
@@ -604,7 +606,7 @@ coxph(formula = Surv(Time, unclass(y)) ~ week + strata(ID), data = bacteria,
        coef exp(coef) se(coef)     z     p
 week -0.163      0.85   0.0547 -2.97 0.003
 
-Likelihood ratio test=9.85  on 1 df, p=0.00170  n= 220 
+Likelihood ratio test=9.85  on 1 df, p=0.00170  n= 220, number of events= 177 
 > coxph(Surv(Time, unclass(y)) ~ factor(week) + strata(ID),
 +       data = bacteria, method = "exact")
 Call:
@@ -618,7 +620,7 @@ factor(week)4  -1.421     0.242    0.667 -2.131 0.033
 factor(week)6  -1.661     0.190    0.682 -2.434 0.015
 factor(week)11 -1.675     0.187    0.678 -2.471 0.013
 
-Likelihood ratio test=15.4  on 4 df, p=0.00385  n= 220 
+Likelihood ratio test=15.4  on 4 df, p=0.00385  n= 220, number of events= 177 
 > coxph(Surv(Time, unclass(y)) ~ I(week > 2) + strata(ID),
 +       data = bacteria, method = "exact")
 Call:
@@ -629,7 +631,7 @@ coxph(formula = Surv(Time, unclass(y)) ~ I(week > 2) + strata(ID),
                  coef exp(coef) se(coef)     z       p
 I(week > 2)TRUE -1.67     0.188    0.482 -3.47 0.00053
 
-Likelihood ratio test=15.2  on 1 df, p=9.93e-05  n= 220 
+Likelihood ratio test=15.2  on 1 df, p=9.93e-05  n= 220, number of events= 177 
 > 
 > # PQL glmm analysis
 > library(nlme)
@@ -774,8 +776,8 @@ Call:
 lm(formula = stemp ~ -1 + sX, na.action = na.omit)
 
 Residuals:
-      Min        1Q    Median        3Q       Max 
--0.213173 -0.043173  0.006827  0.054827  0.376828 
+     Min       1Q   Median       3Q      Max 
+-0.21317 -0.04317  0.00683  0.05483  0.37683 
 
 Coefficients:
        Estimate Std. Error t value Pr(>|t|)    
@@ -956,7 +958,7 @@ detaching ‘package:nlme’
 > options(contrasts = c("contr.treatment", "contr.poly"))
 > glm(low ~ ., binomial, bwt)
 
-Call:  glm(formula = low ~ ., family = binomial, data = bwt) 
+Call:  glm(formula = low ~ ., family = binomial, data = bwt)
 
 Coefficients:
 (Intercept)          age          lwt    raceblack    raceother    smokeTRUE  
@@ -1541,72 +1543,72 @@ glm(formula = y ~ pred + factor(subject) + offset(log(time)),
     family = poisson, data = epil3)
 
 Deviance Residuals: 
-       Min          1Q      Median          3Q         Max  
--5.293e+00  -7.350e-01   1.117e-05   6.997e-01   4.714e+00  
+    Min       1Q   Median       3Q      Max  
+-5.2928  -0.7350   0.0000   0.6997   4.7145  
 
 Coefficients:
-                    Estimate Std. Error   z value Pr(>|z|)    
-(Intercept)        1.122e+00  2.008e-01     5.590 2.28e-08 ***
-predplacebo-base   1.087e-01  4.691e-02     2.318 0.020474 *  
-preddrug-placebo  -1.016e-01  6.507e-02    -1.561 0.118431    
-factor(subject)2  -2.300e-15  2.828e-01 -8.13e-15 1.000000    
-factor(subject)3  -3.857e-01  3.144e-01    -1.227 0.219894    
-factor(subject)4  -1.744e-01  2.960e-01    -0.589 0.555847    
-factor(subject)5   1.577e+00  2.197e-01     7.178 7.08e-13 ***
-factor(subject)6   6.729e-01  2.458e-01     2.738 0.006182 ** 
-factor(subject)7  -4.082e-02  2.858e-01    -0.143 0.886411    
-factor(subject)8   1.758e+00  2.166e-01     8.117 4.77e-16 ***
-factor(subject)9   5.878e-01  2.494e-01     2.356 0.018454 *  
-factor(subject)10  5.423e-01  2.515e-01     2.156 0.031060 *  
-factor(subject)11  1.552e+00  2.202e-01     7.048 1.81e-12 ***
-factor(subject)12  9.243e-01  2.364e-01     3.910 9.22e-05 ***
-factor(subject)13  3.075e-01  2.635e-01     1.167 0.243171    
-factor(subject)14  1.212e+00  2.278e-01     5.320 1.04e-07 ***
-factor(subject)15  1.765e+00  2.164e-01     8.153 3.54e-16 ***
-factor(subject)16  9.708e-01  2.348e-01     4.134 3.57e-05 ***
-factor(subject)17 -4.082e-02  2.858e-01    -0.143 0.886411    
-factor(subject)18  2.236e+00  2.104e-01    10.629  < 2e-16 ***
-factor(subject)19  2.776e-01  2.651e-01     1.047 0.295060    
-factor(subject)20  3.646e-01  2.603e-01     1.401 0.161324    
-factor(subject)21  3.922e-02  2.801e-01     0.140 0.888645    
-factor(subject)22 -8.338e-02  2.889e-01    -0.289 0.772894    
-factor(subject)23  1.823e-01  2.708e-01     0.673 0.500777    
-factor(subject)24  8.416e-01  2.393e-01     3.517 0.000436 ***
-factor(subject)25  2.069e+00  2.123e-01     9.750  < 2e-16 ***
-factor(subject)26 -5.108e-01  3.266e-01    -1.564 0.117799    
-factor(subject)27 -2.231e-01  3.000e-01    -0.744 0.456990    
-factor(subject)28  1.386e+00  2.236e-01     6.200 5.66e-10 ***
-factor(subject)29  1.604e+00  2.227e-01     7.203 5.90e-13 ***
-factor(subject)30  1.023e+00  2.372e-01     4.313 1.61e-05 ***
-factor(subject)31  9.149e-02  2.821e-01     0.324 0.745700    
-factor(subject)32 -3.111e-02  2.909e-01    -0.107 0.914822    
-factor(subject)33  4.710e-01  2.597e-01     1.814 0.069736 .  
-factor(subject)34  3.887e-01  2.640e-01     1.473 0.140879    
-factor(subject)35  1.487e+00  2.250e-01     6.609 3.87e-11 ***
-factor(subject)36  3.598e-01  2.656e-01     1.355 0.175551    
-factor(subject)37 -1.221e-01  2.979e-01    -0.410 0.681943    
-factor(subject)38  1.344e+00  2.283e-01     5.889 3.90e-09 ***
-factor(subject)39  1.082e+00  2.354e-01     4.596 4.30e-06 ***
-factor(subject)40 -7.687e-01  3.634e-01    -2.116 0.034384 *  
-factor(subject)41  1.656e-01  2.772e-01     0.597 0.550234    
-factor(subject)42  5.227e-02  2.848e-01     0.184 0.854388    
-factor(subject)43  1.543e+00  2.239e-01     6.891 5.54e-12 ***
-factor(subject)44  9.605e-01  2.393e-01     4.014 5.96e-05 ***
-factor(subject)45  1.177e+00  2.326e-01     5.061 4.18e-07 ***
-factor(subject)46 -5.275e-01  3.355e-01    -1.572 0.115840    
-factor(subject)47  1.053e+00  2.363e-01     4.456 8.35e-06 ***
-factor(subject)48 -5.275e-01  3.355e-01    -1.572 0.115840    
-factor(subject)49  2.949e+00  2.082e-01    14.168  < 2e-16 ***
-factor(subject)50  3.887e-01  2.640e-01     1.473 0.140879    
-factor(subject)51  1.038e+00  2.367e-01     4.385 1.16e-05 ***
-factor(subject)52  5.711e-01  2.548e-01     2.241 0.025023 *  
-factor(subject)53  1.670e+00  2.215e-01     7.538 4.76e-14 ***
-factor(subject)54  4.443e-01  2.611e-01     1.702 0.088759 .  
-factor(subject)55  2.674e-01  2.709e-01     0.987 0.323618    
-factor(subject)56  1.124e+00  2.341e-01     4.800 1.59e-06 ***
-factor(subject)57  2.674e-01  2.709e-01     0.987 0.323618    
-factor(subject)58 -6.017e-01  3.436e-01    -1.751 0.079911 .  
-factor(subject)59 -7.556e-02  2.942e-01    -0.257 0.797331    
+                    Estimate Std. Error z value Pr(>|z|)    
+(Intercept)        1.122e+00  2.008e-01   5.590 2.28e-08 ***
+predplacebo-base   1.087e-01  4.691e-02   2.318 0.020474 *  
+preddrug-placebo  -1.016e-01  6.507e-02  -1.561 0.118431    
+factor(subject)2  -2.300e-15  2.828e-01   0.000 1.000000    
+factor(subject)3  -3.857e-01  3.144e-01  -1.227 0.219894    
+factor(subject)4  -1.744e-01  2.960e-01  -0.589 0.555847    
+factor(subject)5   1.577e+00  2.197e-01   7.178 7.08e-13 ***
+factor(subject)6   6.729e-01  2.458e-01   2.738 0.006182 ** 
+factor(subject)7  -4.082e-02  2.858e-01  -0.143 0.886411    
+factor(subject)8   1.758e+00  2.166e-01   8.117 4.77e-16 ***
+factor(subject)9   5.878e-01  2.494e-01   2.356 0.018454 *  
+factor(subject)10  5.423e-01  2.515e-01   2.156 0.031060 *  
+factor(subject)11  1.552e+00  2.202e-01   7.048 1.81e-12 ***
+factor(subject)12  9.243e-01  2.364e-01   3.910 9.22e-05 ***
+factor(subject)13  3.075e-01  2.635e-01   1.167 0.243171    
+factor(subject)14  1.212e+00  2.278e-01   5.320 1.04e-07 ***
+factor(subject)15  1.765e+00  2.164e-01   8.153 3.54e-16 ***
+factor(subject)16  9.708e-01  2.348e-01   4.134 3.57e-05 ***
+factor(subject)17 -4.082e-02  2.858e-01  -0.143 0.886411    
+factor(subject)18  2.236e+00  2.104e-01  10.629  < 2e-16 ***
+factor(subject)19  2.776e-01  2.651e-01   1.047 0.295060    
+factor(subject)20  3.646e-01  2.603e-01   1.401 0.161324    
+factor(subject)21  3.922e-02  2.801e-01   0.140 0.888645    
+factor(subject)22 -8.338e-02  2.889e-01  -0.289 0.772894    
+factor(subject)23  1.823e-01  2.708e-01   0.673 0.500777    
+factor(subject)24  8.416e-01  2.393e-01   3.517 0.000436 ***
+factor(subject)25  2.069e+00  2.123e-01   9.750  < 2e-16 ***
+factor(subject)26 -5.108e-01  3.266e-01  -1.564 0.117799    
+factor(subject)27 -2.231e-01  3.000e-01  -0.744 0.456990    
+factor(subject)28  1.386e+00  2.236e-01   6.200 5.66e-10 ***
+factor(subject)29  1.604e+00  2.227e-01   7.203 5.90e-13 ***
+factor(subject)30  1.023e+00  2.372e-01   4.313 1.61e-05 ***
+factor(subject)31  9.149e-02  2.821e-01   0.324 0.745700    
+factor(subject)32 -3.111e-02  2.909e-01  -0.107 0.914822    
+factor(subject)33  4.710e-01  2.597e-01   1.814 0.069736 .  
+factor(subject)34  3.887e-01  2.640e-01   1.473 0.140879    
+factor(subject)35  1.487e+00  2.250e-01   6.609 3.87e-11 ***
+factor(subject)36  3.598e-01  2.656e-01   1.355 0.175551    
+factor(subject)37 -1.221e-01  2.979e-01  -0.410 0.681943    
+factor(subject)38  1.344e+00  2.283e-01   5.889 3.90e-09 ***
+factor(subject)39  1.082e+00  2.354e-01   4.596 4.30e-06 ***
+factor(subject)40 -7.687e-01  3.634e-01  -2.116 0.034384 *  
+factor(subject)41  1.656e-01  2.772e-01   0.597 0.550234    
+factor(subject)42  5.227e-02  2.848e-01   0.184 0.854388    
+factor(subject)43  1.543e+00  2.239e-01   6.891 5.54e-12 ***
+factor(subject)44  9.605e-01  2.393e-01   4.014 5.96e-05 ***
+factor(subject)45  1.177e+00  2.326e-01   5.061 4.18e-07 ***
+factor(subject)46 -5.275e-01  3.355e-01  -1.572 0.115840    
+factor(subject)47  1.053e+00  2.363e-01   4.456 8.35e-06 ***
+factor(subject)48 -5.275e-01  3.355e-01  -1.572 0.115840    
+factor(subject)49  2.949e+00  2.082e-01  14.168  < 2e-16 ***
+factor(subject)50  3.887e-01  2.640e-01   1.473 0.140879    
+factor(subject)51  1.038e+00  2.367e-01   4.385 1.16e-05 ***
+factor(subject)52  5.711e-01  2.548e-01   2.241 0.025023 *  
+factor(subject)53  1.670e+00  2.215e-01   7.538 4.76e-14 ***
+factor(subject)54  4.443e-01  2.611e-01   1.702 0.088759 .  
+factor(subject)55  2.674e-01  2.709e-01   0.987 0.323618    
+factor(subject)56  1.124e+00  2.341e-01   4.800 1.59e-06 ***
+factor(subject)57  2.674e-01  2.709e-01   0.987 0.323618    
+factor(subject)58 -6.017e-01  3.436e-01  -1.751 0.079911 .  
+factor(subject)59 -7.556e-02  2.942e-01  -0.257 0.797331    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 
@@ -2051,7 +2053,7 @@ n= 42
 Call:
 coxph(formula = Surv(time, cens) ~ treat, data = gehan)
 
-  n= 42 
+  n= 42, number of events= 30 
 
                coef exp(coef) se(coef)     z Pr(>|z|)    
 treatcontrol 1.5721    4.8169   0.4124 3.812 0.000138 ***
@@ -2173,7 +2175,8 @@ Response: Days
 > (fit <- glm(y ~ lag1+lag2+lag3, family=poisson(link=identity),
 +             start=c(2, 0.1, 0.1, 0.1)))
 
-Call:  glm(formula = y ~ lag1 + lag2 + lag3, family = poisson(link = identity),      start = c(2, 0.1, 0.1, 0.1)) 
+Call:  glm(formula = y ~ lag1 + lag2 + lag3, family = poisson(link = identity), 
+    start = c(2, 0.1, 0.1, 0.1))
 
 Coefficients:
 (Intercept)         lag1         lag2         lag3  
@@ -2187,7 +2190,8 @@ Warning in log(ifelse(y == 0, 1, y/mu)) : NaNs produced
 Error : no valid set of coefficients has been found: please supply starting values
 > glm.nb(y ~ lag1+lag2+lag3, link=identity,  start=c(2, 0.1, 0.1, 0.1))
 
-Call:  glm.nb(formula = y ~ lag1 + lag2 + lag3, start = c(2, 0.1, 0.1,      0.1), link = identity, init.theta = 4.406504429) 
+Call:  glm.nb(formula = y ~ lag1 + lag2 + lag3, start = c(2, 0.1, 0.1, 
+    0.1), link = identity, init.theta = 4.406504429)
 
 Coefficients:
 (Intercept)         lag1         lag2         lag3  
@@ -2198,7 +2202,8 @@ Null Deviance:	    55.07
 Residual Deviance: 50.09 	AIC: 215.9 
 > glm.nb(y ~ lag1+lag2+lag3, link=identity,  start=coef(fit))
 
-Call:  glm.nb(formula = y ~ lag1 + lag2 + lag3, start = coef(fit), link = identity,      init.theta = 4.406504429) 
+Call:  glm.nb(formula = y ~ lag1 + lag2 + lag3, start = coef(fit), link = identity, 
+    init.theta = 4.406504429)
 
 Coefficients:
 (Intercept)         lag1         lag2         lag3  
@@ -2209,7 +2214,8 @@ Null Deviance:	    55.07
 Residual Deviance: 50.09 	AIC: 215.9 
 > glm.nb(y ~ lag1+lag2+lag3, link=identity, etastart=rep(5, 42))
 
-Call:  glm.nb(formula = y ~ lag1 + lag2 + lag3, etastart = rep(5, 42),      link = identity, init.theta = 4.406504429) 
+Call:  glm.nb(formula = y ~ lag1 + lag2 + lag3, etastart = rep(5, 42), 
+    link = identity, init.theta = 4.406504429)
 
 Coefficients:
 (Intercept)         lag1         lag2         lag3  
@@ -2389,33 +2395,33 @@ Deviance Residuals:
 -4.5551  -1.0612  -0.0593   0.6483   4.1478  
 
 Coefficients:
-                                    Estimate Std. Error   z value Pr(>|z|)    
-(Intercept)                        3.136e+00  1.196e-01    26.225  < 2e-16 ***
-InflMedium                         2.733e-01  1.586e-01     1.723 0.084868 .  
-InflHigh                          -2.054e-01  1.784e-01    -1.152 0.249511    
-TypeApartment                      3.666e-01  1.555e-01     2.357 0.018403 *  
-TypeAtrium                        -7.828e-01  2.134e-01    -3.668 0.000244 ***
-TypeTerrace                       -8.145e-01  2.157e-01    -3.775 0.000160 ***
-ContHigh                          -1.490e-15  1.690e-01 -8.81e-15 1.000000    
-Sat.L                              1.159e-01  4.038e-02     2.871 0.004094 ** 
-Sat.Q                              2.629e-01  4.515e-02     5.824 5.76e-09 ***
-InflMedium:TypeApartment          -1.177e-01  2.086e-01    -0.564 0.572571    
-InflHigh:TypeApartment             1.753e-01  2.279e-01     0.769 0.441783    
-InflMedium:TypeAtrium             -4.068e-01  3.035e-01    -1.340 0.180118    
-InflHigh:TypeAtrium               -1.692e-01  3.294e-01    -0.514 0.607433    
-InflMedium:TypeTerrace             6.292e-03  2.860e-01     0.022 0.982450    
-InflHigh:TypeTerrace              -9.305e-02  3.280e-01    -0.284 0.776633    
-InflMedium:ContHigh               -1.398e-01  2.279e-01    -0.613 0.539715    
-InflHigh:ContHigh                 -6.091e-01  2.800e-01    -2.176 0.029585 *  
-TypeApartment:ContHigh             5.029e-01  2.109e-01     2.385 0.017083 *  
-TypeAtrium:ContHigh                6.774e-01  2.751e-01     2.462 0.013811 *  
-TypeTerrace:ContHigh               1.099e+00  2.675e-01     4.106 4.02e-05 ***
-InflMedium:TypeApartment:ContHigh  5.359e-02  2.862e-01     0.187 0.851450    
-InflHigh:TypeApartment:ContHigh    1.462e-01  3.380e-01     0.432 0.665390    
-InflMedium:TypeAtrium:ContHigh     1.555e-01  3.907e-01     0.398 0.690597    
-InflHigh:TypeAtrium:ContHigh       4.782e-01  4.441e-01     1.077 0.281619    
-InflMedium:TypeTerrace:ContHigh   -4.980e-01  3.671e-01    -1.357 0.174827    
-InflHigh:TypeTerrace:ContHigh     -4.470e-01  4.545e-01    -0.984 0.325326    
+                                    Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                        3.136e+00  1.196e-01  26.225  < 2e-16 ***
+InflMedium                         2.733e-01  1.586e-01   1.723 0.084868 .  
+InflHigh                          -2.054e-01  1.784e-01  -1.152 0.249511    
+TypeApartment                      3.666e-01  1.555e-01   2.357 0.018403 *  
+TypeAtrium                        -7.828e-01  2.134e-01  -3.668 0.000244 ***
+TypeTerrace                       -8.145e-01  2.157e-01  -3.775 0.000160 ***
+ContHigh                          -1.490e-15  1.690e-01   0.000 1.000000    
+Sat.L                              1.159e-01  4.038e-02   2.871 0.004094 ** 
+Sat.Q                              2.629e-01  4.515e-02   5.824 5.76e-09 ***
+InflMedium:TypeApartment          -1.177e-01  2.086e-01  -0.564 0.572571    
+InflHigh:TypeApartment             1.753e-01  2.279e-01   0.769 0.441783    
+InflMedium:TypeAtrium             -4.068e-01  3.035e-01  -1.340 0.180118    
+InflHigh:TypeAtrium               -1.692e-01  3.294e-01  -0.514 0.607433    
+InflMedium:TypeTerrace             6.292e-03  2.860e-01   0.022 0.982450    
+InflHigh:TypeTerrace              -9.305e-02  3.280e-01  -0.284 0.776633    
+InflMedium:ContHigh               -1.398e-01  2.279e-01  -0.613 0.539715    
+InflHigh:ContHigh                 -6.091e-01  2.800e-01  -2.176 0.029585 *  
+TypeApartment:ContHigh             5.029e-01  2.109e-01   2.385 0.017083 *  
+TypeAtrium:ContHigh                6.774e-01  2.751e-01   2.462 0.013811 *  
+TypeTerrace:ContHigh               1.099e+00  2.675e-01   4.106 4.02e-05 ***
+InflMedium:TypeApartment:ContHigh  5.359e-02  2.862e-01   0.187 0.851450    
+InflHigh:TypeApartment:ContHigh    1.462e-01  3.380e-01   0.432 0.665390    
+InflMedium:TypeAtrium:ContHigh     1.555e-01  3.907e-01   0.398 0.690597    
+InflHigh:TypeAtrium:ContHigh       4.782e-01  4.441e-01   1.077 0.281619    
+InflMedium:TypeTerrace:ContHigh   -4.980e-01  3.671e-01  -1.357 0.174827    
+InflHigh:TypeTerrace:ContHigh     -4.470e-01  4.545e-01  -0.984 0.325326    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 
@@ -3030,7 +3036,7 @@ Loading required package: splines
 Call:
 coxph(formula = Surv(time) ~ ag + log(wbc), data = leuk)
 
-  n= 33 
+  n= 33, number of events= 33 
 
              coef exp(coef) se(coef)      z Pr(>|z|)   
 agpresent -1.0691    0.3433   0.4293 -2.490  0.01276 * 
@@ -3351,7 +3357,7 @@ n= 40
 Call:
 coxph(formula = Surv(time, cens) ~ temp, data = motors)
 
-  n= 40 
+  n= 40, number of events= 17 
 
         coef exp(coef) se(coef)     z Pr(>|z|)    
 temp 0.09185   1.09620  0.02736 3.358 0.000786 ***
@@ -3514,7 +3520,7 @@ detaching ‘package:lattice’
 > #
 > glm(Days ~ .^4, family = negative.binomial(2), data = quine)
 
-Call:  glm(formula = Days ~ .^4, family = negative.binomial(2), data = quine) 
+Call:  glm(formula = Days ~ .^4, family = negative.binomial(2), data = quine)
 
 Coefficients:
           (Intercept)                   EthN                   SexM  
@@ -3831,8 +3837,6 @@ Golden.rain  Marvellous     Victory
 > 
 > ir <- rbind(iris3[,,1], iris3[,,2], iris3[,,3])
 > parcoord(log(ir)[, c(3, 4, 2, 1)], col = 1 + (0:149)%/%50)
-Warning in matplot(1L:ncol(x), t(x), type = "l", col = col, lty = lty, xlab = "",  :
-  default 'pch' is smaller than number of columns and hence recycled
 > 
 > 
 > 
@@ -3890,7 +3894,7 @@ detaching ‘package:nlme’
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: plot.profile
-> ### Title: Plottig Functions for 'profile' Objects
+> ### Title: Plotting Functions for 'profile' Objects
 > ### Aliases: plot.profile pairs.profile
 > ### Keywords: models hplot
 > 
@@ -4691,7 +4695,7 @@ brthwt> options(contrasts = c("contr.treatment", "contr.poly"))
 
 brthwt> glm(low ~ ., binomial, bwt)
 
-Call:  glm(formula = low ~ ., family = binomial, data = bwt) 
+Call:  glm(formula = low ~ ., family = binomial, data = bwt)
 
 Coefficients:
 (Intercept)          age          lwt    raceblack    raceother    smokeTRUE  
@@ -5202,7 +5206,7 @@ detaching ‘package:lattice’
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  17.701 0.124 25.008 0 0 
+Time elapsed:  18.479 0.211 27.568 0 0 
 > grDevices::dev.off()
 null device 
           1 

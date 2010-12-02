@@ -1,7 +1,7 @@
 \name{con2tr}
 \alias{con2tr}
 \title{
-  Convert Lists to Data Frames for use by Lattice
+  Convert Lists to Data Frames for use by lattice
 }
 \description{
   Convert lists to data frames for use by lattice.

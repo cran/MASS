@@ -1,5 +1,5 @@
 % file MASS/man/confint.Rd
-% copyright (C) 1999-2008 W. N. Venables and B. D. Ripley
+% copyright (C) 1999-2010 W. N. Venables and B. D. Ripley
 %
 \name{confint-MASS}
 \alias{confint.glm}
@@ -21,12 +21,12 @@ Confidence Intervals for Model Parameters
 }
 \arguments{
   \item{object}{
-    a fitted model object. Methods currently exist for the classes
+    a fitted model object.  Methods currently exist for the classes
     \code{"glm"}, \code{"nls"} and for profile objects from these classes.
   }
   \item{parm}{
     a specification of which parameters are to be given confidence
-    intervals, either a vector of numbers or a vector of names. If
+    intervals, either a vector of numbers or a vector of names.  If
     missing, all parameters are considered.
   }
   \item{level}{
@@ -41,15 +41,15 @@ Confidence Intervals for Model Parameters
 }
 \value{
   A matrix (or vector) with columns giving lower and upper confidence
-  limits for each parameter. These will be labelled as (1 - level)/2 and
+  limits for each parameter.  These will be labelled as (1 - level)/2 and
   1 - (1 - level)/2 in \% (by default 2.5\% and 97.5\%).
 }
 \details{
   \code{\link[stats]{confint}} is a generic function in package \code{stats}.
   
-  These \code{confint} methods calls the appropriate profile method,
-  then finds the confidence intervals by interpolation in the profile
-  traces. If the profile object is already available it should be used
+  These \code{confint} methods call the appropriate profile method,
+  then find the confidence intervals by interpolation in the profile
+  traces.  If the profile object is already available it should be used
   as the main argument rather than the fitted model object itself.
 }
 \references{

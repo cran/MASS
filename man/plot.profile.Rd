@@ -4,7 +4,7 @@
 \name{plot.profile}
 \alias{plot.profile}
 \alias{pairs.profile}
-\title{Plottig Functions for 'profile' Objects}
+\title{Plotting Functions for 'profile' Objects}
 \description{
   \code{\link{plot}} and \code{\link{pairs}} methods for objects of
   class \code{"profile"}.

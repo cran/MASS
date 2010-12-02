@@ -1,5 +1,5 @@
 % file MASS/man/galaxies.Rd
-% copyright (C) 1994-2006 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2010 W. N. Venables and B. D. Ripley
 %
 \name{galaxies}
 \alias{galaxies}
@@ -22,7 +22,7 @@ galaxies
   
   Postman, M., Huchra, J. P. and Geller, M. J. (1986)
   Probes of large-scale structures in the Corona Borealis region.
-  \emph{Astrophysical Journal} \bold{92}, 1238--1247.
+  \emph{Astronomical Journal} \bold{92}, 1238--1247.
 }
 \references{
   Venables, W. N. and Ripley, B. D. (2002)
