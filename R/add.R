@@ -78,8 +78,7 @@ addterm.default <-
 	aod[, c("LRT", "Pr(Chi)")] <- list(dev, P)
     }
     aod <- aod[o, ]
-    head <- c("Single term additions", "\nModel:",
-              deparse(as.vector(formula(object))))
+    head <- c("Single term additions", "\nModel:", deparse(formula(object)))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -129,8 +128,7 @@ addterm.lm <-
         aod[, c("F Value", "Pr(F)")] <- Fstat(aod, aod$RSS[1L], rdf)
     }
     aod <- aod[o, ]
-    head <- c("Single term additions", "\nModel:",
-              deparse(as.vector(formula(object))))
+    head <- c("Single term additions", "\nModel:", deparse(formula(object)))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -244,8 +242,7 @@ addterm.glm <-
 	aod[, c("F value", "Pr(F)")] <- Fstat(aod, rdf)
     }
     aod <- aod[o, ]
-    head <- c("Single term additions", "\nModel:",
-              deparse(as.vector(formula(object))))
+    head <- c("Single term additions", "\nModel:", deparse(formula(object)))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -303,8 +300,7 @@ dropterm.default <-
         aod[, c("LRT", "Pr(Chi)")] <- list(dev, P)
     }
     aod <- aod[o, ]
-    head <- c("Single term deletions", "\nModel:",
-              deparse(as.vector(formula(object))))
+    head <- c("Single term deletions", "\nModel:", deparse(formula(object)))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -342,8 +338,7 @@ dropterm.lm <-
         aod[, c("F Value", "Pr(F)")] <- list(Fs, P)
     }
     aod <- aod[o, ]
-    head <- c("Single term deletions", "\nModel:",
-              deparse(as.vector(formula(object))))
+    head <- c("Single term deletions", "\nModel:", deparse(formula(object)))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -439,8 +434,7 @@ dropterm.glm <-
 	aod[, c("F value", "Pr(F)")] <- list(Fs, P)
     }
     aod <- aod[o, ]
-    head <- c("Single term deletions", "\nModel:",
-              deparse(as.vector(formula(object))))
+    head <- c("Single term deletions", "\nModel:", deparse(formula(object)))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")

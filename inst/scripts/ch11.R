@@ -41,7 +41,6 @@ library(rggobi)
 g <- ggobi(lcrabs)
 d <- displays(g)[[1]]
 pmode(d) <- "2D Tour"
-variables(d) <- list(X=3:7) # 0-based
 crabs.grp <- factor(c("B", "b", "O", "o")[rep(1:4, each = 50)])
 glyph_colour(g$lcrabs) <- crabs.grp
 colorscheme(g) <- "Paired 4"

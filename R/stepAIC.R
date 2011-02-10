@@ -50,8 +50,8 @@ stepAIC <-
         ddf <- c(NA, abs(diff(rdf)))
         AIC <- sapply(models, "[[", "AIC")
         heading <- c("Stepwise Model Path \nAnalysis of Deviance Table",
-                     "\nInitial Model:", deparse(as.vector(formula(object))),
-                     "\nFinal Model:", deparse(as.vector(formula(fit))),
+                     "\nInitial Model:", deparse(formula(object)),
+                     "\nFinal Model:", deparse(formula(fit)),
                      "\n")
         aod <-
             if(usingCp)
@@ -110,7 +110,7 @@ stepAIC <-
     Terms <- terms(fit)
     if(trace) {
         cat("Start:  AIC=", format(round(bAIC, 2)), "\n",
-            cut.string(deparse(as.vector(formula(fit)))), "\n\n", sep='')
+            cut.string(deparse(formula(fit))), "\n\n", sep='')
 	utils::flush.console()
     }
     models[[nm]] <- list(deviance = mydeviance(fit), df.resid = n - edf,
@@ -189,7 +189,7 @@ stepAIC <-
         bAIC <- bAIC[2L]
         if(trace) {
             cat("\nStep:  AIC=", format(round(bAIC, 2)), "\n",
-                cut.string(deparse(as.vector(formula(fit)))), "\n\n", sep='')
+                cut.string(deparse(formula(fit))), "\n\n", sep='')
 	    utils::flush.console()
 	}
         ## add a tolerance as dropping 0-df terms might increase AIC slightly

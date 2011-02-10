@@ -130,7 +130,7 @@ glm.nb <- function(formula, data, weights,
     class(fit) <- c("glm", "lm")
     mu <- fit$fitted.values
     th <- as.vector(theta.ml(Y, mu, sum(w), w, limit = control$maxit, trace =
-                             control$trace> 2))
+                             control$trace> 2)) # drop attributes
     if(control$trace > 1)
         message("Initial value for theta:", signif(th))
     fam <- do.call("negative.binomial", list(theta = th, link = link))

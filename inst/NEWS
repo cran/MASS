@@ -172,3 +172,4 @@ This file documents software changes since the third edition.
 - fitdistr() gains a vcov() method (suggested by Achim Zeileis).
 - ch06.R has R alternatives to fac.design.
 - ch11.R has R alternatives for ggobi and factor rotation.
+- hubers() copes in extreme case when middle 50% of data is constant.

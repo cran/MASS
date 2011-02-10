@@ -1,8 +1,8 @@
 Package: MASS
 Priority: recommended
-Version: 7.3-9
-Date: 2010-12-02
-Revision: $Rev: 2928 $
+Version: 7.3-11
+Date: 2011-02-10
+Revision: $Rev: 2945 $
 Depends: R (>= 2.12.0), grDevices, graphics, stats, utils
 Suggests: lattice, nlme, nnet, survival
 Enhances: AER, FrF2, GPArotation
@@ -17,6 +17,6 @@ License: GPL-2 | GPL-3
 URL: http://www.stats.ox.ac.uk/pub/MASS4/
 LazyLoad: yes
 LazyData: yes
-Packaged: 2010-12-02 16:56:28 UTC; ripley
+Packaged: 2011-02-10 10:42:50 UTC; ripley
 Repository: CRAN
-Date/Publication: 2010-12-03 08:41:29
+Date/Publication: 2011-02-10 16:25:06
