@@ -329,3 +329,6 @@ coef.loglm <- function(object, ...)
     cat("Re-fitting to calculate missing coefficients\n")
     update(object, param = TRUE)$param
 }
+
+nobs.loglm  <- function(object, ...) object[["nobs"]]
+

@@ -1,5 +1,5 @@
 # file MASS/R/polr.R
-# copyright (C) 1994-2008 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2010 W. N. Venables and B. D. Ripley
 # Use of transformed intercepts contributed by David Firth
 #
 #  This program is free software; you can redistribute it and/or modify
@@ -16,85 +16,39 @@
 #  http://www.r-project.org/Licenses/
 #
 polr <- function(formula, data, weights, start, ..., subset,
-                 na.action, contrasts = NULL, Hess = FALSE,
-                 model = TRUE,
+                 na.action, contrasts = NULL, Hess = FALSE, model = TRUE,
                  method = c("logistic", "probit", "cloglog", "cauchit"))
 {
-    logit <- function(p) log(p/(1 - p))
-
-    fmin <- function(beta) {
-        theta <- beta[pc + 1L:q]
-        gamm <- c(-100, cumsum(c(theta[1L], exp(theta[-1L]))), 100)
-        eta <- offset
-        if (pc > 0)
-            eta <- eta + drop(x %*% beta[1L:pc])
-        pr <- pfun(gamm[y + 1] - eta) - pfun(gamm[y] - eta)
-        if (all(pr > 0))
-            -sum(wt * log(pr))
-        else Inf
-    }
-
-    gmin <- function(beta)
-    {
-        jacobian <- function(theta) { ## dgamma by dtheta matrix
-            k <- length(theta)
-            etheta <- exp(theta)
-            mat <- matrix(0 , k, k)
-            mat[, 1] <- rep(1, k)
-            for (i in 2:k) mat[i:k, i] <- etheta[i]
-            mat
-        }
-        theta <- beta[pc + 1L:q]
-        gamm <- c(-100, cumsum(c(theta[1L], exp(theta[-1L]))), 100)
-        eta <- offset
-        if(pc > 0) eta <- eta + drop(x %*% beta[1L:pc])
-        pr <- pfun(gamm[y+1] - eta) - pfun(gamm[y] - eta)
-        p1 <- dfun(gamm[y+1] - eta)
-        p2 <- dfun(gamm[y] - eta)
-        g1 <- if(pc > 0) t(x) %*% (wt*(p1 - p2)/pr) else numeric(0)
-        xx <- .polrY1*p1 - .polrY2*p2
-        g2 <- - t(xx) %*% (wt/pr)
-        g2 <- t(g2) %*% jacobian(theta)
-        if(all(pr > 0)) c(g1, g2) else rep(NA, pc+q)
-    }
-
     m <- match.call(expand.dots = FALSE)
     method <- match.arg(method)
-    pfun <- switch(method, logistic = plogis, probit = pnorm,
-                   cloglog = pgumbel, cauchit = pcauchy)
-    dfun <- switch(method, logistic = dlogis, probit = dnorm,
-                   cloglog = dgumbel, cauchit = dcauchy)
-    if(is.matrix(eval.parent(m$data)))
-        m$data <- as.data.frame(data)
+    if(is.matrix(eval.parent(m$data))) m$data <- as.data.frame(data)
     m$start <- m$Hess <- m$method <- m$model <- m$... <- NULL
     m[[1L]] <- as.name("model.frame")
     m <- eval.parent(m)
     Terms <- attr(m, "terms")
     x <- model.matrix(Terms, m, contrasts)
-    xint <- match("(Intercept)", colnames(x), nomatch=0L)
+    xint <- match("(Intercept)", colnames(x), nomatch = 0L)
     n <- nrow(x)
     pc <- ncol(x)
     cons <- attr(x, "contrasts") # will get dropped by subsetting
-    if(xint > 0) {
-        x <- x[, -xint, drop=FALSE]
-        pc <- pc - 1
+    if(xint > 0L) {
+        x <- x[, -xint, drop = FALSE]
+        pc <- pc - 1L
     } else warning("an intercept is needed and assumed")
     wt <- model.weights(m)
     if(!length(wt)) wt <- rep(1, n)
     offset <- model.offset(m)
-    if(length(offset) <= 1) offset <- rep(0, n)
+    if(length(offset) <= 1L) offset <- rep(0, n)
     y <- model.response(m)
     if(!is.factor(y)) stop("response must be a factor")
-    lev <- levels(y)
-    if(length(lev) <= 2) stop("response must have 3 or more levels")
+    lev <- levels(y); llev <- length(lev)
+    if(llev <= 2L) stop("response must have 3 or more levels")
     y <- unclass(y)
-    q <- length(lev) - 1
+    q <- llev - 1L
     Y <- matrix(0, n, q)
-    .polrY1 <- col(Y) == y
-    .polrY2 <- col(Y) == y - 1
     if(missing(start)) {
         # try logistic/probit regression on 'middle' cut
-        q1 <- length(lev) %/% 2
+        q1 <- llev %/% 2L
         y1 <- (y > q1)
         X <- cbind(Intercept = rep(1, n), x)
         fit <-
@@ -114,37 +68,31 @@ polr <- function(formula, data, weights, start, ..., subset,
             x <- x[, keep[-1L], drop = FALSE]
             pc <- ncol(x)
         }
-        spacing <- logit((1L:q)/(q+1)) # just a guess
+        logit <- function(p) log(p/(1 - p))
+        spacing <- logit((1L:q)/(q+1L)) # just a guess
         if(method != "logistic") spacing <- spacing/1.7
         gammas <- -coefs[1L] + spacing - spacing[q1]
-        thetas <- c(gammas[1L], log(diff(gammas)))
-        s0 <- c(coefs[-1L], thetas)
+        start <- c(coefs[-1L], gammas)
     } else if(length(start) != pc + q)
 	stop("'start' is not of the correct length")
-    else {
-        s0 <- if(pc > 0) c(start[seq_len(pc+1)], log(diff(start[-seq_len(pc)])))
-        else c(start[1L], diff(start))
-        }
-    res <- optim(s0, fmin, gmin, method="BFGS", hessian = Hess, ...)
-    beta <- res$par[seq_len(pc)]
-    theta <- res$par[pc + 1L:q]
-    zeta <- cumsum(c(theta[1L],exp(theta[-1L])))
-    deviance <- 2 * res$value
-    niter <- c(f.evals=res$counts[1L], g.evals=res$counts[2L])
-    names(zeta) <- paste(lev[-length(lev)], lev[-1L], sep="|")
-    if(pc > 0) {
-        names(beta) <- colnames(x)
-        eta <- offset + drop(x %*% beta)
-    } else eta <- offset + rep(0, n)
 
+    ans <- polr.fit(x, y, wt, start, offset, method, hessian = Hess, ...)
+    beta <- ans$coefficients
+    zeta <- ans$zeta
+    deviance <- ans$deviance
+    res <- ans$res
+    niter <- c(f.evals = res$counts[1L], g.evals = res$counts[2L])
+
+    eta <- if(pc) offset + drop(x %*% beta) else offset + rep(0, n)
+    pfun <- switch(method, logistic = plogis, probit = pnorm,
+                   cloglog = pgumbel, cauchit = pcauchy)
     cumpr <- matrix(pfun(matrix(zeta, n, q, byrow=TRUE) - eta), , q)
     fitted <- t(apply(cumpr, 1L, function(x) diff(c(0, x, 1))))
     dimnames(fitted) <- list(row.names(m), lev)
     fit <- list(coefficients = beta, zeta = zeta, deviance = deviance,
                 fitted.values = fitted, lev = lev, terms = Terms,
                 df.residual = sum(wt) - pc - q, edf = pc + q, n = sum(wt),
-                nobs = sum(wt),
-                call = match.call(), method = method,
+                nobs = sum(wt), call = match.call(), method = method,
 		convergence = res$convergence, niter = niter, lp = eta)
     if(Hess) {
         dn <- c(names(beta), names(zeta))
@@ -174,8 +122,8 @@ print.polr <- function(x, ...)
     }
     cat("\nIntercepts:\n")
     print(x$zeta, ...)
-    cat("\nResidual Deviance:", format(x$deviance, nsmall=2), "\n")
-    cat("AIC:", format(x$deviance + 2*x$edf, nsmall=2), "\n")
+    cat("\nResidual Deviance:", format(x$deviance, nsmall=2L), "\n")
+    cat("AIC:", format(x$deviance + 2*x$edf, nsmall=2L), "\n")
     if(nzchar(mess <- naprint(x$na.action))) cat("(", mess, ")\n", sep="")
     if(x$convergence > 0)
         cat("Warning: did not converge as iteration limit reached\n")
@@ -188,8 +136,8 @@ vcov.polr <- function(object, ...)
         k <- length(theta)
         etheta <- exp(theta)
         mat <- matrix(0 , k, k)
-        mat[, 1] <- rep(1, k)
-        for (i in 2:k) mat[i:k, i] <- etheta[i]
+        mat[, 1L] <- rep(1, k)
+        for (i in 2L:k) mat[i:k, i] <- etheta[i]
         mat
     }
 
@@ -197,7 +145,7 @@ vcov.polr <- function(object, ...)
         message("\nRe-fitting to get Hessian\n")
 	utils::flush.console()
         object <- update(object, Hess=TRUE,
-                         start=c(object$coefficients, object$zeta))
+                         start = c(object$coefficients, object$zeta))
     }
     vc <- ginv(object$Hessian)
     pc <- length(coef(object))
@@ -217,12 +165,12 @@ summary.polr <- function(object, digits = max(3, .Options$digits - 3),
     cc <- c(coef(object), object$zeta)
     pc <- length(coef(object))
     q <- length(object$zeta)
-    coef <- matrix(0, pc+q, 3, dimnames=list(names(cc),
+    coef <- matrix(0, pc+q, 3L, dimnames=list(names(cc),
                                c("Value", "Std. Error", "t value")))
-    coef[, 1] <- cc
+    coef[, 1L] <- cc
     vc <- vcov(object)
-    coef[, 2] <- sd <- sqrt(diag(vc))
-    coef[, 3] <- coef[, 1]/coef[, 2]
+    coef[, 2L] <- sd <- sqrt(diag(vc))
+    coef[, 3L] <- coef[, 1L]/coef[, 2L]
     object$coefficients <- coef
     object$pc <- pc
     object$digits <- digits
@@ -248,17 +196,17 @@ print.summary.polr <- function(x, digits = x$digits, ...)
         cat("\nNo coefficients\n")
     }
     cat("\nIntercepts:\n")
-    print(coef[(pc+1):nrow(coef), , drop=FALSE], quote = FALSE,
+    print(coef[(pc+1L):nrow(coef), , drop=FALSE], quote = FALSE,
           digits = digits, ...)
-    cat("\nResidual Deviance:", format(x$deviance, nsmall=2), "\n")
-    cat("AIC:", format(x$deviance + 2*x$edf, nsmall=2), "\n")
+    cat("\nResidual Deviance:", format(x$deviance, nsmall=2L), "\n")
+    cat("AIC:", format(x$deviance + 2*x$edf, nsmall=2L), "\n")
     if(nzchar(mess <- naprint(x$na.action))) cat("(", mess, ")\n", sep="")
     if(!is.null(correl <- x$correlation)) {
         cat("\nCorrelation of Coefficients:\n")
         ll <- lower.tri(correl)
         correl[ll] <- format(round(correl[ll], digits))
         correl[!ll] <- ""
-        print(correl[-1, -ncol(correl)], quote = FALSE, ...)
+        print(correl[-1L, -ncol(correl)], quote = FALSE, ...)
     }
     invisible(x)
 }
@@ -277,7 +225,7 @@ predict.polr <- function(object, newdata, type=c("class","probs"), ...)
             .checkMFClasses(cl, m)
         X <- model.matrix(Terms, m, contrasts = object$contrasts)
         xint <- match("(Intercept)", colnames(X), nomatch=0L)
-        if(xint > 0) X <- X[, -xint, drop=FALSE]
+        if(xint > 0L) X <- X[, -xint, drop=FALSE]
         n <- nrow(X)
         q <- length(object$zeta)
         eta <- drop(X %*% object$coefficients)
@@ -289,11 +237,9 @@ predict.polr <- function(object, newdata, type=c("class","probs"), ...)
     }
     if(missing(newdata) && !is.null(object$na.action))
         Y <- napredict(object$na.action, Y)
-    switch(type, class = {
-        Y <- factor(max.col(Y), levels=seq_along(object$lev),
-                    labels=object$lev)
-    }, probs = {})
-    drop(Y)
+    if(type == "class")
+        factor(max.col(Y), levels=seq_along(object$lev), labels=object$lev)
+    else drop(Y)
 }
 
 extractAIC.polr <- function(fit, scale = 0, k = 2, ...)
@@ -340,7 +286,7 @@ anova.polr <- function (object, ..., test = c("Chisq", "none"))
 {
     test <- match.arg(test)
     dots <- list(...)
-    if (length(dots) == 0L)
+    if (!length(dots))
         stop('anova is not implemented for a single "polr" object')
     mlist <- list(object, ...)
     nt <- length(mlist)
@@ -356,15 +302,15 @@ anova.polr <- function (object, ..., test = c("Chisq", "none"))
     mds <- sapply(mlist, function(x) paste(formula(x)[3L]))
     dfs <- dflis[s]
     lls <- sapply(mlist, function(x) deviance(x))
-    tss <- c("", paste(1L:(nt - 1), 2:nt, sep = " vs "))
-    df <- c(NA, -diff(dfs))
-    x2 <- c(NA, -diff(lls))
-    pr <- c(NA, 1 - pchisq(x2[-1L], df[-1L]))
+    tss <- c("", paste(seq_len(nt - 1L), 2L:nt, sep = " vs "))
+    df <- c(NA_integer_, -diff(dfs))
+    x2 <- c(NA_real_, -diff(lls))
+    pr <- c(NA_real_, 1 - pchisq(x2[-1L], df[-1L]))
     out <- data.frame(Model = mds, Resid.df = dfs, Deviance = lls,
                       Test = tss, Df = df, LRtest = x2, Prob = pr)
     names(out) <- c("Model", "Resid. df", "Resid. Dev", "Test",
                     "   Df", "LR stat.", "Pr(Chi)")
-    if (test == "none") out <- out[, 1L:6]
+    if (test == "none") out <- out[, -7L]
     class(out) <- c("Anova", "data.frame")
     attr(out, "heading") <-
         c("Likelihood ratio tests of ordinal regression models\n",
@@ -372,20 +318,16 @@ anova.polr <- function (object, ..., test = c("Chisq", "none"))
     out
 }
 
-polr.fit <- function(x, y, wt, start, offset, method)
+polr.fit <- function(x, y, wt, start, offset, method, ...)
 {
-    logit <- function(p) log(p/(1 - p))
-
     fmin <- function(beta) {
-        theta <- beta[pc + 1L:q]
-        gamm <- c(-100, cumsum(c(theta[1L], exp(theta[-1L]))), 100)
+        theta <- beta[pc + ind_q]
+        gamm <- c(-Inf , cumsum(c(theta[1L], exp(theta[-1L]))), Inf)
         eta <- offset
-        if (pc > 0)
-            eta <- eta + drop(x %*% beta[1L:pc])
-        pr <- pfun(gamm[y + 1] - eta) - pfun(gamm[y] - eta)
-        if (all(pr > 0))
-            -sum(wt * log(pr))
-        else Inf
+        if (pc) eta <- eta + drop(x %*% beta[ind_pc])
+        pr <- pfun(pmin(100, gamm[y + 1] - eta)) -
+            pfun(pmax(-100, gamm[y] - eta))
+        if (all(pr > 0)) -sum(wt * log(pr)) else Inf
     }
 
     gmin <- function(beta)
@@ -394,22 +336,23 @@ polr.fit <- function(x, y, wt, start, offset, method)
             k <- length(theta)
             etheta <- exp(theta)
             mat <- matrix(0 , k, k)
-            mat[, 1] <- rep(1, k)
-            for (i in 2:k) mat[i:k, i] <- etheta[i]
+            mat[, 1L] <- rep(1, k)
+            for (i in 2L:k) mat[i:k, i] <- etheta[i]
             mat
         }
-        theta <- beta[pc + 1L:q]
-        gamm <- c(-100, cumsum(c(theta[1L], exp(theta[-1L]))), 100)
+        theta <- beta[pc + ind_q]
+        gamm <- c(-Inf, cumsum(c(theta[1L], exp(theta[-1L]))), Inf)
         eta <- offset
-        if(pc > 0) eta <- eta + drop(x %*% beta[1L:pc])
-        pr <- pfun(gamm[y+1] - eta) - pfun(gamm[y] - eta)
-        p1 <- dfun(gamm[y+1] - eta)
-        p2 <- dfun(gamm[y] - eta)
-        g1 <- if(pc > 0) t(x) %*% (wt*(p1 - p2)/pr) else numeric(0)
+        if(pc) eta <- eta + drop(x %*% beta[ind_pc])
+        z1 <- pmin(100, gamm[y+1L] - eta)
+        z2 <- pmax(-100, gamm[y] - eta)
+        pr <- pfun(z1) - pfun(z2)
+        p1 <- dfun(z1); p2 <- dfun(z2)
+        g1 <- if(pc) t(x) %*% (wt*(p1 - p2)/pr) else numeric()
         xx <- .polrY1*p1 - .polrY2*p2
         g2 <- - t(xx) %*% (wt/pr)
         g2 <- t(g2) %*% jacobian(theta)
-        if(all(pr > 0)) c(g1, g2) else rep(NA, pc+q)
+        if(all(pr > 0)) c(g1, g2) else rep(NA_real_, pc+q)
     }
 
     pfun <- switch(method, logistic = plogis, probit = pnorm,
@@ -418,29 +361,25 @@ polr.fit <- function(x, y, wt, start, offset, method)
                    cloglog = dgumbel, cauchit = dcauchy)
     n <- nrow(x)
     pc <- ncol(x)
+    ind_pc <- seq_len(pc)
     lev <- levels(y)
     if(length(lev) <= 2L) stop("response must have 3 or more levels")
     y <- unclass(y)
     q <- length(lev) - 1L
+    ind_q <- seq_len(q)
     Y <- matrix(0, n, q)
-    .polrY1 <- col(Y) == y
-    .polrY2 <- col(Y) == y - 1L
+    .polrY1 <- col(Y) == y; .polrY2 <- col(Y) == (y - 1L)
     # pc could be 0.
-    s0 <- if(pc > 0) c(start[seq_len(pc+1)], diff(start[-seq_len(pc)]))
-    else c(start[1L], diff(start))
-    res <- optim(s0, fmin, gmin, method="BFGS")
+    s0 <- if(pc) c(start[seq_len(pc+1L)], log(diff(start[-seq_len(pc)])))
+    else c(start[1L], log(diff(start)))
+    res <- optim(s0, fmin, gmin, method="BFGS", ...)
     beta <- res$par[seq_len(pc)]
-    theta <- res$par[pc + 1L:q]
-    zeta <- cumsum(c(theta[1L],exp(theta[-1L])))
+    theta <- res$par[pc + ind_q]
+    zeta <- cumsum(c(theta[1L], exp(theta[-1L])))
     deviance <- 2 * res$value
     names(zeta) <- paste(lev[-length(lev)], lev[-1L], sep="|")
-    if(pc > 0) {
-        names(beta) <- colnames(x)
-        eta <- drop(x %*% beta)
-    } else {
-        eta <- rep(0, n)
-    }
-    list(coefficients = beta, zeta = zeta, deviance = deviance)
+    if(pc) names(beta) <- colnames(x)
+    list(coefficients = beta, zeta = zeta, deviance = deviance, res = res)
 }
 
 profile.polr <- function(fitted, which = 1L:p, alpha = 0.01,
@@ -524,7 +463,7 @@ confint.profile.polr <-
     if(is.character(parm))  parm <- match(parm, pnames, nomatch = 0L)
     a <- (1-level)/2
     a <- c(a, 1-a)
-    pct <- paste(round(100*a, 1), "%")
+    pct <- paste(round(100*a, 1L), "%")
     ci <- array(NA, dim = c(length(parm), 2L),
                 dimnames = list(pnames[parm], pct))
     cutoff <- qnorm(a)
@@ -539,7 +478,10 @@ confint.profile.polr <-
 }
 
 logLik.polr <- function(object, ...)
-    structure(-0.5 * object$deviance, df = object$edf, class = "logLik")
+    structure(-0.5 * object$deviance, df = object$edf,
+              nobs = object[["nobs"]], class = "logLik")
+
+nobs.polr <- function(object, ...) object[["nobs"]]
 
 simulate.polr <- function(object, nsim = 1, seed = NULL, ...)
 {

@@ -50,8 +50,8 @@ stepAIC <-
         ddf <- c(NA, abs(diff(rdf)))
         AIC <- sapply(models, "[[", "AIC")
         heading <- c("Stepwise Model Path \nAnalysis of Deviance Table",
-                     "\nInitial Model:", deparse(as.vector(formula(object))),
-                     "\nFinal Model:", deparse(as.vector(formula(fit))),
+                     "\nInitial Model:", deparse(formula(object)),
+                     "\nFinal Model:", deparse(formula(fit)),
                      "\n")
         aod <-
             if(usingCp)
@@ -78,28 +78,25 @@ stepAIC <-
     backward <- direction == "both" | direction == "backward"
     forward <- direction == "both" | direction == "forward"
     if(missing(scope)) {
-        fdrop <- numeric(0)
+	fdrop <- numeric()
         fadd <- attr(Terms, "factors")
         if(md) forward <- FALSE
     } else {
         if(is.list(scope)) {
             fdrop <- if(!is.null(fdrop <- scope$lower))
                 attr(terms(update.formula(object, fdrop)), "factors")
-            else numeric(0)
+            else numeric()
             fadd <- if(!is.null(fadd <- scope$upper))
                 attr(terms(update.formula(object, fadd)), "factors")
         } else {
             fadd <- if(!is.null(fadd <- scope))
                 attr(terms(update.formula(object, scope)), "factors")
-            fdrop <- numeric(0)
+            fdrop <- numeric()
         }
     }
     models <- vector("list", steps)
     if(!is.null(keep)) keep.list <- vector("list", steps)
-    ## watch out for partial matching here.
-    if(is.list(object) && (nmm <- match("nobs", names(object), 0)) > 0)
-        n <- object[[nmm]]
-    else n <- length(residuals(object))
+    n <- nobs(object, use.fallback = TRUE)  # might be NA
     fit <- object
     bAIC <- extractAIC(fit, scale, k = k, ...)
     edf <- bAIC[1L]
@@ -110,7 +107,7 @@ stepAIC <-
     Terms <- terms(fit)
     if(trace) {
         cat("Start:  AIC=", format(round(bAIC, 2)), "\n",
-            cut.string(deparse(as.vector(formula(fit)))), "\n\n", sep='')
+            cut.string(deparse(formula(fit))), "\n\n", sep='')
 	utils::flush.console()
     }
     models[[nm]] <- list(deviance = mydeviance(fit), df.resid = n - edf,
@@ -178,10 +175,8 @@ stepAIC <-
         ## may need to look for a 'data' argument in parent
 	fit <- update(fit, paste("~ .", change), evaluate = FALSE)
         fit <- eval.parent(fit)
-        if(is.list(fit) && (nmm <- match("nobs", names(fit), 0)) > 0)
-            nnew <- fit[[nmm]]
-        else nnew <- length(residuals(fit))
-        if(nnew != n)
+        nnew <- nobs(fit, use.fallback = TRUE)
+        if(all(is.finite(c(n, nnew))) && nnew != n)
             stop("number of rows in use has changed: remove missing values?")
         Terms <- terms(fit)
         bAIC <- extractAIC(fit, scale, k = k, ...)
@@ -189,7 +184,7 @@ stepAIC <-
         bAIC <- bAIC[2L]
         if(trace) {
             cat("\nStep:  AIC=", format(round(bAIC, 2)), "\n",
-                cut.string(deparse(as.vector(formula(fit)))), "\n\n", sep='')
+                cut.string(deparse(formula(fit))), "\n\n", sep='')
 	    utils::flush.console()
 	}
         ## add a tolerance as dropping 0-df terms might increase AIC slightly

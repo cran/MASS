@@ -18,8 +18,7 @@ sammon <- function(d, y= cmdscale(d, k), k=2, niter=100, trace=TRUE,
                    magic=0.2, tol=1e-4)
 {
     call <- match.call()
-    if(any(is.infinite(as.vector(d))))
-        stop("Infs not allowed in 'd'")
+    if(any(is.infinite(d))) stop("Infs not allowed in 'd'")
     if(any(is.na(d)) && missing(y))
         stop("an initial configuration must be supplied if there are NAs in 'd'")
     if(!is.matrix(y)) stop("'y' must be a matrix")

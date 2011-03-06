@@ -1,8 +1,11 @@
 if(!nzchar(Sys.getenv("MASS_TESTING"))) q("no")
 unlink("scripts", recursive = TRUE)
 dir.create("scripts")
-Sys.unsetenv("R_TESTS")
+Sys.unsetenv("R_TESTS") # avoid startup using startup.Rs (which is in the dir above)
 setwd("scripts")
+writeLines(c(".Random.seed <- c(0L,1:3)",
+              "options(width = 65, show.signif.stars=FALSE)"),
+           ".Rprofile")
 
 runone <- function(f)
 {

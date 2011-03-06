@@ -130,7 +130,7 @@ glm.nb <- function(formula, data, weights,
     class(fit) <- c("glm", "lm")
     mu <- fit$fitted.values
     th <- as.vector(theta.ml(Y, mu, sum(w), w, limit = control$maxit, trace =
-                             control$trace> 2))
+                             control$trace> 2)) # drop attributes
     if(control$trace > 1)
         message("Initial value for theta:", signif(th))
     fam <- do.call("negative.binomial", list(theta = th, link = link))
@@ -393,14 +393,13 @@ theta.mm <- function(y, mu, dfr, weights, limit = 10,
 
 logLik.negbin <- function(object, ...)
 {
-    if (length(list(...)))
-        warning("extra arguments discarded")
-    p <- object$rank + 1 # for theta
+    if (nargs() > 1L) warning("extra arguments discarded")
+    p <- object$rank + 1L # for theta
     val <- object$twologlik/2
     attr(val, "df") <- p
+    attr(val, "nobs") <- sum(!is.na(object$residuals)) # as for glm
     class(val) <- "logLik"
     val
-
 }
 
 vcov.negbin <- function(object, ...)

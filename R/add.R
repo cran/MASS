@@ -28,7 +28,6 @@ safe_pf <- function(q, df1, ...)
     pf(q=q, df1=df1, ...)
 }
 
-
 addterm <-
     function(object, ...) UseMethod("addterm")
 
@@ -49,7 +48,7 @@ addterm.default <-
     ans <- matrix(nrow = ns + 1L, ncol = 2L,
                   dimnames = list(c("<none>", scope), c("df", "AIC")))
     ans[1L,  ] <- extractAIC(object, scale, k = k, ...)
-    n0 <- length(object$residuals)
+    n0 <- nobs(object, use.fallback = TRUE)
     env <- environment(formula(object))
     for(i in seq(ns)) {
         tt <- scope[i]
@@ -61,7 +60,8 @@ addterm.default <-
                        evaluate = FALSE)
 	nfit <- eval(nfit, envir=env) # was  eval.parent(nfit)
 	ans[i+1L, ] <- extractAIC(nfit, scale, k = k, ...)
-        if(length(nfit$residuals) != n0)
+        nnew <- nobs(nfit, use.fallback = TRUE)
+        if(all(is.finite(c(n0, nnew))) && nnew != n0)
             stop("number of rows in use has changed: remove missing values?")
     }
     dfs <- ans[, 1L] - ans[1L, 1L]
@@ -78,8 +78,7 @@ addterm.default <-
 	aod[, c("LRT", "Pr(Chi)")] <- list(dev, P)
     }
     aod <- aod[o, ]
-    head <- c("Single term additions", "\nModel:",
-              deparse(as.vector(formula(object))))
+    head <- c("Single term additions", "\nModel:", deparse(formula(object)))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -129,8 +128,7 @@ addterm.lm <-
         aod[, c("F Value", "Pr(F)")] <- Fstat(aod, aod$RSS[1L], rdf)
     }
     aod <- aod[o, ]
-    head <- c("Single term additions", "\nModel:",
-              deparse(as.vector(formula(object))))
+    head <- c("Single term additions", "\nModel:", deparse(formula(object)))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -244,8 +242,7 @@ addterm.glm <-
 	aod[, c("F value", "Pr(F)")] <- Fstat(aod, rdf)
     }
     aod <- aod[o, ]
-    head <- c("Single term additions", "\nModel:",
-              deparse(as.vector(formula(object))))
+    head <- c("Single term additions", "\nModel:", deparse(formula(object)))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -274,8 +271,8 @@ dropterm.default <-
     ans <- matrix(nrow = ns + 1L, ncol = 2L,
                   dimnames =  list(c("<none>", scope), c("df", "AIC")))
     ans[1,  ] <- extractAIC(object, scale, k = k, ...)
+    n0 <- nobs(object, use.fallback = TRUE)
     env <- environment(formula(object))
-    n0 <- length(object$residuals)
     for(i in seq(ns)) {
         tt <- scope[i]
         if(trace) {
@@ -286,7 +283,8 @@ dropterm.default <-
                        evaluate = FALSE)
 	nfit <- eval(nfit, envir=env) # was  eval.parent(nfit)
 	ans[i+1, ] <- extractAIC(nfit, scale, k = k, ...)
-        if(length(nfit$residuals) != n0)
+        nnew <- nobs(nfit, use.fallback = TRUE)
+        if(all(is.finite(c(n0, nnew))) && nnew != n0)
             stop("number of rows in use has changed: remove missing values?")
     }
     dfs <- ans[1L , 1L] - ans[, 1L]
@@ -303,8 +301,7 @@ dropterm.default <-
         aod[, c("LRT", "Pr(Chi)")] <- list(dev, P)
     }
     aod <- aod[o, ]
-    head <- c("Single term deletions", "\nModel:",
-              deparse(as.vector(formula(object))))
+    head <- c("Single term deletions", "\nModel:", deparse(formula(object)))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -342,8 +339,7 @@ dropterm.lm <-
         aod[, c("F Value", "Pr(F)")] <- list(Fs, P)
     }
     aod <- aod[o, ]
-    head <- c("Single term deletions", "\nModel:",
-              deparse(as.vector(formula(object))))
+    head <- c("Single term deletions", "\nModel:", deparse(formula(object)))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
@@ -439,8 +435,7 @@ dropterm.glm <-
 	aod[, c("F value", "Pr(F)")] <- list(Fs, P)
     }
     aod <- aod[o, ]
-    head <- c("Single term deletions", "\nModel:",
-              deparse(as.vector(formula(object))))
+    head <- c("Single term deletions", "\nModel:", deparse(formula(object)))
     if(scale > 0)
         head <- c(head, paste("\nscale: ", format(scale), "\n"))
     class(aod) <- c("anova", "data.frame")
