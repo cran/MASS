@@ -478,7 +478,10 @@ confint.profile.polr <-
 }
 
 logLik.polr <- function(object, ...)
-    structure(-0.5 * object$deviance, df = object$edf, class = "logLik")
+    structure(-0.5 * object$deviance, df = object$edf,
+              nobs = object[["nobs"]], class = "logLik")
+
+nobs.polr <- function(object, ...) object[["nobs"]]
 
 simulate.polr <- function(object, nsim = 1, seed = NULL, ...)
 {

@@ -1,6 +1,6 @@
 
-R version 2.13.0 Under development (unstable) (2010-11-22 r53649)
-Copyright (C) 2010 The R Foundation for Statistical Computing
+R version 2.14.0 Under development (unstable) (2011-04-11 r55409)
+Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
@@ -442,9 +442,9 @@ Response: Days
                                                                                                                                       Model
 1 Eth + Age + Lrn + Sex + Eth:Age + Eth:Lrn + Age:Lrn + Eth:Sex + Age:Sex + Lrn:Sex + Eth:Age:Lrn + Eth:Age:Sex + Eth:Lrn:Sex + Age:Lrn:Sex
 2                                                                                                                     Eth * Age * Lrn * Sex
-     theta Resid. df    2 x log-lik.   Test    df LR stat.   Pr(Chi)
-1 1.907990       120       -1040.728                                
-2 1.928360       118       -1039.324 1 vs 2     2 1.403843 0.4956319
+    theta Resid. df    2 x log-lik.   Test    df LR stat.   Pr(Chi)
+1 1.90799       120       -1040.728                                
+2 1.92836       118       -1039.324 1 vs 2     2 1.403843 0.4956319
 > anova(m2)
 Warning in anova.negbin(m2) : tests made without re-estimating 'theta'
 Analysis of Deviance Table
@@ -606,7 +606,7 @@ coxph(formula = Surv(Time, unclass(y)) ~ week + strata(ID), data = bacteria,
        coef exp(coef) se(coef)     z     p
 week -0.163      0.85   0.0547 -2.97 0.003
 
-Likelihood ratio test=9.85  on 1 df, p=0.00170  n= 220, number of events= 177 
+Likelihood ratio test=9.85  on 1 df, p=0.0017  n= 220, number of events= 177 
 > coxph(Surv(Time, unclass(y)) ~ factor(week) + strata(ID),
 +       data = bacteria, method = "exact")
 Call:
@@ -723,7 +723,7 @@ function (x)
 > ### ** Examples
 > 
 > bcv(geyser$duration)
-[1] 0.894081
+[1] 0.8940809
 > 
 > 
 > 
@@ -902,8 +902,8 @@ Generalized least squares fit by maximum likelihood
   Model: temp ~ activ 
   Data: beav2 
   Subset: 6:100 
-        AIC       BIC   logLik
-  -124.9810 -114.7654 66.49048
+       AIC       BIC   logLik
+  -124.981 -114.7654 66.49048
 
 Correlation Structure: AR(1)
  Formula: ~1 
@@ -1231,10 +1231,10 @@ $center
   56.70588   20.23529   85.52941 
 
 $cov
-           Air.Flow Water.Temp Acid.Conc.
-Air.Flow   23.47059   7.573529  16.102941
-Water.Temp  7.57353   6.316176   5.367647
-Acid.Conc. 16.10294   5.367647  32.389706
+            Air.Flow Water.Temp Acid.Conc.
+Air.Flow   23.470588   7.573529  16.102941
+Water.Temp  7.573529   6.316176   5.367647
+Acid.Conc. 16.102941   5.367647  32.389706
 
 $msg
 [1] "266 singular samples of size 4 out of 5985"
@@ -1518,7 +1518,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 
     Null deviance: 2517.83  on 235  degrees of freedom
 Residual deviance:  869.07  on 230  degrees of freedom
-AIC: 1647.0
+AIC: 1647
 
 Number of Fisher Scoring iterations: 5
 
@@ -1660,8 +1660,8 @@ V4                 -0.162  0.000  0.000  0.000
 lbase:trtprogabide  0.055 -0.645 -0.184  0.267  0.000
 
 Standardized Within-Group Residuals:
-       Min         Q1        Med         Q3        Max 
--2.1324053 -0.6387114 -0.0848634  0.4196020  4.9787214 
+        Min          Q1         Med          Q3         Max 
+-2.13240534 -0.63871136 -0.08486339  0.41960195  4.97872138 
 
 Number of Observations: 236
 Number of Groups: 59 
@@ -1683,7 +1683,7 @@ Linear mixed-effects model fit by maximum likelihood
 Random effects:
  Formula: ~1 | subject
         (Intercept) Residual
-StdDev:   0.7257895 2.166290
+StdDev:   0.7257895  2.16629
 
 Variance function:
  Structure: fixed weights
@@ -2063,6 +2063,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
              exp(coef) exp(-coef) lower .95 upper .95
 treatcontrol     4.817     0.2076     2.147     10.81
 
+Concordance= 0.69  (se = 0.053 )
 Rsquare= 0.322   (max possible= 0.988 )
 Likelihood ratio test= 16.35  on 1 df,   p=5.261e-05
 Wald test            = 14.53  on 1 df,   p=0.0001378
@@ -2154,10 +2155,10 @@ Response: Days
 1                                                                         Sex/(Age + Eth * Lrn)
 2                                 Sex + Sex:Age + Sex:Eth + Sex:Lrn + Sex:Eth:Lrn + Sex:Age:Lrn
 3 Sex + Sex:Age + Sex:Eth + Sex:Lrn + Sex:Eth:Lrn + Sex:Age:Lrn + Sex:Age:Eth + Sex:Age:Eth:Lrn
-     theta Resid. df    2 x log-lik.   Test    df LR stat.    Pr(Chi)
-1 1.597991       132       -1063.025                                 
-2 1.686899       128       -1055.398 1 vs 2     4  7.62728 0.10622602
-3 1.928360       118       -1039.324 2 vs 3    10 16.07372 0.09754136
+     theta Resid. df    2 x log-lik.   Test    df  LR stat.    Pr(Chi)
+1 1.597991       132       -1063.025                                  
+2 1.686899       128       -1055.398 1 vs 2     4  7.627279 0.10622602
+3 1.928360       118       -1039.324 2 vs 3    10 16.073723 0.09754136
 > ## Don't show: 
 > ## PR#1695
 > y <- c(7, 5, 4, 7, 5, 2, 11, 5, 5, 4, 2, 3, 4, 3, 5, 9, 6, 7, 10, 6, 12,
@@ -3045,9 +3046,10 @@ log(wbc)   0.3677    1.4444   0.1360  2.703  0.00687 **
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 
           exp(coef) exp(-coef) lower .95 upper .95
-agpresent    0.3433     2.9126    0.1480    0.7964
-log(wbc)     1.4444     0.6923    1.1064    1.8857
+agpresent    0.3433     2.9126     0.148    0.7964
+log(wbc)     1.4444     0.6923     1.106    1.8857
 
+Concordance= 0.726  (se = 0.065 )
 Rsquare= 0.377   (max possible= 0.994 )
 Likelihood ratio test= 15.64  on 2 df,   p=0.0004014
 Wald test            = 15.06  on 2 df,   p=0.0005365
@@ -3367,6 +3369,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
      exp(coef) exp(-coef) lower .95 upper .95
 temp     1.096     0.9122     1.039     1.157
 
+Concordance= 0.84  (se = 0.076 )
 Rsquare= 0.472   (max possible= 0.936 )
 Likelihood ratio test= 25.56  on 1 df,   p=4.299e-07
 Wald test            = 11.27  on 1 df,   p=0.0007863
@@ -5170,7 +5173,7 @@ detaching ‘package:lattice’
 > width.SJ(duration, method = "dpi")
 [1] 0.5747852
 > width.SJ(duration)
-[1] 0.3605180
+[1] 0.360518
 > detach()
 > 
 > width.SJ(galaxies, method = "dpi")
@@ -5206,7 +5209,7 @@ detaching ‘package:lattice’
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  18.479 0.211 27.568 0 0 
+Time elapsed:  19.211 0.176 30.254 0 0 
 > grDevices::dev.off()
 null device 
           1 

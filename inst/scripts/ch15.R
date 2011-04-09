@@ -5,7 +5,7 @@
 # Chapter 15   Spatial Statistics
 
 library(MASS)
-postscript(file="ch15.ps", width=8, height=8, pointsize=9)
+pdf(file="ch15.pdf", width=8, height=8, pointsize=9)
 options(width=65, digits=5)
 
 library(spatial)

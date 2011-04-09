@@ -37,7 +37,7 @@ export(denumerate.formula, renumerate.formula)
 
 importFrom(graphics, pairs, plot)
 importFrom(stats, anova, biplot, coef, confint, extractAIC, family, fitted,
-	   logLik, model.frame, predict, profile, residuals, se.contrast,
+	   logLik, model.frame, nobs, predict, profile, residuals, se.contrast,
            simulate, terms, update, vcov)
 
 
@@ -108,6 +108,8 @@ S3method(Math, fractions)
 S3method(model.frame, lda)
 S3method(model.frame, polr)
 S3method(model.frame, qda)
+S3method(nobs, loglm)
+S3method(nobs, polr)
 S3method(Ops, fractions)
 S3method(pairs, lda)
 S3method(pairs, profile)

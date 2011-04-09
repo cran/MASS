@@ -5,7 +5,7 @@
 # Chapter 11   Exploratory Multivariate Analysis
 
 library(MASS)
-postscript(file="ch11.ps", width=8, height=6, pointsize=9)
+pdf(file="ch11.pdf", width=8, height=6, pointsize=9)
 options(width=65, digits=5)
 
 

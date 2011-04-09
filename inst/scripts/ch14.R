@@ -5,7 +5,7 @@
 # Chapter 14   Time Series
 
 library(MASS)
-postscript(file="ch14.ps", width=8, height=6, pointsize=9)
+pdf(file="ch14.pdf", width=8, height=6, pointsize=9)
 options(width=65, digits=5)
 
 lh

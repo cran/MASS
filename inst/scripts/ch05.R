@@ -31,7 +31,7 @@ perm.t.test <- function(d) {
 library(MASS)
 options(width=65, digits=5, height=9999)
 library(lattice)
-trellis.device(postscript, file="ch05.ps", width=8, height=6, pointsize=9)
+pdf(file="ch05.pdf", width=8, height=6, pointsize=9)
 
 rm(A, B) # precautionary clear-out
 attach(shoes)

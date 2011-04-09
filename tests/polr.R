@@ -36,9 +36,7 @@ confint(m)
 
 
 ## refitting needs transformed starting values (Achim Zeileis Mar 2010)
-if(require("AER")) {
-    data("BankWages", package = "AER")
-    bw <- polr(job ~ education, data = BankWages)
-    summary(bw)
-}
+load("BankWages.rda") # from AER
+bw <- polr(job ~ education, data = BankWages)
+summary(bw)
 ## failed due to incorrect restarting values

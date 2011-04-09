@@ -7,7 +7,7 @@
 library(MASS)
 library(lattice)
 options(width=65, digits=5, height=9999)
-trellis.device(postscript, file="ch06.ps", width=8, height=6, pointsize=9)
+pdf(file="ch06.pdf", width=8, height=6, pointsize=9)
 options(contrasts = c("contr.helmert", "contr.poly"))
 
 

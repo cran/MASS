@@ -5,7 +5,7 @@
 # Chapter 16   Optimization and Mazimum Likelihood Estimation
 
 library(MASS)
-postscript(file="ch16.ps", width=8, height=8, pointsize=9)
+pdf(file="ch16.pdf", width=8, height=8, pointsize=9)
 options(width=65, digits=5)
 
 # 16.3 General optimization

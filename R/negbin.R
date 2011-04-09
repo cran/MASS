@@ -393,14 +393,13 @@ theta.mm <- function(y, mu, dfr, weights, limit = 10,
 
 logLik.negbin <- function(object, ...)
 {
-    if (length(list(...)))
-        warning("extra arguments discarded")
-    p <- object$rank + 1 # for theta
+    if (nargs() > 1L) warning("extra arguments discarded")
+    p <- object$rank + 1L # for theta
     val <- object$twologlik/2
     attr(val, "df") <- p
+    attr(val, "nobs") <- sum(!is.na(object$residuals)) # as for glm
     class(val) <- "logLik"
     val
-
 }
 
 vcov.negbin <- function(object, ...)
