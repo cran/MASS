@@ -76,6 +76,7 @@ function(object, lambda = seq(-2, 2, 1/10), plotit = TRUE,
         mx <- (1L:m)[loglik == max(loglik)][1L]
         Lmax <- loglik[mx]
         lim <- Lmax - qchisq(19/20, 1)/2
+        dev.hold(); on.exit(dev.flush())
         plot(xl, loglik, xlab = xlab, ylab = ylab, type
              = "l", ylim = range(loglik, lim))
         plims <- par("usr")

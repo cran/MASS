@@ -456,7 +456,7 @@ Response: Days
 Terms added sequentially (first to last)
 
 
-            Df Deviance Resid. Df Resid. Dev P(>|Chi|)    
+            Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
 NULL                          145     270.03              
 Eth          1  19.0989       144     250.93 1.241e-05 ***
 Age          3  16.3483       141     234.58  0.000962 ***
