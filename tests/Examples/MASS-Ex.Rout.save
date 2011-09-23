@@ -1,5 +1,5 @@
 
-R version 2.14.0 Under development (unstable) (2011-04-11 r55409)
+R Under development (unstable) (2011-09-22 r57046)
 Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -2862,10 +2862,10 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 > 
 > immer.aov <- aov((Y1+Y2)/2 ~ Var + Loc, data = immer)
 > summary(immer.aov)
-            Df  Sum Sq Mean Sq F value    Pr(>F)    
-Var          4  2655.0  663.75  5.9891  0.002453 ** 
-Loc          5 10610.5 2122.09 19.1480 5.212e-07 ***
-Residuals   20  2216.5  110.83                      
+            Df Sum Sq Mean Sq F value   Pr(>F)    
+Var          4   2655   663.7   5.989  0.00245 ** 
+Loc          5  10610  2122.1  19.148 5.21e-07 ***
+Residuals   20   2217   110.8                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 > model.tables(immer.aov, type = "means", se = TRUE, cterms = "Var")
@@ -3653,15 +3653,15 @@ Residual standard error: 3.929447
 1 out of 13 effects not estimable
 Estimated effects may be unbalanced
 > summary(npk.aov)
-            Df Sum Sq Mean Sq F value   Pr(>F)   
-block        5 343.30  68.659  4.4467 0.015939 * 
-N            1 189.28 189.282 12.2587 0.004372 **
-P            1   8.40   8.402  0.5441 0.474904   
-K            1  95.20  95.202  6.1657 0.028795 * 
-N:P          1  21.28  21.282  1.3783 0.263165   
-N:K          1  33.14  33.135  2.1460 0.168648   
-P:K          1   0.48   0.482  0.0312 0.862752   
-Residuals   12 185.29  15.441                    
+            Df Sum Sq Mean Sq F value  Pr(>F)   
+block        5  343.3   68.66   4.447 0.01594 * 
+N            1  189.3  189.28  12.259 0.00437 **
+P            1    8.4    8.40   0.544 0.47490   
+K            1   95.2   95.20   6.166 0.02880 * 
+N:P          1   21.3   21.28   1.378 0.26317   
+N:K          1   33.1   33.14   2.146 0.16865   
+P:K          1    0.5    0.48   0.031 0.86275   
+Residuals   12  185.3   15.44                   
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 > alias(npk.aov)
@@ -3757,40 +3757,40 @@ replic.     4    12    12
 
 Error: B
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals  5  15875  3175.1               
+Residuals  5  15875    3175               
 
 Error: B:V
           Df Sum Sq Mean Sq F value Pr(>F)
-V          2 1786.4  893.18  1.4853 0.2724
-Residuals 10 6013.3  601.33               
+V          2   1786   893.2   1.485  0.272
+Residuals 10   6013   601.3               
 
 Error: Within
-          Df  Sum Sq Mean Sq F value    Pr(>F)    
-Nf         3 20020.5  6673.5 37.6856 2.458e-12 ***
-Nf:V       6   321.7    53.6  0.3028    0.9322    
-Residuals 45  7968.8   177.1                      
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+Nf         3  20020    6673  37.686 2.46e-12 ***
+Nf:V       6    322      54   0.303    0.932    
+Residuals 45   7969     177                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 > summary(oats.aov, split = list(Nf=list(L=1, Dev=2:3)))
 
 Error: B
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals  5  15875  3175.1               
+Residuals  5  15875    3175               
 
 Error: B:V
           Df Sum Sq Mean Sq F value Pr(>F)
-V          2 1786.4  893.18  1.4853 0.2724
-Residuals 10 6013.3  601.33               
+V          2   1786   893.2   1.485  0.272
+Residuals 10   6013   601.3               
 
 Error: Within
-            Df  Sum Sq Mean Sq  F value    Pr(>F)    
-Nf           3 20020.5  6673.5  37.6856 2.458e-12 ***
-  Nf: L      1 19536.4 19536.4 110.3232 1.091e-13 ***
-  Nf: Dev    2   484.1   242.1   1.3669    0.2653    
-Nf:V         6   321.7    53.6   0.3028    0.9322    
-  Nf:V: L    2   168.3    84.2   0.4753    0.6248    
-  Nf:V: Dev  4   153.4    38.3   0.2166    0.9279    
-Residuals   45  7968.8   177.1                       
+            Df Sum Sq Mean Sq F value   Pr(>F)    
+Nf           3  20020    6673  37.686 2.46e-12 ***
+  Nf: L      1  19536   19536 110.323 1.09e-13 ***
+  Nf: Dev    2    484     242   1.367    0.265    
+Nf:V         6    322      54   0.303    0.932    
+  Nf:V: L    2    168      84   0.475    0.625    
+  Nf:V: Dev  4    153      38   0.217    0.928    
+Residuals   45   7969     177                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 > par(mfrow = c(1,2), pty = "s")
@@ -5209,7 +5209,7 @@ detaching ‘package:lattice’
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  19.211 0.176 30.254 0 0 
+Time elapsed:  17.838 0.287 18.39 0 0 
 > grDevices::dev.off()
 null device 
           1 
