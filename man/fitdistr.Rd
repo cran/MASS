@@ -89,6 +89,8 @@ fitdistr(x, densfun, start, \dots)
   \emph{Modern Applied Statistics with S.} Fourth edition.  Springer.
 }
 \examples{
+## avoid spurious accuracy
+op <- options(digits = 3)
 set.seed(123)
 x <- rgamma(100, shape = 5, rate = 0.1)
 fitdistr(x, "gamma")
@@ -111,6 +113,7 @@ fitdistr(x3, "weibull")
 set.seed(123)
 x4 <- rnegbin(500, mu = 5, theta = 4)
 fitdistr(x4, "Negative Binomial")
+options(op)
 }
 \keyword{distribution}
 \keyword{htest}

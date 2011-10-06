@@ -1,8 +1,8 @@
 
-R Under development (unstable) (2011-09-22 r57046)
+R version 2.14.0 alpha (2011-10-06 r57179)
 Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
-Platform: x86_64-unknown-linux-gnu (64-bit)
+Platform: x86_64-apple-darwin9.8.0/x86_64 (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -1551,7 +1551,7 @@ Coefficients:
 (Intercept)        1.122e+00  2.008e-01   5.590 2.28e-08 ***
 predplacebo-base   1.087e-01  4.691e-02   2.318 0.020474 *  
 preddrug-placebo  -1.016e-01  6.507e-02  -1.561 0.118431    
-factor(subject)2  -2.300e-15  2.828e-01   0.000 1.000000    
+factor(subject)2  -4.271e-15  2.828e-01   0.000 1.000000    
 factor(subject)3  -3.857e-01  3.144e-01  -1.227 0.219894    
 factor(subject)4  -1.744e-01  2.960e-01  -0.589 0.555847    
 factor(subject)5   1.577e+00  2.197e-01   7.178 7.08e-13 ***
@@ -1743,50 +1743,53 @@ detaching ‘package:nlme’
 > 
 > ### ** Examples
 > 
+> ## avoid spurious accuracy
+> op <- options(digits = 3)
 > set.seed(123)
 > x <- rgamma(100, shape = 5, rate = 0.1)
 > fitdistr(x, "gamma")
-     shape         rate   
-  6.45947303   0.13593172 
- (0.89052011) (0.01948648)
+   shape     rate 
+  6.4870   0.1365 
+ (0.8946) (0.0196)
 > ## now do this directly with more control.
 > fitdistr(x, dgamma, list(shape = 1, rate = 0.1), lower = 0.001)
-     shape         rate   
-  6.48686551   0.13651012 
- (0.89438948) (0.01956818)
+   shape     rate 
+  6.4869   0.1365 
+ (0.8944) (0.0196)
 > 
 > set.seed(123)
 > x2 <- rt(250, df = 9)
 > fitdistr(x2, "t", df = 9)
-        m             s     
-  -0.01069496    1.04410551 
- ( 0.07222623) ( 0.05434369)
+      m         s   
+  -0.0107    1.0441 
+ ( 0.0722) ( 0.0543)
 > ## allow df to vary: not a very good idea!
 > fitdistr(x2, "t")
 Warning in dt(x, df, log) : NaNs produced
-        m              s              df     
-  -0.009653468    1.006167671    6.627292034 
- ( 0.071472707) ( 0.077072978) ( 2.710332064)
+      m          s          df   
+  -0.00965    1.00617    6.62729 
+ ( 0.07147) ( 0.07707) ( 2.71033)
 > ## now do fixed-df fit directly with more control.
 > mydt <- function(x, m, s, df) dt((x-m)/s, df)/s
 > fitdistr(x2, mydt, list(m = 0, s = 1), df = 9, lower = c(-Inf, 0))
-        m             s     
-  -0.01069635    1.04409435 
- ( 0.07222562) ( 0.05434249)
+      m         s   
+  -0.0107    1.0441 
+ ( 0.0722) ( 0.0543)
 > 
 > set.seed(123)
 > x3 <- rweibull(100, shape = 4, scale = 100)
 > fitdistr(x3, "weibull")
-     shape        scale   
-   4.0803423   99.9836881 
- ( 0.3126797) ( 2.5819679)
+    shape     scale 
+    4.080    99.984 
+ (  0.313) (  2.582)
 > 
 > set.seed(123)
 > x4 <- rnegbin(500, mu = 5, theta = 4)
 > fitdistr(x4, "Negative Binomial")
-     size         mu    
-  4.2159071   4.9447685 
- (0.5043658) (0.1466082)
+   size     mu  
+  4.216   4.945 
+ (0.504) (0.147)
+> options(op)
 > 
 > 
 > 
@@ -5197,19 +5200,26 @@ detaching ‘package:lattice’
 > ### ** Examples
 > 
 > wtloss.fm <- nls(Weight ~ b0 + b1*2^(-Days/th),
-+     data = wtloss, start = list(b0=90, b1=95, th=120),
-+     trace = TRUE)
-67.54349 :   90  95 120 
-40.18081 :   82.72629 101.30457 138.71374 
-39.24489 :   81.39868 102.65836 141.85859 
-39.2447 :   81.37375 102.68417 141.91052 
++     data = wtloss, start = list(b0=90, b1=95, th=120))
+> wtloss.fm
+Nonlinear regression model
+  model:  Weight ~ b0 + b1 * 2^(-Days/th) 
+   data:  wtloss 
+    b0     b1     th 
+ 81.37 102.68 141.91 
+ residual sum-of-squares: 39.24
+
+Number of iterations to convergence: 3 
+Achieved convergence tolerance: 4.39e-06 
+> plot(wtloss)
+> with(wtloss, lines(Days, fitted(wtloss.fm)))
 > 
 > 
 > 
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  17.838 0.287 18.39 0 0 
+Time elapsed:  22.282 1.2 26.796 0 0 
 > grDevices::dev.off()
 null device 
           1 

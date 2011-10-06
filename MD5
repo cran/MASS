@@ -1,9 +1,9 @@
-834192386a695735b53abf27fa808833 *DESCRIPTION
+42998fa2fbcec00ec36d6e56a11235e4 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 d3189e9d901fd1c0ecf37975bef0c5a3 *NAMESPACE
 60aba5e0b6b22d382cd2a2b7bb7220ee *R/add.R
 addf3cb309b243ad7b906eec6cbebdc5 *R/area.R
-64a915c780bfcbb510d1cf268b302ea9 *R/boxcox.R
+7478a8f127ea6b07f4407b66e09cacd0 *R/boxcox.R
 a22a1823498627d344110a4deb10c0ac *R/confint.R
 5035b025741986f434f74cadbb06ca42 *R/contr.sdif.R
 7c732f8027602c6953f6a4fec377dc1b *R/corresp.R
@@ -33,7 +33,7 @@ db0d6409822e9d70a618d0af8cdcd182 *R/lm.ridge.R
 033bf57c20a80efff724bc4451c4b8ae *R/negbin.R
 f4deec8fd9e6c10ee006abce09a7b246 *R/negexp.R
 d46385a583ad1e374fe3470d9c9b4a7e *R/parcoord.R
-9ae4a305bfb14ca84af1f014d51c3a58 *R/polr.R
+bd78c301c6788bec2a78e675cdfdeb12 *R/polr.R
 49a1a8b85673bbaca471ff48af1a1a92 *R/profiles.R
 270059c4ea135a60ac0608100fe512f0 *R/qda.R
 97cf5a56698e54aeff7c80c4084ac0db *R/rlm.R
@@ -215,7 +215,7 @@ a186e33c5945178fa1ca69a433c1bf3b *man/eagles.Rd
 df9ff3b3ed9842a6c2d767dfb14233d8 *man/eqscplot.Rd
 d6c9433b3ee2a9fe920dcedecbefdf06 *man/farms.Rd
 7d46e561298348eafcb2464adcfa66b2 *man/fgl.Rd
-4a50d02ef733d4b3914700d9b7b02ce1 *man/fitdistr.Rd
+fe390cf0437098a11251b103a0788822 *man/fitdistr.Rd
 84a1341dab0450af647d63e235728383 *man/forbes.Rd
 6f7df5c4aadc280d302a025110571c4b *man/fractions.Rd
 e2971220e00d364f968079d07203da26 *man/galaxies.Rd
@@ -269,7 +269,7 @@ f65ceb9db76de192862127a7a63daab3 *man/petrol.Rd
 815f79defe5a3e762f3b45ce1da2b677 *man/plot.lda.Rd
 376f478df44a0d407e103f23bff67857 *man/plot.mca.Rd
 3acff5e8ecf57dc83a632ad19f645597 *man/plot.profile.Rd
-30d26282caae3a64b6c55bfc01b46756 *man/polr.Rd
+a3a074ce61b3fd995f61dd50889cae35 *man/polr.Rd
 f10d097bc2a4fbb9a4904db9fa2d512e *man/predict.glmmPQL.Rd
 6eca3725d70f18fd1a5d257d0d1e50db *man/predict.lda.Rd
 2fe73d90cd662887b5241ff6b26a0373 *man/predict.lqs.Rd
@@ -309,7 +309,7 @@ dacb5fe1ae583a9281568436fa0fbe21 *man/ucv.Rd
 ceefe8e558dfa70a28f54fcae1ca3df0 *man/whiteside.Rd
 26f85ae1c4147a68fe81fe7518ead66e *man/width.SJ.Rd
 9676e9290685ce7d0527aad90135c048 *man/write.matrix.Rd
-d31f20b3efe76382421a024a7344ea8a *man/wtloss.Rd
+b1fa7ed0af328f27abc9a63dd10334df *man/wtloss.Rd
 f208fb1ed5fc952f4e67ac25ff941763 *po/R-MASS.pot
 6ebb08cc7ea864e0062bee9996092357 *po/R-de.po
 205efa3cf152a035b3ea5280f4cece2c *po/R-en@quot.po
@@ -317,7 +317,7 @@ fb4ff25f3de45f61bfff787d5bce1144 *po/R-fr.po
 951caa18561e594909cc721f978f987c *src/MASS.c
 e3574b54d1565ecfa989a5319bdfb2d7 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-6acd3f97121da7ad41266ac477fb4e0c *tests/Examples/MASS-Ex.Rout.save
+c5de1ebf4ceb3c194d54b063a03e56af *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
 55c6f4de353b9479359459d2718a017e *tests/fitdistr.Rout.save
