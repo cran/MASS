@@ -1,4 +1,4 @@
-42998fa2fbcec00ec36d6e56a11235e4 *DESCRIPTION
+9668498e71692ce0dd7b682e6395c20c *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 d3189e9d901fd1c0ecf37975bef0c5a3 *NAMESPACE
 60aba5e0b6b22d382cd2a2b7bb7220ee *R/add.R
@@ -7,7 +7,7 @@ addf3cb309b243ad7b906eec6cbebdc5 *R/area.R
 a22a1823498627d344110a4deb10c0ac *R/confint.R
 5035b025741986f434f74cadbb06ca42 *R/contr.sdif.R
 7c732f8027602c6953f6a4fec377dc1b *R/corresp.R
-7b246aa5b0d27a6adb8c46921b8e77e1 *R/cov.trob.R
+fa3d776207facc383200960d3911869e *R/cov.trob.R
 71e9df198186c176784b5838e2f0142e *R/dose.p.R
 581cf2b527e658419254a98486b6d450 *R/enlist.R
 5b469f4233a2d314970da5e9be879359 *R/eqscplot.R
@@ -134,7 +134,7 @@ b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bc59b5368bad84fac2fad52f03298de *data/wtloss.rda
 7bf40cbb20005f08d1f9163582f0d815 *inst/CITATION
 f135a040ec910328ae39ccc742bfd6c0 *inst/LICENCE
-47edd02a0e3ca9a1d62f7eca9e57b38a *inst/NEWS
+2a2fafcd108ac5496e99575e9880c09e *inst/NEWS
 5168594fc54ebf36c811e49f1fd4a785 *inst/po/de/LC_MESSAGES/R-MASS.mo
 78c2fa394bb29fa05f704358e81aa2fe *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
 ad1a82f766e2f482b95fcf5f0965e1f7 *inst/po/fr/LC_MESSAGES/R-MASS.mo
@@ -314,10 +314,10 @@ f208fb1ed5fc952f4e67ac25ff941763 *po/R-MASS.pot
 6ebb08cc7ea864e0062bee9996092357 *po/R-de.po
 205efa3cf152a035b3ea5280f4cece2c *po/R-en@quot.po
 fb4ff25f3de45f61bfff787d5bce1144 *po/R-fr.po
-951caa18561e594909cc721f978f987c *src/MASS.c
+b3afdee1597fed14774161357452a8cd *src/MASS.c
 e3574b54d1565ecfa989a5319bdfb2d7 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-c5de1ebf4ceb3c194d54b063a03e56af *tests/Examples/MASS-Ex.Rout.save
+790b146b3a454c296c32857df46e7e69 *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
 55c6f4de353b9479359459d2718a017e *tests/fitdistr.Rout.save
@@ -329,4 +329,4 @@ f4e6b3ffb6521ea7625515e2f0ae7f98 *tests/profile.R
 2cf83c191d20ad683065ec4345afd302 *tests/regression.R
 7417291c8a15d29530fdd02b4908cd6d *tests/regression.Rout.save
 bcd3d46ba8de663c4f012570951671eb *tests/rlm.R
-2df3beb69f6b91270cb1854bf5cf350e *tests/scripts.R
+f5fd08eb22747dbe31443bc3560cfa2d *tests/scripts.R

@@ -3354,7 +3354,7 @@ n= 40
 
 > # and predict at 130C
 > unlist(predict(motor.wei, data.frame(temp=130), se.fit = TRUE))
-     fit   se.fit 
+   fit.1 se.fit.1
 33813.06  7506.36 
 > 
 > motor.cox <- coxph(Surv(time, cens) ~ temp, motors)

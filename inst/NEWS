@@ -178,4 +178,5 @@ This file documents software changes since the third edition.
 - The "glm" method for profile() failed when given a binomial model
   with a two-column response.
 - fitdistr() works harder to rescale the problem when fitting a gamma.
-
+- cov.trob() handles zero weights without giving a warning (reported by
+  John Fox).
