@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MASS 7.2-20\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
-"POT-Creation-Date: 2009-05-05 14:20\n"
+"POT-Creation-Date: 2012-06-27 09:24\n"
 "PO-Revision-Date: 2005-12-07 23:48+0100\n"
 "Last-Translator: Jean Thioulouse <j.thioulouse@biomserv.univ-lyon1.fr>\n"
 "Language-Team: French <R-core@r-project.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -113,6 +114,10 @@ msgstr "'uin' est trop grand pour y ajuster le graphique"
 msgid "'x' must be a non-empty numeric vector"
 msgstr "'x' doit être un vecteur numérique non vide"
 
+#, fuzzy
+msgid "'x' contains missing or infinite values"
+msgstr "valeurs manquantes ou infinies dans"
+
 msgid "'densfun' must be supplied as a function or name"
 msgstr "'densfun' doit être fourni comme une fonction ou comme un nom"
 
@@ -131,11 +136,21 @@ msgstr "fixer des paramètres pour Normal n'est pas supporté"
 msgid "supplying pars for the Poisson is not supported"
 msgstr "fixer des paramètres pour Poisson n'est pas supporté"
 
+msgid "Exponential values must be >= 0"
+msgstr ""
+
 msgid "supplying pars for the exponential is not supported"
 msgstr "fixer des paramètres pour exponential n'est pas supporté"
 
 msgid "supplying pars for the geometric is not supported"
 msgstr "fixer des paramètres pour geometric n'est pas supporté"
+
+#, fuzzy
+msgid "Weibull values must be > 0"
+msgstr "toutes les variables doivent être des facteurs"
+
+msgid "gamma values must be >= 0"
+msgstr ""
 
 msgid "'start' must be a named list"
 msgstr "'start' doit être une liste nommée"
@@ -185,6 +200,10 @@ msgstr "'y' doit être une matrice"
 msgid "distances must be result of dist or a square matrix"
 msgstr "les distances doivent provenir de dist, ou être une matrice carrée"
 
+#, fuzzy
+msgid "invalid size"
+msgstr "prior incorrect"
+
 msgid "zero or negative distance between objects %d and %d"
 msgstr "distance négative ou nulle entre les objets %d et %d"
 
@@ -196,6 +215,13 @@ msgstr "configuration initale incorrecte"
 
 msgid "initial configuration must be complete"
 msgstr "la configuration initiale doit être complète"
+
+#, fuzzy
+msgid "invalid row(x)"
+msgstr "prior incorrect"
+
+msgid "invalid length(d)"
+msgstr ""
 
 msgid "data vectors must be the same length"
 msgstr "les vecteurs de données doivent avoir la même longueur"
@@ -438,6 +464,9 @@ msgstr ""
 "le profilage a donné une meilleure solution, l'ajustement original n'avait "
 "donc pas convergé"
 
+msgid "weighted fits are not supported"
+msgstr ""
+
 msgid "some group is too small for qda"
 msgstr "un groupe est trop petit pour qda"
 
@@ -485,7 +514,8 @@ msgstr "'coef' doit définir un contraste, sa somme doit donc être nulle"
 msgid "'coef' must have same length as 'contrast.obj'"
 msgstr "'coef' doit être de la même longueur que 'contrast.obj'"
 
-msgid "each element of %s must be logical"
+#, fuzzy
+msgid "each element of '%s' must be logical"
 msgstr "tous les éléments de %s doivent être des valeurs logiques"
 
 msgid "the contrast defined is empty (has no TRUE elements)"

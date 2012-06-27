@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: R 2.10.0\n"
+"Project-Id-Version: R 2.16.0\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
-"POT-Creation-Date: 2009-05-11 13:15\n"
+"POT-Creation-Date: 2012-06-27 09:24\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,6 +104,9 @@ msgstr ""
 msgid "'x' must be a non-empty numeric vector"
 msgstr ""
 
+msgid "'x' contains missing or infinite values"
+msgstr ""
+
 msgid "'densfun' must be supplied as a function or name"
 msgstr ""
 
@@ -122,10 +125,19 @@ msgstr ""
 msgid "supplying pars for the Poisson is not supported"
 msgstr ""
 
+msgid "Exponential values must be >= 0"
+msgstr ""
+
 msgid "supplying pars for the exponential is not supported"
 msgstr ""
 
 msgid "supplying pars for the geometric is not supported"
+msgstr ""
+
+msgid "Weibull values must be > 0"
+msgstr ""
+
+msgid "gamma values must be >= 0"
 msgstr ""
 
 msgid "'start' must be a named list"
@@ -176,6 +188,9 @@ msgstr ""
 msgid "distances must be result of dist or a square matrix"
 msgstr ""
 
+msgid "invalid size"
+msgstr ""
+
 msgid "zero or negative distance between objects %d and %d"
 msgstr ""
 
@@ -186,6 +201,12 @@ msgid "invalid initial configuration"
 msgstr ""
 
 msgid "initial configuration must be complete"
+msgstr ""
+
+msgid "invalid row(x)"
+msgstr ""
+
+msgid "invalid length(d)"
 msgstr ""
 
 msgid "data vectors must be the same length"
@@ -419,6 +440,9 @@ msgstr ""
 msgid "profiling has found a better solution, so original fit had not converged"
 msgstr ""
 
+msgid "weighted fits are not supported"
+msgstr ""
+
 msgid "some group is too small for qda"
 msgstr ""
 
@@ -464,7 +488,7 @@ msgstr ""
 msgid "'coef' must have same length as 'contrast.obj'"
 msgstr ""
 
-msgid "each element of %s must be logical"
+msgid "each element of '%s' must be logical"
 msgstr ""
 
 msgid "the contrast defined is empty (has no TRUE elements)"
