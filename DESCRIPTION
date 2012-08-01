@@ -1,25 +1,26 @@
 Package: MASS
 Priority: recommended
-Version: 7.3-19
-Date: 2012-06-27
-Revision: $Rev: 3201 $
+Version: 7.3-20
+Date: 2012-08-01
+Revision: $Rev: 3210 $
 Depends: R (>= 2.14.0), grDevices, graphics, stats, utils
 Suggests: lattice, nlme, nnet, survival
 Authors@R: c(person("Brian", "Ripley", role = c("aut", "cre", "cph"),
-        email = "ripley@stats.ox.ac.uk"), person("Kurt", "Hornik", role
-        = "trl", comment = "partial port ca 1998"), person("Albrecht",
-        "Gebhardt", role = "trl", comment = "partial port ca 1998"),
-        person("David", "Firth", role = "ctb"))
+        email = "ripley@stats.ox.ac.uk"), person("Bill", "Venables",
+        role = "ctb"), person("Kurt", "Hornik", role = "trl", comment =
+        "partial port ca 1998"), person("Albrecht", "Gebhardt", role =
+        "trl", comment = "partial port ca 1998"), person("David",
+        "Firth", role = "ctb"))
 Description: Functions and datasets to support Venables and Ripley,
         'Modern Applied Statistics with S' (4th edition, 2002).
 Title: Support Functions and Datasets for Venables and Ripley's MASS
 License: GPL-2 | GPL-3
 URL: http://www.stats.ox.ac.uk/pub/MASS4/
 LazyData: yes
-Packaged: 2012-06-27 09:47:45 UTC; ripley
-Author: Brian Ripley [aut, cre, cph], Kurt Hornik [trl] (partial port
-        ca 1998), Albrecht Gebhardt [trl] (partial port ca 1998), David
-        Firth [ctb]
+Packaged: 2012-08-01 16:22:41 UTC; ripley
+Author: Brian Ripley [aut, cre, cph], Bill Venables [ctb], Kurt Hornik
+        [trl] (partial port ca 1998), Albrecht Gebhardt [trl] (partial
+        port ca 1998), David Firth [ctb]
 Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 Repository: CRAN
-Date/Publication: 2012-06-27 09:58:17
+Date/Publication: 2012-08-01 16:27:52

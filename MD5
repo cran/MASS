@@ -1,4 +1,4 @@
-7c5424b0ecf0f1c16c62d57b6549be31 *DESCRIPTION
+87997e7907836f2fe5e305f739213c14 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 d3189e9d901fd1c0ecf37975bef0c5a3 *NAMESPACE
 60aba5e0b6b22d382cd2a2b7bb7220ee *R/add.R
@@ -136,7 +136,7 @@ b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 f135a040ec910328ae39ccc742bfd6c0 *inst/LICENCE
 0ce83067e5d2bd08b2764628c0cc0b4b *inst/NEWS
 3b0302b34f06b3da44af15d7411b669b *inst/po/de/LC_MESSAGES/R-MASS.mo
-9ae3fa46243aaa5525ee0cbb9b70da62 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
+95175a6585dfef101960b15c0aa61522 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
 7a0e6b7b6d77fb0c88856142f5cf09c9 *inst/po/fr/LC_MESSAGES/R-MASS.mo
 d223723b46200cff5fa86c11b13a5f24 *inst/po/pl/LC_MESSAGES/R-MASS.mo
 ea5ee8654eb44d16e07c4d8aa214ce4d *inst/scripts/ch01.R
@@ -311,9 +311,8 @@ ceefe8e558dfa70a28f54fcae1ca3df0 *man/whiteside.Rd
 26f85ae1c4147a68fe81fe7518ead66e *man/width.SJ.Rd
 9676e9290685ce7d0527aad90135c048 *man/write.matrix.Rd
 b1fa7ed0af328f27abc9a63dd10334df *man/wtloss.Rd
-3bf259a39947edeec419944764cb5ff2 *po/R-MASS.pot
+3fa29fa7d735d67cf0f99d41be1ff620 *po/R-MASS.pot
 6795916eeeec1a6815bef45e629f7d31 *po/R-de.po
-ea1e14223ea95d74d90dca47f735d322 *po/R-en@quot.po
 f2a5de2c47f84cee56b38b44c448cec7 *po/R-fr.po
 ba095dc63d4d93a7fb32a95caa5b8fdb *po/R-pl.po
 b3afdee1597fed14774161357452a8cd *src/MASS.c
