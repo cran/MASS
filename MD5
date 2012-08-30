@@ -1,4 +1,4 @@
-87997e7907836f2fe5e305f739213c14 *DESCRIPTION
+657e46ed7443e3d16febce880c811cbb *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 d3189e9d901fd1c0ecf37975bef0c5a3 *NAMESPACE
 60aba5e0b6b22d382cd2a2b7bb7220ee *R/add.R
@@ -28,7 +28,7 @@ db0d6409822e9d70a618d0af8cdcd182 *R/lm.ridge.R
 3a1491b0971dfabd48b352811add322b *R/lqs.R
 865f29d0ba0995ca13543bf44f391e19 *R/mca.R
 8cf79d304991da6084822fce112aef11 *R/misc.R
-61e5e4cd7f2c84ec836fc9f4f39eff39 *R/mvrnorm.R
+5622914b083c03acd7dc65c694ed535b *R/mvrnorm.R
 9993f1b964404a771652e81d53101047 *R/neg.bin.R
 033bf57c20a80efff724bc4451c4b8ae *R/negbin.R
 f4deec8fd9e6c10ee006abce09a7b246 *R/negexp.R
@@ -134,7 +134,7 @@ b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bc59b5368bad84fac2fad52f03298de *data/wtloss.rda
 7bf40cbb20005f08d1f9163582f0d815 *inst/CITATION
 f135a040ec910328ae39ccc742bfd6c0 *inst/LICENCE
-0ce83067e5d2bd08b2764628c0cc0b4b *inst/NEWS
+c287883ffa565756beae309982ed941e *inst/NEWS
 3b0302b34f06b3da44af15d7411b669b *inst/po/de/LC_MESSAGES/R-MASS.mo
 95175a6585dfef101960b15c0aa61522 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
 7a0e6b7b6d77fb0c88856142f5cf09c9 *inst/po/fr/LC_MESSAGES/R-MASS.mo
@@ -255,7 +255,7 @@ cb0833e592bf5cd241499c439c69a002 *man/michelson.Rd
 f8a1e349fbe9051ba75a935ba2803149 *man/minn38.Rd
 2b7e747f5cf31f4ba254a7868773c9ba *man/motors.Rd
 e993cbe3f78273268ca8cd313d6baeaa *man/muscle.Rd
-8777af7e78926e6d616025abaa80bcba *man/mvrnorm.Rd
+197c0183a87b8f689e5b417abc8f8911 *man/mvrnorm.Rd
 fbf5b11e7ed253d29500bac780e2e794 *man/negative.binomial.Rd
 342fe0fcefe454e1da128aba3eeecf03 *man/newcomb.Rd
 8f63cec32feffeeb9d7f57157b1310e0 *man/nlschools.Rd
