@@ -436,7 +436,7 @@ profile.polr <- function(fitted, which = 1L:p, alpha = 0.01,
         }
         si <- order(zi)
         prof[[pi]] <- structure(data.frame(zi[si]), names = profName)
-        prof[[pi]]$par.vals <- pvi[si, ]
+        prof[[pi]]$par.vals <- pvi[si, , drop = FALSE]
     }
     val <- structure(prof, original.fit = fitted, summary = summ)
     class(val) <- c("profile.polr", "profile")

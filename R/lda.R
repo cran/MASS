@@ -89,7 +89,7 @@ lda.default <-
     lev <- lev1 <- levels(g)
     counts <- as.vector(table(g))
     if(!missing(prior)) {
-        if(any(prior < 0) || round(sum(prior), 5) != 1) stop("invalid prior")
+        if(any(prior < 0) || round(sum(prior), 5) != 1) stop("invalid 'prior'")
         if(length(prior) != nlevels(g)) stop("'prior' is of incorrect length")
         prior <- prior[counts > 0]
     }
@@ -108,7 +108,8 @@ lda.default <-
     names(prior) <- names(counts) <- lev1
     method <- match.arg(method)
     if(CV && !(method == "moment" || method == "mle"))
-        stop("cannot use leave-one-out CV with method ", method)
+        stop(gettext("cannot use leave-one-out CV with method %s",
+                     sQuote(method)), domain = NA)
     group.means <- tapply(x, list(rep(g, p), col(x)), mean)
     f1 <- sqrt(diag(var(x - group.means[g,  ])))
     if(any(f1 < tol)) {
@@ -126,7 +127,7 @@ lda.default <-
         cov <- n/(n-ng) * cov.rob((x - group.means[g,  ]) %*% scaling)$cov
         sX <- svd(cov, nu = 0)
         rank <- sum(sX$d > tol^2)
-        if(rank == 0) stop("rank = 0: variables are numerically const")
+        if(rank == 0) stop("rank = 0: variables are numerically constant")
         if(rank < p) warning("variables are collinear")
         scaling <- scaling %*% sX$v[, 1L:rank] %*%
             diag(sqrt(1/sX$d[1L:rank]),,rank)
@@ -147,7 +148,7 @@ lda.default <-
         X <-  sqrt(nu/(nu-2)*(1 + p/nu)/n * w) * (x - group.means[g,  ]) %*% scaling
         X.s <- svd(X, nu = 0)
         rank <- sum(X.s$d > tol)
-        if(rank == 0) stop("rank = 0: variables are numerically const")
+        if(rank == 0) stop("rank = 0: variables are numerically constant")
         if(rank < p) warning("variables are collinear")
         scaling <- scaling %*% X.s$v[, 1L:rank] %*% diag(1/X.s$d[1L:rank],,rank)
     } else {
@@ -155,7 +156,7 @@ lda.default <-
         X <- sqrt(fac) * (x - group.means[g,  ]) %*% scaling
         X.s <- svd(X, nu = 0)
         rank <- sum(X.s$d > tol)
-        if(rank == 0) stop("rank = 0: variables are numerically const")
+        if(rank == 0) stop("rank = 0: variables are numerically constant")
         if(rank < p) warning("variables are collinear")
         scaling <- scaling %*% X.s$v[, 1L:rank] %*% diag(1/X.s$d[1L:rank],,rank)
     }
@@ -250,7 +251,7 @@ predict.lda <- function(object, newdata, prior = object$prior, dimen,
          warning("variable names in 'newdata' do not match those in 'object'")
     ng <- length(object$prior)
     if(!missing(prior)) {
-        if(any(prior < 0) || round(sum(prior), 5) != 1) stop("invalid prior")
+        if(any(prior < 0) || round(sum(prior), 5) != 1) stop("invalid 'prior'")
         if(length(prior) != ng) stop("'prior' is of incorrect length")
     }
 #   remove overall means to keep distances small

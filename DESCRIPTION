@@ -1,8 +1,8 @@
 Package: MASS
 Priority: recommended
-Version: 7.3-21
-Date: 2012-08-30
-Revision: $Rev: 3215 $
+Version: 7.3-22
+Date: 2012-10-08
+Revision: $Rev: 3252 $
 Depends: R (>= 2.14.0), grDevices, graphics, stats, utils
 Suggests: lattice, nlme, nnet, survival
 Authors@R: c(person("Brian", "Ripley", role = c("aut", "cre", "cph"),
@@ -17,10 +17,10 @@ Title: Support Functions and Datasets for Venables and Ripley's MASS
 License: GPL-2 | GPL-3
 URL: http://www.stats.ox.ac.uk/pub/MASS4/
 LazyData: yes
-Packaged: 2012-08-30 13:19:42 UTC; ripley
+Packaged: 2012-10-08 10:07:18 UTC; ripley
 Author: Brian Ripley [aut, cre, cph], Bill Venables [ctb], Kurt Hornik
         [trl] (partial port ca 1998), Albrecht Gebhardt [trl] (partial
         port ca 1998), David Firth [ctb]
 Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 Repository: CRAN
-Date/Publication: 2012-08-30 13:29:14
+Date/Publication: 2012-10-08 10:07:27

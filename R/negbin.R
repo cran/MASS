@@ -113,7 +113,8 @@ glm.nb <- function(formula, data, weights,
     n <- length(Y)
     if(!missing(method)) {
         if(!exists(method, mode = "function"))
-            stop("unimplemented method: ", sQuote(method))
+            stop(gettextf("unimplemented method: %s", sQuote(method)),
+                 domain = NA)
         glm.fitter <- get(method)
     } else {
         method <- "glm.fit"
@@ -132,7 +133,8 @@ glm.nb <- function(formula, data, weights,
     th <- as.vector(theta.ml(Y, mu, sum(w), w, limit = control$maxit, trace =
                              control$trace> 2)) # drop attributes
     if(control$trace > 1)
-        message("Initial value for theta:", signif(th))
+        message(gettextf("Initial value for 'theta': %f", signif(th)),
+                domain = NA)
     fam <- do.call("negative.binomial", list(theta = th, link = link))
     iter <- 0
     d1 <- sqrt(2 * max(1, fit$df.residual))
@@ -160,8 +162,8 @@ glm.nb <- function(formula, data, weights,
         if(control$trace) {
             Ls <- loglik(n, th, Y, Y, w)
             Dev <- 2 * (Ls - Lm)
-            message("Theta(", iter, ") =", signif(th),
-                    ", 2(Ls - Lm) =", signif(Dev))
+            message(sprintf("Theta(%d) = %f, 2(Ls - Lm) = %f",
+                            iter, signif(th), signif(Dev)), domain = NA)
         }
     }
     if(!is.null(attr(th, "warn"))) fit$th.warn <- attr(th, "warn")
@@ -226,7 +228,7 @@ negative.binomial <-
             stats <- link
             if(!is.null(stats$name)) linktemp <- stats$name
         } else
-            stop(linktemp, " link not available for negative binomial family; available links are \"identity\", \"log\" and \"sqrt\"")
+            stop(gettextf("\"%s\" link not available for negative binomial family; available links are \"identity\", \"log\" and \"sqrt\"", linktemp))
     }
     .Theta <- theta ## avoid codetools warnings
     env <- new.env(parent=.GlobalEnv)
@@ -344,7 +346,8 @@ theta.ml <-
     t0 <- n/sum(weights*(y/mu - 1)^2)
     it <- 0
     del <- 1
-    if(trace) message("theta.ml: initial theta =", signif(t0))
+    if(trace) message(sprintf("theta.ml: iter %d 'theta = %f'",
+                              it, signif(t0)), domain = NA)
     while((it <- it + 1) < limit && abs(del) > eps) {
         t0 <- abs(t0)
         del <- score(n, t0, mu, y, weights)/(i <- info(n, t0, mu, y, weights))

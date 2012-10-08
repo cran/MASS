@@ -92,7 +92,7 @@ rlm.default <-
     if(is.null(colnames(x)))
         colnames(x) <- paste("X", seq(ncol(x)), sep="")
     if(qr(x)$rank < ncol(x))
-        stop("'x' is singular: singular fits are not implemented in rlm")
+        stop("'x' is singular: singular fits are not implemented in 'rlm'")
 
     if(!(any(test.vec == c("resid", "coef", "w", "NULL"))
          || is.null(test.vec))) stop("invalid 'test.vec'")
@@ -190,7 +190,7 @@ rlm.default <-
         if(done) break
     }
     if(!done)
-        warning(gettextf("rlm failed to converge in %d steps", maxit),
+        warning(gettextf("'rlm' failed to converge in %d steps", maxit),
                 domain = NA)
     fitted <- drop(xx %*% coef)
     ## fix up call to refer to the generic, but leave arg name as `formula'

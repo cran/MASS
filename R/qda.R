@@ -87,11 +87,11 @@ qda.default <-
     lev <- levels(g)
     counts <- as.vector(table(g))
     names(counts) <- lev
-    if(any(counts < p+1)) stop("some group is too small for qda")
+    if(any(counts < p+1)) stop("some group is too small for 'qda'")
     proportions <- counts/length(g)
     ng <- length(proportions)
 # allow for supplied prior
-    if(any(prior < 0) || round(sum(prior), 5) != 1) stop("invalid prior")
+    if(any(prior < 0) || round(sum(prior), 5) != 1) stop("invalid 'prior'")
     if(length(prior) != ng) stop("'prior' is of incorrect length")
     names(prior) <- lev
 # means by group (rows) and variable (columns)
@@ -100,7 +100,8 @@ qda.default <-
     ldet <- numeric(ng)
     method <- match.arg(method)
     if(CV && !(method == "moment" || method == "mle"))
-        stop("cannot use leave-one-out CV with method ", sQuote(method))
+        stop(gettext("cannot use leave-one-out CV with method %s",
+                     sQuote(method)), domain = NA)
     for (i in 1L:ng){
         if(method == "mve") {
             cX <- cov.mve(x[unclass(g) == i, ])
@@ -124,7 +125,8 @@ qda.default <-
                 if(all(abs(w - w0) < 1e-2)) break
             }
             qx <- qr(sqrt(w)*scale(X, center=group.means[i, ], scale=FALSE))
-            if(qx$rank < p) stop("rank deficiency in group ", lev[i])
+            if(qx$rank < p) stop(gettextf("rank deficiency in group %s",
+                                          lev[i]), domain = NA)
             qx <- qx$qr* sqrt((1 + p/nu)/m)
             scaling[, , i] <- backsolve(qx[1L:p,  ], diag(p))
             ldet[i] <- 2*sum(log(abs(diag(qx))))
@@ -132,7 +134,8 @@ qda.default <-
             if(method == "moment") nk <- counts[i] - 1 else nk <- counts[i]
             X <- scale(x[unclass(g) == i, ], center=group.means[i, ], scale=FALSE)/sqrt(nk)
             qx <- qr(X)
-            if(qx$rank < p) stop("rank deficiency in group ", lev[i])
+            if(qx$rank < p) stop(gettextf("rank deficiency in group %s",
+                                          lev[i]), domain = NA)
             qx <- qx$qr
             scaling[, , i] <- backsolve(qx[1L:p, ], diag(p))
             ldet[i] <- 2*sum(log(abs(diag(qx))))
@@ -185,10 +188,11 @@ predict.qda <- function(object, newdata, prior = object$prior,
         stop("cannot have leave-one-out CV with 'newdata'")
     if(is.null(mt <- object$call$method)) mt <- "moment"
     if(method == "looCV" && !(mt == "moment" || mt == "mle"))
-        stop("cannot use leave-one-out CV with method ", sQuote(mt))
+        stop(gettext("cannot use leave-one-out CV with method %s",
+                     sQuote(mt), domain = NA))
     ngroup <- length(object$prior)
     if(!missing(prior)) {
-        if(any(prior < 0) || round(sum(prior), 5) != 1) stop("invalid prior")
+        if(any(prior < 0) || round(sum(prior), 5) != 1) stop("invalid 'prior'")
         if(length(prior) != ngroup) stop("'prior' is of incorrect length")
     }
     if(!is.null(Terms <- object$terms)) {

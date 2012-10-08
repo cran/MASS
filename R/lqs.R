@@ -103,8 +103,10 @@ lqs.default <-
     if(is.character(nsamp) && nsamp == "best") {
 	nsamp <- if(nexact < 5000) "exact" else "sample"
     } else if(is.numeric(nsamp) && nsamp > nexact) {
-	warning(gettextf("only %d sets, so all sets will be tried", nexact),
-                domain = NA)
+        warning(sprintf(ngettext(nexact,
+                                 "only %d set, so all sets will be tried",
+                                 "only %d sets, so all sets will be tried"),
+                        nexact), domain = NA)
 	nsamp <- "exact"
     }
     samp <- nsamp != "exact"
@@ -128,7 +130,7 @@ lqs.default <-
 	     coefficients=double(p), as.double(k0), as.double(beta)
 	     )[c("crit", "sing", "coefficients", "bestone")]
     if(z$sing == nsamp)
-        stop("lqs failed: all the samples were singular", call.=FALSE)
+        stop("'lqs' failed: all the samples were singular", call.=FALSE)
     z$sing <- paste(z$sing, "singular samples of size", ps, "out of", nsamp)
     z$bestone <- sort(z$bestone)
     names(z$coefficients) <- nm
@@ -219,8 +221,10 @@ cov.rob <- function(x, cor = FALSE, quantile.used = floor((n+p+1)/2),
 	if(is.character(nsamp) && nsamp == "best")
 	    nsamp <- if(nexact < 5000) "exact" else "sample"
 	if(is.numeric(nsamp) && nsamp > nexact) {
-            warning(gettextf("only %d sets, so all sets will be tried", nexact),
-                    domain = NA)
+            warning(sprintf(ngettext(nexact,
+                                     "only %d set, so all sets will be tried",
+                                     "only %d sets, so all sets will be tried"),
+                            nexact), domain = NA)
 	    nsamp <- "exact"
 	}
 	samp <- nsamp != "exact"

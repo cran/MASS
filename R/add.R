@@ -53,7 +53,7 @@ addterm.default <-
     for(i in seq(ns)) {
         tt <- scope[i]
         if(trace) {
-	    message("trying +", tt)
+            message(gettextf("trying + %s", tt), domain = NA)
 	    utils::flush.console()
         }
         nfit <- update(object, as.formula(paste("~ . +", tt)),
@@ -180,8 +180,10 @@ addterm.glm <-
     y <- object$y
     newn <- length(y)
     if(newn < oldn)
-        warning(gettextf("using the %d/%d rows from a combined fit",
-                         newn, oldn), domain = NA)
+        warning(sprintf(ngettext(newn,
+                                 "using the %d/%d row from a combined fit",
+                                 "using the %d/%d rows from a combined fit"),
+                        newn, oldn), domain = NA)
     wt <- object$prior.weights
     if(is.null(wt)) wt <- rep(1, n)
     Terms <- attr(Terms, "term.labels")
@@ -198,7 +200,7 @@ addterm.glm <-
                      function(x) paste(sort(x), collapse=":"))
     for(tt in scope) {
         if(trace) {
-	    message("trying +", tt)
+            message(gettextf("trying + %s", tt), domain = NA)
 	    utils::flush.console()
 	}
         stt <- paste(sort(strsplit(tt, ":")[[1L]]), collapse=":")
@@ -236,7 +238,7 @@ addterm.glm <-
         aod[, "Pr(Chi)"] <- dev
     } else if(test == "F") {
         if(fam == "binomial" || fam == "poisson")
-            warning(gettextf("F test assumes quasi%s family", fam),
+            warning(gettextf("F test assumes 'quasi%s' family", fam),
                     domain = NA)
 	rdf <- object$df.residual
 	aod[, c("F value", "Pr(F)")] <- Fstat(aod, rdf)
@@ -251,7 +253,7 @@ addterm.glm <-
 }
 
 addterm.mlm <- function(object, ...)
-    stop("no addterm method implemented for \"mlm\" models")
+    stop("no 'addterm' method implemented for \"mlm\" models")
 
 dropterm <- function(object, ...) UseMethod("dropterm")
 
@@ -276,7 +278,7 @@ dropterm.default <-
     for(i in seq(ns)) {
         tt <- scope[i]
         if(trace) {
-	    message("trying -", tt)
+            message(gettextf("trying - %s", tt), domain = NA)
 	    utils::flush.console()
 	}
         nfit <- update(object, as.formula(paste("~ . -", tt)),
@@ -348,7 +350,7 @@ dropterm.lm <-
 }
 
 dropterm.mlm <- function(object, ...)
-  stop("dropterm not implemented for \"mlm\" fits")
+  stop("'dropterm' not implemented for \"mlm\" fits")
 
 dropterm.glm <-
   function(object, scope, scale = 0, test = c("none", "Chisq", "F"),
@@ -380,7 +382,7 @@ dropterm.glm <-
     if(is.null(wt)) wt <- rep.int(1, n)
     for(i in 1L:ns) {
         if(trace) {
-	    message("trying -", scope[i])
+            message(gettextf("trying - %s", scope[i]), domain = NA)
 	    utils::flush.console()
 	}
         ii <- seq_along(asgn)[asgn == ndrop[i]]
