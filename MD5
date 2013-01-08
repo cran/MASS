@@ -1,4 +1,4 @@
-203ce90a4d93ad6e9e8977db9768625b *DESCRIPTION
+d2ab657db1b022ab208ef2191d78e646 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 d3189e9d901fd1c0ecf37975bef0c5a3 *NAMESPACE
 632b182f9037375e3157cc91a463d113 *R/add.R
@@ -19,8 +19,8 @@ f6c250dc2c0287a0d9a7e577352bc3f1 *R/hist.scott.R
 66ee029442522726306cd7d4a869b725 *R/huber.R
 feed05160fcb53f8d07c559e1afa9873 *R/hubers.R
 b714f739c6c9dcb33729bb2baa532a0c *R/isoMDS.R
-be4f22f74f3cbf4f65046f93e6c711e1 *R/kde2d.R
-c038d7e6558f5f03a4d663a8eec77a01 *R/lda.R
+0e20d824adf45263385c0245060ecc14 *R/kde2d.R
+71e59d56e50c193c48e36f3402c41db6 *R/lda.R
 b4ec37703350a62b68eb9677f414b082 *R/lm.gls.R
 db0d6409822e9d70a618d0af8cdcd182 *R/lm.ridge.R
 7f1c8cfc548deb6a5a61d6a575d787ec *R/loglm.R
@@ -134,7 +134,7 @@ b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bc59b5368bad84fac2fad52f03298de *data/wtloss.rda
 7bf40cbb20005f08d1f9163582f0d815 *inst/CITATION
 f135a040ec910328ae39ccc742bfd6c0 *inst/LICENCE
-d8b3aaa297cff034f160ee11accf3361 *inst/NEWS
+48ab40bb67c0654dffe7097f7d8e9b42 *inst/NEWS
 0e6cbd97c4b77b06c39ef6dfac7435b0 *inst/po/de/LC_MESSAGES/R-MASS.mo
 e1b23de7043651f1e8c5d4d04b6a46f0 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
 d970a866d80c61bd70b58bb67f2ea6a5 *inst/po/fr/LC_MESSAGES/R-MASS.mo
@@ -143,7 +143,7 @@ ea5ee8654eb44d16e07c4d8aa214ce4d *inst/scripts/ch01.R
 8fcb238c9d7c78b74f6506e5a96f528e *inst/scripts/ch02.R
 1a83076e9cd6630768489f739fecd28f *inst/scripts/ch03.R
 ec47819ee95d33b55745909bbe9f6469 *inst/scripts/ch04.R
-037b06c4809ad7a4bf1429f6ba8d30b1 *inst/scripts/ch05.R
+1285c678c90d55d984808aaa2de19796 *inst/scripts/ch05.R
 ea5dfb16715140492edf278a4c2cb1b6 *inst/scripts/ch06.R
 1ca5088281b3bed247f6902039523b8b *inst/scripts/ch07.R
 50f0337c57a1c481c02df0f1258e72c5 *inst/scripts/ch08.R
