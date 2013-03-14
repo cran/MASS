@@ -188,3 +188,4 @@ This file documents software changes since the third edition.
 - the "polr" method for profile() could lose dimensions in its return object
   (reported by Joris Meys)
 - kde2d() throws an error if given zero bandwidths or constant data.
+- ldahist(sep = TRUE) was missing a dev.flush().

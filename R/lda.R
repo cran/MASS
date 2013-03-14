@@ -378,6 +378,7 @@ function(data, g, nbins = 25, h, x0 = -h/1000, breaks,
         if(min(data) < min(breaks) || max(data) > max(breaks))
             stop("'breaks' do not cover the data")
         est <- vector("list", length(groups))
+        names(est) <- groups
         for (grp in groups){
             bin <- cut(data[g == grp], breaks, include.lowest = TRUE)
             est1 <- tabulate(bin, length(levels(bin)))
@@ -401,7 +402,7 @@ function(data, g, nbins = 25, h, x0 = -h/1000, breaks,
         plot(xlim, c(0, ymax), type = "n", xlab = xlab, ylab = "", bty = bty)
     else {
         oldpar <- par(mfrow = c(length(groups), 1L))
-        on.exit(par(oldpar))
+        on.exit(par(oldpar), add = TRUE)
     }
     for (grp in groups) {
         if(sep) plot(xlim, c(0, ymax), type = "n",
