@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MASS 7.3-21\n"
 "Report-Msgid-Bugs-To: bugs@R-project.org\n"
-"POT-Creation-Date: 2012-10-08 10:54\n"
+"POT-Creation-Date: 2013-03-18 09:49\n"
 "PO-Revision-Date: 2012-10-02 16:58+0100\n"
 "Last-Translator: Łukasz Daniel <lukasz.daniel@gmail.com>\n"
 "Language-Team: Łukasz Daniel <lukasz.daniel@gmail.com>\n"
@@ -395,6 +395,12 @@ msgstr "wartości brakujące lub nieskończone nie są dozwolone w zbiorze danyc
 # stop("only finite values are allowed in 'lims'")
 msgid "only finite values are allowed in 'lims'"
 msgstr "tylko skończone wartości są dozwolone w 'lims'"
+
+# MASS/R/truehist.R: 50
+# stop("'h' must be strictly positive")
+#, fuzzy
+msgid "bandwidths must be strictly positive"
+msgstr "'h' musi być ściśle dodatnie"
 
 # MASS/R/lda.R: 80
 # stop("'x' is not a matrix")
