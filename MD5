@@ -1,5 +1,6 @@
-a9b649a24e46a16f2ad1c8d4e3fab2a8 *DESCRIPTION
+9162527458f5a729dbe9b4af9fd1a676 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
+f135a040ec910328ae39ccc742bfd6c0 *LICENCE.note
 d3189e9d901fd1c0ecf37975bef0c5a3 *NAMESPACE
 632b182f9037375e3157cc91a463d113 *R/add.R
 f24c684489a4b4096f422e348efc9bae *R/area.R
@@ -133,7 +134,6 @@ c5f389af5e309c81135890293b5c867b *data/waders.rda
 b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bc59b5368bad84fac2fad52f03298de *data/wtloss.rda
 7bf40cbb20005f08d1f9163582f0d815 *inst/CITATION
-f135a040ec910328ae39ccc742bfd6c0 *inst/LICENCE
 c05be9bdb69df9463a3aa54b771856cd *inst/NEWS
 4d3f8a987c1470ed39bf1c92761fe8ca *inst/po/de/LC_MESSAGES/R-MASS.mo
 705416a822a275eb69b8fde3e131fe44 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
@@ -150,7 +150,7 @@ ea5dfb16715140492edf278a4c2cb1b6 *inst/scripts/ch06.R
 50f0337c57a1c481c02df0f1258e72c5 *inst/scripts/ch08.R
 8fa4f5b6039ff3883a17226085ed77b8 *inst/scripts/ch09.R
 0a408ced026c424b91f051dd1db21481 *inst/scripts/ch10.R
-974073d57a243168f1657268becd5699 *inst/scripts/ch11.R
+6d19699220b04f2400f7b2e4c90a6feb *inst/scripts/ch11.R
 793b62dd2329642c3e5e9af5962a0f59 *inst/scripts/ch12.R
 81629a5320cd986c06164748c66e0cfa *inst/scripts/ch13.R
 a7457b4533a20b3ec155fe157b2ed29c *inst/scripts/ch14.R
@@ -320,7 +320,7 @@ d7b1f2269b52e0051a8feb00756eb9f8 *po/R-pl.po
 f3879e5845a77c3e71dd1aed199bf595 *src/MASS.c
 71793e0a75407f348c83f843f572bf0e *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-0ac65fedf744baad174101398bf49465 *tests/Examples/MASS-Ex.Rout.save
+b24c779daf8e6ac3d2ac24719b3159a4 *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
 55c6f4de353b9479359459d2718a017e *tests/fitdistr.Rout.save

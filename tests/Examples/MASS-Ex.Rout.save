@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2013-02-08 r61876) -- "Unsuffered Consequences"
+R Under development (unstable) (2013-06-29 r63100) -- "Unsuffered Consequences"
 Copyright (C) 2013 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -2190,7 +2190,7 @@ Degrees of Freedom: 41 Total (i.e. Null);  38 Residual
 Null Deviance:	    100.2 
 Residual Deviance: 90.34 	AIC: 225.6
 > try(glm.nb(y ~ lag1+lag2+lag3, link=identity))
-Warning in log(ifelse(y == 0, 1, y/mu)) : NaNs produced
+Warning in log(y/mu) : NaNs produced
 Error : no valid set of coefficients has been found: please supply starting values
 > glm.nb(y ~ lag1+lag2+lag3, link=identity,  start=c(2, 0.1, 0.1, 0.1))
 
