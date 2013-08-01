@@ -24,7 +24,7 @@ rlm.formula <-
 {
     mf <- match.call(expand.dots = FALSE)
     mf$method <- mf$wt.method <- mf$model <- mf$x.ret <- mf$y.ret <- mf$contrasts <- mf$... <- NULL
-    mf[[1L]] <- as.name("model.frame")
+    mf[[1L]] <- quote(stats::model.frame)
     mf <- eval.parent(mf)
     method <- match.arg(method)
     wt.method <- match.arg(wt.method)

@@ -147,7 +147,7 @@ addterm.glm <-
 	dev <- table$Deviance
 	df <- table$Df
 	diff <- pmax(0, (dev[1L] - dev)/df)
-	Fs <- (diff/df)/(dev/(rdf-df))
+	Fs <- diff/(dev/(rdf-df))
 	Fs[df < .Machine$double.eps] <- NA
 	P <- Fs
 	nnas <- !is.na(Fs)

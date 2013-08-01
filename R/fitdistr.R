@@ -1,5 +1,5 @@
 # file MASS/R/fitdistr.R
-# copyright (C) 2002-2010 W. N. Venables and B. D. Ripley
+# copyright (C) 2002-2013 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -175,7 +175,7 @@ fitdistr <- function(x, densfun, start, ...)
             parse(text = paste("densfun(x,",
                   paste("parm[", 1L:l, "]", collapse = ", "),
                   ", ...)"))
-    Call[[1L]] <- as.name("optim")
+    Call[[1L]] <- quote(stats::optim)
     Call$densfun <- Call$start <- NULL
     Call$x <- x # want local variable as eval in this frame
     Call$par <- start

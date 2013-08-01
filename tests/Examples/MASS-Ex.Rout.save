@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2013-06-29 r63100) -- "Unsuffered Consequences"
+R version 3.0.1 Patched (2013-07-17 r63345) -- "Good Sport"
 Copyright (C) 2013 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -740,8 +740,8 @@ function (x)
 > 
 > ### ** Examples
 > 
-> attach(beav1)
-> beav1$hours <- 24*(day-346) + trunc(time/100) + (time%%100)/60
+> beav1 <- within(beav1,
++                hours <- 24*(day-346) + trunc(time/100) + (time%%100)/60)
 > plot(beav1$hours, beav1$temp, type="l", xlab="time",
 +    ylab="temperature", main="Beaver 1")
 > usr <- par("usr"); usr[3:4] <- c(-0.2, 8); par(usr=usr)
@@ -794,7 +794,7 @@ Residual standard error: 0.08096 on 104 degrees of freedom
 Multiple R-squared:  0.9999,	Adjusted R-squared:  0.9999 
 F-statistic: 1.81e+05 on 5 and 104 DF,  p-value: < 2.2e-16
 
-> detach("beav1"); rm(temp, activ)
+> rm(temp, activ)
 > 
 > 
 > 
@@ -866,7 +866,7 @@ s.e.  0.0681     0.0939  0.1282     0.105    0.0997
 
 sigma^2 estimated as 0.01434:  log likelihood = 69.83,  aic = -127.67
 > 
-> library(nlme)
+> library(nlme) # for gls and corAR1
 > beav2.gls <- gls(temp ~ activ, data = beav2, corr = corAR1(0.8),
 +                  method = "ML")
 > summary(beav2.gls)
@@ -947,14 +947,14 @@ detaching 'package:nlme'
 > 
 > ### ** Examples
 > 
-> attach(birthwt)
-> race <- factor(race, labels = c("white", "black", "other"))
-> ptd <- factor(ptl > 0)
-> ftv <- factor(ftv)
-> levels(ftv)[-(1:2)] <- "2+"
-> bwt <- data.frame(low = factor(low), age, lwt, race,
-+     smoke = (smoke > 0), ptd, ht = (ht > 0), ui = (ui > 0), ftv)
-> detach("birthwt")
+> bwt <- with(birthwt, {
++ race <- factor(race, labels = c("white", "black", "other"))
++ ptd <- factor(ptl > 0)
++ ftv <- factor(ftv)
++ levels(ftv)[-(1:2)] <- "2+"
++ data.frame(low = factor(low), age, lwt, race, smoke = (smoke > 0),
++            ptd, ht = (ht > 0), ui = (ui > 0), ftv)
++ })
 > options(contrasts = c("contr.treatment", "contr.poly"))
 > glm(low ~ ., binomial, bwt)
 
@@ -3133,50 +3133,36 @@ smallest value of GCV  at 0.0057
   3   4   7   2   0 
 > ## hs phs fol sex f
 > ##  3   4   7   2 0
-> minn38a <- array(0, c(3,4,7,2), lapply(minn38[, -5], levels))
-> minn38a[data.matrix(minn38[,-5])] <- minn38$fol
-> fm <- loglm(~1 + 2 + 3 + 4, minn38a)  # numerals as names.
+> ##minn38a <- array(0, c(3,4,7,2), lapply(minn38[, -5], levels))
+> ##minn38a[data.matrix(minn38[,-5])] <- minn38$f
+> 
+> ## or more simply
+> minn38a <- xtabs(f ~ ., minn38)
+> 
+> fm <- loglm(~ 1 + 2 + 3 + 4, minn38a)  # numerals as names.
 > deviance(fm)
-[1] 0
-> ##[1] 3711.9
+[1] 3711.914
+> ## [1] 3711.9
 > fm1 <- update(fm, .~.^2)
 > fm2 <- update(fm, .~.^3, print = TRUE)
-2 iterations: deviation 0 
-> ## 5 iterations: deviation 0.0750732
+5 iterations: deviation 0.07512432 
+> ## 5 iterations: deviation 0.075
 > anova(fm, fm1, fm2)
 LR tests for hierarchical log-linear models
 
 Model 1:
- ~`1` + `2` + `3` + `4` 
+ ~1 + 2 + 3 + 4 
 Model 2:
- . ~ .v2 + .v1 + .v3 
+ . ~ `1` + `2` + `3` + `4` + `1`:`2` + `1`:`3` + `1`:`4` + `2`:`3` + `2`:`4` + `3`:`4` 
 Model 3:
- . ~ .v2 + .v1 + .v3 
+ . ~ `1` + `2` + `3` + `4` + `1`:`2` + `1`:`3` + `1`:`4` + `2`:`3` + `2`:`4` + `3`:`4` + `1`:`2`:`3` + `1`:`2`:`4` + `1`:`3`:`4` + `2`:`3`:`4` 
 
-          Deviance  df Delta(Dev) Delta(df) P(> Delta(Dev)
-Model 1          0 155                                    
-Model 2          0 108          0        47              1
-Model 3          0  36          0        72              1
-Saturated        0   0          0        36              1
-> ## Not run: 
-> ##D LR tests for hierarchical log-linear models
-> ##D 
-> ##D Model 1:
-> ##D   ~  1 + 2 + 3 + 4
-> ##D Model 2:
-> ##D  .  ~  1 + 2 + 3 + 4 + 1:2 + 1:3 + 1:4 + 2:3 + 2:4 + 3:4
-> ##D Model 3:
-> ##D  .  ~  1 + 2 + 3 + 4 + 1:2 + 1:3 + 1:4 + 2:3 + 2:4 + 3:4 +
-> ##D         1:2:3 + 1:2:4 + 1:3:4 + 2:3:4
-> ##D 
-> ##D 
-> ##D           Deviance  df Delta(Dev) Delta(df) P(> Delta(Dev)
-> ##D   Model 1 3711.915 155
-> ##D   Model 2  220.043 108   3491.873        47        0.00000
-> ##D   Model 3   47.745  36    172.298        72        0.00000
-> ##D Saturated    0.000   0     47.745        36        0.09114
-> ##D 
-> ## End(Not run)
+            Deviance  df Delta(Dev) Delta(df) P(> Delta(Dev)
+Model 1   3711.91367 155                                    
+Model 2    220.04285 108 3491.87082        47        0.00000
+Model 3     47.74492  36  172.29794        72        0.00000
+Saturated    0.00000   0   47.74492        36        0.09114
+> 
 > # Case 1. An array generated with xtabs.
 > 
 > loglm(~ Type + Origin, xtabs(~ Type + Origin, Cars93))
@@ -3188,17 +3174,7 @@ Statistics:
                       X^2 df   P(> X^2)
 Likelihood Ratio 18.36179  5 0.00252554
 Pearson          14.07985  5 0.01511005
-> ## Not run: 
-> ##D Call:
-> ##D loglm(formula = ~Type + Origin, data = xtabs(~Type + Origin,
-> ##D     Cars93))
-> ##D 
-> ##D Statistics:
-> ##D                     X^2 df  P(> X^2)
-> ##D Likelihood Ratio 18.362  5 0.0025255
-> ##D          Pearson 14.080  5 0.0151101
-> ##D 
-> ## End(Not run)
+> 
 > # Case 2.  Frequencies given as a vector in a data frame
 > names(quine)
 [1] "Eth"  "Sex"  "Age"  "Lrn"  "Days"
@@ -3418,8 +3394,7 @@ detaching 'package:survival', 'package:splines'
 > A <- model.matrix(~ Strip - 1, data=muscle)
 > rats.nls1 <- nls(log(Length) ~ cbind(A, rho^Conc),
 +    data = muscle, start = c(rho=0.1), algorithm="plinear")
-> B <- coef(rats.nls1)
-> B
+> (B <- coef(rats.nls1))
           rho .lin.StripS01 .lin.StripS02 .lin.StripS03 .lin.StripS04 
    0.07776401    3.08304824    3.30137838    3.44562531    2.80464434 
 .lin.StripS05 .lin.StripS06 .lin.StripS07 .lin.StripS08 .lin.StripS09 
@@ -3454,32 +3429,27 @@ alpha..lin.StripS21         beta..lin22             rho.rho
 Number of iterations to convergence: 0 
 Achieved convergence tolerance: 4.923e-06
 > 
-> attach(muscle)
-> Muscle <- expand.grid(Conc = sort(unique(Conc)), Strip = levels(Strip))
-> Muscle$Yhat <- predict(rats.nls2, Muscle)
-> Muscle <- cbind(Muscle, logLength = rep(as.numeric(NA), 126))
-> ind <- match(paste(Strip, Conc),
+> Muscle <- with(muscle, {
++ Muscle <- expand.grid(Conc = sort(unique(Conc)), Strip = levels(Strip))
++ Muscle$Yhat <- predict(rats.nls2, Muscle)
++ Muscle <- cbind(Muscle, logLength = rep(as.numeric(NA), 126))
++ ind <- match(paste(Strip, Conc),
 +             paste(Muscle$Strip, Muscle$Conc))
-> Muscle$logLength[ind] <- log(Length)
-> detach()
++ Muscle$logLength[ind] <- log(Length)
++ Muscle})
 > 
-> require(lattice)
-Loading required package: lattice
-> xyplot(Yhat ~ Conc | Strip, Muscle, as.table = TRUE,
+> lattice::xyplot(Yhat ~ Conc | Strip, Muscle, as.table = TRUE,
 +    ylim = range(c(Muscle$Yhat, Muscle$logLength), na.rm = TRUE),
 +    subscripts = TRUE, xlab = "Calcium Chloride concentration (mM)",
 +    ylab = "log(Length in mm)", panel =
 +    function(x, y, subscripts, ...) {
-+       lines(spline(x, y))
 +       panel.xyplot(x, Muscle$logLength[subscripts], ...)
++       llines(spline(x, y))
 +    })
 > 
 > 
 > 
 > cleanEx()
-
-detaching 'package:lattice'
-
 > nameEx("mvrnorm")
 > ### * mvrnorm
 > 
@@ -3571,18 +3541,15 @@ Residual Deviance: 172 	AIC: 1095
 > 
 > ### ** Examples
 > 
-> library(nlme)
-> nl1 <- nlschools
-> attach(nl1)
-> classMeans <- tapply(IQ, class, mean)
-> nl1$IQave <- classMeans[as.character(class)]
-> nl1$IQ <- nl1$IQ - nl1$IQave
-> detach()
+> nl1 <- within(nlschools, {
++ IQave <- tapply(IQ, class, mean)[as.character(class)]
++ IQ <- IQ - IQave
++ })
 > cen <- c("IQ", "IQave", "SES")
 > nl1[cen] <- scale(nl1[cen], center = TRUE, scale = FALSE)
 > 
-> nl.lme <- lme(lang ~ IQ*COMB + IQave + SES,
-+               random = ~ IQ | class, data = nl1)
+> nl.lme <- nlme::lme(lang ~ IQ*COMB + IQave + SES,
++                     random = ~ IQ | class, data = nl1)
 > summary(nl.lme)
 Linear mixed-effects model fit by REML
  Data: nl1 
@@ -3623,9 +3590,6 @@ Number of Groups: 133
 > 
 > 
 > cleanEx()
-
-detaching 'package:nlme'
-
 > nameEx("npk")
 > ### * npk
 > 
@@ -4654,11 +4618,9 @@ log(Days + 2.5) ~ Eth + Sex + Age + Lrn + Eth:Sex + Eth:Age +
 3 - Sex:Age:Lrn  2 1.526754       125   66.59962 -72.59652
 > 
 > cpus1 <- cpus
-> attach(cpus)
 > for(v in names(cpus)[2:7])
 +   cpus1[[v]] <- cut(cpus[[v]], unique(quantile(cpus[[v]])),
 +                     include.lowest = TRUE)
-> detach()
 > cpus0 <- cpus1[, 2:8]  # excludes names, authors' predictions
 > cpus.samp <- sample(1:209, 100)
 > cpus.lm <- lm(log10(perf) ~ ., data = cpus1[cpus.samp,2:8])
@@ -4682,20 +4644,14 @@ log10(perf) ~ mmax + cach + chmax
 > 
 > example(birthwt)
 
-brthwt> attach(birthwt)
-
-brthwt> race <- factor(race, labels = c("white", "black", "other"))
-
-brthwt> ptd <- factor(ptl > 0)
-
-brthwt> ftv <- factor(ftv)
-
-brthwt> levels(ftv)[-(1:2)] <- "2+"
-
-brthwt> bwt <- data.frame(low = factor(low), age, lwt, race,
-brthwt+     smoke = (smoke > 0), ptd, ht = (ht > 0), ui = (ui > 0), ftv)
-
-brthwt> detach("birthwt")
+brthwt> bwt <- with(birthwt, {
+brthwt+ race <- factor(race, labels = c("white", "black", "other"))
+brthwt+ ptd <- factor(ptl > 0)
+brthwt+ ftv <- factor(ftv)
+brthwt+ levels(ftv)[-(1:2)] <- "2+"
+brthwt+ data.frame(low = factor(low), age, lwt, race, smoke = (smoke > 0),
+brthwt+            ptd, ht = (ht > 0), ui = (ui > 0), ftv)
+brthwt+ })
 
 brthwt> options(contrasts = c("contr.treatment", "contr.poly"))
 
@@ -4977,21 +4933,15 @@ Number of Fisher Scoring iterations: 1
           Std. Err.:  1.75 
 
  2 x log-likelihood:  -893.063 
-> attach(yeast)
 > mu <- fitted(fit)
-> theta.md(numbers, mu, dfr = 399, weights = fr)
+> theta.md(yeast$numbers, mu, dfr = 399, weights = yeast$fr)
 [1] 3.027079
-> theta.ml(numbers, mu, weights = fr)
-Warning in theta.ml(numbers, mu, weights = fr) :
-  iteration limit reached
-[1] 3.586071
-attr(,"warn")
-[1] "iteration limit reached"
+> theta.ml(yeast$numbers, mu, limit = 15, weights = yeast$fr)
+[1] 3.586087
 attr(,"SE")
-[1] 1.743658
-> theta.mm(numbers, mu, dfr = 399, weights = fr)
+[1] 1.749609
+> theta.mm(yeast$numbers, mu, dfr = 399, weights = yeast$fr)
 [1] 3.549593
-> detach()
 > 
 > 
 > 
@@ -5172,12 +5122,10 @@ detaching 'package:lattice'
 > 
 > ### ** Examples
 > 
-> attach(geyser)
-> width.SJ(duration, method = "dpi")
+> width.SJ(geyser$duration, method = "dpi")
 [1] 0.5747852
-> width.SJ(duration)
+> width.SJ(geyser$duration)
 [1] 0.360518
-> detach()
 > 
 > width.SJ(galaxies, method = "dpi")
 [1] 3256.151

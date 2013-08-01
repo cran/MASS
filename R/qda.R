@@ -1,5 +1,5 @@
 # file MASS/R/qda.R
-# copyright (C) 1994-2006 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2013 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ qda.formula <- function(formula, data, ..., subset, na.action)
 {
     m <- match.call(expand.dots = FALSE)
     m$... <- NULL
-    m[[1L]] <- as.name("model.frame")
+    m[[1L]] <- quote(stats::model.frame)
     m <- eval.parent(m)
     Terms <- attr(m, "terms")
     grouping <- model.response(m)

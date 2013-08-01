@@ -1,5 +1,5 @@
 # file MASS/R/lda.R
-# copyright (C) 1994-2004 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2013 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ lda.formula <- function(formula, data, ..., subset, na.action)
 {
     m <- match.call(expand.dots = FALSE)
     m$... <- NULL
-    m[[1L]] <- as.name("model.frame")
+    m[[1L]] <- quote(stats::model.frame)
     m <- eval.parent(m)
     Terms <- attr(m, "terms")
     grouping <- model.response(m)
@@ -470,7 +470,7 @@ model.frame.lda <- function(formula, ...)
 {
     oc <- formula$call
     oc$prior <- oc$tol <- oc$method <- oc$CV <- oc$nu <- NULL
-    oc[[1L]] <- as.name("model.frame")
+    oc[[1L]] <- quote(stats::model.frame)
     if(length(dots <- list(...))) {
         nargs <- dots[match(c("data", "na.action", "subset"), names(dots), 0L)]
         oc[names(nargs)] <- nargs

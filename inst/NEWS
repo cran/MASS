@@ -189,3 +189,5 @@ This file documents software changes since the third edition.
   (reported by Joris Meys)
 - kde2d() throws an error if given zero bandwidths or constant data.
 - ldahist(sep = TRUE) was missing a dev.flush().
+- addterm.glm() mis-calculated F statistics for df > 1.
+- anova.loglm() needed revision for changes in R.

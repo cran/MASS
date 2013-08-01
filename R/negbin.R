@@ -1,12 +1,12 @@
 # file MASS/R/negbin.R
-# copyright (C) 1994-2009 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2013 W. N. Venables and B. D. Ripley
 #
 anova.negbin <- function(object, ..., test = "Chisq")
 {
   dots <- list(...)
   if(length(dots) == 0L) {
     warning("tests made without re-estimating 'theta'")
-    object$call[[1L]] <- as.name("glm")
+    object$call[[1L]] <- quote(stats::glm)
     if(is.null(object$link))
       object$link <- as.name("log")
     object$call$family <- call("negative.binomial", theta = object$
@@ -64,7 +64,7 @@ family.negbin <- function(object, ...) object$family
 
 glm.convert <- function(object)
 {
-    object$call[[1L]] <- as.name("glm")
+    object$call[[1L]] <- quote(stats::glm)
     if(is.null(object$link))
         object$link <- as.name("log")
     object$call$family <- call("negative.binomial", theta = object$theta,
@@ -96,7 +96,7 @@ glm.nb <- function(formula, data, weights,
         "etastart", "mustart", "offset"), names(mf), 0)
     mf <- mf[c(1, m)]
     mf$drop.unused.levels <- TRUE
-    mf[[1L]] <- as.name("model.frame")
+    mf[[1L]] <- quote(stats::model.frame)
     mf <- eval.parent(mf)
     Terms <- attr(mf, "terms")
     if(method == "model.frame") return(mf)
