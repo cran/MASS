@@ -1,5 +1,5 @@
 
-R version 3.0.1 Patched (2013-07-17 r63345) -- "Good Sport"
+R Under development (unstable) (2013-08-18 r63616) -- "Unsuffered Consequences"
 Copyright (C) 2013 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -1129,7 +1129,7 @@ Waiting for profiling to be done...
 > 
 > ### ** Examples
 > 
-> contr.sdif(6)
+> (A <- contr.sdif(6))
          2-1        3-2  4-3        5-4        6-5
 1 -0.8333333 -0.6666667 -0.5 -0.3333333 -0.1666667
 2  0.1666667 -0.6666667 -0.5 -0.3333333 -0.1666667
@@ -1137,7 +1137,7 @@ Waiting for profiling to be done...
 4  0.1666667  0.3333333  0.5 -0.3333333 -0.1666667
 5  0.1666667  0.3333333  0.5  0.6666667 -0.1666667
 6  0.1666667  0.3333333  0.5  0.6666667  0.8333333
-> zapsmall(ginv(contr.sdif(6)))
+> zapsmall(ginv(A))
      [,1] [,2] [,3] [,4] [,5] [,6]
 [1,]   -1    1    0    0    0    0
 [2,]    0   -1    1    0    0    0

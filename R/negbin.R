@@ -7,11 +7,10 @@ anova.negbin <- function(object, ..., test = "Chisq")
   if(length(dots) == 0L) {
     warning("tests made without re-estimating 'theta'")
     object$call[[1L]] <- quote(stats::glm)
-    if(is.null(object$link))
-      object$link <- as.name("log")
-    object$call$family <- call("negative.binomial", theta = object$
-                               theta, link = object$link)
-    anova.glm(object, test = test)
+    if(is.null(object$link)) object$link <- as.name("log")
+    object$call$family <-
+        call("negative.binomial", theta = object$ theta, link = object$link)
+    NextMethod(object, test = test)
   } else {
     if(test != "Chisq")
       warning("only Chi-squared LR tests are implemented")
@@ -27,7 +26,7 @@ anova.negbin <- function(object, ..., test = "Chisq")
     ths <- sapply(mlist, function(x) x$theta)
     dfs <- dflis[s]
     lls <- sapply(mlist, function(x) x$twologlik)
-    tss <- c("", paste(1L:(nt - 1), 2:nt, sep = " vs "))
+    tss <- c("", paste(1L:(nt - 1L), 2:nt, sep = " vs "))
     df <- c(NA,  - diff(dfs))
     x2 <- c(NA, diff(lls))
     pr <- c(NA, 1 - pchisq(x2[-1L], df[-1L]))

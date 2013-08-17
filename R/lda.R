@@ -452,7 +452,7 @@ pairs.lda <- function(x, labels = colnames(x), panel = panel.lda,
     means <- colMeans(x$means)
     X <- scale(X, center = means, scale = FALSE) %*% x$scaling
     if(!missing(dimen) && dimen < ncol(X)) X <- X[, 1L:dimen]
-    if(type == "std") pairs.default(X, panel=panel, ...)
+    if(type == "std") pairs(X, panel = panel, ...)
     else {
         print(lattice::splom(~X, groups = g, panel = lattice::panel.superpose,
                              key = list(

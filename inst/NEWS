@@ -191,3 +191,4 @@ This file documents software changes since the third edition.
 - ldahist(sep = TRUE) was missing a dev.flush().
 - addterm.glm() mis-calculated F statistics for df > 1.
 - anova.loglm() needed revision for changes in R.
+- The addterm() default method allows update() to fail.

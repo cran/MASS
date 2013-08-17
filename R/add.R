@@ -58,11 +58,13 @@ addterm.default <-
         }
         nfit <- update(object, as.formula(paste("~ . +", tt)),
                        evaluate = FALSE)
-	nfit <- eval(nfit, envir=env) # was  eval.parent(nfit)
-	ans[i+1L, ] <- extractAIC(nfit, scale, k = k, ...)
-        nnew <- nobs(nfit, use.fallback = TRUE)
-        if(all(is.finite(c(n0, nnew))) && nnew != n0)
-            stop("number of rows in use has changed: remove missing values?")
+	nfit <- try(eval(nfit, envir = env), silent = TRUE)
+        ans[i + 1L, ] <- if (!inherits(nfit, "try-error")) {
+            nnew <- nobs(nfit, use.fallback = TRUE)
+            if (all(is.finite(c(n0, nnew))) && nnew != n0)
+                stop("number of rows in use has changed: remove missing values?")
+            extractAIC(nfit, scale, k = k, ...)
+        } else NA_real_
     }
     dfs <- ans[, 1L] - ans[1L, 1L]
     dfs[1L] <- NA
@@ -103,7 +105,7 @@ addterm.lm <-
     }
 
     if(missing(scope) || is.null(scope)) stop("no terms in scope")
-    aod <- stats:::add1.lm(object, scope=scope, scale=scale)[ , -4L]
+    aod <- add1(object, scope=scope, scale=scale)[ , -4L]
     dfs <- c(0, aod$Df[-1L]) + object$rank; RSS <- aod$RSS
     n <- length(object$residuals)
     if(scale > 0) aic <- RSS/scale - n + k*dfs
@@ -315,7 +317,7 @@ dropterm.lm <-
   function(object, scope = drop.scope(object), scale = 0,
            test = c("none", "Chisq", "F"), k = 2, sorted = FALSE, ...)
 {
-    aod <- stats:::drop1.lm(object, scope=scope, scale=scale)[, -4]
+    aod <- drop1(object, scope=scope, scale=scale)[, -4]
     dfs <-  object$rank - c(0, aod$Df[-1L]); RSS <- aod$RSS
     n <- length(object$residuals)
     aod$AIC <- if(scale > 0)RSS/scale - n + k*dfs

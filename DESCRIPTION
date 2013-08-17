@@ -1,8 +1,8 @@
 Package: MASS
 Priority: recommended
-Version: 7.3-28
-Date: 2013-08-01
-Revision: $Rev: 3332 $
+Version: 7.3-29
+Date: 2013-08-17
+Revision: $Rev: 3344 $
 Depends: R (>= 3.0.0), grDevices, graphics, stats, utils
 Suggests: lattice, nlme, nnet, survival
 Authors@R: c(person("Brian", "Ripley", role = c("aut", "cre", "cph"),
@@ -21,7 +21,7 @@ LazyData: yes
 ByteCompile: yes
 License: GPL-2 | GPL-3
 URL: http://www.stats.ox.ac.uk/pub/MASS4/
-Packaged: 2013-07-30 09:32:07 UTC; ripley
+Packaged: 2013-08-31 17:26:54 UTC; ripley
 Author: Brian Ripley [aut, cre, cph],
   Bill Venables [ctb],
   Douglas M. Bates [ctb],
@@ -31,4 +31,4 @@ Author: Brian Ripley [aut, cre, cph],
 Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 NeedsCompilation: yes
 Repository: CRAN
-Date/Publication: 2013-08-02 22:36:57
+Date/Publication: 2013-08-31 19:29:27
