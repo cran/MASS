@@ -1,4 +1,4 @@
-0da0d5fbdd9db05cac596e883f20eb6e *DESCRIPTION
+d59e2977c33724f72c74dd36b16d247d *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 f135a040ec910328ae39ccc742bfd6c0 *LICENCE.note
 789540db11aecd37243ad11b2e94a95f *NAMESPACE
@@ -225,7 +225,7 @@ a980e6f05828b7c992709a22a23a2f38 *man/gamma.dispersion.Rd
 c1c0977e3730dcc6340a845b0509dff7 *man/gamma.shape.glm.Rd
 3f1ac8a8ecc476a9b8a78d8731a76bce *man/gehan.Rd
 d705175d2d756430ab571ee1c5253118 *man/genotype.Rd
-d018199bfb0c31799f019bf27853df23 *man/geyser.Rd
+4ba32a4ca36627bf0117c2fe4a5faa33 *man/geyser.Rd
 a81ca88a2a39298dd099c015fdd3c167 *man/gilgais.Rd
 f484f91e53e72fc672f2d5edd507a768 *man/ginv.Rd
 67ac548358fe00a107e17c7101fb4552 *man/glm.convert.Rd
