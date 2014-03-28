@@ -1,4 +1,4 @@
-d59e2977c33724f72c74dd36b16d247d *DESCRIPTION
+1664f1035969215e00cd3e0dbd1059b6 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 f135a040ec910328ae39ccc742bfd6c0 *LICENCE.note
 789540db11aecd37243ad11b2e94a95f *NAMESPACE
@@ -135,11 +135,11 @@ b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bc59b5368bad84fac2fad52f03298de *data/wtloss.rda
 7bf40cbb20005f08d1f9163582f0d815 *inst/CITATION
 8e2beaa30813af5fba23fa7ec5dacae1 *inst/NEWS
-4d3f8a987c1470ed39bf1c92761fe8ca *inst/po/de/LC_MESSAGES/R-MASS.mo
-705416a822a275eb69b8fde3e131fe44 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
-9151ad7156d9baff725c222ced00242c *inst/po/fr/LC_MESSAGES/R-MASS.mo
+53587aeb7cb3a14eeeeb1992895d5a98 *inst/po/de/LC_MESSAGES/R-MASS.mo
+8efb53fc340103f732c60adc3adda0e6 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
+5df325787e7eab138db877e2b393e46b *inst/po/fr/LC_MESSAGES/R-MASS.mo
 35b33fe6bf3e1b8f4dd81cd0cd1625c1 *inst/po/ko/LC_MESSAGES/R-MASS.mo
-35d8e38c31cf4c59ffd60f3ea22cbe39 *inst/po/pl/LC_MESSAGES/R-MASS.mo
+e6eff04275a69cfc28ab36e037be8976 *inst/po/pl/LC_MESSAGES/R-MASS.mo
 ea5ee8654eb44d16e07c4d8aa214ce4d *inst/scripts/ch01.R
 8fcb238c9d7c78b74f6506e5a96f528e *inst/scripts/ch02.R
 1a83076e9cd6630768489f739fecd28f *inst/scripts/ch03.R
@@ -312,11 +312,11 @@ ceefe8e558dfa70a28f54fcae1ca3df0 *man/whiteside.Rd
 9b1762c2a6566d58b2e1ee9f7b8f712a *man/width.SJ.Rd
 9676e9290685ce7d0527aad90135c048 *man/write.matrix.Rd
 b1fa7ed0af328f27abc9a63dd10334df *man/wtloss.Rd
-410be7ab11b6eefc378d4785a1534807 *po/R-MASS.pot
-4ee03008653108dcc3a25a06005b6bcb *po/R-de.po
-5f0f0cd716d2cfc169f3c27e1e6b74f5 *po/R-fr.po
+9c68561e37f466c8839b8e011e98fa54 *po/R-MASS.pot
+1a8251084f30308c2cbf19fc0fd7664d *po/R-de.po
+c9a3533e4ed79b58192f9664aa8d7696 *po/R-fr.po
 7a8bacbc760f2f78377198a4b4d532d5 *po/R-ko.po
-d7b1f2269b52e0051a8feb00756eb9f8 *po/R-pl.po
+f7b3d8066e652947494ab6d4fca93b0e *po/R-pl.po
 f3879e5845a77c3e71dd1aed199bf595 *src/MASS.c
 71793e0a75407f348c83f843f572bf0e *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda

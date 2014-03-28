@@ -1,14 +1,14 @@
 # Translation of src/library/Recommended/MASS/R-MASS.pot to German
-# Copyright (C) 2007-2013 The R Foundation
+# Copyright (C) 2007-2014 The R Foundation
 # This file is distributed under the same license as the lattice R package.
 # Chris Leick <c.leick@vollbio.de>, 2009-2012.
-# Detlef Steuer <steuer@hsu-hh.de>, 2012-2013
+# Detlef Steuer <steuer@hsu-hh.de>, 2012-2014
 msgid ""
 msgstr ""
-"Project-Id-Version: R 3.0.0 / MASS 7.3-25\n"
+"Project-Id-Version: R 3.1.0 / MASS 7.3-30\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
 "POT-Creation-Date: 2013-03-18 09:49\n"
-"PO-Revision-Date: 2013-03-18 10:44+0100\n"
+"PO-Revision-Date: 2014-03-16 16:32+0100\n"
 "Last-Translator: Detlef Steuer <steuer@hsu-hh.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "Language: de\n"
@@ -207,9 +207,8 @@ msgstr "fehlende oder unendliche Werte in den Daten sind nicht erlaubt"
 msgid "only finite values are allowed in 'lims'"
 msgstr "nur endliche Werte sind in 'lims' erlaubt"
 
-#, fuzzy
 msgid "bandwidths must be strictly positive"
-msgstr "'h' muss strikt positiv sein"
+msgstr "Bandbreiten müssen strikt positiv sein"
 
 msgid "'x' is not a matrix"
 msgstr "'x' ist keine Matrix"
