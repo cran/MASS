@@ -15,9 +15,10 @@
 #  A copy of the GNU General Public License is available at
 #  http://www.r-project.org/Licenses/
 #
-polr <- function(formula, data, weights, start, ..., subset,
-                 na.action, contrasts = NULL, Hess = FALSE, model = TRUE,
-                 method = c("logistic", "probit", "cloglog", "cauchit"))
+polr <-
+    function(formula, data, weights, start, ..., subset,
+             na.action, contrasts = NULL, Hess = FALSE, model = TRUE,
+             method = c("logistic", "probit", "loglog", "cloglog", "cauchit"))
 {
     m <- match.call(expand.dots = FALSE)
     method <- match.arg(method)
@@ -56,6 +57,7 @@ polr <- function(formula, data, weights, start, ..., subset,
                    "logistic"= glm.fit(X, y1, wt, family = binomial(), offset = offset),
                    "probit" = glm.fit(X, y1, wt, family = binomial("probit"), offset = offset),
                    ## this is deliberate, a better starting point
+                   "loglog" = glm.fit(X, y1, wt, family = binomial("probit"), offset = offset),
                    "cloglog" = glm.fit(X, y1, wt, family = binomial("probit"), offset = offset),
                    "cauchit" = glm.fit(X, y1, wt, family = binomial("cauchit"), offset = offset))
         if(!fit$converged)
@@ -85,7 +87,7 @@ polr <- function(formula, data, weights, start, ..., subset,
 
     eta <- if(pc) offset + drop(x %*% beta) else offset + rep(0, n)
     pfun <- switch(method, logistic = plogis, probit = pnorm,
-                   cloglog = pgumbel, cauchit = pcauchy)
+                   loglog = pgumbel, cloglog = pGumbel, cauchit = pcauchy)
     cumpr <- matrix(pfun(matrix(zeta, n, q, byrow=TRUE) - eta), , q)
     fitted <- t(apply(cumpr, 1L, function(x) diff(c(0, x, 1))))
     dimnames(fitted) <- list(row.names(m), lev)
@@ -230,7 +232,7 @@ predict.polr <- function(object, newdata, type=c("class","probs"), ...)
         q <- length(object$zeta)
         eta <- drop(X %*% object$coefficients)
         pfun <- switch(object$method, logistic = plogis, probit = pnorm,
-                       cloglog = pgumbel, cauchit = pcauchy)
+                       loglog = pgumbel, cloglog = pGumbel, cauchit = pcauchy)
         cumpr <- matrix(pfun(matrix(object$zeta, n, q, byrow=TRUE) - eta), , q)
         Y <- t(apply(cumpr, 1L, function(x) diff(c(0, x, 1))))
         dimnames(Y) <- list(rownames(X), object$lev)
@@ -278,6 +280,20 @@ pgumbel <- function(q, loc = 0, scale = 1, lower.tail = TRUE)
 dgumbel <- function (x, loc = 0, scale = 1, log = FALSE)
 {
     x <- (x - loc)/scale
+    d <- log(1/scale) - x - exp(-x)
+    if (!log) exp(d) else d
+}
+
+pGumbel <- function(q, loc = 0, scale = 1, lower.tail = TRUE)
+{
+    q <- (q - loc)/scale
+    p <- exp(-exp(q))
+    if (lower.tail) 1 - p else p
+}
+
+dGumbel <- function (x, loc = 0, scale = 1, log = FALSE)
+{
+    x <- -(x - loc)/scale
     d <- log(1/scale) - x - exp(-x)
     if (!log) exp(d) else d
 }
@@ -356,9 +372,9 @@ polr.fit <- function(x, y, wt, start, offset, method, ...)
     }
 
     pfun <- switch(method, logistic = plogis, probit = pnorm,
-                   cloglog = pgumbel, cauchit = pcauchy)
+                   loglog = pgumbel, cloglog = pGumbel, cauchit = pcauchy)
     dfun <- switch(method, logistic = dlogis, probit = dnorm,
-                   cloglog = dgumbel, cauchit = dcauchy)
+                   loglog = dgumbel, cloglog = dGumbel, cauchit = dcauchy)
     n <- nrow(x)
     pc <- ncol(x)
     ind_pc <- seq_len(pc)
@@ -489,6 +505,7 @@ simulate.polr <- function(object, nsim = 1, seed = NULL, ...)
         stop("weighted fits are not supported")
 
     rgumbel <- function(n, loc = 0, scale = 1) loc - scale*log(rexp(n))
+    rGumbel <- function(n, loc = 0, scale = 1) scale*log(rexp(n)) - loc
 
     ## start the same way as simulate.lm
     if(!exists(".Random.seed", envir = .GlobalEnv, inherits = FALSE))
@@ -502,7 +519,7 @@ simulate.polr <- function(object, nsim = 1, seed = NULL, ...)
         on.exit(assign(".Random.seed", R.seed, envir = .GlobalEnv))
     }
     rfun <- switch(object$method, logistic = rlogis, probit = rnorm,
-                   cloglog = rgumbel, cauchit = rcauchy)
+                   loglog = rgumbel, cloglog = rGumbel, cauchit = rcauchy)
     eta <- object$lp
     n <- length(eta)
     res <- cut(rfun(n*nsim, eta),

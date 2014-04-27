@@ -1,5 +1,5 @@
 % file MASS/man/polr.Rd
-% copyright (C) 1994-2011 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
 %
 \name{polr}
 \alias{polr}
@@ -15,7 +15,7 @@
 \usage{
 polr(formula, data, weights, start, \dots, subset, na.action,
      contrasts = NULL, Hess = FALSE, model = TRUE,
-     method = c("logistic", "probit", "cloglog", "cauchit"))
+     method = c("logistic", "probit", "loglog", "cloglog", "cauchit"))
 }
 \arguments{
   \item{formula}{
@@ -62,8 +62,8 @@ polr(formula, data, weights, start, \dots, subset, na.action,
     logical for whether the model matrix should be returned.
   }
   \item{method}{
-    logistic or probit or complementary log-log or cauchit (corresponding
-    to a Cauchy latent variable).
+    logistic or probit or (complementary) log-log or cauchit
+    (corresponding to a Cauchy latent variable). 
   }
 }
 \details{
@@ -88,14 +88,21 @@ polr(formula, data, weights, start, \dots, subset, na.action,
   proportional.  Hence the term \emph{proportional odds logistic
     regression}.
 
-  In the complementary log-log case, we have a \emph{proportional
-    hazards} model for grouped survival times.
+  The log-log and complementary log-log links are the increasing functions
+  \eqn{F^{-1}(p) = -log(-log(p))}{F^-1(p) = -log(-log(p))} and
+  \eqn{F^{-1}(p) = log(-log(1-p))}{F^-1(p) = log(-log(1-p))};
+  some call the first the \sQuote{negative log-log} link.  These
+  correspond to a latent variable with the extreme-value distribution for
+  the maximum and minimum respectively.
 
-  There are methods for the standard model-fitting functions, including
+  A \emph{proportional hazards} model for grouped survival times can be
+  obtained by using the complementary log-log link with grouping ordered
+  by increasing times.
+
   \code{\link{predict}}, \code{\link{summary}}, \code{\link{vcov}},
   \code{\link{anova}}, \code{\link{model.frame}} and an
   \code{extractAIC} method for use with \code{\link{stepAIC}} (and
-  \code{\link{step}}.  There are also \code{\link{profile}} and
+  \code{\link{step}}).  There are also \code{\link{profile}} and
   \code{\link{confint}} methods.
 }
 \value{
@@ -127,6 +134,10 @@ polr(formula, data, weights, start, \dots, subset, na.action,
   The \code{\link{vcov}} method uses the approximate Hessian: for
   reliable results the model matrix should be sensibly scaled with all
   columns having range the order of one.
+
+  Prior to version 7.3-32, \code{method = "cloglog"} confusingly gave
+  the log-log link, implicitly assuming the first response level was the
+  \sQuote{best}.
 }
 \references{
   Agresti, A. (2002) \emph{Categorical Data.} Second edition.  Wiley.
@@ -145,6 +156,7 @@ summary(house.plr, digits = 3)
 ## slightly worse fit from
 summary(update(house.plr, method = "probit", Hess = TRUE), digits = 3)
 ## although it is not really appropriate, can fit
+summary(update(house.plr, method = "loglog", Hess = TRUE), digits = 3)
 summary(update(house.plr, method = "cloglog", Hess = TRUE), digits = 3)
 
 predict(house.plr, housing, type = "p")

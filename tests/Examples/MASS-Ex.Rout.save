@@ -1,14 +1,11 @@
 
-R Under development (unstable) (2013-08-18 r63616) -- "Unsuffered Consequences"
-Copyright (C) 2013 The R Foundation for Statistical Computing
-ISBN 3-900051-07-0
+R Under development (unstable) (2014-04-26 r65504) -- "Unsuffered Consequences"
+Copyright (C) 2014 The R Foundation for Statistical Computing
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
 Type 'license()' or 'licence()' for distribution details.
-
-  Natural language support but running in an English locale
 
 R is a collaborative project with many contributors.
 Type 'contributors()' for more information and
@@ -3963,10 +3960,10 @@ Medium|High  0.427  0.076      5.585
 Residual Deviance: 3479.689 
 AIC: 3495.689 
 > ## although it is not really appropriate, can fit
-> summary(update(house.plr, method = "cloglog", Hess = TRUE), digits = 3)
+> summary(update(house.plr, method = "loglog", Hess = TRUE), digits = 3)
 Call:
 polr(formula = Sat ~ Infl + Type + Cont, data = housing, weights = Freq, 
-    Hess = TRUE, method = "cloglog")
+    Hess = TRUE, method = "loglog")
 
 Coefficients:
                Value Std. Error t value
@@ -3984,6 +3981,27 @@ Medium|High  0.892  0.087     10.223
 
 Residual Deviance: 3491.41 
 AIC: 3507.41 
+> summary(update(house.plr, method = "cloglog", Hess = TRUE), digits = 3)
+Call:
+polr(formula = Sat ~ Infl + Type + Cont, data = housing, weights = Freq, 
+    Hess = TRUE, method = "cloglog")
+
+Coefficients:
+               Value Std. Error t value
+InflMedium     0.382     0.0703    5.44
+InflHigh       0.915     0.0926    9.89
+TypeApartment -0.407     0.0861   -4.73
+TypeAtrium    -0.281     0.1111   -2.52
+TypeTerrace   -0.742     0.1013   -7.33
+ContHigh       0.209     0.0651    3.21
+
+Intercepts:
+            Value  Std. Error t value
+Low|Medium  -0.796  0.090     -8.881 
+Medium|High  0.055  0.086      0.647 
+
+Residual Deviance: 3484.053 
+AIC: 3500.053 
 > 
 > predict(house.plr, housing, type = "p")
          Low    Medium      High
@@ -5166,8 +5184,9 @@ Achieved convergence tolerance: 4.324e-06
 > 
 > ### * <FOOTER>
 > ###
+> options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  13.042 0.119 13.224 0 0 
+Time elapsed:  7.46 0.109 7.596 0 0 
 > grDevices::dev.off()
 null device 
           1 
