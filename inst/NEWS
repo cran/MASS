@@ -194,3 +194,4 @@ This file documents software changes since the third edition.
 - The addterm() default method allows update() to fail.
 - polr(method = "cloglog") implemented what is more commonly called
   the log-log link.  Now both are provided.
+- lqs() fits with intercepts and contrasts lost the latter from the return value.

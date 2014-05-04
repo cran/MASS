@@ -1,5 +1,5 @@
 % file MASS/man/rlm.Rd
-% copyright (C) 1998,9, 2004 B. D. Ripley
+% copyright (C) 1998-2014 B. D. Ripley
 %
 \name{rlm}
 \alias{rlm}
@@ -81,7 +81,7 @@ psi.bisquare(u, c = 4.685, deriv = 0)
     should the response be returned in the object?
   }
   \item{contrasts}{
-    optional contrast specifications: se \code{\link{lm}}.
+    optional contrast specifications: see \code{\link{lm}}.
   }
   \item{w}{
     (optional) initial down-weighting for each case.

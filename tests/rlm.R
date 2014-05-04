@@ -89,3 +89,9 @@ r1 <- rlm(x, y, init=B, psi=psi.huber)
 r2 <- rlm(x, y, init=B, psi=psi.bisquare)
 r3 <- rlm(x, y, init=B, psi=psi.hampel)   # failed
 r4 <- rlm(x, y, psi=psi.hampel)
+
+## lqs with intercept lost contrasts
+dat <- data.frame(trt = factor(rep(LETTERS[1:2], each=3)),resp = rt(6, df=3))
+fit <- lqs(resp ~ trt, data = dat, contrasts = list(trt = "contr.sum"))
+stopifnot(identical(predict(fit), predict(fit, newdata = dat)))
+

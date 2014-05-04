@@ -1,4 +1,4 @@
-23b37f7f76a6e0964eef517fb684c9b4 *DESCRIPTION
+5f0e7f3889dea975aa34e22724599d08 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 f135a040ec910328ae39ccc742bfd6c0 *LICENCE.note
 789540db11aecd37243ad11b2e94a95f *NAMESPACE
@@ -26,7 +26,7 @@ b714f739c6c9dcb33729bb2baa532a0c *R/isoMDS.R
 4cb17b20ccacf80d37cc726736244907 *R/lm.ridge.R
 b70631fa65b6a6ea8af4104d4cd92448 *R/loglm.R
 a03b55f77943de6230a6e7e61b650c56 *R/logtrans.R
-ef85cb0b1ec7a70f4b66ae5722bfb120 *R/lqs.R
+9a859a34c93e5fd8472941f5b18d03c5 *R/lqs.R
 865f29d0ba0995ca13543bf44f391e19 *R/mca.R
 8cf79d304991da6084822fce112aef11 *R/misc.R
 5622914b083c03acd7dc65c694ed535b *R/mvrnorm.R
@@ -134,7 +134,7 @@ c5f389af5e309c81135890293b5c867b *data/waders.rda
 b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bc59b5368bad84fac2fad52f03298de *data/wtloss.rda
 7bf40cbb20005f08d1f9163582f0d815 *inst/CITATION
-c21fcc609530208a38d4700f6c33bf09 *inst/NEWS
+f233f2baec94ffabe8ae7cf0659cbddd *inst/NEWS
 53587aeb7cb3a14eeeeb1992895d5a98 *inst/po/de/LC_MESSAGES/R-MASS.mo
 8efb53fc340103f732c60adc3adda0e6 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
 5df325787e7eab138db877e2b393e46b *inst/po/fr/LC_MESSAGES/R-MASS.mo
@@ -261,7 +261,7 @@ fbf5b11e7ed253d29500bac780e2e794 *man/negative.binomial.Rd
 342fe0fcefe454e1da128aba3eeecf03 *man/newcomb.Rd
 1ed882e7679ec5890d1d2a94dcf468a3 *man/nlschools.Rd
 f67b61e31e47a5327233c86af12779d9 *man/npk.Rd
-1ecee12507899ecf6cc820dade1eff2e *man/npr1.Rd
+259754107d127a196cdee6446f81bca7 *man/npr1.Rd
 0ce0e02642fe47aa920ba76a92c790e8 *man/oats.Rd
 00698a2eb415969b83999b0ff995cced *man/painters.Rd
 71a3eccdc2ae99c4b1120d6a6855b14a *man/pairs.lda.Rd
@@ -282,7 +282,7 @@ bd8f3b4004f2c2a5264ed9a638cc0d76 *man/qda.Rd
 dfa3b68ec958f14f2335f12ce1677d0b *man/quine.Rd
 324d874e6ba7480e047d8b35055a9494 *man/rational.Rd
 e4d94fcfa81a5033c190758c23872d63 *man/renumerate.Rd
-d579013985a7bff38d166116b8925b48 *man/rlm.Rd
+245e94ef57e0c0a0de04cc318c826f78 *man/rlm.Rd
 3ad1c9eeebe4ea98deb2a5e9ac96f13e *man/rms.curv.Rd
 af7786c21fe88e411491adbe8e66bff0 *man/rnegbin.Rd
 d237d006e941b09968796e38d5f0ac6a *man/road.Rd
@@ -331,5 +331,5 @@ edee76adc2d27e4ba90f1ff79360148b *tests/polr.R
 f4e6b3ffb6521ea7625515e2f0ae7f98 *tests/profile.R
 a23ddf89e02a02ed030e4ed5538d3430 *tests/regression.R
 51c912fb8fac4844110b52651f79a8e8 *tests/regression.Rout.save
-bcd3d46ba8de663c4f012570951671eb *tests/rlm.R
+262eff8ec621dc11543b9f680879249d *tests/rlm.R
 f5fd08eb22747dbe31443bc3560cfa2d *tests/scripts.R
