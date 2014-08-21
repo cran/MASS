@@ -50,7 +50,7 @@ addterm.default <-
     ans[1L,  ] <- extractAIC(object, scale, k = k, ...)
     n0 <- nobs(object, use.fallback = TRUE)
     env <- environment(formula(object))
-    for(i in seq(ns)) {
+    for(i in seq_len(ns)) {
         tt <- scope[i]
         if(trace) {
             message(gettextf("trying + %s", tt), domain = NA)
@@ -277,7 +277,7 @@ dropterm.default <-
     ans[1,  ] <- extractAIC(object, scale, k = k, ...)
     n0 <- nobs(object, use.fallback = TRUE)
     env <- environment(formula(object))
-    for(i in seq(ns)) {
+    for(i in seq_len(ns)) {
         tt <- scope[i]
         if(trace) {
             message(gettextf("trying - %s", tt), domain = NA)
@@ -382,7 +382,7 @@ dropterm.glm <-
     }
     wt <- object$prior.weights
     if(is.null(wt)) wt <- rep.int(1, n)
-    for(i in 1L:ns) {
+    for(i in seq_len(ns)) {
         if(trace) {
             message(gettextf("trying - %s", scope[i]), domain = NA)
 	    utils::flush.console()

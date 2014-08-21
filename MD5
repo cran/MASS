@@ -1,8 +1,8 @@
-5f0e7f3889dea975aa34e22724599d08 *DESCRIPTION
+c202cbbb715f0143c3c974e22c409765 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 f135a040ec910328ae39ccc742bfd6c0 *LICENCE.note
 789540db11aecd37243ad11b2e94a95f *NAMESPACE
-949110713afee88cc4a2949e6633953b *R/add.R
+aed71ed40bb9bfdd7d19edfdbd163087 *R/add.R
 f24c684489a4b4096f422e348efc9bae *R/area.R
 2b449dd3fde83489799ef5f72bc8ead0 *R/boxcox.R
 a22a1823498627d344110a4deb10c0ac *R/confint.R
@@ -134,7 +134,7 @@ c5f389af5e309c81135890293b5c867b *data/waders.rda
 b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bc59b5368bad84fac2fad52f03298de *data/wtloss.rda
 7bf40cbb20005f08d1f9163582f0d815 *inst/CITATION
-f233f2baec94ffabe8ae7cf0659cbddd *inst/NEWS
+46fc11ff12c9a448eef3dc7096e51c31 *inst/NEWS
 53587aeb7cb3a14eeeeb1992895d5a98 *inst/po/de/LC_MESSAGES/R-MASS.mo
 8efb53fc340103f732c60adc3adda0e6 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
 5df325787e7eab138db877e2b393e46b *inst/po/fr/LC_MESSAGES/R-MASS.mo
@@ -167,7 +167,7 @@ a4e54a0b5a237fcde8f47b5d82daa8b4 *man/Insurance.Rd
 a6a2cea128307c1138bde4c046fcfb5c *man/MASS-internal.Rd
 fa8c2c8e00a52e7731604be22fafcec6 *man/Melanoma.Rd
 74c52727174738ea95a95eab40f2e8ce *man/Null.Rd
-134813372ad2c3ba545445fd6f2c78d0 *man/OME.Rd
+adbccb5fc8512cf136531a0c55485630 *man/OME.Rd
 b3ee04fa917bb291c47d52830d77ffdc *man/Pima.tr.Rd
 a7ba31f8b57db3cbb58b636ec45ad19d *man/Rabbit.Rd
 fe5a281b62e06246a5e043e441257282 *man/Rubber.Rd
@@ -300,7 +300,7 @@ ff7bd7ff1c80f2b1206305a051376ba0 *man/steam.Rd
 87595689a17d00aa5b5e98845be4ca1c *man/studres.Rd
 9120d03a6f70c2ffaf8c38ca75591429 *man/summary.loglm.Rd
 1d714038b6e5bc7641181331d095e989 *man/summary.negbin.Rd
-34025f90d41cfc8cee036e90006c7ca1 *man/summary.rlm.Rd
+3016ff57b415da1bf84a47717930122b *man/summary.rlm.Rd
 e68bc524ad07b0ab7cb5cdf7a53f4759 *man/survey.Rd
 3c044bf1596134e8329f1f9aca07b7aa *man/synth.tr.Rd
 760b565cac1dcc4db7b25f77950c71b8 *man/theta.md.Rd

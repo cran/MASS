@@ -195,3 +195,5 @@ This file documents software changes since the third edition.
 - polr(method = "cloglog") implemented what is more commonly called
   the log-log link.  Now both are provided.
 - lqs() fits with intercepts and contrasts lost the latter from the return value.
+- addterm() and dropterm() now handle transparenty empty scopes.
+
