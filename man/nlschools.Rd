@@ -48,6 +48,7 @@ nlschools
   \emph{Modern Applied Statistics with S.} Fourth edition.  Springer.
 }
 \examples{
+\testonly{op <- options(digits=5)}
 nl1 <- within(nlschools, {
 IQave <- tapply(IQ, class, mean)[as.character(class)]
 IQ <- IQ - IQave
@@ -58,5 +59,6 @@ nl1[cen] <- scale(nl1[cen], center = TRUE, scale = FALSE)
 nl.lme <- nlme::lme(lang ~ IQ*COMB + IQave + SES,
                     random = ~ IQ | class, data = nl1)
 summary(nl.lme)
+\testonly{options(op)}
 }
 \keyword{datasets}

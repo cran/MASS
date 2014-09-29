@@ -1,4 +1,4 @@
-c202cbbb715f0143c3c974e22c409765 *DESCRIPTION
+142306abe7295f79cf791659e994c03a *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 f135a040ec910328ae39ccc742bfd6c0 *LICENCE.note
 789540db11aecd37243ad11b2e94a95f *NAMESPACE
@@ -28,7 +28,7 @@ b70631fa65b6a6ea8af4104d4cd92448 *R/loglm.R
 a03b55f77943de6230a6e7e61b650c56 *R/logtrans.R
 9a859a34c93e5fd8472941f5b18d03c5 *R/lqs.R
 865f29d0ba0995ca13543bf44f391e19 *R/mca.R
-8cf79d304991da6084822fce112aef11 *R/misc.R
+f7d208bdf6bd06e047c5ffff547dac7f *R/misc.R
 5622914b083c03acd7dc65c694ed535b *R/mvrnorm.R
 9702fb923b77ed3d1f93e108d793eb88 *R/neg.bin.R
 fb7e0b8cf1f0117c3ce78e62ab6c97ba *R/negbin.R
@@ -166,7 +166,7 @@ fc4ebf60ca33228804e86cd08ee7b990 *man/GAGurine.Rd
 a4e54a0b5a237fcde8f47b5d82daa8b4 *man/Insurance.Rd
 a6a2cea128307c1138bde4c046fcfb5c *man/MASS-internal.Rd
 fa8c2c8e00a52e7731604be22fafcec6 *man/Melanoma.Rd
-74c52727174738ea95a95eab40f2e8ce *man/Null.Rd
+9535c4de30b076e0ba2ec4d1f868b9ac *man/Null.Rd
 adbccb5fc8512cf136531a0c55485630 *man/OME.Rd
 b3ee04fa917bb291c47d52830d77ffdc *man/Pima.tr.Rd
 a7ba31f8b57db3cbb58b636ec45ad19d *man/Rabbit.Rd
@@ -259,7 +259,7 @@ f8a1e349fbe9051ba75a935ba2803149 *man/minn38.Rd
 197c0183a87b8f689e5b417abc8f8911 *man/mvrnorm.Rd
 fbf5b11e7ed253d29500bac780e2e794 *man/negative.binomial.Rd
 342fe0fcefe454e1da128aba3eeecf03 *man/newcomb.Rd
-1ed882e7679ec5890d1d2a94dcf468a3 *man/nlschools.Rd
+40690361e6659cafeb323cdbe911a218 *man/nlschools.Rd
 f67b61e31e47a5327233c86af12779d9 *man/npk.Rd
 259754107d127a196cdee6446f81bca7 *man/npr1.Rd
 0ce0e02642fe47aa920ba76a92c790e8 *man/oats.Rd
@@ -320,7 +320,7 @@ f7b3d8066e652947494ab6d4fca93b0e *po/R-pl.po
 f3879e5845a77c3e71dd1aed199bf595 *src/MASS.c
 71793e0a75407f348c83f843f572bf0e *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-0224042a5ce7424ea529e5858e374b80 *tests/Examples/MASS-Ex.Rout.save
+50d1d1af586028de2afd78b058979460 *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
 55c6f4de353b9479359459d2718a017e *tests/fitdistr.Rout.save

@@ -1,5 +1,5 @@
 # file MASS/R/misc.R
-# copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ con2tr <- function(obj)
 Null <- function(M)
 {
     tmp <- qr(M)
-    set <- if(tmp$rank == 0L) 1L:ncol(M) else  - (1L:tmp$rank)
+    set <- if(tmp$rank == 0L) seq_len(ncol(M)) else  -seq_len(tmp$rank)
     qr.Q(tmp, complete = TRUE)[, set, drop = FALSE]
 }
 
