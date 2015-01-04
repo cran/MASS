@@ -1,6 +1,6 @@
 
-R Under development (unstable) (2014-09-27 r66695) -- "Unsuffered Consequences"
-Copyright (C) 2014 The R Foundation for Statistical Computing
+R Under development (unstable) (2015-01-04 r67319) -- "Unsuffered Consequences"
+Copyright (C) 2015 The R Foundation for Statistical Computing
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -1621,7 +1621,6 @@ Number of Fisher Scoring iterations: 5
 > summary(glmmPQL(y ~ lbase*trt + lage + V4,
 +                 random = ~ 1 | subject,
 +                 family = poisson, data = epil))
-Loading required package: nlme
 iteration 1
 iteration 2
 iteration 3
@@ -1705,9 +1704,6 @@ Number of Groups: 59
 > 
 > 
 > cleanEx()
-
-detaching ‘package:nlme’
-
 > nameEx("farms")
 > ### * farms
 > 
@@ -2225,7 +2221,7 @@ Coefficients:
 Degrees of Freedom: 41 Total (i.e. Null);  38 Residual
 Null Deviance:	    55.07 
 Residual Deviance: 50.09 	AIC: 215.9
-> ## End Don't show
+> ## End(Don't show)
 > 
 > 
 > cleanEx()
@@ -2361,7 +2357,7 @@ Standardized Within-Group Residuals:
 
 Number of Observations: 220
 Number of Groups: 50 
-> ## End Don't show
+> ## End(Don't show)
 > 
 > 
 > cleanEx()
@@ -3540,7 +3536,7 @@ Residual Deviance: 172 	AIC: 1095
 > 
 > ## Don't show: 
 > op <- options(digits=5)
-> ## End Don't show
+> ## End(Don't show)
 > nl1 <- within(nlschools, {
 + IQave <- tapply(IQ, class, mean)[as.character(class)]
 + IQ <- IQ - IQave
@@ -3588,7 +3584,7 @@ Number of Observations: 2287
 Number of Groups: 133 
 > ## Don't show: 
 > options(op)
-> ## End Don't show
+> ## End(Don't show)
 > 
 > 
 > 
@@ -4183,7 +4179,6 @@ ContHigh       0.1733589  0.54792854
 > 
 > fit <- glmmPQL(y ~ trt + I(week > 2), random = ~1 |  ID,
 +                family = binomial, data = bacteria)
-Loading required package: nlme
 iteration 1
 iteration 2
 iteration 3
@@ -4288,9 +4283,6 @@ attr(,"label")
 > 
 > 
 > cleanEx()
-
-detaching ‘package:nlme’
-
 > nameEx("predict.lda")
 > ### * predict.lda
 > 
@@ -5174,7 +5166,7 @@ Achieved convergence tolerance: 4.324e-06
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  6.705 0.13 6.858 0 0 
+Time elapsed:  8.428 0.142 8.564 0 0 
 > grDevices::dev.off()
 null device 
           1 

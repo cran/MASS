@@ -46,7 +46,6 @@ polr <-
     if(llev <= 2L) stop("response must have 3 or more levels")
     y <- unclass(y)
     q <- llev - 1L
-    Y <- matrix(0, n, q)
     if(missing(start)) {
         # try logistic/probit regression on 'middle' cut
         q1 <- llev %/% 2L

@@ -1,5 +1,5 @@
 # file MASS/R/glmmPQL.R
-# copyright (C) 2002-2013 W. N. Venables and B. D. Ripley
+# copyright (C) 2002-2015 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -17,7 +17,8 @@
 glmmPQL <- function(fixed, random, family, data, correlation, weights,
                     control, niter = 10, verbose = TRUE, ...)
 {
-    if(!require("nlme")) stop("package 'nlme' is essential")
+    if(!requireNamespace("nlme", quietly = TRUE))
+        stop("package 'nlme' is essential")
     ## family
     if(is.character(family)) family <- get(family)
     if(is.function(family)) family <- family()
@@ -72,7 +73,7 @@ glmmPQL <- function(fixed, random, family, data, correlation, weights,
     mcall$method <- "ML"
     if(!missing(correlation))
         mcall$correlation <- correlation
-    mcall$weights <- quote(varFixed(~invwt))
+    mcall$weights <- quote(nlme::varFixed(~invwt))
     mf$zz <- zz
     mf$invwt <- 1/wz
     mcall$data <- mf

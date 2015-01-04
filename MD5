@@ -1,4 +1,4 @@
-142306abe7295f79cf791659e994c03a *DESCRIPTION
+ced8fcdbdb14cf99cf165d155ec2c295 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 f135a040ec910328ae39ccc742bfd6c0 *LICENCE.note
 789540db11aecd37243ad11b2e94a95f *NAMESPACE
@@ -15,7 +15,7 @@ bca9a041d73f25376018c9e4cca65922 *R/cov.trob.R
 fec8f80a454cff72f86aece75bd2f981 *R/fitdistr.R
 deb0581428073be21384b2fea27457cc *R/fractions.R
 fdd720ed0d234e62ec46ad80ffc5c3f6 *R/gamma.shape.R
-9589edb8ae87ea8167980874493661e1 *R/glmmPQL.R
+33245613e19889f159059b2955e34bff *R/glmmPQL.R
 f6c250dc2c0287a0d9a7e577352bc3f1 *R/hist.scott.R
 66ee029442522726306cd7d4a869b725 *R/huber.R
 feed05160fcb53f8d07c559e1afa9873 *R/hubers.R
@@ -24,17 +24,17 @@ b714f739c6c9dcb33729bb2baa532a0c *R/isoMDS.R
 17c2f78aa04971f4fcc165468ad53e22 *R/lda.R
 797d778deac7bbe14bbc77b9ad96379d *R/lm.gls.R
 4cb17b20ccacf80d37cc726736244907 *R/lm.ridge.R
-b70631fa65b6a6ea8af4104d4cd92448 *R/loglm.R
+6a607ac0095c9884f67b56e103d26a97 *R/loglm.R
 a03b55f77943de6230a6e7e61b650c56 *R/logtrans.R
 9a859a34c93e5fd8472941f5b18d03c5 *R/lqs.R
 865f29d0ba0995ca13543bf44f391e19 *R/mca.R
 f7d208bdf6bd06e047c5ffff547dac7f *R/misc.R
 5622914b083c03acd7dc65c694ed535b *R/mvrnorm.R
-9702fb923b77ed3d1f93e108d793eb88 *R/neg.bin.R
-fb7e0b8cf1f0117c3ce78e62ab6c97ba *R/negbin.R
+77c51d6e09a10fa49a8bc9bf7618bc69 *R/neg.bin.R
+d73f563644e4e5e94bc52b7ced52c993 *R/negbin.R
 f4deec8fd9e6c10ee006abce09a7b246 *R/negexp.R
 d46385a583ad1e374fe3470d9c9b4a7e *R/parcoord.R
-eca54b9685155a1676ee3083826b74ae *R/polr.R
+dc4f08433b4385a41912b1eeaa6355c3 *R/polr.R
 49a1a8b85673bbaca471ff48af1a1a92 *R/profiles.R
 a5771ffbdd84fc93ad1993f4ca3af668 *R/qda.R
 f382f8c8766872e008462c34c89067c0 *R/rlm.R
@@ -134,7 +134,7 @@ c5f389af5e309c81135890293b5c867b *data/waders.rda
 b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bc59b5368bad84fac2fad52f03298de *data/wtloss.rda
 7bf40cbb20005f08d1f9163582f0d815 *inst/CITATION
-46fc11ff12c9a448eef3dc7096e51c31 *inst/NEWS
+901bdcb4a960a4e834c45a098ee0b1e8 *inst/NEWS
 53587aeb7cb3a14eeeeb1992895d5a98 *inst/po/de/LC_MESSAGES/R-MASS.mo
 8efb53fc340103f732c60adc3adda0e6 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
 5df325787e7eab138db877e2b393e46b *inst/po/fr/LC_MESSAGES/R-MASS.mo
@@ -320,7 +320,7 @@ f7b3d8066e652947494ab6d4fca93b0e *po/R-pl.po
 f3879e5845a77c3e71dd1aed199bf595 *src/MASS.c
 71793e0a75407f348c83f843f572bf0e *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-50d1d1af586028de2afd78b058979460 *tests/Examples/MASS-Ex.Rout.save
+7f1c1103528eba7795b3cb80220bc046 *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
 55c6f4de353b9479359459d2718a017e *tests/fitdistr.Rout.save

@@ -41,7 +41,7 @@ neg.bin <- function(theta = stop("'theta' must be given"))
     })
     simfun <- function(object, nsim) {
         ftd <- fitted(object)
-        val <- rnegbin(nsim * length(ftd), ftd, .Theta)
+        rnegbin(nsim * length(ftd), ftd, .Theta)
     }
     environment(variance) <- environment(validmu) <-
         environment(dev.resids) <- environment(aic) <-

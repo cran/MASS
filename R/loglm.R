@@ -267,7 +267,7 @@ update.loglm <- function (object, formula, ...)
 {
     if (is.null(call <- object$call))
         stop("'object' has no 'call' component.  Updating not possible")
-    if (fix <- !missing(formula)) {
+    if (!missing(formula)) {
         object$formula <- denumerate(object$formula)
         formula <- denumerate(as.formula(formula))
         call$formula <- renumerate(update.formula(formula(object), formula))

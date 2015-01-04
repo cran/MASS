@@ -89,7 +89,6 @@ glm.nb <- function(formula, data, weights,
     else
         do.call("negative.binomial", list(theta = init.theta, link = link))
 
-    dots <- list(...)
     mf <- Call <- match.call()
     m <- match(c("formula", "data", "subset", "weights", "na.action",
         "etastart", "mustart", "offset"), names(mf), 0)
@@ -252,7 +251,7 @@ negative.binomial <-
     })
     simfun <- function(object, nsim) {
         ftd <- fitted(object)
-        val <- rnegbin(nsim * length(ftd), ftd, .Theta)
+        rnegbin(nsim * length(ftd), ftd, .Theta)
     }
     environment(variance) <- environment(validmu) <-
         environment(dev.resids) <- environment(aic) <-
