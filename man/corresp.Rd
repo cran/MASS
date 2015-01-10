@@ -87,7 +87,7 @@ corresp(x, \dots)
 }
 \examples{
 (ct <- corresp(~ Age + Eth, data = quine))
-\dontrun{plot(ct)}
+plot(ct)
 
 corresp(caith)
 biplot(corresp(caith, nf = 2))

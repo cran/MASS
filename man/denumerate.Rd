@@ -46,6 +46,6 @@ numbers with names of a special form, namely \code{n} is replaced by
 }
 \examples{
 denumerate(~(1+2+3)^3 + a/b)
-\dontrun{~ (.v1 + .v2 + .v3)^3 + a/b}
+## which gives ~ (.v1 + .v2 + .v3)^3 + a/b
 }
 \keyword{models}

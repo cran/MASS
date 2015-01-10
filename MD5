@@ -1,4 +1,4 @@
-ced8fcdbdb14cf99cf165d155ec2c295 *DESCRIPTION
+c3ae080b31ca63048321d675158097d3 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 f135a040ec910328ae39ccc742bfd6c0 *LICENCE.note
 789540db11aecd37243ad11b2e94a95f *NAMESPACE
@@ -149,7 +149,7 @@ ea5dfb16715140492edf278a4c2cb1b6 *inst/scripts/ch06.R
 1ca5088281b3bed247f6902039523b8b *inst/scripts/ch07.R
 d5977faadde512bc29fd49e8d10ab80d *inst/scripts/ch08.R
 8fa4f5b6039ff3883a17226085ed77b8 *inst/scripts/ch09.R
-0a408ced026c424b91f051dd1db21481 *inst/scripts/ch10.R
+3c43589522f6f8cd3e338be9cc067918 *inst/scripts/ch10.R
 6d19699220b04f2400f7b2e4c90a6feb *inst/scripts/ch11.R
 793b62dd2329642c3e5e9af5962a0f59 *inst/scripts/ch12.R
 81629a5320cd986c06164748c66e0cfa *inst/scripts/ch13.R
@@ -185,7 +185,7 @@ a73f6ef91062b7bd5009144b5710de5a *man/abbey.Rd
 a5f53921ca9d0b1553c030db03ddfe65 *man/anorexia.Rd
 bc308c384834629fa93aca2fce82f6ff *man/anova.negbin.Rd
 47f7db230b717478b750184c02dce1c0 *man/area.Rd
-60900ff570f355470c5bdc5e966aa26c *man/bacteria.Rd
+a81030efe33e0a82e2f9e3709b1273b9 *man/bacteria.Rd
 5472d70fb96f35a995e891ad9ef9a777 *man/bandwidth.nrd.Rd
 e79ea25d60ba827b71a57f7458f733d2 *man/bcv.Rd
 61fbfe12f436f23b478400e0c085731d *man/beav1.Rd
@@ -202,13 +202,13 @@ fa4751955a3deab7d55c7c08607ce9a7 *man/cats.Rd
 e35fa2f6ee37f213648c7ec087ce8b83 *man/confint.Rd
 4480f1a975763e68c264a8fdbe30cf7b *man/contr.sdif.Rd
 88bb557bbfe7f9a6889f4f01ef7f490f *man/coop.Rd
-7746efb2b9bdcb1ae9bc89c58336e0b0 *man/corresp.Rd
+2ab5382f0ab2d4fdc44259b9ecc28e0d *man/corresp.Rd
 04dabca7dbd22b02ad0b7c6b6a962d60 *man/cov.rob.Rd
 b1a92f03d6905de2e74059df3a93f334 *man/cov.trob.Rd
 795a3a88f04d699ea466dbefb30adfcf *man/cpus.Rd
 1b1a88e76542006a6df88ef82a41d1c9 *man/crabs.Rd
 f320aaa10f4cff23eff1f1414c057eae *man/deaths.Rd
-82148b1df5d5b83f7d9d263d8e8fd817 *man/denumerate.Rd
+35f2ed65c37612253b0911713498aa7b *man/denumerate.Rd
 4251dd1e5e0570095044c278b4cc2690 *man/dose.p.Rd
 c5683d0ee4538c54e29683c313cf4d20 *man/drivers.Rd
 989cb309d961aca2b8d9d54df183223d *man/dropterm.Rd
@@ -320,7 +320,7 @@ f7b3d8066e652947494ab6d4fca93b0e *po/R-pl.po
 f3879e5845a77c3e71dd1aed199bf595 *src/MASS.c
 71793e0a75407f348c83f843f572bf0e *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-7f1c1103528eba7795b3cb80220bc046 *tests/Examples/MASS-Ex.Rout.save
+8954019eca416c195a46a099c2d41d60 *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
 55c6f4de353b9479359459d2718a017e *tests/fitdistr.Rout.save
