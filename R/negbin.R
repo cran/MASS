@@ -1,5 +1,5 @@
 # file MASS/R/negbin.R
-# copyright (C) 1994-2013 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
 #
 anova.negbin <- function(object, ..., test = "Chisq")
 {

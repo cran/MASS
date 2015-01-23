@@ -1,5 +1,5 @@
 % file MASS/man/denumerate.Rd
-% copyright (C) 2000 W. N. Venables and B. D. Ripley
+% copyright (C) 2000-2015 W. N. Venables and B. D. Ripley
 %
 \name{denumerate}
 \alias{denumerate}

@@ -1,5 +1,5 @@
 % file MASS/man/OME.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
 %
 \name{OME}
 \alias{OME}

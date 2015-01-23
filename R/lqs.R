@@ -1,5 +1,5 @@
 # file lqs/R/lqs.R
-# copyright (C) 1998-2013 B. D. Ripley
+# copyright (C) 1998-2014 B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by

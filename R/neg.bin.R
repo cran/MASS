@@ -1,5 +1,5 @@
 # file MASS/R/neg.bin.R
-# copyright (C) 1994-2009 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by

@@ -17,8 +17,8 @@ export(addterm, area, as.fractions, bandwidth.nrd, bcv, boxcox,
 # formerly in package lqs
 export(cov.mcd, cov.mve, cov.rob, lmsreg, lqs, lqs.formula, ltsreg)
 
-# needed for Recall
-export(denumerate.formula, renumerate.formula)
+# formerly needed for Recall
+# export(denumerate.formula, renumerate.formula)
 
 # documented but unexported methods
 # export(addterm.default, addterm.glm, addterm.lm,
@@ -153,6 +153,7 @@ S3method(qda, data.frame)
 S3method(qda, default)
 S3method(qda, formula)
 S3method(qda, matrix)
+S3method(renumerate, formula)
 S3method(residuals, loglm)
 S3method(rlm, default)
 S3method(rlm, formula)

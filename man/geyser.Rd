@@ -1,3 +1,6 @@
+% file MASS/man/geyser.Rd
+% copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
+%
 \name{geyser}
 \alias{geyser}
 \usage{
