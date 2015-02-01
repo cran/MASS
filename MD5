@@ -1,4 +1,4 @@
-f54c83dd19bae5718a75f3a7c8d815b8 *DESCRIPTION
+0abeeffd78e7a390d178d08a33330c11 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 f135a040ec910328ae39ccc742bfd6c0 *LICENCE.note
 e925d0e37c94a178fffe16ec2a8724ac *NAMESPACE
@@ -21,7 +21,7 @@ f6c250dc2c0287a0d9a7e577352bc3f1 *R/hist.scott.R
 feed05160fcb53f8d07c559e1afa9873 *R/hubers.R
 b714f739c6c9dcb33729bb2baa532a0c *R/isoMDS.R
 0e20d824adf45263385c0245060ecc14 *R/kde2d.R
-17c2f78aa04971f4fcc165468ad53e22 *R/lda.R
+6ea9e10aca09bbe90c746c613aaa5cd8 *R/lda.R
 797d778deac7bbe14bbc77b9ad96379d *R/lm.gls.R
 4cb17b20ccacf80d37cc726736244907 *R/lm.ridge.R
 411b677b9b0b478d204518b50f363332 *R/loglm.R
@@ -29,7 +29,7 @@ a03b55f77943de6230a6e7e61b650c56 *R/logtrans.R
 a15c17f4a4877646f4600fa0d586fa9a *R/lqs.R
 865f29d0ba0995ca13543bf44f391e19 *R/mca.R
 f7d208bdf6bd06e047c5ffff547dac7f *R/misc.R
-5622914b083c03acd7dc65c694ed535b *R/mvrnorm.R
+c00a7143684b5b3bca4c0d0288259c21 *R/mvrnorm.R
 1de4b445224bc4bc1c977414bf744f7e *R/neg.bin.R
 a2717441255135a2687efee2f29e6ea2 *R/negbin.R
 f4deec8fd9e6c10ee006abce09a7b246 *R/negexp.R
@@ -134,7 +134,7 @@ c5f389af5e309c81135890293b5c867b *data/waders.rda
 b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bc59b5368bad84fac2fad52f03298de *data/wtloss.rda
 7bf40cbb20005f08d1f9163582f0d815 *inst/CITATION
-901bdcb4a960a4e834c45a098ee0b1e8 *inst/NEWS
+4a67d944e05d0d6e31f6ec93b68170ce *inst/NEWS
 53587aeb7cb3a14eeeeb1992895d5a98 *inst/po/de/LC_MESSAGES/R-MASS.mo
 8efb53fc340103f732c60adc3adda0e6 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
 5df325787e7eab138db877e2b393e46b *inst/po/fr/LC_MESSAGES/R-MASS.mo
@@ -256,7 +256,7 @@ cb0833e592bf5cd241499c439c69a002 *man/michelson.Rd
 f8a1e349fbe9051ba75a935ba2803149 *man/minn38.Rd
 2b7e747f5cf31f4ba254a7868773c9ba *man/motors.Rd
 1f0a67c1a950722b94bcf83f72b3a932 *man/muscle.Rd
-197c0183a87b8f689e5b417abc8f8911 *man/mvrnorm.Rd
+6a8457e7526c032ff7e0a42e6fdc0e09 *man/mvrnorm.Rd
 fbf5b11e7ed253d29500bac780e2e794 *man/negative.binomial.Rd
 342fe0fcefe454e1da128aba3eeecf03 *man/newcomb.Rd
 40690361e6659cafeb323cdbe911a218 *man/nlschools.Rd

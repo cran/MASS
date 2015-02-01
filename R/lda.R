@@ -108,7 +108,8 @@ lda.default <-
     if(CV && !(method == "moment" || method == "mle"))
         stop(gettext("cannot use leave-one-out CV with method %s",
                      sQuote(method)), domain = NA)
-    group.means <- tapply(x, list(rep(g, p), col(x)), mean)
+    ## drop attributes to avoid e.g. matrix() methods
+    group.means <- tapply(c(x), list(rep(g, p), col(x)), mean)
     f1 <- sqrt(diag(var(x - group.means[g,  ])))
     if(any(f1 < tol)) {
         const <- format((1L:p)[f1 < tol])

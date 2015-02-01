@@ -1,5 +1,5 @@
 % file MASS/man/mvrnorm.Rd
-% copyright (C) 1994-2012 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2015 W. N. Venables and B. D. Ripley
 %
 \name{mvrnorm}
 \alias{mvrnorm}
@@ -20,8 +20,7 @@ mvrnorm(n = 1, mu, Sigma, tol = 1e-6, empirical = FALSE, EISPACK = FALSE)
     of positive-definiteness in \code{Sigma}.}
   \item{empirical}{logical. If true, mu and Sigma specify the empirical
     not population mean and covariance matrix.}
-  \item{EISPACK}{logical. Set to true to reproduce results from MASS
-    versions prior to 3.1-21.}
+  \item{EISPACK}{logical: values other than \code{FALSE} are an error.}
 }
 \value{
   If \code{n = 1} a vector of the same length as \code{mu}, otherwise an
@@ -45,8 +44,8 @@ mvrnorm(n = 1, mu, Sigma, tol = 1e-6, empirical = FALSE, EISPACK = FALSE)
 \examples{
 Sigma <- matrix(c(10,3,3,2),2,2)
 Sigma
-var(mvrnorm(n=1000, rep(0, 2), Sigma))
-var(mvrnorm(n=1000, rep(0, 2), Sigma, empirical = TRUE))
+var(mvrnorm(n = 1000, rep(0, 2), Sigma))
+var(mvrnorm(n = 1000, rep(0, 2), Sigma, empirical = TRUE))
 }
 \keyword{distribution}
 \keyword{multivariate}

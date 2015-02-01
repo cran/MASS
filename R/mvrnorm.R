@@ -1,5 +1,5 @@
 # file MASS/R/mvrnorm.R
-# copyright (C) 1994-2012 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2015 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -19,8 +19,8 @@ mvrnorm <-
 {
     p <- length(mu)
     if(!all(dim(Sigma) == c(p,p))) stop("incompatible arguments")
-    if (missing(EISPACK)) EISPACK <- getOption("mvnorm_use_EISPACK", FALSE)
-    eS <- eigen(Sigma, symmetric = TRUE, EISPACK = EISPACK)
+    if(EISPACK) stop("'EISPACK' is no longer supported by R", domain = NA)
+    eS <- eigen(Sigma, symmetric = TRUE)
     ev <- eS$values
     if(!all(ev >= -tol*abs(ev[1L]))) stop("'Sigma' is not positive definite")
     X <- matrix(rnorm(p * n), n)
