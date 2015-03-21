@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2015-01-04 r67319) -- "Unsuffered Consequences"
+R Under development (unstable) (2015-03-20 r68036) -- "Unsuffered Consequences"
 Copyright (C) 2015 The R Foundation for Statistical Computing
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
@@ -591,7 +591,6 @@ Number of Fisher Scoring iterations: 5
 > 
 > # conditional random-effects analysis
 > library(survival)
-Loading required package: splines
 > bacteria$Time <- rep(1, nrow(bacteria))
 > coxph(Surv(Time, unclass(y)) ~ week + strata(ID),
 +       data = bacteria, method = "exact")
@@ -676,7 +675,7 @@ Number of Groups: 50
 > 
 > cleanEx()
 
-detaching ‘package:nlme’, ‘package:survival’, ‘package:splines’
+detaching ‘package:nlme’, ‘package:survival’
 
 > nameEx("bandwidth.nrd")
 > ### * bandwidth.nrd
@@ -1958,7 +1957,6 @@ Number of Fisher Scoring iterations: 7
 > ### ** Examples
 > 
 > library(survival)
-Loading required package: splines
 > gehan.surv <- survfit(Surv(time, cens) ~ treat, data = gehan,
 +      conf.type = "log-log")
 > summary(gehan.surv)
@@ -2070,7 +2068,7 @@ Score (logrank) test = 17.25  on 1 df,   p=3.283e-05
 > 
 > cleanEx()
 
-detaching ‘package:survival’, ‘package:splines’
+detaching ‘package:survival’
 
 > nameEx("ginv")
 > ### * ginv
@@ -3024,7 +3022,6 @@ Proportion of trace:
 > ### ** Examples
 > 
 > library(survival)
-Loading required package: splines
 > plot(survfit(Surv(time) ~ ag, data = leuk), lty = 2:3, col = 2:3)
 > 
 > # now Cox models
@@ -3056,7 +3053,7 @@ Score (logrank) test = 16.49  on 2 df,   p=0.0002629
 > 
 > cleanEx()
 
-detaching ‘package:survival’, ‘package:splines’
+detaching ‘package:survival’
 
 > nameEx("lm.ridge")
 > ### * lm.ridge
@@ -3300,7 +3297,6 @@ Correlations 0.806 0.745  cumulative % explained 26.87 51.71
 > ### ** Examples
 > 
 > library(survival)
-Loading required package: splines
 > plot(survfit(Surv(time, cens) ~ factor(temp), motors), conf.int = FALSE)
 > # fit Weibull model
 > motor.wei <- survreg(Surv(time, cens) ~ temp, motors)
@@ -3370,7 +3366,7 @@ Call: survfit(formula = motor.cox, newdata = data.frame(temp = 130))
 > 
 > cleanEx()
 
-detaching ‘package:survival’, ‘package:splines’
+detaching ‘package:survival’
 
 > nameEx("muscle")
 > ### * muscle
@@ -3460,11 +3456,11 @@ Achieved convergence tolerance: 4.923e-06
      [,1] [,2]
 [1,]   10    3
 [2,]    3    2
-> var(mvrnorm(n=1000, rep(0, 2), Sigma))
+> var(mvrnorm(n = 1000, rep(0, 2), Sigma))
           [,1]     [,2]
 [1,] 10.697849 3.228279
 [2,]  3.228279 2.165271
-> var(mvrnorm(n=1000, rep(0, 2), Sigma, empirical = TRUE))
+> var(mvrnorm(n = 1000, rep(0, 2), Sigma, empirical = TRUE))
      [,1] [,2]
 [1,]   10    3
 [2,]    3    2

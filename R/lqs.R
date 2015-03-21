@@ -161,7 +161,7 @@ lqs.default <-
 	    if(abs(s2/scale - 1) < 1e-5) break
 	    scale <- s2
 	}
-	z$coef <- temp$coefficients
+	z$coefficents <- temp$coefficients
 	z$fitted.values <- temp$fitted.values
 	z$residuals <- resid
 	z$scale <- scale
