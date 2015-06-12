@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2015-03-20 r68036) -- "Unsuffered Consequences"
+R version 3.2.1 RC (2015-06-10 r68507) -- "World-Famous Astronaut"
 Copyright (C) 2015 The R Foundation for Statistical Computing
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
@@ -599,10 +599,11 @@ coxph(formula = Surv(Time, unclass(y)) ~ week + strata(ID), data = bacteria,
     method = "exact")
 
 
-       coef exp(coef) se(coef)     z     p
-week -0.163      0.85   0.0547 -2.97 0.003
+        coef exp(coef) se(coef)     z     p
+week -0.1626    0.8500   0.0547 -2.97 0.003
 
-Likelihood ratio test=9.85  on 1 df, p=0.0017  n= 220, number of events= 177 
+Likelihood ratio test=9.85  on 1 df, p=0.0017
+n= 220, number of events= 177 
 > coxph(Surv(Time, unclass(y)) ~ factor(week) + strata(ID),
 +       data = bacteria, method = "exact")
 Call:
@@ -610,13 +611,14 @@ coxph(formula = Surv(Time, unclass(y)) ~ factor(week) + strata(ID),
     data = bacteria, method = "exact")
 
 
-                 coef exp(coef) se(coef)      z     p
-factor(week)2   0.198     1.219    0.724  0.274 0.780
-factor(week)4  -1.421     0.242    0.667 -2.131 0.033
-factor(week)6  -1.661     0.190    0.682 -2.434 0.015
-factor(week)11 -1.675     0.187    0.678 -2.471 0.013
+                 coef exp(coef) se(coef)     z     p
+factor(week)2   0.198     1.219    0.724  0.27 0.784
+factor(week)4  -1.421     0.242    0.667 -2.13 0.033
+factor(week)6  -1.661     0.190    0.682 -2.43 0.015
+factor(week)11 -1.675     0.187    0.678 -2.47 0.013
 
-Likelihood ratio test=15.4  on 4 df, p=0.00385  n= 220, number of events= 177 
+Likelihood ratio test=15.4  on 4 df, p=0.00385
+n= 220, number of events= 177 
 > coxph(Surv(Time, unclass(y)) ~ I(week > 2) + strata(ID),
 +       data = bacteria, method = "exact")
 Call:
@@ -624,10 +626,11 @@ coxph(formula = Surv(Time, unclass(y)) ~ I(week > 2) + strata(ID),
     data = bacteria, method = "exact")
 
 
-                 coef exp(coef) se(coef)     z       p
-I(week > 2)TRUE -1.67     0.188    0.482 -3.47 0.00053
+                  coef exp(coef) se(coef)     z       p
+I(week > 2)TRUE -1.670     0.188    0.482 -3.47 0.00053
 
-Likelihood ratio test=15.2  on 1 df, p=9.93e-05  n= 220, number of events= 177 
+Likelihood ratio test=15.2  on 1 df, p=9.93e-05
+n= 220, number of events= 177 
 > 
 > # PQL glmm analysis
 > library(nlme)
@@ -5162,7 +5165,7 @@ Achieved convergence tolerance: 4.324e-06
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  8.428 0.142 8.564 0 0 
+Time elapsed:  4.452 0.03 4.484 0 0 
 > grDevices::dev.off()
 null device 
           1 
