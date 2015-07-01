@@ -20,7 +20,7 @@
 profile.glm <- function(fitted, which = 1:p, alpha = 0.01,
 			maxsteps = 10, del = zmax/5, trace = FALSE, ...)
 {
-    Pnames <- names(B0 <- coefficients(fitted))
+    Pnames <- names(B0 <- coef(fitted))
     nonA <- !is.na(B0)
     pv0 <- t(as.matrix(B0))
     p <- length(Pnames)

@@ -400,7 +400,7 @@ polr.fit <- function(x, y, wt, start, offset, method, ...)
 profile.polr <- function(fitted, which = 1L:p, alpha = 0.01,
                          maxsteps = 10, del = zmax/5, trace = FALSE, ...)
 {
-    Pnames <- names(B0 <- coefficients(fitted))
+    Pnames <- names(B0 <- coef(fitted))
     pv0 <- t(as.matrix(B0))
     p <- length(Pnames)
     if(is.character(which)) which <- match(which, Pnames)

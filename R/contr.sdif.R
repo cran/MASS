@@ -1,5 +1,5 @@
 # file MASS/R/contr.sdif.R
-# copyright (C) 1994-2013 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2015 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -38,6 +38,7 @@ contr.sdif <- function(n, contrasts = TRUE, sparse = FALSE)
 {
     n <- length(nms)
     dn <- list(nms, nms)
-    if(sparse) new("ddiMatrix", diag = "U", Dim = c(n, n), Dimnames = dn)
+    if(sparse)
+        methods::new("ddiMatrix", diag = "U", Dim = c(n, n), Dimnames = dn)
     else structure(diag(1, n, n), dimnames = dn)
 }
