@@ -45,7 +45,7 @@ importFrom(stats, add1, anova, biplot, coef, confint, drop1,
 	   update, vcov,
            ## added in 7.3-42
            .checkMFClasses, .getXlevels, IQR, add.scope, aov, approx,
-           as.formula, cmdscale, contr.helmert, dbeta, dcauchy,
+           as.formula, binomial, cmdscale, contr.helmert, dbeta, dcauchy,
            dchisq, delete.response, density, deviance, dexp, df,
            dgamma, dgeom, dist, dlnorm, dlogis, dnbinom, dnorm, dpois,
            drop.scope, dt, dweibull, factor.scope, formula, glm,
