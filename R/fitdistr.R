@@ -124,7 +124,7 @@ fitdistr <- function(x, densfun, start, ...)
                          dimnames = list("prob", "prob"))
             names(estimate) <- names(sds) <- "prob"
             return(structure(list(estimate = estimate, sd = sds, vcov = vc, n = n,
-				  loglik = sum(dexp(x, estimate, log=TRUE))),
+				  loglik = sum(dgeom(x, estimate, log=TRUE))),
                              class = "fitdistr"))
         }
         if(distname == "weibull" && is.null(start)) {
