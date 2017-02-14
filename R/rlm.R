@@ -1,5 +1,5 @@
 # file MASS/R/rlm.R
-# copyright (C) 1994-2009 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2016 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -130,7 +130,7 @@ rlm.default <-
                 if(is.null(lqs.control)) lqs.control <- list(nsamp=200L)
                 do.call("lqs", c(list(x, y, intercept = FALSE), lqs.control))
             } else stop("'init' method is unknown")
-            coef <- temp$coefficient
+            coef <- temp$coefficients
             resid <- temp$residuals
         } else {
             if(is.list(init)) coef <- init$coef

@@ -1,6 +1,6 @@
 /*
  *  R : A Computer Language for Statistical Data Analysis
- *  Copyright (C) 1998-2007	B. D. Ripley
+ *  Copyright (C) 1998-2016	B. D. Ripley
  *  Copyright (C) 1999          R Development Core Team
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -23,13 +23,11 @@
  *
  * to be called as  .C(.)  in ../R/lqs.R
  */
-
-/* in R.h
-#include <math.h>
-#include <limits.h> */
+ 
+#include <math.h>  // currently in R.h
+#include <stddef.h>  // currently in R.h
 
 #include <R.h>
-#include <float.h>
 #include <R_ext/Linpack.h>
 #include <R_ext/Applic.h>	/* for the QR	  routines */
 #include <R_ext/Utils.h>	/* for the *sort() routines */

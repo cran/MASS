@@ -1,4 +1,4 @@
-dc1059839fb214a44a184d49c3552d9e *DESCRIPTION
+8c5804cc249904c72731c4aab7b9bbc1 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 69dc33cbb77b951a255d313b9a318b0a *LICENCE.note
 026d810db3c67bd78387f8f0be8465f4 *NAMESPACE
@@ -37,7 +37,7 @@ d46385a583ad1e374fe3470d9c9b4a7e *R/parcoord.R
 c741f8f80f1d5574a17703fee6465f1c *R/polr.R
 54a2b2d504391f36f4d9211fb361a26d *R/profiles.R
 a5771ffbdd84fc93ad1993f4ca3af668 *R/qda.R
-f382f8c8766872e008462c34c89067c0 *R/rlm.R
+25387d9e947da2a1941a33a99f580bff *R/rlm.R
 7d35a77423de76adcd49a981816c30eb *R/rms.curv.R
 c301b0a87d4188e4e9dd9f361aefb3f9 *R/sammon.R
 d1ce869b486a323f35ddf3fe8f3220f7 *R/stdres.R
@@ -317,10 +317,10 @@ b1fa7ed0af328f27abc9a63dd10334df *man/wtloss.Rd
 c9a3533e4ed79b58192f9664aa8d7696 *po/R-fr.po
 7a8bacbc760f2f78377198a4b4d532d5 *po/R-ko.po
 f7b3d8066e652947494ab6d4fca93b0e *po/R-pl.po
-f3879e5845a77c3e71dd1aed199bf595 *src/MASS.c
-71793e0a75407f348c83f843f572bf0e *src/lqs.c
+d956d22c7d4c9b5ac3898099a0e430df *src/MASS.c
+6e5f48c7ce8b734c48cf01616813acb0 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-69cf2c9b9c330121807c78f9c292128c *tests/Examples/MASS-Ex.Rout.save
+707ef1dd689aac2d191c71ecc600f49c *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
 55c6f4de353b9479359459d2718a017e *tests/fitdistr.Rout.save

@@ -1,5 +1,5 @@
 /*
- *  MASS/src/MASS.c by W. N. Venables and B. D. Ripley  Copyright (C) 1994-2004
+ *  MASS/src/MASS.c by W. N. Venables and B. D. Ripley  Copyright (C) 1994-2016
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,6 +14,10 @@
  *  A copy of the GNU General Public License is available at
  *  http://www.r-project.org/Licenses/
  */
+
+#include <stdlib.h>
+#include <math.h>
+#include <stddef.h>
 
 #include <R.h>
 #include <R_ext/Applic.h>
@@ -473,12 +477,9 @@ static const R_CMethodDef CEntries[] = {
 };
 
 
-#include <Rversion.h>
 void R_init_MASS(DllInfo *dll)
 {
     R_registerRoutines(dll, CEntries, NULL, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
-#if defined(R_VERSION) && R_VERSION >= R_Version(2, 16, 0)
     R_forceSymbols(dll, TRUE);
-#endif
 }
