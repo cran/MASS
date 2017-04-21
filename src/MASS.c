@@ -363,10 +363,10 @@ VR_ucv_bin(Sint *n, Sint *nb, Sfloat *d, Sint *x, Sfloat *h, Sfloat *u)
 	delta = i * (*d) / hh;
 	delta *= delta;
 	if (delta >= DELMAX) break;
-	term = exp(-delta / 4) - sqrt(8.0) * exp(-delta / 2);
+	term = exp(-delta / 4.) - sqrt(8.0) * exp(-delta / 2.);
 	sum += term * x[i];
     }
-    *u = 1 / (2 * nn * hh * sqrt(M_PI)) + sum / (nn * nn * hh * sqrt(M_PI));
+    *u = 1 / (2. * nn * hh * sqrt(M_PI)) + sum / ((double)nn * nn * hh * sqrt(M_PI));
 }
 
 void
@@ -383,7 +383,7 @@ VR_bcv_bin(Sint *n, Sint *nb, Sfloat *d, Sint *x, Sfloat *h, Sfloat *u)
 	term = exp(-delta / 4) * (delta * delta - 12 * delta + 12);
 	sum += term * x[i];
     }
-    *u = 1 / (2 * nn * hh * sqrt(M_PI)) + sum / (64 * nn * nn * hh * sqrt(M_PI));
+    *u = 1 / (2. * nn * hh * sqrt(M_PI)) + sum / (64. * nn * nn * hh * sqrt(M_PI));
 }
 
 
@@ -398,11 +398,11 @@ VR_phi4_bin(Sint *n, Sint *nb, Sfloat *d, Sint *x, Sfloat *h, Sfloat *u)
 	delta = i * (*d) / (*h);
 	delta *= delta;
 	if (delta >= DELMAX) break;
-	term = exp(-delta / 2) * (delta * delta - 6 * delta + 3);
+	term = exp(-delta / 2.) * (delta * delta - 6. * delta + 3.);
 	sum += term * x[i];
     }
-    sum = 2 * sum + nn * 3;	/* add in diagonal */
-    *u = sum / (nn * (nn - 1) * pow(*h, 5.0) * sqrt(2 * M_PI));
+    sum = 2. * sum + nn * 3.;	/* add in diagonal */
+    *u = sum / (nn * (nn - 1.) * pow(*h, 5.0) * sqrt(2 * M_PI));
 }
 
 void
@@ -420,8 +420,8 @@ VR_phi6_bin(Sint *n, Sint *nb, Sfloat *d, Sint *x, Sfloat *h, Sfloat *u)
 	    (delta * delta * delta - 15 * delta * delta + 45 * delta - 15);
 	sum += term * x[i];
     }
-    sum = 2 * sum - 15 * nn;	/* add in diagonal */
-    *u = sum / (nn * (nn - 1) * pow(*h, 7.0) * sqrt(2 * M_PI));
+    sum = 2. * sum - 15. * nn;	/* add in diagonal */
+    *u = sum / (nn * (nn - 1.) * pow(*h, 7.0) * sqrt(2 * M_PI));
 }
 
 void
@@ -442,7 +442,9 @@ VR_den_bin(Sint *n, Sint *nb, Sfloat *d, Sfloat *x, Sint *cnt)
 	ii = (int) (x[i] / dd);
 	for (j = 0; j < i; j++) {
 	    jj = (int) (x[j] / dd);
-	    iij = abs9((ii - jj));
+	    iij = abs((ii - jj));
+	    if(cnt[iij] == INT_MAX)
+		error("maximum count exceeded in pairwise distance binning");
 	    cnt[iij]++;
 	}
     }

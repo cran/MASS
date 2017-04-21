@@ -1,4 +1,4 @@
-8c5804cc249904c72731c4aab7b9bbc1 *DESCRIPTION
+feb2d860d970483fb20af92f41922302 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 69dc33cbb77b951a255d313b9a318b0a *LICENCE.note
 026d810db3c67bd78387f8f0be8465f4 *NAMESPACE
@@ -309,7 +309,7 @@ e68bc524ad07b0ab7cb5cdf7a53f4759 *man/survey.Rd
 dacb5fe1ae583a9281568436fa0fbe21 *man/ucv.Rd
 2d871a467dc4eddb7dbd400af01ace9f *man/waders.Rd
 ceefe8e558dfa70a28f54fcae1ca3df0 *man/whiteside.Rd
-9b1762c2a6566d58b2e1ee9f7b8f712a *man/width.SJ.Rd
+66a3b1bfeff97f77d6a9baa458447fca *man/width.SJ.Rd
 9676e9290685ce7d0527aad90135c048 *man/write.matrix.Rd
 b1fa7ed0af328f27abc9a63dd10334df *man/wtloss.Rd
 9c68561e37f466c8839b8e011e98fa54 *po/R-MASS.pot
@@ -317,7 +317,7 @@ b1fa7ed0af328f27abc9a63dd10334df *man/wtloss.Rd
 c9a3533e4ed79b58192f9664aa8d7696 *po/R-fr.po
 7a8bacbc760f2f78377198a4b4d532d5 *po/R-ko.po
 f7b3d8066e652947494ab6d4fca93b0e *po/R-pl.po
-d956d22c7d4c9b5ac3898099a0e430df *src/MASS.c
+a79fc62d284fd106014fc6176155245a *src/MASS.c
 6e5f48c7ce8b734c48cf01616813acb0 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
 707ef1dd689aac2d191c71ecc600f49c *tests/Examples/MASS-Ex.Rout.save
