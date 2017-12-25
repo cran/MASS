@@ -48,7 +48,7 @@ nlschools
   \emph{Modern Applied Statistics with S.} Fourth edition.  Springer.
 }
 \examples{
-\testonly{op <- options(digits=5)}
+\dontshow{op <- options(digits=5)}
 nl1 <- within(nlschools, {
 IQave <- tapply(IQ, class, mean)[as.character(class)]
 IQ <- IQ - IQave

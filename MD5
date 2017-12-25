@@ -1,7 +1,7 @@
-feb2d860d970483fb20af92f41922302 *DESCRIPTION
+2733149dba6be709ce2967da51bc0e79 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 69dc33cbb77b951a255d313b9a318b0a *LICENCE.note
-026d810db3c67bd78387f8f0be8465f4 *NAMESPACE
+0ac7b30ad35a4c19ea69d76a6a366b02 *NAMESPACE
 aed71ed40bb9bfdd7d19edfdbd163087 *R/add.R
 f24c684489a4b4096f422e348efc9bae *R/area.R
 2b449dd3fde83489799ef5f72bc8ead0 *R/boxcox.R
@@ -41,7 +41,7 @@ a5771ffbdd84fc93ad1993f4ca3af668 *R/qda.R
 7d35a77423de76adcd49a981816c30eb *R/rms.curv.R
 c301b0a87d4188e4e9dd9f361aefb3f9 *R/sammon.R
 d1ce869b486a323f35ddf3fe8f3220f7 *R/stdres.R
-a30f7c1f9a0f29b8851e1478c3cd358a *R/stepAIC.R
+0df20b97b3e476c2a3bc32fb3fdb88c4 *R/stepAIC.R
 f1db7f02de9bae7087fc01a7ffe4748e *R/truehist.R
 bbde4307b98d968e9b85d55f46a0cbe6 *R/ucv.R
 29fdbf836b6ebffc562ce7d2b54ab5eb *R/write.matrix.R
@@ -230,7 +230,7 @@ a81ca88a2a39298dd099c015fdd3c167 *man/gilgais.Rd
 f484f91e53e72fc672f2d5edd507a768 *man/ginv.Rd
 67ac548358fe00a107e17c7101fb4552 *man/glm.convert.Rd
 68625209b126bf126b0a7cad4e6c5508 *man/glm.nb.Rd
-c12990f5bc41e993e1eec645f451b2a6 *man/glmmPQL.Rd
+704eb4028483dc8fe035bcece0ba9d8c *man/glmmPQL.Rd
 e65737579ca1cd2810198d72f0260e21 *man/hills.Rd
 5440204f0acdca119adda063b91d9e17 *man/hist.scott.Rd
 141fe74de34fe57d4753d8628f386437 *man/housing.Rd
@@ -259,7 +259,7 @@ f8a1e349fbe9051ba75a935ba2803149 *man/minn38.Rd
 6a8457e7526c032ff7e0a42e6fdc0e09 *man/mvrnorm.Rd
 fbf5b11e7ed253d29500bac780e2e794 *man/negative.binomial.Rd
 342fe0fcefe454e1da128aba3eeecf03 *man/newcomb.Rd
-40690361e6659cafeb323cdbe911a218 *man/nlschools.Rd
+3d7a650e22ac09fbe68065d37c673aa9 *man/nlschools.Rd
 f67b61e31e47a5327233c86af12779d9 *man/npk.Rd
 919de166373a81866c8f6152e64dc418 *man/npr1.Rd
 0ce0e02642fe47aa920ba76a92c790e8 *man/oats.Rd

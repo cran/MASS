@@ -207,6 +207,8 @@ extractAIC.loglm <- function(fit, scale, k = 2, ...)
     c(edf,  fit$deviance + k * edf)
 }
 
+## defer to nlme
+if(FALSE) {
 extractAIC.lme <- function(fit, scale, k = 2, ...)
 {
     if(fit$method != "ML") stop("AIC undefined for REML fit")
@@ -224,3 +226,4 @@ extractAIC.gls <- function(fit, scale, k = 2, ...)
 }
 
 terms.gls <- terms.lme <- function(x, ...) terms(formula(x), ...)
+}
