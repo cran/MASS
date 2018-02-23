@@ -1,4 +1,4 @@
-2733149dba6be709ce2967da51bc0e79 *DESCRIPTION
+33716af37003e48dc8248f8f2a17c9f0 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 69dc33cbb77b951a255d313b9a318b0a *LICENCE.note
 0ac7b30ad35a4c19ea69d76a6a366b02 *NAMESPACE
@@ -217,7 +217,7 @@ a186e33c5945178fa1ca69a433c1bf3b *man/eagles.Rd
 df9ff3b3ed9842a6c2d767dfb14233d8 *man/eqscplot.Rd
 d6c9433b3ee2a9fe920dcedecbefdf06 *man/farms.Rd
 7d46e561298348eafcb2464adcfa66b2 *man/fgl.Rd
-fe390cf0437098a11251b103a0788822 *man/fitdistr.Rd
+c9354f03af7c5806071ad7554b0e5306 *man/fitdistr.Rd
 84a1341dab0450af647d63e235728383 *man/forbes.Rd
 6f7df5c4aadc280d302a025110571c4b *man/fractions.Rd
 e2971220e00d364f968079d07203da26 *man/galaxies.Rd
@@ -326,7 +326,7 @@ a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
 55c6f4de353b9479359459d2718a017e *tests/fitdistr.Rout.save
 afd4f607cba7fda8ec4d22bffd88fc50 *tests/glm.nb.R
 7fea2161b12d01c8940107342815dd0e *tests/hubers.R
-8d87026da3c153e0fa65eb33c150d072 *tests/lme.R
+80c50d5c299f0d0a4dbbb457a235faba *tests/lme.R
 edee76adc2d27e4ba90f1ff79360148b *tests/polr.R
 f4e6b3ffb6521ea7625515e2f0ae7f98 *tests/profile.R
 a23ddf89e02a02ed030e4ed5538d3430 *tests/regression.R

@@ -25,7 +25,7 @@ fitdistr(x, densfun, start, \dots)
   at its first argument.
 
   Distributions \code{"beta"}, \code{"cauchy"}, \code{"chi-squared"},
-  \code{"exponential"}, \code{"f"}, \code{"gamma"}, \code{"geometric"},
+  \code{"exponential"}, \code{"gamma"}, \code{"geometric"},
   \code{"log-normal"}, \code{"lognormal"}, \code{"logistic"},
   \code{"negative binomial"}, \code{"normal"}, \code{"Poisson"},
   \code{"t"} and \code{"weibull"} are recognised, case being ignored.
