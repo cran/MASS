@@ -1,6 +1,6 @@
 
-R Under development (unstable) (2017-02-13 r72168) -- "Unsuffered Consequences"
-Copyright (C) 2017 The R Foundation for Statistical Computing
+R Under development (unstable) (2018-04-16 r74611) -- "Unsuffered Consequences"
+Copyright (C) 2018 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -23,6 +23,7 @@ Type 'q()' to quit R.
 > library('MASS')
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("Insurance")
 > ### * Insurance
@@ -601,7 +602,7 @@ coxph(formula = Surv(Time, unclass(y)) ~ week + strata(ID), data = bacteria,
         coef exp(coef) se(coef)     z     p
 week -0.1626    0.8500   0.0547 -2.97 0.003
 
-Likelihood ratio test=9.85  on 1 df, p=0.0017
+Likelihood ratio test=9.85  on 1 df, p=0.002
 n= 220, number of events= 177 
 > coxph(Surv(Time, unclass(y)) ~ factor(week) + strata(ID),
 +       data = bacteria, method = "exact")
@@ -615,7 +616,7 @@ factor(week)4  -1.421     0.242    0.667 -2.13 0.033
 factor(week)6  -1.661     0.190    0.682 -2.43 0.015
 factor(week)11 -1.675     0.187    0.678 -2.47 0.013
 
-Likelihood ratio test=15.4  on 4 df, p=0.00385
+Likelihood ratio test=15.45  on 4 df, p=0.004
 n= 220, number of events= 177 
 > coxph(Surv(Time, unclass(y)) ~ I(week > 2) + strata(ID),
 +       data = bacteria, method = "exact")
@@ -626,7 +627,7 @@ coxph(formula = Surv(Time, unclass(y)) ~ I(week > 2) + strata(ID),
                   coef exp(coef) se(coef)     z       p
 I(week > 2)TRUE -1.670     0.188    0.482 -3.47 0.00053
 
-Likelihood ratio test=15.2  on 1 df, p=9.93e-05
+Likelihood ratio test=15.15  on 1 df, p=1e-04
 n= 220, number of events= 177 
 > 
 > # PQL glmm analysis
@@ -2007,15 +2008,15 @@ factor(pair)21   treatcontrol
 Scale fixed at 1 
 
 Loglik(model)= -101.6   Loglik(intercept only)= -116.8
-	Chisq= 30.27 on 21 degrees of freedom, p= 0.087 
+	Chisq= 30.27 on 21 degrees of freedom, p= 0.0866 
 n= 42 
 > summary(survreg(Surv(time, cens) ~ treat, gehan, dist = "exponential"))
 
 Call:
 survreg(formula = Surv(time, cens) ~ treat, data = gehan, dist = "exponential")
-             Value Std. Error     z        p
-(Intercept)   3.69      0.333 11.06 2.00e-28
-treatcontrol -1.53      0.398 -3.83 1.27e-04
+              Value Std. Error     z       p
+(Intercept)   3.686      0.333 11.06 < 2e-16
+treatcontrol -1.527      0.398 -3.83 0.00013
 
 Scale fixed at 1 
 
@@ -2029,10 +2030,10 @@ n= 42
 
 Call:
 survreg(formula = Surv(time, cens) ~ treat, data = gehan)
-              Value Std. Error     z        p
-(Intercept)   3.516      0.252 13.96 2.61e-44
-treatcontrol -1.267      0.311 -4.08 4.51e-05
-Log(scale)   -0.312      0.147 -2.12 3.43e-02
+              Value Std. Error     z       p
+(Intercept)   3.516      0.252 13.96 < 2e-16
+treatcontrol -1.267      0.311 -4.08 4.5e-05
+Log(scale)   -0.312      0.147 -2.12   0.034
 
 Scale= 0.732 
 
@@ -2059,9 +2060,9 @@ treatcontrol     4.817     0.2076     2.147     10.81
 
 Concordance= 0.69  (se = 0.053 )
 Rsquare= 0.322   (max possible= 0.988 )
-Likelihood ratio test= 16.35  on 1 df,   p=5.261e-05
-Wald test            = 14.53  on 1 df,   p=0.0001378
-Score (logrank) test = 17.25  on 1 df,   p=3.283e-05
+Likelihood ratio test= 16.35  on 1 df,   p=5e-05
+Wald test            = 14.53  on 1 df,   p=1e-04
+Score (logrank) test = 17.25  on 1 df,   p=3e-05
 
 > 
 > 
@@ -3044,9 +3045,9 @@ log(wbc)     1.4444     0.6923     1.106    1.8857
 
 Concordance= 0.726  (se = 0.065 )
 Rsquare= 0.377   (max possible= 0.994 )
-Likelihood ratio test= 15.64  on 2 df,   p=0.0004014
-Wald test            = 15.06  on 2 df,   p=0.0005365
-Score (logrank) test = 16.49  on 2 df,   p=0.0002629
+Likelihood ratio test= 15.64  on 2 df,   p=4e-04
+Wald test            = 15.06  on 2 df,   p=5e-04
+Score (logrank) test = 16.49  on 2 df,   p=3e-04
 
 > 
 > 
@@ -3304,10 +3305,10 @@ Correlations 0.806 0.745  cumulative % explained 26.87 51.71
 
 Call:
 survreg(formula = Surv(time, cens) ~ temp, data = motors)
-              Value Std. Error     z         p
-(Intercept) 16.3185    0.62296  26.2 3.03e-151
-temp        -0.0453    0.00319 -14.2  6.74e-46
-Log(scale)  -1.0956    0.21480  -5.1  3.38e-07
+               Value Std. Error     z       p
+(Intercept) 16.31852    0.62296  26.2 < 2e-16
+temp        -0.04531    0.00319 -14.2 < 2e-16
+Log(scale)  -1.09564    0.21480  -5.1 3.4e-07
 
 Scale= 0.334 
 
@@ -3339,9 +3340,9 @@ temp     1.096     0.9122     1.039     1.157
 
 Concordance= 0.84  (se = 0.076 )
 Rsquare= 0.472   (max possible= 0.936 )
-Likelihood ratio test= 25.56  on 1 df,   p=4.299e-07
-Wald test            = 11.27  on 1 df,   p=0.0007863
-Score (logrank) test = 22.73  on 1 df,   p=1.862e-06
+Likelihood ratio test= 25.56  on 1 df,   p=4e-07
+Wald test            = 11.27  on 1 df,   p=8e-04
+Score (logrank) test = 22.73  on 1 df,   p=2e-06
 
 > # predict at temperature 200
 > plot(survfit(motor.cox, newdata = data.frame(temp=200),
@@ -5160,9 +5161,10 @@ Achieved convergence tolerance: 4.324e-06
 > 
 > ### * <FOOTER>
 > ###
+> cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  8.4 0.226 9.501 0 0 
+Time elapsed:  14.843 0.552 31.55 0 0 
 > grDevices::dev.off()
 null device 
           1 
