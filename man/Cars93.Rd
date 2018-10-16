@@ -1,5 +1,5 @@
 % file MASS/man/Cars93.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2018 W. N. Venables and B. D. Ripley
 %
 \name{Cars93}
 \alias{Cars93}
@@ -115,7 +115,8 @@ Cars93
   1993 New Car Data.
   \emph{Journal of Statistics Education}
   \bold{1}(1).
-  \url{http://www.amstat.org/publications/jse/v1n1/datasets.lock.html}.  
+  \url{ https://doi.org/10.1080/10691898.1993.11910459}
+%  \url{http://www.amstat.org/publications/jse/v1n1/datasets.lock.html}.  
 }
 \references{
   Venables, W. N. and Ripley, B. D. (1999)

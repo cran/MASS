@@ -1,4 +1,4 @@
-312b49877a28f8f126e0bb35f39aa722 *DESCRIPTION
+10f0406cb2932f8dd2f590a4a8ef914d *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 e0d1ab11f24f7e3ff569541429d65825 *LICENCE.note
 0ac7b30ad35a4c19ea69d76a6a366b02 *NAMESPACE
@@ -159,7 +159,7 @@ caebd3270cdb7268117f8a5a0cddd7be *inst/scripts/ch15.R
 1b78ed518f4fbf6ed3704b0a8463715b *man/Aids2.Rd
 d5b9cf75996ccdc90872d49b2f87cae5 *man/Animals.Rd
 6a7a598f4cb667af6b8dc886b520696a *man/Boston.Rd
-007bf68c391f1085d20270d42b22fba4 *man/Cars93.Rd
+bfb83f6da9afe19178dd0ac7d2cea9bb *man/Cars93.Rd
 e1cc4debb9ba4982b2a78864d03bf5d7 *man/Cushings.Rd
 5e497af7fdc9b4d6b7e771f3839a0c4e *man/DDT.Rd
 fc4ebf60ca33228804e86cd08ee7b990 *man/GAGurine.Rd
@@ -227,7 +227,7 @@ c1c0977e3730dcc6340a845b0509dff7 *man/gamma.shape.glm.Rd
 d705175d2d756430ab571ee1c5253118 *man/genotype.Rd
 353d48920fe6e849fb2e0a757d277901 *man/geyser.Rd
 a81ca88a2a39298dd099c015fdd3c167 *man/gilgais.Rd
-f484f91e53e72fc672f2d5edd507a768 *man/ginv.Rd
+cd1607060ff90b41e5fd22b3b058d5e9 *man/ginv.Rd
 67ac548358fe00a107e17c7101fb4552 *man/glm.convert.Rd
 68625209b126bf126b0a7cad4e6c5508 *man/glm.nb.Rd
 704eb4028483dc8fe035bcece0ba9d8c *man/glmmPQL.Rd
@@ -320,7 +320,7 @@ f7b3d8066e652947494ab6d4fca93b0e *po/R-pl.po
 a79fc62d284fd106014fc6176155245a *src/MASS.c
 6e5f48c7ce8b734c48cf01616813acb0 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-921f8fb41cc756f4541006e473fe5230 *tests/Examples/MASS-Ex.Rout.save
+28d5d41e433c22b5e66e2c626ead8daa *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
 55c6f4de353b9479359459d2718a017e *tests/fitdistr.Rout.save

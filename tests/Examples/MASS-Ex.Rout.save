@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2018-04-16 r74611) -- "Unsuffered Consequences"
+R Under development (unstable) (2018-10-13 r75435) -- "Unsuffered Consequences"
 Copyright (C) 2018 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
@@ -2071,35 +2071,6 @@ Score (logrank) test = 17.25  on 1 df,   p=3e-05
 
 detaching ‘package:survival’
 
-> nameEx("ginv")
-> ### * ginv
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: ginv
-> ### Title: Generalized Inverse of a Matrix
-> ### Aliases: ginv
-> ### Keywords: algebra
-> 
-> ### ** Examples
-> 
-> ## Not run: 
-> ##D # The function is currently defined as
-> ##D function(X, tol = sqrt(.Machine$double.eps))
-> ##D {
-> ##D ## Generalized Inverse of a Matrix
-> ##D   dnx <- dimnames(X)
-> ##D   if(is.null(dnx)) dnx <- vector("list", 2)
-> ##D   s <- svd(X)
-> ##D   nz <- s$d > tol * s$d[1]
-> ##D   structure(
-> ##D     if(any(nz)) s$v[, nz] %*% (t(s$u[, nz])/s$d[nz]) else X,
-> ##D     dimnames = dnx[2:1])
-> ##D }
-> ## End(Not run)
-> 
-> 
-> cleanEx()
 > nameEx("glm.convert")
 > ### * glm.convert
 > 

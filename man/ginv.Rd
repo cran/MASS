@@ -1,5 +1,5 @@
 % file MASS/man/ginv.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2018 W. N. Venables and B. D. Ripley
 %
 \name{ginv}
 \alias{ginv}
@@ -31,19 +31,4 @@ A MP generalized inverse matrix for \code{X}.
 \seealso{
 \code{\link{solve}}, \code{\link{svd}}, \code{\link{eigen}}
 }
-\examples{
-\dontrun{
-# The function is currently defined as
-function(X, tol = sqrt(.Machine$double.eps))
-{
-## Generalized Inverse of a Matrix
-  dnx <- dimnames(X)
-  if(is.null(dnx)) dnx <- vector("list", 2)
-  s <- svd(X)
-  nz <- s$d > tol * s$d[1]
-  structure(
-    if(any(nz)) s$v[, nz] \%*\% (t(s$u[, nz])/s$d[nz]) else X,
-    dimnames = dnx[2:1])
-}
-}}
 \keyword{algebra}
