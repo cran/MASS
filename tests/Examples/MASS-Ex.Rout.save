@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2018-10-13 r75435) -- "Unsuffered Consequences"
+R Under development (unstable) (2018-10-31 r75525) -- "Unsuffered Consequences"
 Copyright (C) 2018 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
@@ -599,10 +599,10 @@ Call:
 coxph(formula = Surv(Time, unclass(y)) ~ week + strata(ID), data = bacteria, 
     method = "exact")
 
-        coef exp(coef) se(coef)     z     p
-week -0.1626    0.8500   0.0547 -2.97 0.003
+         coef exp(coef) se(coef)      z       p
+week -0.16256   0.84996  0.05472 -2.971 0.00297
 
-Likelihood ratio test=9.85  on 1 df, p=0.002
+Likelihood ratio test=9.85  on 1 df, p=0.001696
 n= 220, number of events= 177 
 > coxph(Surv(Time, unclass(y)) ~ factor(week) + strata(ID),
 +       data = bacteria, method = "exact")
@@ -610,13 +610,13 @@ Call:
 coxph(formula = Surv(Time, unclass(y)) ~ factor(week) + strata(ID), 
     data = bacteria, method = "exact")
 
-                 coef exp(coef) se(coef)     z     p
-factor(week)2   0.198     1.219    0.724  0.27 0.784
-factor(week)4  -1.421     0.242    0.667 -2.13 0.033
-factor(week)6  -1.661     0.190    0.682 -2.43 0.015
-factor(week)11 -1.675     0.187    0.678 -2.47 0.013
+                  coef exp(coef) se(coef)      z      p
+factor(week)2   0.1983    1.2193   0.7241  0.274 0.7842
+factor(week)4  -1.4206    0.2416   0.6665 -2.131 0.0331
+factor(week)6  -1.6615    0.1899   0.6825 -2.434 0.0149
+factor(week)11 -1.6752    0.1873   0.6780 -2.471 0.0135
 
-Likelihood ratio test=15.45  on 4 df, p=0.004
+Likelihood ratio test=15.45  on 4 df, p=0.003854
 n= 220, number of events= 177 
 > coxph(Surv(Time, unclass(y)) ~ I(week > 2) + strata(ID),
 +       data = bacteria, method = "exact")
@@ -624,10 +624,10 @@ Call:
 coxph(formula = Surv(Time, unclass(y)) ~ I(week > 2) + strata(ID), 
     data = bacteria, method = "exact")
 
-                  coef exp(coef) se(coef)     z       p
-I(week > 2)TRUE -1.670     0.188    0.482 -3.47 0.00053
+                   coef exp(coef) se(coef)      z        p
+I(week > 2)TRUE -1.6701    0.1882   0.4817 -3.467 0.000527
 
-Likelihood ratio test=15.15  on 1 df, p=1e-04
+Likelihood ratio test=15.15  on 1 df, p=9.927e-05
 n= 220, number of events= 177 
 > 
 > # PQL glmm analysis
@@ -2058,7 +2058,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
              exp(coef) exp(-coef) lower .95 upper .95
 treatcontrol     4.817     0.2076     2.147     10.81
 
-Concordance= 0.69  (se = 0.053 )
+Concordance= 0.69  (se = 0.041 )
 Rsquare= 0.322   (max possible= 0.988 )
 Likelihood ratio test= 16.35  on 1 df,   p=5e-05
 Wald test            = 14.53  on 1 df,   p=1e-04
@@ -3014,7 +3014,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 agpresent    0.3433     2.9126     0.148    0.7964
 log(wbc)     1.4444     0.6923     1.106    1.8857
 
-Concordance= 0.726  (se = 0.065 )
+Concordance= 0.726  (se = 0.047 )
 Rsquare= 0.377   (max possible= 0.994 )
 Likelihood ratio test= 15.64  on 2 df,   p=4e-04
 Wald test            = 15.06  on 2 df,   p=5e-04
@@ -3309,7 +3309,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
      exp(coef) exp(-coef) lower .95 upper .95
 temp     1.096     0.9122     1.039     1.157
 
-Concordance= 0.84  (se = 0.076 )
+Concordance= 0.84  (se = 0.035 )
 Rsquare= 0.472   (max possible= 0.936 )
 Likelihood ratio test= 25.56  on 1 df,   p=4e-07
 Wald test            = 11.27  on 1 df,   p=8e-04
@@ -5135,7 +5135,7 @@ Achieved convergence tolerance: 4.324e-06
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  14.843 0.552 31.55 0 0 
+Time elapsed:  8.274 0.2 8.515 0 0 
 > grDevices::dev.off()
 null device 
           1 
