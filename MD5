@@ -1,4 +1,4 @@
-056daac1a79a1ed138796e705400c316 *DESCRIPTION
+798b55fb63cc25f1d2ea702f2fbc6859 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 e0d1ab11f24f7e3ff569541429d65825 *LICENCE.note
 0ac7b30ad35a4c19ea69d76a6a366b02 *NAMESPACE
@@ -320,7 +320,7 @@ f7b3d8066e652947494ab6d4fca93b0e *po/R-pl.po
 a79fc62d284fd106014fc6176155245a *src/MASS.c
 6e5f48c7ce8b734c48cf01616813acb0 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-3349036a331524f95f1c4245648116a2 *tests/Examples/MASS-Ex.Rout.save
+e9e4d43c30805ae67f0a3dcadcea2eeb *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
 55c6f4de353b9479359459d2718a017e *tests/fitdistr.Rout.save

@@ -1,7 +1,7 @@
 Package: MASS
 Priority: recommended
-Version: 7.3-51.1
-Date: 2018-10-31
+Version: 7.3-51.3
+Date: 2019-03-31
 Revision: $Rev: 3492 $
 Depends: R (>= 3.1.0), grDevices, graphics, stats, utils
 Imports: methods
@@ -24,7 +24,7 @@ License: GPL-2 | GPL-3
 URL: http://www.stats.ox.ac.uk/pub/MASS4/
 Contact: <MASS@stats.ox.ac.uk>
 NeedsCompilation: yes
-Packaged: 2018-10-31 08:34:59 UTC; ripley
+Packaged: 2019-03-31 07:52:37 UTC; ripley
 Author: Brian Ripley [aut, cre, cph],
   Bill Venables [ctb],
   Douglas M. Bates [ctb],
@@ -33,4 +33,4 @@ Author: Brian Ripley [aut, cre, cph],
   David Firth [ctb]
 Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 Repository: CRAN
-Date/Publication: 2018-11-01 11:22:24 UTC
+Date/Publication: 2019-03-31 07:54:32 UTC
