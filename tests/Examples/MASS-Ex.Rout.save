@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2019-02-28 r76174) -- "Unsuffered Consequences"
+R Under development (unstable) (2019-03-30 r76304) -- "Unsuffered Consequences"
 Copyright (C) 2019 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
@@ -2059,7 +2059,6 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 treatcontrol     4.817     0.2076     2.147     10.81
 
 Concordance= 0.69  (se = 0.041 )
-Rsquare= 0.322   (max possible= 0.988 )
 Likelihood ratio test= 16.35  on 1 df,   p=5e-05
 Wald test            = 14.53  on 1 df,   p=1e-04
 Score (logrank) test = 17.25  on 1 df,   p=3e-05
@@ -3015,7 +3014,6 @@ agpresent    0.3433     2.9126     0.148    0.7964
 log(wbc)     1.4444     0.6923     1.106    1.8857
 
 Concordance= 0.726  (se = 0.047 )
-Rsquare= 0.377   (max possible= 0.994 )
 Likelihood ratio test= 15.64  on 2 df,   p=4e-04
 Wald test            = 15.06  on 2 df,   p=5e-04
 Score (logrank) test = 16.49  on 2 df,   p=3e-04
@@ -3310,7 +3308,6 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 temp     1.096     0.9122     1.039     1.157
 
 Concordance= 0.84  (se = 0.035 )
-Rsquare= 0.472   (max possible= 0.936 )
 Likelihood ratio test= 25.56  on 1 df,   p=4e-07
 Wald test            = 11.27  on 1 df,   p=8e-04
 Score (logrank) test = 22.73  on 1 df,   p=2e-06
@@ -5134,7 +5131,7 @@ Achieved convergence tolerance: 4.324e-06
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  14.653 0.685 37.574 0 0 
+Time elapsed:  14.857 0.31 15.294 0 0 
 > grDevices::dev.off()
 null device 
           1 
