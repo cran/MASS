@@ -66,11 +66,13 @@ arima(temp, order = c(1,0,0), xreg = activ)
 dreg <- cbind(sin = sin(2*pi*beav2$hours/24), cos = cos(2*pi*beav2$hours/24))
 arima(temp, order = c(1,0,0), xreg = cbind(active=activ, dreg))
 
+## IGNORE_RDIFF_BEGIN
 library(nlme) # for gls and corAR1
 beav2.gls <- gls(temp ~ activ, data = beav2, corr = corAR1(0.8),
                  method = "ML")
 summary(beav2.gls)
 summary(update(beav2.gls, subset = 6:100))
 detach("beav2"); rm(temp, activ)
+## IGNORE_RDIFF_END
 }
 \keyword{datasets}

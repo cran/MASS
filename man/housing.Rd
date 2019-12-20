@@ -52,7 +52,9 @@ options(contrasts = c("contr.treatment", "contr.poly"))
 # Surrogate Poisson models
 house.glm0 <- glm(Freq ~ Infl*Type*Cont + Sat, family = poisson,
                   data = housing)
+## IGNORE_RDIFF_BEGIN
 summary(house.glm0, cor = FALSE)
+## IGNORE_RDIFF_END
 
 addterm(house.glm0, ~. + Sat:(Infl+Type+Cont), test = "Chisq")
 

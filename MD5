@@ -1,4 +1,4 @@
-a2dbb5e4e548578e5d6fce1c6683d531 *DESCRIPTION
+dfb59b267b42d029d61540544da4d6e6 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 e0d1ab11f24f7e3ff569541429d65825 *LICENCE.note
 0ac7b30ad35a4c19ea69d76a6a366b02 *NAMESPACE
@@ -189,7 +189,7 @@ a81030efe33e0a82e2f9e3709b1273b9 *man/bacteria.Rd
 5472d70fb96f35a995e891ad9ef9a777 *man/bandwidth.nrd.Rd
 e79ea25d60ba827b71a57f7458f733d2 *man/bcv.Rd
 61fbfe12f436f23b478400e0c085731d *man/beav1.Rd
-9f038cc848d026bf00945399111bbc62 *man/beav2.Rd
+9c16e1752eba19b699081c3f7f82db01 *man/beav2.Rd
 1b3cede44318f5ea8feb3c3b457bdc09 *man/biopsy.Rd
 2f6ba17e14d2daa4afc541d3445190ad *man/birthwt.Rd
 bebc2ad312668d479d67adbb5fd3777d *man/boxcox.Rd
@@ -213,7 +213,7 @@ f320aaa10f4cff23eff1f1414c057eae *man/deaths.Rd
 c5683d0ee4538c54e29683c313cf4d20 *man/drivers.Rd
 989cb309d961aca2b8d9d54df183223d *man/dropterm.Rd
 a186e33c5945178fa1ca69a433c1bf3b *man/eagles.Rd
-74eed02126e0277bde3ad5dd024dc3ea *man/epil.Rd
+5d544d4123e89ce9b4404630c3ae53b8 *man/epil.Rd
 df9ff3b3ed9842a6c2d767dfb14233d8 *man/eqscplot.Rd
 d6c9433b3ee2a9fe920dcedecbefdf06 *man/farms.Rd
 7d46e561298348eafcb2464adcfa66b2 *man/fgl.Rd
@@ -233,7 +233,7 @@ cd1607060ff90b41e5fd22b3b058d5e9 *man/ginv.Rd
 704eb4028483dc8fe035bcece0ba9d8c *man/glmmPQL.Rd
 e65737579ca1cd2810198d72f0260e21 *man/hills.Rd
 5440204f0acdca119adda063b91d9e17 *man/hist.scott.Rd
-141fe74de34fe57d4753d8628f386437 *man/housing.Rd
+4b3d83cc89b49bdbf178503b6fa33dd3 *man/housing.Rd
 3ff54e8dfc1c1b949d3a33fcbd916fee *man/huber.Rd
 7cb24fac3e55b03ac894c3be943287bf *man/hubers.Rd
 bcc1aae22252614560be9bc37fffb161 *man/immer.Rd
@@ -247,7 +247,7 @@ f509645d4aa94d7b27e4537542daad97 *man/ldahist.Rd
 5b75967f372f6922eeffbfa308266ddf *man/loglm.Rd
 8a0b620b6fe8b8ce9f30eddf17df72d5 *man/loglm1.Rd
 4ccf847b74d8eabfa2608f644a1a5f5c *man/logtrans.Rd
-449c97b7a4ed9720c762773b7601d6ba *man/lqs.Rd
+1ceb94b85ebb93dd9e43792d1c0ccee5 *man/lqs.Rd
 2a0b5dd4c71cf01dfc1894be0e8f759b *man/mammals.Rd
 9fbb7d21860ae43c710d73e78d68741f *man/mca.Rd
 2f262617ef9117ab6d2fdedcdb243913 *man/mcycle.Rd
@@ -255,14 +255,14 @@ b80802b32e6e02f772806bbcf21a6ad6 *man/menarche.Rd
 cb0833e592bf5cd241499c439c69a002 *man/michelson.Rd
 f8a1e349fbe9051ba75a935ba2803149 *man/minn38.Rd
 2b7e747f5cf31f4ba254a7868773c9ba *man/motors.Rd
-1f0a67c1a950722b94bcf83f72b3a932 *man/muscle.Rd
+6dba6358bce7917dc3262ee2dd120636 *man/muscle.Rd
 6a8457e7526c032ff7e0a42e6fdc0e09 *man/mvrnorm.Rd
 fbf5b11e7ed253d29500bac780e2e794 *man/negative.binomial.Rd
 342fe0fcefe454e1da128aba3eeecf03 *man/newcomb.Rd
-3d7a650e22ac09fbe68065d37c673aa9 *man/nlschools.Rd
-f67b61e31e47a5327233c86af12779d9 *man/npk.Rd
+0d589532d9330eedf9abb57688afdab6 *man/nlschools.Rd
+d7fa0f842323e2546a258c19eb1566c1 *man/npk.Rd
 919de166373a81866c8f6152e64dc418 *man/npr1.Rd
-0ce0e02642fe47aa920ba76a92c790e8 *man/oats.Rd
+0fb65b5e6d3e0ceaf209f50d14caf636 *man/oats.Rd
 00698a2eb415969b83999b0ff995cced *man/painters.Rd
 71a3eccdc2ae99c4b1120d6a6855b14a *man/pairs.lda.Rd
 0020b25127cad664be91aef4c72996b4 *man/parcoord.Rd
@@ -311,7 +311,7 @@ dacb5fe1ae583a9281568436fa0fbe21 *man/ucv.Rd
 ceefe8e558dfa70a28f54fcae1ca3df0 *man/whiteside.Rd
 66a3b1bfeff97f77d6a9baa458447fca *man/width.SJ.Rd
 9676e9290685ce7d0527aad90135c048 *man/write.matrix.Rd
-b1fa7ed0af328f27abc9a63dd10334df *man/wtloss.Rd
+62acbc2ad1ace8bca9cfc5f4db22b799 *man/wtloss.Rd
 ddcf93f4743fa51bc195f90a3984d6bd *po/R-MASS.pot
 1a8251084f30308c2cbf19fc0fd7664d *po/R-de.po
 c9a3533e4ed79b58192f9664aa8d7696 *po/R-fr.po
@@ -320,7 +320,7 @@ f7b3d8066e652947494ab6d4fca93b0e *po/R-pl.po
 a79fc62d284fd106014fc6176155245a *src/MASS.c
 6e5f48c7ce8b734c48cf01616813acb0 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-89d0edd1112b866efa568d0c62bac859 *tests/Examples/MASS-Ex.Rout.save
+fd0fa10e74ef7c32ec1af084d6c0b266 *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
 55c6f4de353b9479359459d2718a017e *tests/fitdistr.Rout.save

@@ -44,6 +44,7 @@ muscle
   \emph{Modern Applied Statistics with S.} Fourth Edition. Springer.
 }
 \examples{
+## IGNORE_RDIFF_BEGIN
 A <- model.matrix(~ Strip - 1, data=muscle)
 rats.nls1 <- nls(log(Length) ~ cbind(A, rho^Conc),
    data = muscle, start = c(rho=0.1), algorithm="plinear")
@@ -52,6 +53,7 @@ rats.nls1 <- nls(log(Length) ~ cbind(A, rho^Conc),
 st <- list(alpha = B[2:22], beta = B[23], rho = B[1])
 (rats.nls2 <- nls(log(Length) ~ alpha[Strip] + beta*rho^Conc,
                   data = muscle, start = st))
+## IGNORE_RDIFF_END
 
 Muscle <- with(muscle, {
 Muscle <- expand.grid(Conc = sort(unique(Conc)), Strip = levels(Strip))

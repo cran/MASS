@@ -50,8 +50,10 @@ oats
 \examples{
 oats$Nf <- ordered(oats$N, levels = sort(levels(oats$N)))
 oats.aov <- aov(Y ~ Nf*V + Error(B/V), data = oats, qr = TRUE)
+## IGNORE_RDIFF_BEGIN
 summary(oats.aov)
 summary(oats.aov, split = list(Nf=list(L=1, Dev=2:3)))
+## IGNORE_RDIFF_END
 par(mfrow = c(1,2), pty = "s")
 plot(fitted(oats.aov[[4]]), studres(oats.aov[[4]]))
 abline(h = 0, lty = 2)

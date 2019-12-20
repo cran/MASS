@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2019-03-30 r76304) -- "Unsuffered Consequences"
+R Under development (unstable) (2019-12-19 r77606) -- "Unsuffered Consequences"
 Copyright (C) 2019 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
@@ -863,6 +863,7 @@ s.e.  0.0681     0.0939  0.1282     0.105    0.0997
 
 sigma^2 estimated as 0.01434:  log likelihood = 69.83,  aic = -127.67
 > 
+> ## IGNORE_RDIFF_BEGIN
 > library(nlme) # for gls and corAR1
 > beav2.gls <- gls(temp ~ activ, data = beav2, corr = corAR1(0.8),
 +                  method = "ML")
@@ -924,6 +925,7 @@ Standardized residuals:
 Residual standard error: 0.2188542 
 Degrees of freedom: 95 total; 93 residual
 > detach("beav2"); rm(temp, activ)
+> ## IGNORE_RDIFF_END
 > 
 > 
 > 
@@ -1532,6 +1534,7 @@ Number of Fisher Scoring iterations: 5
 > 
 > contrasts(epil3$pred) <- structure(contr.sdif(3),
 +     dimnames = list(NULL, c("placebo-base", "drug-placebo")))
+> ## IGNORE_RDIFF_BEGIN
 > summary(glm(y ~ pred + factor(subject) + offset(log(time)),
 +             family = poisson, data = epil3), cor = FALSE)
 
@@ -1617,6 +1620,7 @@ AIC: 1003.5
 
 Number of Fisher Scoring iterations: 5
 
+> ## IGNORE_RDIFF_END
 > 
 > summary(glmmPQL(y ~ lbase*trt + lage + V4,
 +                 random = ~ 1 | subject,
@@ -2350,6 +2354,7 @@ detaching ‘package:nlme’
 > # Surrogate Poisson models
 > house.glm0 <- glm(Freq ~ Infl*Type*Cont + Sat, family = poisson,
 +                   data = housing)
+> ## IGNORE_RDIFF_BEGIN
 > summary(house.glm0, cor = FALSE)
 
 Call:
@@ -2399,6 +2404,7 @@ AIC: 610.43
 
 Number of Fisher Scoring iterations: 5
 
+> ## IGNORE_RDIFF_END
 > 
 > addterm(house.glm0, ~. + Sat:(Infl+Type+Cont), test = "Chisq")
 Single term additions
@@ -3185,6 +3191,7 @@ Pearson          14.07985  5 0.01511005
 > 
 > ### ** Examples
 > 
+> ## IGNORE_RDIFF_BEGIN
 > set.seed(123) # make reproducible
 > lqs(stack.loss ~ ., data = stackloss)
 Call:
@@ -3207,6 +3214,7 @@ Coefficients:
 
 Scale estimates 1.912 
 
+> ## IGNORE_RDIFF_END
 > 
 > 
 > 
@@ -3349,6 +3357,7 @@ detaching ‘package:survival’
 > 
 > ### ** Examples
 > 
+> ## IGNORE_RDIFF_BEGIN
 > A <- model.matrix(~ Strip - 1, data=muscle)
 > rats.nls1 <- nls(log(Length) ~ cbind(A, rho^Conc),
 +    data = muscle, start = c(rho=0.1), algorithm="plinear")
@@ -3386,6 +3395,7 @@ alpha..lin.StripS21         beta..lin22             rho.rho
 
 Number of iterations to convergence: 0 
 Achieved convergence tolerance: 4.923e-06
+> ## IGNORE_RDIFF_END
 > 
 > Muscle <- with(muscle, {
 + Muscle <- expand.grid(Conc = sort(unique(Conc)), Strip = levels(Strip))
@@ -3511,6 +3521,7 @@ Residual Deviance: 172 	AIC: 1095
 > 
 > nl.lme <- nlme::lme(lang ~ IQ*COMB + IQave + SES,
 +                     random = ~ IQ | class, data = nl1)
+> ## IGNORE_RDIFF_BEGIN
 > summary(nl.lme)
 Linear mixed-effects model fit by REML
  Data: nl1 
@@ -3547,6 +3558,7 @@ Standardized Within-Group Residuals:
 
 Number of Observations: 2287
 Number of Groups: 133 
+> ## IGNORE_RDIFF_END
 > ## Don't show: 
 > options(op)
 > ## End(Don't show)
@@ -3640,6 +3652,7 @@ F-statistic: 5.772 on 7 and 16 DF,  p-value: 0.001805
 
 > se.contrast(npk.aov1, list(N=="0", N=="1"), data = npk)
 [1] 1.609175
+> ## IGNORE_RDIFF_BEGIN
 > model.tables(npk.aov1, type = "means", se = TRUE)
 Tables of means
 Grand mean
@@ -3665,7 +3678,7 @@ Standard errors for differences of means
         block     N     K
         2.787 1.609 1.609
 replic.     4    12    12
-> 
+> ## IGNORE_RDIFF_END
 > 
 > 
 > base::options(contrasts = c(unordered = "contr.treatment",ordered = "contr.poly"))
@@ -3684,6 +3697,7 @@ replic.     4    12    12
 > 
 > oats$Nf <- ordered(oats$N, levels = sort(levels(oats$N)))
 > oats.aov <- aov(Y ~ Nf*V + Error(B/V), data = oats, qr = TRUE)
+> ## IGNORE_RDIFF_BEGIN
 > summary(oats.aov)
 
 Error: B
@@ -3724,6 +3738,7 @@ Nf:V         6    322      54   0.303    0.932
 Residuals   45   7969     177                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> ## IGNORE_RDIFF_END
 > par(mfrow = c(1,2), pty = "s")
 > plot(fitted(oats.aov[[4]]), studres(oats.aov[[4]]))
 > abline(h = 0, lty = 2)
@@ -5109,6 +5124,7 @@ detaching ‘package:lattice’
 > 
 > ### ** Examples
 > 
+> ## IGNORE_RDIFF_BEGIN
 > wtloss.fm <- nls(Weight ~ b0 + b1*2^(-Days/th),
 +     data = wtloss, start = list(b0=90, b1=95, th=120))
 > wtloss.fm
@@ -5121,6 +5137,7 @@ Nonlinear regression model
 
 Number of iterations to convergence: 3 
 Achieved convergence tolerance: 4.324e-06
+> ## IGNORE_RDIFF_END
 > plot(wtloss)
 > with(wtloss, lines(Days, fitted(wtloss.fm)))
 > 
@@ -5131,7 +5148,7 @@ Achieved convergence tolerance: 4.324e-06
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  14.857 0.31 15.294 0 0 
+Time elapsed:  15.33 0.298 15.737 0 0 
 > grDevices::dev.off()
 null device 
           1 

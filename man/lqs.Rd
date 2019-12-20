@@ -158,9 +158,11 @@ ltsreg(\dots)
 \code{\link{predict.lqs}}
 }
 \examples{
+## IGNORE_RDIFF_BEGIN
 set.seed(123) # make reproducible
 lqs(stack.loss ~ ., data = stackloss)
 lqs(stack.loss ~ ., data = stackloss, method = "S", nsamp = "exact")
+## IGNORE_RDIFF_END
 }
 \keyword{models}
 \keyword{robust}

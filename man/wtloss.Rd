@@ -32,9 +32,11 @@ wtloss
   \emph{Modern Applied Statistics with S.} Fourth edition.  Springer.
 }
 \examples{
+## IGNORE_RDIFF_BEGIN
 wtloss.fm <- nls(Weight ~ b0 + b1*2^(-Days/th),
     data = wtloss, start = list(b0=90, b1=95, th=120))
 wtloss.fm
+## IGNORE_RDIFF_END
 plot(wtloss)
 with(wtloss, lines(Days, fitted(wtloss.fm)))
 }

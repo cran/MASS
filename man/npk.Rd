@@ -56,6 +56,7 @@ options(contrasts = c("contr.treatment", "contr.poly"))
 npk.aov1 <- aov(yield ~ block + N + K, data = npk)
 summary.lm(npk.aov1)
 se.contrast(npk.aov1, list(N=="0", N=="1"), data = npk)
+## IGNORE_RDIFF_BEGIN
 model.tables(npk.aov1, type = "means", se = TRUE)
-}
+## IGNORE_RDIFF_END}
 \keyword{datasets}

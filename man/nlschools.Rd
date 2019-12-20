@@ -58,7 +58,9 @@ nl1[cen] <- scale(nl1[cen], center = TRUE, scale = FALSE)
 
 nl.lme <- nlme::lme(lang ~ IQ*COMB + IQave + SES,
                     random = ~ IQ | class, data = nl1)
+## IGNORE_RDIFF_BEGIN
 summary(nl.lme)
+## IGNORE_RDIFF_END
 \testonly{options(op)}
 }
 \keyword{datasets}

@@ -71,8 +71,10 @@ epil3$pred <- factor(epil3$pred,
 
 contrasts(epil3$pred) <- structure(contr.sdif(3),
     dimnames = list(NULL, c("placebo-base", "drug-placebo")))
+## IGNORE_RDIFF_BEGIN
 summary(glm(y ~ pred + factor(subject) + offset(log(time)),
             family = poisson, data = epil3), cor = FALSE)
+## IGNORE_RDIFF_END
 
 summary(glmmPQL(y ~ lbase*trt + lage + V4,
                 random = ~ 1 | subject,
