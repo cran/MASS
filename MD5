@@ -1,4 +1,4 @@
-dfb59b267b42d029d61540544da4d6e6 *DESCRIPTION
+e0438c07f6107fac3ac4721fc332c556 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 e0d1ab11f24f7e3ff569541429d65825 *LICENCE.note
 0ac7b30ad35a4c19ea69d76a6a366b02 *NAMESPACE
@@ -136,8 +136,9 @@ b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bf40cbb20005f08d1f9163582f0d815 *inst/CITATION
 cfe49768ecb548ac7f483e75ce75d0e0 *inst/NEWS
 53587aeb7cb3a14eeeeb1992895d5a98 *inst/po/de/LC_MESSAGES/R-MASS.mo
-63de33c1d962d3ee7400545573a5a44b *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
+da6ca3e8f40f9228715021e234871401 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
 5df325787e7eab138db877e2b393e46b *inst/po/fr/LC_MESSAGES/R-MASS.mo
+eccb74c15d5bc7d7a9da418d74dd1dad *inst/po/it/LC_MESSAGES/R-MASS.mo
 35b33fe6bf3e1b8f4dd81cd0cd1625c1 *inst/po/ko/LC_MESSAGES/R-MASS.mo
 e6eff04275a69cfc28ab36e037be8976 *inst/po/pl/LC_MESSAGES/R-MASS.mo
 ea5ee8654eb44d16e07c4d8aa214ce4d *inst/scripts/ch01.R
@@ -312,9 +313,10 @@ ceefe8e558dfa70a28f54fcae1ca3df0 *man/whiteside.Rd
 66a3b1bfeff97f77d6a9baa458447fca *man/width.SJ.Rd
 9676e9290685ce7d0527aad90135c048 *man/write.matrix.Rd
 62acbc2ad1ace8bca9cfc5f4db22b799 *man/wtloss.Rd
-ddcf93f4743fa51bc195f90a3984d6bd *po/R-MASS.pot
+b3da5a81a94141b78a3aa7a3b9899463 *po/R-MASS.pot
 1a8251084f30308c2cbf19fc0fd7664d *po/R-de.po
 c9a3533e4ed79b58192f9664aa8d7696 *po/R-fr.po
+799fbc7f911756b1e15fedee1c1129c7 *po/R-it.po
 7a8bacbc760f2f78377198a4b4d532d5 *po/R-ko.po
 f7b3d8066e652947494ab6d4fca93b0e *po/R-pl.po
 a79fc62d284fd106014fc6176155245a *src/MASS.c

@@ -1,0 +1,562 @@
+# This file is distributed under the same license as the R package.
+# Copyright (C) The R Foundation.
+# Daniele Medri <dmedri@gmail.com>, 2005-2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MASS 7.3-49\n"
+"Report-Msgid-Bugs-To: bugs.r-project.org\n"
+"POT-Creation-Date: 2020-04-26 10:26\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Daniele Medri <dmedri@gmail.com>\n"
+"Language-Team: Italian https://github.com/dmedri/R-italian-lang\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.2.1\n"
+
+msgid "no terms in scope"
+msgstr "scope senza termini"
+
+msgid "no terms in scope for adding to object"
+msgstr "scope senza termini da aggiungere all'oggetto"
+
+msgid "trying + %s"
+msgstr "provando + %s"
+
+msgid "number of rows in use has changed: remove missing values?"
+msgstr "il numero di righe utilizzate è cambiato: rimuovere i valori mancanti?"
+
+msgid "F test assumes 'quasi%s' family"
+msgstr "Il test F assume una famiglia 'quasi%s'"
+
+msgid "no 'addterm' method implemented for \"mlm\" models"
+msgstr "nessun metodo 'addterm' implementato per i modelli 'mlm'"
+
+msgid "scope is not a subset of term labels"
+msgstr "scope non è un sottoinsieme delle etichette dei termini"
+
+msgid "trying - %s"
+msgstr "provando - %s"
+
+msgid "'dropterm' not implemented for \"mlm\" fits"
+msgstr "'dropterm' non implementato per adattamenti \"mlm\""
+
+msgid "iteration limit reached near 'x = %f'"
+msgstr "raggiunto limite di iterazioni vicino 'x = %f'"
+
+msgid "%s does not have both 'qr' and 'y' components"
+msgstr "%s non ha entrambi le componenti 'qr' e 'y'"
+
+msgid "response variable must be positive"
+msgstr "la variabile risposta dev'essere positiva"
+
+msgid "Waiting for profiling to be done..."
+msgstr "In attesa che venga eseguita la profilazione..."
+
+msgid "invalid number of levels"
+msgstr "numero di livelli non valido"
+
+msgid "frequency table is %d-dimensional"
+msgstr "la tabella delle frequenze è %d-dimensionale"
+
+msgid "invalid table specification"
+msgstr "specificazione di tabella non valida"
+
+msgid "higher-way table requested.  Only 2-way allowed"
+msgstr "richiesta tabella di livello superiore. Solo 2 vie ammesse"
+
+msgid "negative or non-integer entries in table"
+msgstr "voci negative o non intere nella tabella"
+
+msgid "all frequencies are zero"
+msgstr "tutte le frequenze sono zero"
+
+msgid "empty row or column in table"
+msgstr "riga o colonna vuota nella tabella"
+
+msgid "biplot is only possible if nf >= 2"
+msgstr "il biplot è possibile solo se nf >= 2"
+
+msgid "missing or infinite values in 'x'"
+msgstr "valori mancanti o infiniti in 'x'"
+
+msgid "length of 'wt' must equal number of observations"
+msgstr "la lunghezza di 'wt' deve eguagliare il numero di osservazioni"
+
+msgid "negative weights not allowed"
+msgstr "pesi negativi non ammessi"
+
+msgid "no positive weights"
+msgstr "nessun peso positivo"
+
+msgid "'center' is not the right length"
+msgstr "'center' non è della lunghezza giusta"
+
+msgid "Probable convergence failure"
+msgstr "Probabile fallimento di convergenza"
+
+msgid "'uin' is too large to fit plot in"
+msgstr "'uin' è troppo grande per adattarsi al plot"
+
+msgid "'x' must be a non-empty numeric vector"
+msgstr "'x' dev'essere un vettore numerico non vuoto"
+
+msgid "'x' contains missing or infinite values"
+msgstr "'x' contiene valori mancanti o infiniti"
+
+msgid "'densfun' must be supplied as a function or name"
+msgstr "'densfun' dev'essere passato come una funzione o nome"
+
+msgid "unsupported distribution"
+msgstr "distribuzione non supportata"
+
+msgid "supplying pars for the %s distribution is not supported"
+msgstr "non è supportato il passaggio di pars per la distribuzione %s"
+
+msgid "need positive values to fit a log-Normal"
+msgstr "richiesti valori positivi per adattarsi a una log-Normal"
+
+msgid "Exponential values must be >= 0"
+msgstr "I valori esponenziali devono essere >= 0"
+
+msgid "Weibull values must be > 0"
+msgstr "I valori Weibull devono essere > 0"
+
+msgid "gamma values must be >= 0"
+msgstr "i valori gamma devono essere >= 0"
+
+msgid "'start' must be a named list"
+msgstr "'start' dev'essere una lista nominata"
+
+msgid "'start' specifies names which are not arguments to 'densfun'"
+msgstr "'start' specifica nomi che non sono argomenti per 'densfun'"
+
+msgid "optimization failed"
+msgstr "ottimizzazione fallita"
+
+msgid "only 'REML = FALSE' is implemented"
+msgstr "solo 'REML = FALSE' è implementato"
+
+msgid "Initial estimate: %s"
+msgstr "Stima iniziale: %s"
+
+msgid "Iter. %d Alpha: %s"
+msgstr "Iter. %d Alpha: %s"
+
+msgid "iteration limit reached"
+msgstr "raggiunto il limite di iterazioni"
+
+msgid "package 'nlme' is essential"
+msgstr "il pacchetto 'nlme' è essenziale"
+
+msgid "'family' not recognized"
+msgstr "'family' non riconosciuta"
+
+msgid "iteration %d"
+msgstr "iterazione %d"
+
+msgid "'anova' is not available for PQL fits"
+msgstr "'anova' non è disponibile per adattamenti PQL"
+
+msgid "cannot estimate scale: MAD is zero for this sample"
+msgstr "non è possibile stimare la scala: MAD è zero per questo campione"
+
+msgid "an initial configuration must be supplied with NA/Infs in 'd'"
+msgstr "una configurazione iniziale dev'essere passata con NA/Infs in 'd'"
+
+msgid "'y' must be a matrix"
+msgstr "'y' dev'essere una matrice"
+
+msgid "distances must be result of 'dist' or a square matrix"
+msgstr ""
+"le distanze devono essere il risultato di 'dist' o una matrice quadrata"
+
+msgid "invalid size"
+msgstr "dimensione non valida"
+
+msgid "zero or negative distance between objects %d and %d"
+msgstr "distanza zero o negativa tra gli oggetti %d e %d"
+
+msgid "not enough non-missing data"
+msgstr "non ci sono abbastanza dati non-missing"
+
+msgid "invalid initial configuration"
+msgstr "configurazione iniziale non valida"
+
+msgid "initial configuration must be complete"
+msgstr "la configurazione iniziale dev'essere completa"
+
+msgid "invalid row(x)"
+msgstr "row(x) non valido"
+
+msgid "invalid length(d)"
+msgstr "length(d) non valida"
+
+msgid "data vectors must be the same length"
+msgstr "i vettori dati devono essere della medesima lunghezza"
+
+msgid "missing or infinite values in the data are not allowed"
+msgstr "non sono ammessi i valori mancanti o infiniti nei dati"
+
+msgid "only finite values are allowed in 'lims'"
+msgstr "solo i valori finiti sono ammessi in 'lims'"
+
+msgid "bandwidths must be strictly positive"
+msgstr "la larghezza di banda dev'essere strettamente positiva"
+
+msgid "'x' is not a matrix"
+msgstr "'x' non è una matrice"
+
+msgid "infinite, NA or NaN values in 'x'"
+msgstr "valori infiniti, NA o NaN in 'x'"
+
+msgid "nrow(x) and length(grouping) are different"
+msgstr "nrow(x) e length(grouping) sono differenti"
+
+msgid "invalid 'prior'"
+msgstr "'prior' non valido"
+
+msgid "'prior' is of incorrect length"
+msgstr "'prior' è di lunghezza incorretta"
+
+msgid "cannot use leave-one-out CV with method %s"
+msgstr "non è possibile avere una CV leave-one-out con il metodo %s"
+
+msgid "rank = 0: variables are numerically constant"
+msgstr "rank = 0: le variabili sono numericamente costanti"
+
+msgid "variables are collinear"
+msgstr "le variabili sono collineari"
+
+msgid "'nu' must exceed 2"
+msgstr "'nu' deve eccedere 2"
+
+msgid "group means are numerically identical"
+msgstr "le medie di gruppo sono numericamente identiche"
+
+msgid "object not of class \"lda\""
+msgstr "l'oggetto non è di classe \"lda\""
+
+msgid "wrong number of variables"
+msgstr "numero errato di variabili"
+
+msgid "variable names in 'newdata' do not match those in 'object'"
+msgstr ""
+"i nomi delle variabili in 'newdata' non corrispondono a quelle in 'object'"
+
+msgid "'breaks' must be strictly increasing"
+msgstr "'breaks' dev'essere strettamente crescente"
+
+msgid "'breaks' do not cover the data"
+msgstr "'breaks' non copre i dati"
+
+msgid "dim(W) is not correct"
+msgstr "dim(W) non è corretta"
+
+msgid "'W' is not positive definite"
+msgstr "'W' non è definito positivo"
+
+msgid "'data' has no 'terms' attribute"
+msgstr "'data' non ha l'attributo 'terms'"
+
+msgid "formula specifies no response"
+msgstr "la formula non specifica alcuna risposta"
+
+msgid "'object' has no 'call' component.  Updating not possible"
+msgstr ""
+"'object' non ha alcun componente 'call'. L'aggiornamento non è possibile"
+
+msgid "Response variable must be positive after additions"
+msgstr "La variabile di risposta dev'essere positiva dopo le aggiunte"
+
+msgid "missing values are not allowed"
+msgstr "i valori mancanti non sono ammessi"
+
+msgid "'x' and 'y' must have the same number of rows"
+msgstr "'x' e 'y' devono avere lo stesso numero di righe"
+
+msgid "'quantile' must be at most %d"
+msgstr "'quantile' dev'essere al massimo %d"
+
+msgid "'ps' must be at least 'p'"
+msgstr "'ps' dev'essere almeno 'p'"
+
+msgid "'lqs' failed: all the samples were singular"
+msgstr "'lqs' fallito: tutti i campioni erano singolari"
+
+msgid "missing or infinite values are not allowed"
+msgstr "i valori mancanti o infiniti non sono ammessi"
+
+msgid "at least %d cases are needed"
+msgstr "sono richiesti almeno %d casi"
+
+msgid "'quantile' must be at least %d"
+msgstr "'quantile' dev'essere almeno %d"
+
+msgid "at least one column has IQR 0"
+msgstr "almeno una colonna ha IQR 0"
+
+msgid "'x' is probably collinear"
+msgstr "'x' è probabilmente collineare"
+
+msgid "all variables must be factors"
+msgstr "tutte le variabili devono essere fattori"
+
+msgid "factors in 'newdata' do not match those for 'object'"
+msgstr "i fattori in 'newdata' non corrispondono a quelli per 'object'"
+
+msgid "'newdata' is not of the right length"
+msgstr "'newdata' non è della lunghezza giusta"
+
+msgid "'X' must be a numeric or complex matrix"
+msgstr "'X' dev'essere una matrice numerica o complessa"
+
+msgid "incompatible arguments"
+msgstr "argomenti incompatibili"
+
+msgid "'Sigma' is not positive definite"
+msgstr "'Sigma' non è definito positivo"
+
+msgid "'theta' must be given"
+msgstr "'theta' dev'essere passato"
+
+msgid "negative values not allowed for the negative binomial family"
+msgstr "valori negativi non ammessi per la famiglia binomiale negativa"
+
+msgid "tests made without re-estimating 'theta'"
+msgstr "test eseguiti senza stimare di nuovo 'theta'"
+
+msgid "only Chi-squared LR tests are implemented"
+msgstr "solo i test Chi-squared LR sono implementati"
+
+msgid "not all objects are of class \"negbin\""
+msgstr "non tutti gli oggetti sono di classe \"negbin\""
+
+msgid "unimplemented method: %s"
+msgstr "metodo non implementato: %s"
+
+msgid "Initial fit:"
+msgstr "Adattamento iniziale:"
+
+msgid "Initial value for 'theta': %f"
+msgstr "Valore iniziale di 'theta': %f"
+
+msgid "alternation limit reached"
+msgstr "limite di alternanza raggiunto"
+
+msgid "'theta' must be specified"
+msgstr "'theta' dev'essere specificato"
+
+msgid ""
+"\"%s\" link not available for negative binomial family; available links are "
+"\"identity\", \"log\" and \"sqrt\""
+msgstr ""
+"link \"%s\" non disponibile per la famiglia binomiale negativa; i "
+"collegamenti disponibili sono \"identity\", \"log\" e \"sqrt\""
+
+msgid "estimate truncated at zero"
+msgstr "stima troncata a zero"
+
+msgid "theta.ml: iter"
+msgstr "theta.ml: iterazione"
+
+msgid "theta ="
+msgstr "theta ="
+
+msgid "extra arguments discarded"
+msgstr "argomenti extra ignorati"
+
+msgid "at least 3 distinct 'x' values are needed"
+msgstr "sono necessari almeno 3 valori 'x' distinti"
+
+msgid "an intercept is needed and assumed"
+msgstr "un'intercetta è necessaria e presunta"
+
+msgid "response must be a factor"
+msgstr "la risposta dev'essere un fattore"
+
+msgid "response must have 3 or more levels"
+msgstr "la risposta deve avere 3 o più livelli"
+
+msgid "attempt to find suitable starting values failed"
+msgstr "la ricerca di valori iniziali adeguati non è riuscita"
+
+msgid "design appears to be rank-deficient, so dropping some coefs"
+msgstr ""
+"il disegno sembra essere carente di rango, quindi si eliminano alcuni "
+"coefficienti"
+
+msgid "'start' is not of the correct length"
+msgstr "'start' non è della lunghezza corretta"
+
+msgid "Re-fitting to get Hessian"
+msgstr "Ri-adattamento per ottenere Hessian"
+
+msgid "not a \"polr\" object"
+msgstr "non è un oggetto \"polr\""
+
+msgid "anova is not implemented for a single \"polr\" object"
+msgstr "anova non è implementata per un singolo oggetto \"polr\""
+
+msgid "not all objects are of class \"polr\""
+msgstr "non tutti gli oggetti sono di classe \"polr\""
+
+msgid "models were not all fitted to the same size of dataset"
+msgstr "i modelli non sono tutti adattati alla medesima dimensione del dataset"
+
+msgid "Parameter:"
+msgstr "Parametro:"
+
+msgid "down"
+msgstr "giù"
+
+msgid "up"
+msgstr "su"
+
+msgid ""
+"profiling has found a better solution, so original fit had not converged"
+msgstr ""
+"la profilazione ha trovato una soluzione migliore, quindi la stima originale "
+"non converge"
+
+msgid "weighted fits are not supported"
+msgstr "gli adattamenti ponderati non sono supportati"
+
+msgid "some group is too small for 'qda'"
+msgstr "alcuni gruppi sono troppo piccoli per 'qda'"
+
+msgid "rank deficiency in group %s"
+msgstr "carenza di rango nel gruppo %s"
+
+msgid "object not of class \"qda\""
+msgstr "l'oggetto non è di classe \"qda\""
+
+msgid "cannot have leave-one-out CV with 'newdata'"
+msgstr "non è possibile avere una CV leave-one-out con 'newdata'"
+
+msgid "'x' is singular: singular fits are not implemented in 'rlm'"
+msgstr ""
+"'x' è singolare: gli adattmenti singolari non sono implementati in 'rlm'"
+
+msgid "invalid 'test.vec'"
+msgstr "'test.vec' non valido"
+
+msgid "length of 'weights' must equal number of observations"
+msgstr "la lunghezza di 'weights' deve eguagliare il numero di osservazioni"
+
+msgid "negative 'weights' value"
+msgstr "valore 'weights' negativo"
+
+msgid "some of ... do not match"
+msgstr "alcuni di... non corrisponde"
+
+msgid "'init' method is unknown"
+msgstr "il metodo 'init' è sconosciuto"
+
+msgid "'c' must be at least 1.548 and has been ignored"
+msgstr "'c' dev'essere almeno 1.548 ed è stato ignorato"
+
+msgid "'method' is unknown"
+msgstr "'method' è sconosciuto"
+
+msgid "'rlm' failed to converge in %d steps"
+msgstr "'rlm' non è riuscito a convergere in %d passaggi"
+
+msgid "'coef' must define a contrast, i.e., sum to 0"
+msgstr "'coef' deve definire un contrasto, e.g., sommare a 0"
+
+msgid "'coef' must have same length as 'contrast.obj'"
+msgstr "'coef' deve avere la stessa lunghezza di 'contrast.obj'"
+
+msgid "each element of '%s' must be logical"
+msgstr "ogni elemento di '%s' dev'essere logico"
+
+msgid "the contrast defined is empty (has no TRUE elements)"
+msgstr "il contrasto definito è vuoto (non ha elementi TRUE)"
+
+msgid "columns of 'contrast.obj' must define a contrast (sum to zero)"
+msgstr ""
+"le colonne di 'contrast.obj' deve definire un contrasto (sommare a zero)"
+
+msgid "\"gradient\" attribute missing"
+msgstr "attributo \"gradient\" mancante"
+
+msgid "\"hessian\" attribute missing"
+msgstr "attributo \"hessian\" mancante"
+
+msgid "regression apparently linear"
+msgstr "regressione apparentemente lineare"
+
+msgid "Infs not allowed in 'd'"
+msgstr "Infs non è ammesso in 'd'"
+
+msgid "an initial configuration must be supplied if there are NAs in 'd'"
+msgstr "una configurazione iniziale dev'essere passata se ci sono NA in 'd'"
+
+msgid "'use.start' cannot be used with R's version of 'glm'"
+msgstr "'use.start' non può essere utilizzato con la versione R di 'glm'"
+
+msgid "AIC is not defined for this model, so 'stepAIC' cannot proceed"
+msgstr ""
+"AIC non è definito per questo modello, quindi 'stepAIC' non può procedere"
+
+msgid "AIC is -infinity for this model, so 'stepAIC' cannot proceed"
+msgstr ""
+"L'AIC è infinito per questo modello, quindi 'stepAIC' non può procedere"
+
+msgid "0 df terms are changing AIC"
+msgstr "0 termini df stanno cambiando AIC"
+
+msgid "AIC undefined for REML fit"
+msgstr "AIC non definito per un adattamento REML"
+
+msgid "'nbins' must result in a positive integer"
+msgstr "'nbins' dev'essere un numero intero positivo"
+
+msgid "'h' must be strictly positive"
+msgstr "'h' dev'essere strettamente positivo"
+
+msgid "uneven breaks with 'prob = FALSE' will give a misleading plot"
+msgstr "interruzioni irregolari con 'prob = FALSE' daranno un plot fuorviante"
+
+msgid "'x' has length zero"
+msgstr "'x' ha lunghezza zero"
+
+msgid "no solution in the specified range of bandwidths"
+msgstr "non ci sono soluzioni nel range di badwidth specificato"
+
+msgid "minimum occurred at one end of the range"
+msgstr "minimo realizzato in uno degli estremi del range"
+
+msgid "using the %d/%d row from a combined fit"
+msgid_plural "using the %d/%d rows from a combined fit"
+msgstr[0] "utilizzo la riga %d/%d da una stima combinata"
+msgstr[1] "utilizzo le righe %d/%d da una stima combinata"
+
+msgid "group %s is empty"
+msgid_plural "groups %s are empty"
+msgstr[0] "il gruppo %s è vuoto"
+msgstr[1] "i gruppi %s sono vuoti"
+
+msgid "variable %s appears to be constant within groups"
+msgid_plural "variables %s appear to be constant within groups"
+msgstr[0] "la variabile %s sembra essere costante all'interno dei gruppi"
+msgstr[1] "le variabili %s sembrano essere costanti all'interno dei gruppi"
+
+msgid "only %d set, so all sets will be tried"
+msgid_plural "only %d sets, so all sets will be tried"
+msgstr[0] "solo %d insieme, quindi tutti saranno provati"
+msgstr[1] "solo %d insiemi, quindi tutti saranno provati"
+
+msgid "%d missing observation deleted"
+msgid_plural "%d missing observations deleted"
+msgstr[0] "eliminata %d osservazione mancante"
+msgstr[1] "eliminate %d osservazioni mancanti"
+
+msgid "%d row with zero weights not counted"
+msgid_plural "%d rows with zero weights not counted"
+msgstr[0] "%d riga con pesi zero non conteggiati"
+msgstr[1] "%d rige con pesi zero non conteggiati"
