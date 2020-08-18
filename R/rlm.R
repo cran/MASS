@@ -1,5 +1,5 @@
 # file MASS/R/rlm.R
-# copyright (C) 1994-2016 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2020 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -56,6 +56,9 @@ rlm.formula <-
     if(model) fit$model <- mf
     if(!x.ret) fit$x <- NULL
     if(y.ret) fit$y <- y
+    ## change in 7.3-52 suggested by Andr\'e Gillibert
+    fit$offset <- offset
+    if (!is.null(offset)) fit$fitted.values <- fit$fitted.values + offset
     fit
 }
 

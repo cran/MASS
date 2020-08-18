@@ -1,4 +1,4 @@
-e0438c07f6107fac3ac4721fc332c556 *DESCRIPTION
+dbb0973f39862c594ded370110350fd8 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 e0d1ab11f24f7e3ff569541429d65825 *LICENCE.note
 0ac7b30ad35a4c19ea69d76a6a366b02 *NAMESPACE
@@ -37,7 +37,7 @@ d46385a583ad1e374fe3470d9c9b4a7e *R/parcoord.R
 c741f8f80f1d5574a17703fee6465f1c *R/polr.R
 54a2b2d504391f36f4d9211fb361a26d *R/profiles.R
 a5771ffbdd84fc93ad1993f4ca3af668 *R/qda.R
-25387d9e947da2a1941a33a99f580bff *R/rlm.R
+4d8329c5c96150724dadebf17fb0ff3f *R/rlm.R
 7d35a77423de76adcd49a981816c30eb *R/rms.curv.R
 c301b0a87d4188e4e9dd9f361aefb3f9 *R/sammon.R
 d1ce869b486a323f35ddf3fe8f3220f7 *R/stdres.R
@@ -133,7 +133,7 @@ edc0346a21e08acb8a96c9e04df03f39 *data/topo.rda
 c5f389af5e309c81135890293b5c867b *data/waders.rda
 b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bc59b5368bad84fac2fad52f03298de *data/wtloss.rda
-7bf40cbb20005f08d1f9163582f0d815 *inst/CITATION
+a4780efdb7fb26beb4ce17220b6cfbdf *inst/CITATION
 cfe49768ecb548ac7f483e75ce75d0e0 *inst/NEWS
 53587aeb7cb3a14eeeeb1992895d5a98 *inst/po/de/LC_MESSAGES/R-MASS.mo
 da6ca3e8f40f9228715021e234871401 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
@@ -196,7 +196,7 @@ e79ea25d60ba827b71a57f7458f733d2 *man/bcv.Rd
 bebc2ad312668d479d67adbb5fd3777d *man/boxcox.Rd
 2ca64d5540ffa5e91f3c8461e6e3124b *man/cabbages.Rd
 dc0c0d7f1beb93b31c7df02fa2c691ae *man/caith.Rd
-fa4751955a3deab7d55c7c08607ce9a7 *man/cats.Rd
+726868057d0e31cad05e01c7b379573c *man/cats.Rd
 017ddc74606e2e08885a718313f9ea6b *man/cement.Rd
 1ce122787e058327f52bd789e3a12dc9 *man/chem.Rd
 00995ff596440aa4a397749326348872 *man/con2tr.Rd
@@ -259,7 +259,7 @@ f8a1e349fbe9051ba75a935ba2803149 *man/minn38.Rd
 6dba6358bce7917dc3262ee2dd120636 *man/muscle.Rd
 6a8457e7526c032ff7e0a42e6fdc0e09 *man/mvrnorm.Rd
 fbf5b11e7ed253d29500bac780e2e794 *man/negative.binomial.Rd
-342fe0fcefe454e1da128aba3eeecf03 *man/newcomb.Rd
+c73e2dbd1f3749c2a85df1c993699d9f *man/newcomb.Rd
 0d589532d9330eedf9abb57688afdab6 *man/nlschools.Rd
 d7fa0f842323e2546a258c19eb1566c1 *man/npk.Rd
 919de166373a81866c8f6152e64dc418 *man/npr1.Rd
@@ -283,7 +283,7 @@ bd8f3b4004f2c2a5264ed9a638cc0d76 *man/qda.Rd
 dfa3b68ec958f14f2335f12ce1677d0b *man/quine.Rd
 324d874e6ba7480e047d8b35055a9494 *man/rational.Rd
 e4d94fcfa81a5033c190758c23872d63 *man/renumerate.Rd
-245e94ef57e0c0a0de04cc318c826f78 *man/rlm.Rd
+945433e096db81a390fa5fa3b55454b1 *man/rlm.Rd
 3ad1c9eeebe4ea98deb2a5e9ac96f13e *man/rms.curv.Rd
 af7786c21fe88e411491adbe8e66bff0 *man/rnegbin.Rd
 d237d006e941b09968796e38d5f0ac6a *man/road.Rd
@@ -333,5 +333,5 @@ edee76adc2d27e4ba90f1ff79360148b *tests/polr.R
 f4e6b3ffb6521ea7625515e2f0ae7f98 *tests/profile.R
 a23ddf89e02a02ed030e4ed5538d3430 *tests/regression.R
 51c912fb8fac4844110b52651f79a8e8 *tests/regression.Rout.save
-262eff8ec621dc11543b9f680879249d *tests/rlm.R
+f2eeba77216158f02085ec4f29e586c0 *tests/rlm.R
 f5fd08eb22747dbe31443bc3560cfa2d *tests/scripts.R
