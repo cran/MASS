@@ -1,5 +1,5 @@
 % file lqs/man/cov.rob.Rd
-% copyright (C) 1998-9 B. D. Ripley
+% copyright (C) 1998-2020 B. D. Ripley
 %
 \name{cov.rob}
 \alias{cov.rob}
@@ -40,11 +40,11 @@ cov.mcd(\dots)
   }
   \item{nsamp}{
     the number of samples or \code{"best"} or \code{"exact"} or
-    \code{"sample"}.
+    \code{"sample"}.  The limit
     If \code{"sample"} the number chosen is \code{min(5*p, 3000)}, taken
     from Rousseeuw and Hubert (1997). If \code{"best"} exhaustive
     enumeration is done up to 5000 samples: if \code{"exact"}
-    exhaustive enumeration will be attempted however many samples are needed.
+    exhaustive enumeration will be attempted.
   }
   \item{seed}{
     the seed to be used for random sampling: see \code{\link{RNGkind}}. The
@@ -102,6 +102,11 @@ cov.mcd(\dots)
   van Driessen (1999) is used, in which once a subset of size
   \code{quantile.used} is selected, an ellipsoid based on its covariance
   is tested (as this will have no larger a determinant, and may be smaller).
+
+  There is a hard limit on the allowed number of samples, \eqn{2^{31} -
+  1}{2^31 - 1}.  However, practical limits are likely to be much lower
+  and one might check the number of samples used for exhaustive
+  enumeration, \code{combn(NROW(x), NCOL(x) + 1)}, before attempting it.
 }
 
 \references{

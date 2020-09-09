@@ -24,8 +24,8 @@ lm.ridge(formula, data, subset, na.action, lambda = 0, model = FALSE,
   for other details. \code{\link{offset}} terms are allowed.
 }
 \item{data}{
-an optional data frame in which to interpret the variables occurring
-in \code{formula}.
+an optional data frame, list or environment in which to interpret the
+variables occurring in \code{formula}.
 }
 \item{subset}{
 expression saying which subset of the rows of the data should  be used

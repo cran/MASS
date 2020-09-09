@@ -1,5 +1,5 @@
 % file MASS/man/loglm.Rd
-% copyright (C) 1994-2013 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2020 W. N. Venables and B. D. Ripley
 %
 \name{loglm}
 \alias{loglm}
@@ -42,8 +42,9 @@ loglm(formula, data, subset, na.action, \dots)
     on the right-hand side of the formula are coerced to factor.
   }
   \item{data}{
-    Numeric array or data frame.  In the first case it specifies the
-    array of frequencies; in then second it provides the data frame
+    Numeric array or data frame (or list or environment).
+    In the first case it specifies the
+    array of frequencies; in the second it provides the data frame
     from which the variables occurring in the formula are
     preferentially obtained in the usual way.
     

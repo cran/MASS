@@ -1,5 +1,5 @@
 % file MASS/man/corresp.Rd
-% copyright (C) 1994-2015 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2020 W. N. Venables and B. D. Ripley
 %
 \name{corresp}
 \alias{corresp}
@@ -47,8 +47,8 @@ corresp(x, \dots)
     a sort of biplot.
   }
   \item{y}{a second factor for a cross-classification.}
-  \item{data}{a data frame against which to preferentially resolve
-    variables in the formula.}
+  \item{data}{an optional data frame, list or environment against which
+    to preferentially resolve variables in the formula.}
   \item{\dots}{
     If the principal argument is a formula, a data frame may be specified
     as well from which variables in the formula are preferentially

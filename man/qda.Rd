@@ -1,5 +1,5 @@
 % file MASS/man/qda.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2020 W. N. Venables and B. D. Ripley
 %
 \name{qda}
 \alias{qda}
@@ -34,8 +34,8 @@ response is the grouping factor and the right hand side specifies
 the (non-factor) discriminators.
 }
 \item{data}{
-Data frame from which variables specified in \code{formula} are
-preferentially to be taken.
+  An optional data frame, list or environment from which variables
+  specified in \code{formula} are preferentially to be taken.
 }
 \item{x}{
 (required if no formula is given as the principal argument.)

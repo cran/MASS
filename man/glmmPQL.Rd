@@ -22,7 +22,7 @@ a formula or list of formulae describing the random effects.
 a GLM family.
 }
 \item{data}{
-an optional data frame used as the first place to find
+an optional data frame, list or environment used as the first place to find
 variables in the formulae, \code{weights} and if present in
 \code{\dots}, \code{subset}.
 }

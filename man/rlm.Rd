@@ -39,8 +39,8 @@ psi.bisquare(u, c = 4.685, deriv = 0)
     a formula of the form \code{y ~ x1 + x2 + \dots}.
   }
   \item{data}{
-    data frame from which variables specified in \code{formula} are
-    preferentially to be taken.
+    an optional data frame, list or environment from which variables
+    specified in \code{formula} are preferentially to be taken.
   }
   \item{weights}{
     a vector of prior weights for each case.

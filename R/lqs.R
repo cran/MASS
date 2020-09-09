@@ -1,5 +1,5 @@
 # file lqs/R/lqs.R
-# copyright (C) 1998-2014 B. D. Ripley
+# copyright (C) 1998-2020 B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -234,7 +234,12 @@ cov.rob <- function(x, cor = FALSE, quantile.used = floor((n+p+1)/2),
 	if(samp) {
 	    if(nsamp == "sample") nsamp <- min(500*ps, 3000)
 	} else nsamp <- nexact
-
+        if (nsamp > 2147483647) {
+            if(samp)
+                stop(sprintf("Too many samples (%.3g)", nsamp))
+            else
+                stop(sprintf('Too many combinations (%.3g) for nsamp = "exact"', nsamp))
+        }
 	if(samp && !missing(seed)) {
 	    if(exists(".Random.seed", envir=.GlobalEnv, inherits=FALSE))  {
 		seed.keep <- get(".Random.seed", envir=.GlobalEnv, inherits=FALSE)

@@ -1,5 +1,5 @@
 % file MASS/man/polr.Rd
-% copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2020 W. N. Venables and B. D. Ripley
 %
 \name{polr}
 \alias{polr}
@@ -28,8 +28,8 @@ polr(formula, data, weights, start, \dots, subset, na.action,
     documentation of \code{\link{formula}} for other details.
   }
   \item{data}{
-    an optional data frame in which to interpret the variables occurring
-    in \code{formula}.
+    an optional data frame, list or environment in which to interpret
+    the variables occurring in \code{formula}.
   }
   \item{weights}{
     optional case weights in fitting.  Default to 1.
