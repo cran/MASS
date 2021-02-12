@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MASS 7.3-49\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2020-04-26 10:26\n"
+"POT-Creation-Date: 2021-02-12 09:53\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Daniele Medri <dmedri@gmail.com>\n"
 "Language-Team: Italian https://github.com/dmedri/R-italian-lang\n"
@@ -298,6 +298,12 @@ msgstr "'quantile' dev'essere almeno %d"
 
 msgid "at least one column has IQR 0"
 msgstr "almeno una colonna ha IQR 0"
+
+msgid "Too many samples (%.3g)"
+msgstr ""
+
+msgid "Too many combinations (%.3g) for nsamp = \"exact\""
+msgstr ""
 
 msgid "'x' is probably collinear"
 msgstr "'x' è probabilmente collineare"

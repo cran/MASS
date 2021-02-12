@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MASS 7.3-22\n"
-"POT-Creation-Date: 2013-03-18 09:49\n"
+"POT-Creation-Date: 2021-02-12 09:53\n"
 "PO-Revision-Date: 2013-03-11 13:47-0600\n"
 "Last-Translator: Chel Hee Lee <gnustats@gmail.com>\n"
 "Language-Team: R Development Translation Teams (Korean) <gnustats@korea.gnu."
@@ -304,6 +304,12 @@ msgstr ""
 
 msgid "at least one column has IQR 0"
 msgstr "적어도 하나의 열이 IQR 0을 가집니다"
+
+msgid "Too many samples (%.3g)"
+msgstr ""
+
+msgid "Too many combinations (%.3g) for nsamp = \"exact\""
+msgstr ""
 
 msgid "'x' is probably collinear"
 msgstr ""

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: MASS 7.3-51.5\n"
-"POT-Creation-Date: 2020-04-26 10:26\n"
+"Project-Id-Version: MASS 7.3-53\n"
+"POT-Creation-Date: 2021-02-12 09:53\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -287,6 +287,12 @@ msgid "'quantile' must be at least %d"
 msgstr ""
 
 msgid "at least one column has IQR 0"
+msgstr ""
+
+msgid "Too many samples (%.3g)"
+msgstr ""
+
+msgid "Too many combinations (%.3g) for nsamp = \"exact\""
 msgstr ""
 
 msgid "'x' is probably collinear"

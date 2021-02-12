@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.1.0 / MASS 7.3-30\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
-"POT-Creation-Date: 2013-03-18 09:49\n"
+"POT-Creation-Date: 2021-02-12 09:53\n"
 "PO-Revision-Date: 2014-03-16 16:32+0100\n"
 "Last-Translator: Detlef Steuer <steuer@hsu-hh.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -300,6 +300,12 @@ msgstr "'quantile' muss mindestens %d sein"
 
 msgid "at least one column has IQR 0"
 msgstr "mindestens eine Spalte hat IQR 0"
+
+msgid "Too many samples (%.3g)"
+msgstr ""
+
+msgid "Too many combinations (%.3g) for nsamp = \"exact\""
+msgstr ""
 
 msgid "'x' is probably collinear"
 msgstr "'x' ist wahrscheinlich kollinear"

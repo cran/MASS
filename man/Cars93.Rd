@@ -115,7 +115,7 @@ Cars93
   1993 New Car Data.
   \emph{Journal of Statistics Education}
   \bold{1}(1).
-  \url{ https://doi.org/10.1080/10691898.1993.11910459}
+  \doi{10.1080/10691898.1993.11910459}
 %  \url{http://www.amstat.org/publications/jse/v1n1/datasets.lock.html}.  
 }
 \references{
