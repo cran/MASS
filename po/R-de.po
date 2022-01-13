@@ -5,10 +5,10 @@
 # Detlef Steuer <steuer@hsu-hh.de>, 2012-2014
 msgid ""
 msgstr ""
-"Project-Id-Version: R 3.1.0 / MASS 7.3-30\n"
+"Project-Id-Version: R-4.1.0 / MASS 7.3-53.1\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
 "POT-Creation-Date: 2021-02-12 09:53\n"
-"PO-Revision-Date: 2014-03-16 16:32+0100\n"
+"PO-Revision-Date: 2021-05-04 15:23+0200\n"
 "Last-Translator: Detlef Steuer <steuer@hsu-hh.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "Language: de\n"
@@ -302,10 +302,10 @@ msgid "at least one column has IQR 0"
 msgstr "mindestens eine Spalte hat IQR 0"
 
 msgid "Too many samples (%.3g)"
-msgstr ""
+msgstr "Zu viele Stichproben (%.3g)"
 
 msgid "Too many combinations (%.3g) for nsamp = \"exact\""
-msgstr ""
+msgstr "Zu viele Kombinationen (%.3g) für nsamp = \"exact\""
 
 msgid "'x' is probably collinear"
 msgstr "'x' ist wahrscheinlich kollinear"

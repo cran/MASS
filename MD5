@@ -1,9 +1,9 @@
-ecf84f78aac3c625898be45513307d79 *DESCRIPTION
+41ba107aaf542c752fd11420209c7355 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 c7acdc0fa828f781a0a5586ab9d4fa1b *LICENCE.note
 0ac7b30ad35a4c19ea69d76a6a366b02 *NAMESPACE
 aed71ed40bb9bfdd7d19edfdbd163087 *R/add.R
-f24c684489a4b4096f422e348efc9bae *R/area.R
+667178114b2cc60142fed7fc16c00f90 *R/area.R
 2b449dd3fde83489799ef5f72bc8ead0 *R/boxcox.R
 a22a1823498627d344110a4deb10c0ac *R/confint.R
 c03532b46687315c1b68e6cf06b459ed *R/contr.sdif.R
@@ -46,7 +46,7 @@ f1db7f02de9bae7087fc01a7ffe4748e *R/truehist.R
 bbde4307b98d968e9b85d55f46a0cbe6 *R/ucv.R
 29fdbf836b6ebffc562ce7d2b54ab5eb *R/write.matrix.R
 4f74ab00a8fd8a8eaf56957b1e13aa52 *R/zzz.R
-765729459d9b72708f84809bf6fb9df0 *build/partial.rdb
+bc7a3f8ea65d80af472bd952a186398d *build/partial.rdb
 e4aa969dc4062a5dfa605a141bf32f29 *data/Aids2.rda
 3c5a57a9f86ee32ac10f6114826a762b *data/Animals.rda
 689cd33a62093be4f53a38cc8405e083 *data/Boston.rda
@@ -136,7 +136,7 @@ b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bc59b5368bad84fac2fad52f03298de *data/wtloss.rda
 b712abcbf880df8140a6ba49b039db53 *inst/CITATION
 cfe49768ecb548ac7f483e75ce75d0e0 *inst/NEWS
-6fc7e36f199b0142ce0c1baacee3ac35 *inst/po/de/LC_MESSAGES/R-MASS.mo
+4691e3b8e5718e48ae6ea1d48ce191ab *inst/po/de/LC_MESSAGES/R-MASS.mo
 a98aab8a3454f64d861a73a43ab27fc2 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo
 6c6d2fb1a34df17dc93c94d47e3c10f4 *inst/po/fr/LC_MESSAGES/R-MASS.mo
 9d0982c152c2e43be1362503d0ea1e74 *inst/po/it/LC_MESSAGES/R-MASS.mo
@@ -315,13 +315,13 @@ ceefe8e558dfa70a28f54fcae1ca3df0 *man/whiteside.Rd
 9676e9290685ce7d0527aad90135c048 *man/write.matrix.Rd
 62acbc2ad1ace8bca9cfc5f4db22b799 *man/wtloss.Rd
 1bc09aa90a7ba7ff4fecb9386997a708 *po/R-MASS.pot
-cdd63d060589bdf01860d6ec2536dcf9 *po/R-de.po
+6e01eb7d14f84704fb80479c365163ff *po/R-de.po
 715ad24e69fca850b0ede2d688c84a22 *po/R-fr.po
 2f300df61a52b6d876d9ebadcc447cd2 *po/R-it.po
 1191b3abb0caad62ecd5e4ad544361c4 *po/R-ko.po
 b6e225a125d6368318896f92ffd91e0f *po/R-pl.po
-a79fc62d284fd106014fc6176155245a *src/MASS.c
-6e5f48c7ce8b734c48cf01616813acb0 *src/lqs.c
+020be0ec5305b41949da681312f305cb *src/MASS.c
+1d9128cf14bc66205891d2dbeed67ff4 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
 fd0fa10e74ef7c32ec1af084d6c0b266 *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R

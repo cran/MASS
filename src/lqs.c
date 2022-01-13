@@ -1,6 +1,6 @@
 /*
  *  R : A Computer Language for Statistical Data Analysis
- *  Copyright (C) 1998-2016	B. D. Ripley
+ *  Copyright (C) 1998-2022	B. D. Ripley
  *  Copyright (C) 1999          R Development Core Team
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -31,6 +31,7 @@
 #include <R_ext/Linpack.h>
 #include <R_ext/Applic.h>	/* for the QR	  routines */
 #include <R_ext/Utils.h>	/* for the *sort() routines */
+#include <float.h>
 #define BIG DBL_MAX
 
 /* GLOBAL Variables, explicitly allocated and freed: */

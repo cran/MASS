@@ -1,5 +1,5 @@
 /*
- *  MASS/src/MASS.c by W. N. Venables and B. D. Ripley  Copyright (C) 1994-2016
+ *  MASS/src/MASS.c by W. N. Venables and B. D. Ripley  Copyright (C) 1994-2022
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -43,10 +43,10 @@ VR_sammon(double *dd, Sint *nn, Sint *kd, double *Y, Sint *niter,
     double xd, xx;
     double e, epast, eprev, tot, d, d1, ee, magic = *aa;
 
-    xu = Calloc(nd * n, double);
-    xv = Calloc(nd, double);
-    e1 = Calloc(nd, double);
-    e2 = Calloc(nd, double);
+    xu = R_Calloc(nd * n, double);
+    xv = R_Calloc(nd, double);
+    e1 = R_Calloc(nd, double);
+    e2 = R_Calloc(nd, double);
 
     epast = eprev = 1.0;
 
@@ -150,10 +150,10 @@ CORRECT:
 	}
     }
     *stress = e;
-    Free(xu);
-    Free(xv);
-    Free(e1);
-    Free(e2);
+    R_Free(xu);
+    R_Free(xv);
+    R_Free(e1);
+    R_Free(e2);
 }
 
 /*
@@ -194,12 +194,12 @@ VR_mds_init_data(Sint *pn, Sint *pc, Sint *pr, Sint *orde,
     nr = *pr;
     nc = *pc;
     dimx = nr * nc;
-    ord = Calloc(n, Sint);
-    ord2 = Calloc(n, Sint);
-    x = Calloc(dimx, double);
-    d = Calloc(n, double);
-    y = Calloc(n, double);
-    yf = Calloc(n, double);
+    ord = R_Calloc(n, Sint);
+    ord2 = R_Calloc(n, Sint);
+    x = R_Calloc(dimx, double);
+    d = R_Calloc(n, double);
+    y = R_Calloc(n, double);
+    yf = R_Calloc(n, double);
     for (i = 0; i < n; i++) ord[i] = orde[i];
     for (i = 0; i < n; i++) ord2[i] = ordee[i];
     for (i = 0; i < dimx; i++) x[i] = xx[i];
@@ -209,7 +209,7 @@ VR_mds_init_data(Sint *pn, Sint *pc, Sint *pr, Sint *orde,
 void
 VR_mds_unload(void)
 {
-    Free(ord); Free(ord2); Free(x); Free(d); Free(y); Free(yf);
+    R_Free(ord); R_Free(ord2); R_Free(x); R_Free(d); R_Free(y); R_Free(yf);
 }
 
 
@@ -285,7 +285,7 @@ VR_mds_fn(double *y, double *yf, Sint *pn, double *pssq, Sint *pd,
     double tmp, tmp1, sgn, ssq, *yc, slope, tstar, sstar, mink = *p;
     int  euclid = (mink == 2.);
 
-    yc = Calloc((n + 1), double);
+    yc = R_Calloc((n + 1), double);
     yc[0] = 0.0;
     tmp = 0.0;
     for (i = 0; i < n; i++) {
@@ -315,7 +315,7 @@ VR_mds_fn(double *y, double *yf, Sint *pn, double *pssq, Sint *pd,
     }
     ssq = 100 * sqrt(sstar / tstar);
     *pssq = ssq;
-    Free(yc);
+    R_Free(yc);
     if (!(*do_derivatives)) return;
     /* get derivatives */
     for (u = 0; u < r; u++) {

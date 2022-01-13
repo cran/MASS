@@ -27,7 +27,7 @@ function(f, a, b, ..., fa = f(a, ...), fb = f(b, ...), limit
         return(a2)
     if(limit == 0) {
         warning(gettextf("iteration limit reached near 'x = %f'", d),
-                doman = NA)
+                domain = NA)
         return(a2)
     }
     Recall(f, a, d, ..., fa = fa, fb = fd, limit = limit - 1,
