@@ -1,6 +1,6 @@
 
-R Under development (unstable) (2019-12-19 r77606) -- "Unsuffered Consequences"
-Copyright (C) 2019 The R Foundation for Statistical Computing
+R Under development (unstable) (2022-03-23 r81961) -- "Unsuffered Consequences"
+Copyright (C) 2022 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -641,7 +641,7 @@ iteration 4
 iteration 5
 iteration 6
 Linear mixed-effects model fit by maximum likelihood
- Data: bacteria 
+  Data: bacteria 
   AIC BIC logLik
    NA  NA     NA
 
@@ -653,7 +653,7 @@ StdDev:    1.410637 0.7800511
 Variance function:
  Structure: fixed weights
  Formula: ~invwt 
-Fixed effects: y ~ trt + I(week > 2) 
+Fixed effects:  y ~ trt + I(week > 2) 
                      Value Std.Error  DF   t-value p-value
 (Intercept)      2.7447864 0.3784193 169  7.253294  0.0000
 trtdrug         -1.2473553 0.6440635  47 -1.936696  0.0588
@@ -1631,7 +1631,7 @@ iteration 3
 iteration 4
 iteration 5
 Linear mixed-effects model fit by maximum likelihood
- Data: epil 
+  Data: epil 
   AIC BIC logLik
    NA  NA     NA
 
@@ -1643,7 +1643,7 @@ StdDev:   0.4442704 1.400807
 Variance function:
  Structure: fixed weights
  Formula: ~invwt 
-Fixed effects: y ~ lbase * trt + lage + V4 
+Fixed effects:  y ~ lbase * trt + lage + V4 
                         Value Std.Error  DF   t-value p-value
 (Intercept)         1.8696677 0.1055620 176 17.711554  0.0000
 lbase               0.8818228 0.1292834  54  6.820849  0.0000
@@ -1676,7 +1676,7 @@ iteration 6
 iteration 7
 iteration 8
 Linear mixed-effects model fit by maximum likelihood
- Data: epil3 
+  Data: epil3 
   AIC BIC logLik
    NA  NA     NA
 
@@ -1688,7 +1688,7 @@ StdDev:   0.7257895  2.16629
 Variance function:
  Structure: fixed weights
  Formula: ~invwt 
-Fixed effects: y ~ pred 
+Fixed effects:  y ~ pred 
                      Value  Std.Error DF   t-value p-value
 (Intercept)       3.213631 0.10569117 58 30.405865  0.0000
 predplacebo-base  0.110855 0.09989089 57  1.109763  0.2718
@@ -2220,7 +2220,7 @@ iteration 4
 iteration 5
 iteration 6
 Linear mixed-effects model fit by maximum likelihood
- Data: bacteria 
+  Data: bacteria 
   AIC BIC logLik
    NA  NA     NA
 
@@ -2232,7 +2232,7 @@ StdDev:    1.410637 0.7800511
 Variance function:
  Structure: fixed weights
  Formula: ~invwt 
-Fixed effects: y ~ trt + I(week > 2) 
+Fixed effects:  y ~ trt + I(week > 2) 
                     Value Std.Error  DF   t-value p-value
 (Intercept)      3.412014 0.5185033 169  6.580506  0.0000
 trtdrug         -1.247355 0.6440635  47 -1.936696  0.0588
@@ -2250,87 +2250,7 @@ Standardized Within-Group Residuals:
 
 Number of Observations: 220
 Number of Groups: 50 
-> ## Don't show: 
->  # an example of offset
-> summary(glmmPQL(y ~ trt + week, random = ~ 1 | ID,
-+                 family = binomial, data = bacteria))
-iteration 1
-iteration 2
-iteration 3
-iteration 4
-iteration 5
-iteration 6
-Linear mixed-effects model fit by maximum likelihood
- Data: bacteria 
-  AIC BIC logLik
-   NA  NA     NA
-
-Random effects:
- Formula: ~1 | ID
-        (Intercept)  Residual
-StdDev:    1.325243 0.7903088
-
-Variance function:
- Structure: fixed weights
- Formula: ~invwt 
-Fixed effects: y ~ trt + week 
-                 Value Std.Error  DF   t-value p-value
-(Intercept)  3.0302276 0.4791396 169  6.324310  0.0000
-trtdrug     -1.2176812 0.6160113  47 -1.976719  0.0540
-trtdrug+    -0.7886376 0.6193895  47 -1.273250  0.2092
-week        -0.1446463 0.0392343 169 -3.686730  0.0003
- Correlation: 
-         (Intr) trtdrg trtdr+
-trtdrug  -0.622              
-trtdrug+ -0.609  0.464       
-week     -0.481  0.050  0.030
-
-Standardized Within-Group Residuals:
-       Min         Q1        Med         Q3        Max 
--4.2868074  0.2039043  0.3140333  0.5440835  1.9754065 
-
-Number of Observations: 220
-Number of Groups: 50 
-> summary(glmmPQL(y ~ trt + week + offset(week), random = ~ 1 | ID,
-+                 family = binomial, data = bacteria))
-iteration 1
-iteration 2
-iteration 3
-iteration 4
-iteration 5
-iteration 6
-Linear mixed-effects model fit by maximum likelihood
- Data: bacteria 
-  AIC BIC logLik
-   NA  NA     NA
-
-Random effects:
- Formula: ~1 | ID
-        (Intercept)  Residual
-StdDev:    1.325243 0.7903088
-
-Variance function:
- Structure: fixed weights
- Formula: ~invwt 
-Fixed effects: y ~ trt + week + offset(week) 
-                 Value Std.Error  DF    t-value p-value
-(Intercept)  3.0302276 0.4791396 169   6.324310  0.0000
-trtdrug     -1.2176812 0.6160113  47  -1.976719  0.0540
-trtdrug+    -0.7886376 0.6193895  47  -1.273250  0.2092
-week        -1.1446463 0.0392343 169 -29.174622  0.0000
- Correlation: 
-         (Intr) trtdrg trtdr+
-trtdrug  -0.622              
-trtdrug+ -0.609  0.464       
-week     -0.481  0.050  0.030
-
-Standardized Within-Group Residuals:
-       Min         Q1        Med         Q3        Max 
--4.2868074  0.2039043  0.3140333  0.5440835  1.9754065 
-
-Number of Observations: 220
-Number of Groups: 50 
-> ## End(Don't show)
+> 
 > 
 > 
 > cleanEx()
@@ -3524,7 +3444,7 @@ Residual Deviance: 172 	AIC: 1095
 > ## IGNORE_RDIFF_BEGIN
 > summary(nl.lme)
 Linear mixed-effects model fit by REML
- Data: nl1 
+  Data: nl1 
     AIC   BIC  logLik
   15120 15178 -7550.2
 
@@ -3536,7 +3456,7 @@ Random effects:
 IQ          0.48424 -0.516
 Residual    6.24839       
 
-Fixed effects: lang ~ IQ * COMB + IQave + SES 
+Fixed effects:  lang ~ IQ * COMB + IQave + SES 
              Value Std.Error   DF t-value p-value
 (Intercept) 41.370   0.35364 2151 116.985  0.0000
 IQ           2.124   0.10070 2151  21.088  0.0000
@@ -5148,7 +5068,7 @@ Achieved convergence tolerance: 4.324e-06
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  15.33 0.298 15.737 0 0 
+Time elapsed:  14.601 0.373 18.257 0 0 
 > grDevices::dev.off()
 null device 
           1 

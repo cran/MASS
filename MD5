@@ -1,4 +1,4 @@
-41ba107aaf542c752fd11420209c7355 *DESCRIPTION
+5406299e9b97fecdfbdf44be87b06072 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 c7acdc0fa828f781a0a5586ab9d4fa1b *LICENCE.note
 0ac7b30ad35a4c19ea69d76a6a366b02 *NAMESPACE
@@ -46,7 +46,7 @@ f1db7f02de9bae7087fc01a7ffe4748e *R/truehist.R
 bbde4307b98d968e9b85d55f46a0cbe6 *R/ucv.R
 29fdbf836b6ebffc562ce7d2b54ab5eb *R/write.matrix.R
 4f74ab00a8fd8a8eaf56957b1e13aa52 *R/zzz.R
-bc7a3f8ea65d80af472bd952a186398d *build/partial.rdb
+32d54847e7474d04ae8b386217f45fea *build/partial.rdb
 e4aa969dc4062a5dfa605a141bf32f29 *data/Aids2.rda
 3c5a57a9f86ee32ac10f6114826a762b *data/Animals.rda
 689cd33a62093be4f53a38cc8405e083 *data/Boston.rda
@@ -232,7 +232,7 @@ a81ca88a2a39298dd099c015fdd3c167 *man/gilgais.Rd
 cd1607060ff90b41e5fd22b3b058d5e9 *man/ginv.Rd
 67ac548358fe00a107e17c7101fb4552 *man/glm.convert.Rd
 68625209b126bf126b0a7cad4e6c5508 *man/glm.nb.Rd
-4c46e5fd6e5cbcbe194c4a6f9b449bdf *man/glmmPQL.Rd
+b4003214294743d98c209ea23eb53c19 *man/glmmPQL.Rd
 e65737579ca1cd2810198d72f0260e21 *man/hills.Rd
 5440204f0acdca119adda063b91d9e17 *man/hist.scott.Rd
 4b3d83cc89b49bdbf178503b6fa33dd3 *man/housing.Rd
@@ -323,7 +323,7 @@ b6e225a125d6368318896f92ffd91e0f *po/R-pl.po
 020be0ec5305b41949da681312f305cb *src/MASS.c
 1d9128cf14bc66205891d2dbeed67ff4 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-fd0fa10e74ef7c32ec1af084d6c0b266 *tests/Examples/MASS-Ex.Rout.save
+1360a62ffb03bbf29abbb192009dfcf4 *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R
 1f8da7753dd46912a4839450ee3d7f44 *tests/cov.mcd.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
