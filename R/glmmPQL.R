@@ -1,5 +1,5 @@
 # file MASS/R/glmmPQL.R
-# copyright (C) 2002-2015 W. N. Venables and B. D. Ripley
+# copyright (C) 2002-2022 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -138,3 +138,7 @@ logLik.glmmPQL <- function (object, ...)
 
 anova.glmmPQL <- function (object, ...)
     stop("'anova' is not available for PQL fits")
+
+## Suggested by Sebastian Meyer 2022-03
+
+formula.glmmPQL <- function(x, ...) eval(x$call$fixed)

@@ -1,5 +1,5 @@
 % file MASS/man/Cars93.Rd
-% copyright (C) 1994-2018 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2022 W. N. Venables and B. D. Ripley
 %
 \name{Cars93}
 \alias{Cars93}
@@ -26,14 +26,14 @@ Cars93
       \code{"Compact"}, \code{"Midsize"}, \code{"Large"} and \code{"Van"}.
     }
     \item{\code{Min.Price}}{
-      Minimum Price (in \$1,000): price for a basic version.
+      Minimum Price (in $1,000): price for a basic version.
     }
     \item{\code{Price}}{
-      Midrange Price (in \$1,000): average of \code{Min.Price} and
+      Midrange Price (in $1,000): average of \code{Min.Price} and
       \code{Max.Price}.
     }
     \item{\code{Max.Price}}{
-      Maximum Price (in \$1,000): price for \dQuote{a premium version}.
+      Maximum Price (in $1,000): price for \dQuote{a premium version}.
     }
     \item{\code{MPG.city}}{
       City MPG (miles per US gallon by EPA rating).

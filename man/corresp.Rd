@@ -1,5 +1,5 @@
 % file MASS/man/corresp.Rd
-% copyright (C) 1994-2020 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2022 W. N. Venables and B. D. Ripley
 %
 \name{corresp}
 \alias{corresp}
@@ -86,11 +86,14 @@ corresp(x, \dots)
   \code{\link{svd}}, \code{\link{princomp}}.
 }
 \examples{
+## IGNORE_RDIFF_BEGIN
+## The signs can vary by platform
 (ct <- corresp(~ Age + Eth, data = quine))
 plot(ct)
 
 corresp(caith)
 biplot(corresp(caith, nf = 2))
+## IGNORE_RDIFF_END
 }
 \keyword{category}
 \keyword{multivariate}

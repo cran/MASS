@@ -70,18 +70,25 @@ static void sample_noreplace(int *x, int n, int k)
 }
 
 /*
-   Find all subsets of size k in order: this gets a new one each call
+   Find all subsets of size k of n in order: this gets a new one each call
  */
+// mis-compiled by GCC 11.[012] at -O3, so avoid it.
+// also GCC pre-12 at -O2 only up to Apr 2022 so releases should be OK.
+#if defined __GNUC__ && __GNUC__ == 12 && __GNUC_MINOR__ < 1
+#pragma GCC optimize "-O1"
+#elif defined __GNUC__ && __GNUC__ == 11 && __GNUC_MINOR__ <= 2
+#pragma GCC optimize "-O2"
+#endif
 static void next_set(int *x, int n, int k)
 {
-    int i, j, tmp;
-
-    j = k - 1;
-    tmp = x[j]++;
+    int j = k - 1;
+    int tmp = x[j]++;
     while(j > 0 && x[j] >= n - (k - 1 -j)) tmp = ++x[--j];
-    for(i = j+1; i < k; i++)  x[i] =  ++tmp;
+    for(int i = j + 1; i < k; i++)  x[i] = ++tmp;
 }
-
+#if defined __GNUC__
+#pragma GCC reset_options
+#endif
 
 /*
    Adjust the constant for an LMS fit. This is the midpoint of the
@@ -356,8 +363,8 @@ mve_fitlots(double *x, int *n, int *p, int *qn, int *mcd,
 	if(!(*sample)) {if(trial > 0) next_set(which, nn, nnew);}
 	else sample_noreplace(which, nn, nnew);
 
-	/* for(i = 0; i < nnew; i++) printf("%d ", which[i]); printf("\n");
-	   fflush(stdout);*/
+	/* for(i = 0; i < nnew; i++) printf("%d ", 1+which[i]);
+	   printf("\n"); fflush(stdout); */
 
 
 	/* Find the mean and covariance matrix of the sample. Check if singular.
@@ -396,7 +403,7 @@ mve_fitlots(double *x, int *n, int *p, int *qn, int *mcd,
 	    }
 
 	}
-	/*   printf("this %f\n", thiscrit);*/
+	/* printf("this %f\n", thiscrit); */
 
 
 	if(thiscrit < best) { /* warning: first might be singular */

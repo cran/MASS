@@ -1,5 +1,5 @@
 % file MASS/man/Boston.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2022 W. N. Venables and B. D. Ripley
 %
 \name{Boston}
 \alias{Boston}
@@ -43,7 +43,7 @@ Boston
       index of accessibility to radial highways.
     }
     \item{\code{tax}}{
-      full-value property-tax rate per \$10,000.
+      full-value property-tax rate per $10,000.
     }
     \item{\code{ptratio}}{
       pupil-teacher ratio by town.
@@ -56,7 +56,7 @@ Boston
       lower status of the population (percent).
     }
     \item{\code{medv}}{
-      median value of owner-occupied homes in \$1000s.
+      median value of owner-occupied homes in $1000s.
     }
   }
 }
