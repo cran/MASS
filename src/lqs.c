@@ -72,11 +72,13 @@ static void sample_noreplace(int *x, int n, int k)
 /*
    Find all subsets of size k of n in order: this gets a new one each call
  */
-// mis-compiled by GCC 11.[012] at -O3, so avoid it.
+// mis-compiled by GCC 11.[012] at -O3, so avoid it. 11.3 should be OK.
 // also GCC pre-12 at -O2 only up to Apr 2022 so releases should be OK.
-#if defined __GNUC__ && __GNUC__ == 12 && __GNUC_MINOR__ < 1
+// clang defines __GNUC__ but not these pragmas,
+// AND uses its version (LLVM or Apple) for __GNUC__
+#if !defined __clang__ && defined __GNUC__ && __GNUC__ == 12 && __GNUC_MINOR__ < 1
 #pragma GCC optimize "-O1"
-#elif defined __GNUC__ && __GNUC__ == 11 && __GNUC_MINOR__ <= 2
+#elif !defined __clang__ && defined __GNUC__ && __GNUC__ == 11 && __GNUC_MINOR__ <= 2
 #pragma GCC optimize "-O2"
 #endif
 static void next_set(int *x, int n, int k)
@@ -86,7 +88,7 @@ static void next_set(int *x, int n, int k)
     while(j > 0 && x[j] >= n - (k - 1 -j)) tmp = ++x[--j];
     for(int i = j + 1; i < k; i++)  x[i] = ++tmp;
 }
-#if defined __GNUC__
+#if !defined __clang__ && defined __GNUC__
 #pragma GCC reset_options
 #endif
 

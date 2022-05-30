@@ -1,4 +1,5 @@
-37e8e45658ca2512e47990c80e3fe867 *DESCRIPTION
+8575bf59f49ffa7fffd23fd26e4cbd98 *ChangeLog
+aa3fbdfe76a208eb75d290b65953a152 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 c7acdc0fa828f781a0a5586ab9d4fa1b *LICENCE.note
 3c2dfc5f75d8a5a108ce9a1948aaf8dc *NAMESPACE
@@ -320,8 +321,8 @@ ceefe8e558dfa70a28f54fcae1ca3df0 *man/whiteside.Rd
 2f300df61a52b6d876d9ebadcc447cd2 *po/R-it.po
 1191b3abb0caad62ecd5e4ad544361c4 *po/R-ko.po
 b6e225a125d6368318896f92ffd91e0f *po/R-pl.po
-020be0ec5305b41949da681312f305cb *src/MASS.c
-c4ed0a42234771cb07d140e375edc23f *src/lqs.c
+c266b9259aa82d894cae84abcdfc2c6c *src/MASS.c
+2c7b72ca038d349935bcb4f60235bcd7 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
 31c485d8c85fdda93c7248b83e0f1bbb *tests/Examples/MASS-Ex.Rout.save
 d87553db40364fdc9c337fa31c009b17 *tests/confint.R
