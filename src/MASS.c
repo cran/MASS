@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <stddef.h>
+#include <limits.h> // for INT_MAX
 
 #include <R.h>
 #include <R_ext/Applic.h>

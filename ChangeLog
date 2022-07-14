@@ -1,10 +1,25 @@
-7.3-57.! (released 2022-05-30)
+7.3-58  (released 2022-07-14)
+	glmmPQL: work around disabling of offsets in nlme::lme,
+	  following a request from Simon Wood.
+	glmmPQL: Add any offset to fitted values.
+	tests/glmmPQL.R: add (modified) example from Simon Wood.
+	DESCRIPTION: add Suggests: gamair for that example.
+	tests: name PDF file for confint.R
+	tests/scripts.R: mention packages needed not in Suggests.
+	inst/scripts/ch{11,13}.R tweaks.
+	inst/scripts/ch15.R: switch from akima to interp.
+	man/*.Rd: change references to third edition to fourth.
+
+7.3-57.2 (released 2022-07-10, R-devel only)
+	src/MASS.c: #include <limits.h> rather than rely on R.h.
+	man/glmmPQL.Rd: example no longer attaches nlme.
+
+7.3-57.1 (released 2022-05-30, R-devel only)
 	Start ChangeLog.
 	src/lqs.c: clang defines __GNUC__, so rule out.
 	src/MASS.c: replace Sfloat/Sint.
 
 7.3-57 (released 2022-04-23, after R 4.2.0)
-
 	add formula method for glmmPQL (suggested by Sebastian Meyer)
 	update reference output for LAPACK 3.10.x, more use of IGNORE_RDIFF.
 	add pragmas to src/lqs.c to avoid mis-optimization in pre-gcc12
@@ -13,11 +28,9 @@
 	remove basckslash from \$ in Boston.Rd and Cars93.Rd
 
 7.3-56 (released 2022-03-23)
-
 	offsets on lme have been disabled
 
 7.3-55 (released 2022-01-13)
-
 	src/lqs.c include float.h explicitly (for STRICT_R_HEADERS)
 	src/MASS.c: prefer R_Calloc etc.
 	Update de, fr translations.
@@ -35,7 +48,38 @@
 	expaand description of 'data' args.
 
 7.3-52 (released 2020-08-18)
-	add it translations
 	rlm with offset term
 	correct description in newcomb.Rd
 	typo in cats.Rd
+
+7.3-51.[1-6] (released 2018-11-01 to 2020-04-26)
+	typo in man/cats.Rd
+	Use RDIFF markup
+	add it translations
+	change .Rout.save for change in RNG in R 3.6.0
+	change .Rout.save for survival changes
+
+7.3-51 (released 2018-10-16)
+	replace broken URL
+	remove S-style example
+
+7.3-50 (released 2018-04-30)
+	survival changed output
+	update .pot files
+
+7.3-49 (released 2018-02-23)
+	remove 'f' from fitdistr
+	make tests/lme4.R conditional on nlme
+
+7.3-48 (released 2017-12-25)
+	\testonly -> \dontshow
+	move extractAIC methods to nlme.
+
+7.3-47 (released 2017-04-21)
+	Cosmetics
+	Check for integer overflow in density binning.
+
+7.3-46 (released 2017-02-14)
+	Avoid partial match in rlm.default.
+	Include headers explicitly in MASS.c and lqs.c
+	Use R_forceSymbols(dll, TRUE) uncondiitonally.

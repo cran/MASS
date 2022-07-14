@@ -38,7 +38,6 @@ export(cov.mcd, cov.mve, cov.rob, lmsreg, lqs, lqs.formula, ltsreg)
 importFrom(grDevices, dev.flush, dev.hold, nclass.FD, nclass.scott, palette)
 importFrom(graphics, abline, axis, box, frame, hist, lines, matplot, mtext,
            pairs, par, plot, points, rect, segments, symbols, text)
-#import(stats) # triggers bug in wmtsa
 importFrom(stats, add1, anova, biplot, coef, confint, drop1,
 	   extractAIC, family, fitted, logLik, model.frame, nobs,
 	   predict, profile, residuals, se.contrast, simulate, terms,
@@ -56,7 +55,9 @@ importFrom(stats, add1, anova, biplot, coef, confint, drop1,
            napredict, naprint, naresid, optim, optimize, pcauchy,
            pchisq, pf, plogis, pnorm, qchisq, qf, qnorm, qt, quantile,
            rcauchy, rexp, rgamma, rlogis, rnorm, rpois, runif, sd,
-           spline, summary.glm, uniroot, update.formula, var)
+           spline, summary.glm, uniroot, update.formula, var,
+           ## added in 7.3-58
+           drop.terms, reformulate)
 
 S3method("[", fractions)
 S3method("[<-", fractions)

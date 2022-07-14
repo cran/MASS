@@ -1,5 +1,5 @@
 % file MASS/man/ginv.Rd
-% copyright (C) 1994-2018 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2022 W. N. Venables and B. D. Ripley
 %
 \name{ginv}
 \alias{ginv}
@@ -24,9 +24,8 @@ A relative tolerance to detect zero singular values.
 A MP generalized inverse matrix for \code{X}.
 }
 \references{
-  Venables, W. N. and Ripley, B. D. (1999)
-  \emph{Modern Applied Statistics with S-PLUS.} Third
-  Edition. Springer. p.100.
+  Venables, W. N. and Ripley, B. D. (2002)
+  \emph{Modern Applied Statistics with S-PLUS.} Fourth Edition. Springer.
 }
 \seealso{
 \code{\link{solve}}, \code{\link{svd}}, \code{\link{eigen}}

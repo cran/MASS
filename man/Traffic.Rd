@@ -41,8 +41,7 @@ Traffic
   \emph{Annals of Statistics,} \bold{9}, 697--704.
 }
 \references{
-  Venables, W. N. and Ripley, B. D. (1999)
-  \emph{Modern Applied Statistics with S-PLUS.} Third
-  Edition. Springer.
+  Venables, W. N. and Ripley, B. D. (2002)
+  \emph{Modern Applied Statistics with S-PLUS.} Fourth Edition. Springer.
 }
 \keyword{datasets}

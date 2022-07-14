@@ -1,5 +1,5 @@
 % file MASS/man/animals.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2022 W. N. Venables and B. D. Ripley
 %
 \name{Animals}
 \alias{Animals}
@@ -23,7 +23,7 @@ Animals
   }
 }
 \note{
-  The name \code{Animals} avoids conflicts with a system dataset
+  The name \code{Animals} avoided conflicts with a system dataset
   \code{animals} in S-PLUS 4.5 and later.
 }
 \source{
@@ -32,8 +32,7 @@ Animals
   Wiley, p. 57.
 }
 \references{
-  Venables, W. N. and Ripley, B. D. (1999)
-  \emph{Modern Applied Statistics with S-PLUS.} Third
-  Edition. Springer.
+  Venables, W. N. and Ripley, B. D. (2002)
+  \emph{Modern Applied Statistics with S-PLUS.} Fourth Edition. Springer.
 }
 \keyword{datasets}
