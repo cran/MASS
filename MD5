@@ -1,5 +1,5 @@
-c0b694ac4c2b71b353d528baa1a09cbc *ChangeLog
-13e3cd3652c1f446c21995e7252c94b4 *DESCRIPTION
+016d1fff541af35c1be2f1f9b2bab69b *ChangeLog
+3feb31992fd16f6f1516af268bf95cca *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 c7acdc0fa828f781a0a5586ab9d4fa1b *LICENCE.note
 3058570082fa395ff650dacb82f17442 *NAMESPACE
@@ -330,12 +330,13 @@ e059b0451b55d1e8cb8ebf51ecce76ea *tests/cov.mcd.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
 55c6f4de353b9479359459d2718a017e *tests/fitdistr.Rout.save
 afd4f607cba7fda8ec4d22bffd88fc50 *tests/glm.nb.R
-64092b8d225221ebd25b7176da833588 *tests/glmmPQL.R
+66acc18a93bc61e7f59fd9419a9e18a8 *tests/glmmPQL.R
 7fea2161b12d01c8940107342815dd0e *tests/hubers.R
 7f6efdd17aea2750feda4db0abd46d48 *tests/lme.R
-edee76adc2d27e4ba90f1ff79360148b *tests/polr.R
+274e2255e4054f8a5adf5c0d9035d3a0 *tests/polr.R
 f4e6b3ffb6521ea7625515e2f0ae7f98 *tests/profile.R
 a23ddf89e02a02ed030e4ed5538d3430 *tests/regression.R
 51c912fb8fac4844110b52651f79a8e8 *tests/regression.Rout.save
 f2eeba77216158f02085ec4f29e586c0 *tests/rlm.R
 0ed8f9c655ec870a37a89a759e40061f *tests/scripts.R
+83342e7163a9298e6944b17eb3bcab36 *tests/solr.rda

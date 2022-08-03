@@ -1,10 +1,15 @@
+7.3-58.1 (released 2022-07-27)
+	DESCRIPTION: No longer suggest gamaair.
+	tests/polr.R: use named .pdf file.
+	tests/glmmPQL.R, solr.rda: ship data file, skip if no nlme.
+
 7.3-58  (released 2022-07-14)
 	glmmPQL: work around disabling of offsets in nlme::lme,
 	  following a request from Simon Wood.
 	glmmPQL: Add any offset to fitted values.
 	tests/glmmPQL.R: add (modified) example from Simon Wood.
 	DESCRIPTION: add Suggests: gamair for that example.
-	tests: name PDF file for confint.R
+	tests/confit.R: name PDF file
 	tests/scripts.R: mention packages needed not in Suggests.
 	inst/scripts/ch{11,13}.R tweaks.
 	inst/scripts/ch15.R: switch from akima to interp.

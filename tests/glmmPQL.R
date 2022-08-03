@@ -4,11 +4,13 @@
 ### from "GAMs:An Intro with R" by Simon Wood
 
 library(MASS)
-require(gamair) # for 'data(sole)'
+if(!requireNamespace("nlme", quietly = TRUE)) q("no")
 
 options(warn = 2L)
 ## Chapter 2 stuff...
 
+if(FALSE) { ## script to create solr
+#require(gamair) # for 'data(sole)'
 data(sole)
 sole$off <- log(sole$a.1 - sole$a.0) # model offset term
 sole$a <-(sole$a.1 + sole$a.0)/2     # mean stage age
@@ -17,6 +19,8 @@ solr$t <- solr$t-mean(sole$t)
 solr$t <- solr$t/var(sole$t)^0.5
 solr$la <- solr$la - mean(sole$la)
 solr$lo <- solr$lo - mean(sole$lo)
+save(solr, file = "solr.rda", version = 2)
+} else load("solr.rda")
 
 solr$station <- factor(with(solr, paste0(-la, -lo, -t)))
 b <- glmmPQL(eggs ~ offset(off) + lo + la + t + I(lo*la) + I(lo^2) +
