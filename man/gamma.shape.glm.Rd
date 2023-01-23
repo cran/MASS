@@ -1,5 +1,5 @@
 % file MASS/man/gamma.shape.glm.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 %
 \name{gamma.shape}
 \alias{gamma.shape}
@@ -14,6 +14,8 @@ the gamma distribution after fitting a \code{Gamma} generalized
 linear model.
 }
 \usage{
+gamma.shape(object, \dots)
+
 \method{gamma.shape}{glm}(object, it.lim = 10,
             eps.max = .Machine$double.eps^0.25, verbose = FALSE, \dots)
 }

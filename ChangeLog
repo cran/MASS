@@ -1,3 +1,8 @@
+7.3-58.2 (released 2023-01-21)
+	NAMESPACE: no longer export undocumented lmwork.
+	man/bacteria.Rd: update URL.
+	Document as.fractions, is.fractions, gamma.shape and select.
+
 7.3-58.1 (released 2022-07-27)
 	DESCRIPTION: No longer suggest gamaair.
 	tests/polr.R: use named .pdf file.

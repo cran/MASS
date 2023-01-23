@@ -1,5 +1,5 @@
 % file MASS/man/lm.ridge.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 %
 \name{lm.ridge}
 \alias{lm.ridge}
@@ -16,6 +16,7 @@ Fit a linear model by ridge regression.
 \usage{
 lm.ridge(formula, data, subset, na.action, lambda = 0, model = FALSE,
          x = FALSE, y = FALSE, contrasts = NULL, \dots)
+select(obj)
 }
 \arguments{
 \item{formula}{
@@ -52,7 +53,11 @@ formula. See the \code{contrasts.arg} of \code{\link{model.matrix.default}}.
 }
 \item{\dots}{
 additional arguments to \code{\link{lm.fit}}.
-}}
+}
+\item{obj}{
+  an \R object, such as an \code{"lm.ridge"} fit.
+}
+}
 \details{
   If an intercept is present in the model, its coefficient is not
   penalized.  (If you want to penalize an intercept, put in your own

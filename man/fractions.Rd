@@ -1,5 +1,5 @@
 % file MASS/man/fractions.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 %
 \name{fractions}
 \alias{fractions}
@@ -22,6 +22,10 @@ object using a standard continued fraction method.
 }
 \usage{
 fractions(x, cycles = 10, max.denominator = 2000, \dots)
+
+as.fractions(x)
+
+is.fractions(f)
 }
 \arguments{
 \item{x}{
@@ -37,6 +41,9 @@ exceeds \code{max.denominator} the continued fraction stops at that point.
 }
 \item{\dots}{
 arguments passed to or from other methods.
+}
+\item{f}{
+  an \R  object.
 }}
 \value{
 An object of class \code{"fractions"}.  A structure with \code{.Data} component
