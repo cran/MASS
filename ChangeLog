@@ -1,3 +1,7 @@
+7.3-58.3 (released 2023-03-07)
+	Rename internal function biplot.bdr to biplotBDR
+	Update inst/CITATION.
+
 7.3-58.2 (released 2023-01-21)
 	NAMESPACE: no longer export undocumented lmwork.
 	man/bacteria.Rd: update URL.

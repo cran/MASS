@@ -1,5 +1,5 @@
-fa587f34bb92834e116a50510e329927 *ChangeLog
-50b6d4dd12f24d2970d384542daf0007 *DESCRIPTION
+5a8536600acf8f1f058152f15a0e440c *ChangeLog
+02f2f9d2d3cf7fa9567995941e1f7028 *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 c7acdc0fa828f781a0a5586ab9d4fa1b *LICENCE.note
 5ae9f8060ce744604b563ddc755782f5 *NAMESPACE
@@ -8,7 +8,7 @@ aed71ed40bb9bfdd7d19edfdbd163087 *R/add.R
 2b449dd3fde83489799ef5f72bc8ead0 *R/boxcox.R
 a22a1823498627d344110a4deb10c0ac *R/confint.R
 c03532b46687315c1b68e6cf06b459ed *R/contr.sdif.R
-7c732f8027602c6953f6a4fec377dc1b *R/corresp.R
+29b52c5a67f01230675b1c80487a3c5f *R/corresp.R
 bca9a041d73f25376018c9e4cca65922 *R/cov.trob.R
 71e9df198186c176784b5838e2f0142e *R/dose.p.R
 581cf2b527e658419254a98486b6d450 *R/enlist.R
@@ -47,7 +47,7 @@ f1db7f02de9bae7087fc01a7ffe4748e *R/truehist.R
 bbde4307b98d968e9b85d55f46a0cbe6 *R/ucv.R
 29fdbf836b6ebffc562ce7d2b54ab5eb *R/write.matrix.R
 4f74ab00a8fd8a8eaf56957b1e13aa52 *R/zzz.R
-ea124a494ad7922985532ad3b308e4d5 *build/partial.rdb
+7f2094c7b4d5faa522b624cffc621f8b *build/partial.rdb
 e4aa969dc4062a5dfa605a141bf32f29 *data/Aids2.rda
 3c5a57a9f86ee32ac10f6114826a762b *data/Animals.rda
 689cd33a62093be4f53a38cc8405e083 *data/Boston.rda
@@ -135,7 +135,7 @@ edc0346a21e08acb8a96c9e04df03f39 *data/topo.rda
 c5f389af5e309c81135890293b5c867b *data/waders.rda
 b5b8b289d333f482e24ad32e67f73b39 *data/whiteside.rda
 7bc59b5368bad84fac2fad52f03298de *data/wtloss.rda
-b712abcbf880df8140a6ba49b039db53 *inst/CITATION
+10878e5c8a336328ab47d010da239abb *inst/CITATION
 cfe49768ecb548ac7f483e75ce75d0e0 *inst/NEWS
 4691e3b8e5718e48ae6ea1d48ce191ab *inst/po/de/LC_MESSAGES/R-MASS.mo
 a98aab8a3454f64d861a73a43ab27fc2 *inst/po/en@quot/LC_MESSAGES/R-MASS.mo

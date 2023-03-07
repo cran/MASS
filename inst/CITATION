@@ -1,9 +1,9 @@
 citHeader("To cite the MASS package in publications use:")
 
-citEntry(entry="Book",
+bibentry(bibtype = "Book",
          title = "Modern Applied Statistics with S",
-         author = personList(as.person("W. N. Venables"),
-                             as.person("B. D. Ripley")),
+         author = c(as.person("W. N. Venables"),
+                    as.person("B. D. Ripley")),
 	 publisher = "Springer",
          edition = "Fourth",
          address      = "New York",

@@ -1,5 +1,5 @@
 # file MASS/R/corresp.R
-# copyright (C) 1994-2004 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -114,13 +114,13 @@ biplot.correspondence <-
     if(type != "rows")  Y <- Y %*% diag(x$cor[1L:2])
     colnames(Y) <- rep("", 2L)
     switch(type, "symmetric" = biplot(X, Y, var.axes = FALSE, ...),
-           "rows" = biplot.bdr(X, Y, ...),
-           "columns" = biplot.bdr(Y, X, ...))
+           "rows" = biplotBDR(X, Y, ...),
+           "columns" = biplotBDR(Y, X, ...))
     points(0, 0, pch = 3, cex = 3)
     invisible()
 }
 
-biplot.bdr <-
+biplotBDR <-
     function(obs, bivars, col, cex = rep(par("cex"), 2L),
              olab = NULL, vlab = NULL, xlim = NULL, ylim = NULL, ...)
 {
