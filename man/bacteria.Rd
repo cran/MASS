@@ -35,10 +35,12 @@ This data frame has 220 rows and the following columns:
   data frame.
 }
 \source{
-  Menzies School of Health Research 1999--2000 Annual Report pp. 18--21
-  (\url{http://www.menzies.edu.au/publications/anreps/MSHR00.pdf}).
+  Dr Amanda Leach \emph{via} Mr James McBroom.
 }
 \references{
+  Menzies School of Health Research 1999--2000 Annual Report. p.20.
+  \url{https://www.menzies.edu.au/icms_docs/172302_2000_Annual_report.pdf}.
+  
   Venables, W. N. and Ripley, B. D. (2002)
   \emph{Modern Applied Statistics with S.} Fourth edition.  Springer.
 }

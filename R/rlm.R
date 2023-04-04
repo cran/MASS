@@ -1,5 +1,5 @@
 # file MASS/R/rlm.R
-# copyright (C) 1994-2009 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2020 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ rlm.formula <-
 {
     mf <- match.call(expand.dots = FALSE)
     mf$method <- mf$wt.method <- mf$model <- mf$x.ret <- mf$y.ret <- mf$contrasts <- mf$... <- NULL
-    mf[[1L]] <- as.name("model.frame")
+    mf[[1L]] <- quote(stats::model.frame)
     mf <- eval.parent(mf)
     method <- match.arg(method)
     wt.method <- match.arg(wt.method)
@@ -56,6 +56,9 @@ rlm.formula <-
     if(model) fit$model <- mf
     if(!x.ret) fit$x <- NULL
     if(y.ret) fit$y <- y
+    ## change in 7.3-52 suggested by Andr\'e Gillibert
+    fit$offset <- offset
+    if (!is.null(offset)) fit$fitted.values <- fit$fitted.values + offset
     fit
 }
 
@@ -92,7 +95,7 @@ rlm.default <-
     if(is.null(colnames(x)))
         colnames(x) <- paste("X", seq(ncol(x)), sep="")
     if(qr(x)$rank < ncol(x))
-        stop("'x' is singular: singular fits are not implemented in rlm")
+        stop("'x' is singular: singular fits are not implemented in 'rlm'")
 
     if(!(any(test.vec == c("resid", "coef", "w", "NULL"))
          || is.null(test.vec))) stop("invalid 'test.vec'")
@@ -130,7 +133,7 @@ rlm.default <-
                 if(is.null(lqs.control)) lqs.control <- list(nsamp=200L)
                 do.call("lqs", c(list(x, y, intercept = FALSE), lqs.control))
             } else stop("'init' method is unknown")
-            coef <- temp$coefficient
+            coef <- temp$coefficients
             resid <- temp$residuals
         } else {
             if(is.list(init)) coef <- init$coef
@@ -190,7 +193,7 @@ rlm.default <-
         if(done) break
     }
     if(!done)
-        warning(gettextf("rlm failed to converge in %d steps", maxit),
+        warning(gettextf("'rlm' failed to converge in %d steps", maxit),
                 domain = NA)
     fitted <- drop(xx %*% coef)
     ## fix up call to refer to the generic, but leave arg name as `formula'
@@ -421,7 +424,7 @@ predict.rlm <- function (object, newdata = NULL, scale = NULL, ...)
     ## problems with using predict.lm are the scale and
     ## the QR decomp which has been done on down-weighted values.
     object$qr <- qr(sqrt(object$weights) * object$x)
-    predict.lm(object, newdata = newdata, scale = object$s, ...)
+    NextMethod(object, scale = object$s, ...)
 }
 
 vcov.rlm <- function (object, ...)

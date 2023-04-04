@@ -1,5 +1,5 @@
 % file MASS/man/survey.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2022 W. N. Venables and B. D. Ripley
 %
 \name{survey}
 \alias{survey}
@@ -63,7 +63,7 @@ survey
   }
 }
 \references{
-  Venables, W. N. and Ripley, B. D. (1999)
-  \emph{Modern Applied Statistics with S-PLUS.} Third Edition. Springer.
+  Venables, W. N. and Ripley, B. D. (2002)
+  \emph{Modern Applied Statistics with S-PLUS.} Fourth Edition. Springer.
 }
 \keyword{datasets}

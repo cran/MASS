@@ -1,16 +1,8 @@
 % file MASS/man/polr.Rd
-% copyright (C) 1994-2007 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2020 W. N. Venables and B. D. Ripley
 %
 \name{polr}
 \alias{polr}
-% \alias{extractAIC.polr}
-% \alias{predict.polr}
-% \alias{print.polr}
-% \alias{summary.polr}
-% \alias{print.summary.polr}
-% \alias{vcov.polr}
-% \alias{model.frame.polr}
-% \alias{anova.polr}
 
 \title{
   Ordered Logistic or Probit Regression
@@ -23,59 +15,58 @@
 \usage{
 polr(formula, data, weights, start, \dots, subset, na.action,
      contrasts = NULL, Hess = FALSE, model = TRUE,
-     method = c("logistic", "probit", "cloglog", "cauchit"))
+     method = c("logistic", "probit", "loglog", "cloglog", "cauchit"))
 }
 \arguments{
-\item{formula}{
-  a formula expression as for regression models, of the form
-  \code{response ~ predictors}. The response should be a factor
-  (preferably an ordered factor), which will be interpreted as an
-  ordinal response, with levels ordered as in the factor.  
-  The model must have an intercept: attempts to remove one will
-  lead to a warning and be ignored.  An offset may be used.  See the
-  documentation of \code{\link{formula}} for other details.
-}
-\item{data}{
-  an optional data frame in which to interpret the variables occurring
-  in \code{formula}.
-}
-\item{weights}{
-  optional case weights in fitting.  Default to 1.
-}
-\item{start}{
-  initial values for the parameters.  This is in the format
-  \code{c(coefficients, zeta)}: see the Values section.
-}
-\item{\dots}{
-  additional arguments to be passed to \code{\link{optim}}, most often a
-  \code{control} argument.
-}
-\item{subset}{
-  expression saying which subset of the rows of the data should  be used
-  in the fit.  All observations are included by default.
-}
-\item{na.action}{
-  a function to filter missing data.
-}
-\item{contrasts}{
-  a list of contrasts to be used for some or all of
-  the factors appearing as variables in the model formula.
-}
-\item{Hess}{
-  logical for whether the Hessian (the observed information matrix)
-  should be returned.  Use this if you intend to call \code{summary} or
-  \code{vcov} on the fit.
-}
-\item{model}{
-  logical for whether the model matrix should be returned.
-}
-\item{method}{
-  logistic or probit or complementary log-log or cauchit (corresponding
-  to a Cauchy latent variable).
-}
+  \item{formula}{
+    a formula expression as for regression models, of the form
+    \code{response ~ predictors}. The response should be a factor
+    (preferably an ordered factor), which will be interpreted as an
+    ordinal response, with levels ordered as in the factor.  
+    The model must have an intercept: attempts to remove one will
+    lead to a warning and be ignored.  An offset may be used.  See the
+    documentation of \code{\link{formula}} for other details.
+  }
+  \item{data}{
+    an optional data frame, list or environment in which to interpret
+    the variables occurring in \code{formula}.
+  }
+  \item{weights}{
+    optional case weights in fitting.  Default to 1.
+  }
+  \item{start}{
+    initial values for the parameters.  This is in the format
+    \code{c(coefficients, zeta)}: see the Values section.
+  }
+  \item{\dots}{
+    additional arguments to be passed to \code{\link{optim}}, most often a
+    \code{control} argument.
+  }
+  \item{subset}{
+    expression saying which subset of the rows of the data should  be used
+    in the fit.  All observations are included by default.
+  }
+  \item{na.action}{
+    a function to filter missing data.
+  }
+  \item{contrasts}{
+    a list of contrasts to be used for some or all of
+    the factors appearing as variables in the model formula.
+  }
+  \item{Hess}{
+    logical for whether the Hessian (the observed information matrix)
+    should be returned.  Use this if you intend to call \code{summary} or
+    \code{vcov} on the fit.
+  }
+  \item{model}{
+    logical for whether the model matrix should be returned.
+  }
+  \item{method}{
+    logistic or probit or (complementary) log-log or cauchit
+    (corresponding to a Cauchy latent variable). 
+  }
 }
 \details{
-
   This model is what Agresti (2002) calls a \emph{cumulative link}
   model.  The basic interpretation is as a \emph{coarsened} version of a
   latent variable \eqn{Y_i} which has a logistic or normal or
@@ -97,14 +88,22 @@ polr(formula, data, weights, start, \dots, subset, na.action,
   proportional.  Hence the term \emph{proportional odds logistic
     regression}.
 
-  In the complementary log-log case, we have a \emph{proportional
-    hazards} model for grouped survival times.
+  The log-log and complementary log-log links are the increasing functions
+  \eqn{F^{-1}(p) = -log(-log(p))}{F^-1(p) = -log(-log(p))} and
+  \eqn{F^{-1}(p) = log(-log(1-p))}{F^-1(p) = log(-log(1-p))};
+  some call the first the \sQuote{negative log-log} link.  These
+  correspond to a latent variable with the extreme-value distribution for
+  the maximum and minimum respectively.
 
-  There are methods for the standard model-fitting functions, including
+  A \emph{proportional hazards} model for grouped survival times can be
+  obtained by using the complementary log-log link with grouping ordered
+  by increasing times.
+
   \code{\link{predict}}, \code{\link{summary}}, \code{\link{vcov}},
   \code{\link{anova}}, \code{\link{model.frame}} and an
-  \code{extractAIC} method for use with \code{\link{stepAIC}}.  There
-  are also \code{\link{profile}} and \code{\link{confint}} methods.
+  \code{extractAIC} method for use with \code{\link{stepAIC}} (and
+  \code{\link{step}}).  There are also \code{\link{profile}} and
+  \code{\link{confint}} methods.
 }
 \value{
   A object of class \code{"polr"}.  This has components
@@ -127,8 +126,18 @@ polr(formula, data, weights, start, \dots, subset, na.action,
   \item{niter}{the number of function and gradient evaluations used by
     \code{optim}.}
   \item{lp}{the linear predictor (including any offset).}
-  \item{Hessian}{(if \code{Hess} is true).}
+  \item{Hessian}{(if \code{Hess} is true).  Note that this is a
+    numerical approximation derived from the optimization proces.}
   \item{model}{(if \code{model} is true).}
+}
+\note{
+  The \code{\link{vcov}} method uses the approximate Hessian: for
+  reliable results the model matrix should be sensibly scaled with all
+  columns having range the order of one.
+
+  Prior to version 7.3-32, \code{method = "cloglog"} confusingly gave
+  the log-log link, implicitly assuming the first response level was the
+  \sQuote{best}.
 }
 \references{
   Agresti, A. (2002) \emph{Categorical Data.} Second edition.  Wiley.
@@ -147,6 +156,7 @@ summary(house.plr, digits = 3)
 ## slightly worse fit from
 summary(update(house.plr, method = "probit", Hess = TRUE), digits = 3)
 ## although it is not really appropriate, can fit
+summary(update(house.plr, method = "loglog", Hess = TRUE), digits = 3)
 summary(update(house.plr, method = "cloglog", Hess = TRUE), digits = 3)
 
 predict(house.plr, housing, type = "p")

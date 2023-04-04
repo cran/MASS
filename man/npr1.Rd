@@ -1,5 +1,5 @@
 % file MASS/man/npr1.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
 %
 \name{npr1}
 \alias{npr1}
@@ -16,8 +16,11 @@ npr1
 \format{
   This data frame contains the following columns:
   \describe{
-    \item{\code{x, y}}{
-      x and y coordinates, in miles from an arbitrary origin.
+    \item{\code{x}}{
+      x coordinates, in miles (origin unspecified)..
+    }
+    \item{\code{y}}{
+      y coordinates, in miles.
     }
     \item{\code{perm}}{
       permeability in milli-Darcies.

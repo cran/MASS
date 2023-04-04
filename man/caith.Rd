@@ -1,5 +1,5 @@
 % file MASS/man/caith.Rd
-% copyright (C) 1999 W. N. Venables and B. D. Ripley
+% copyright (C) 1999-2022 W. N. Venables and B. D. Ripley
 %
 \name{caith}
 \alias{caith}
@@ -27,7 +27,10 @@ caith
   \emph{Modern Applied Statistics with S.} Fourth edition.  Springer.
 }
 \examples{
+## IGNORE_RDIFF_BEGIN
+## The signs can vary by platform
 corresp(caith)
+## IGNORE_RDIFF_END
 dimnames(caith)[[2]] <- c("F", "R", "M", "D", "B")
 par(mfcol=c(1,3))
 plot(corresp(caith, nf=2)); title("symmetric")

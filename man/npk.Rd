@@ -35,6 +35,9 @@ npk
     }
   }
 }
+\note{
+  This dataset is also contained in \R 3.0.2 and later.
+}
 \source{
   Imperial College, London, M.Sc. exercise sheet.
 }
@@ -45,6 +48,7 @@ npk
 \examples{
 options(contrasts = c("contr.sum", "contr.poly"))
 npk.aov <- aov(yield ~ block + N*P*K, npk)
+## IGNORE_RDIFF_BEGIN
 npk.aov
 summary(npk.aov)
 alias(npk.aov)
@@ -54,5 +58,5 @@ npk.aov1 <- aov(yield ~ block + N + K, data = npk)
 summary.lm(npk.aov1)
 se.contrast(npk.aov1, list(N=="0", N=="1"), data = npk)
 model.tables(npk.aov1, type = "means", se = TRUE)
-}
+## IGNORE_RDIFF_END}
 \keyword{datasets}

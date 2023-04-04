@@ -1,5 +1,5 @@
 % file MASS/man/lda.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2020 W. N. Venables and B. D. Ripley
 %
 \name{lda}
 \alias{lda}
@@ -35,8 +35,8 @@ lda(x, \dots)
     the (non-factor) discriminators.
   }
   \item{data}{
-    Data frame from which variables specified in \code{formula} are
-    preferentially to be taken.
+    An optional data frame, list or environment from which variables
+    specified in \code{formula} are preferentially to be taken.
   }
   \item{x}{
     (required if no formula is given as the principal argument.)

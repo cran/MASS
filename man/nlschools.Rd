@@ -48,18 +48,19 @@ nlschools
   \emph{Modern Applied Statistics with S.} Fourth edition.  Springer.
 }
 \examples{
-library(nlme)
-nl1 <- nlschools
-attach(nl1)
-classMeans <- tapply(IQ, class, mean)
-nl1$IQave <- classMeans[as.character(class)]
-nl1$IQ <- nl1$IQ - nl1$IQave
-detach()
+\dontshow{op <- options(digits=5)}
+nl1 <- within(nlschools, {
+IQave <- tapply(IQ, class, mean)[as.character(class)]
+IQ <- IQ - IQave
+})
 cen <- c("IQ", "IQave", "SES")
 nl1[cen] <- scale(nl1[cen], center = TRUE, scale = FALSE)
 
-nl.lme <- lme(lang ~ IQ*COMB + IQave + SES,
-              random = ~ IQ | class, data = nl1)
+nl.lme <- nlme::lme(lang ~ IQ*COMB + IQave + SES,
+                    random = ~ IQ | class, data = nl1)
+## IGNORE_RDIFF_BEGIN
 summary(nl.lme)
+## IGNORE_RDIFF_END
+\testonly{options(op)}
 }
 \keyword{datasets}

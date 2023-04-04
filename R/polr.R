@@ -1,5 +1,5 @@
 # file MASS/R/polr.R
-# copyright (C) 1994-2010 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2013 W. N. Venables and B. D. Ripley
 # Use of transformed intercepts contributed by David Firth
 #
 #  This program is free software; you can redistribute it and/or modify
@@ -15,15 +15,16 @@
 #  A copy of the GNU General Public License is available at
 #  http://www.r-project.org/Licenses/
 #
-polr <- function(formula, data, weights, start, ..., subset,
-                 na.action, contrasts = NULL, Hess = FALSE, model = TRUE,
-                 method = c("logistic", "probit", "cloglog", "cauchit"))
+polr <-
+    function(formula, data, weights, start, ..., subset,
+             na.action, contrasts = NULL, Hess = FALSE, model = TRUE,
+             method = c("logistic", "probit", "loglog", "cloglog", "cauchit"))
 {
     m <- match.call(expand.dots = FALSE)
     method <- match.arg(method)
     if(is.matrix(eval.parent(m$data))) m$data <- as.data.frame(data)
     m$start <- m$Hess <- m$method <- m$model <- m$... <- NULL
-    m[[1L]] <- as.name("model.frame")
+    m[[1L]] <- quote(stats::model.frame)
     m <- eval.parent(m)
     Terms <- attr(m, "terms")
     x <- model.matrix(Terms, m, contrasts)
@@ -45,7 +46,6 @@ polr <- function(formula, data, weights, start, ..., subset,
     if(llev <= 2L) stop("response must have 3 or more levels")
     y <- unclass(y)
     q <- llev - 1L
-    Y <- matrix(0, n, q)
     if(missing(start)) {
         # try logistic/probit regression on 'middle' cut
         q1 <- llev %/% 2L
@@ -56,6 +56,7 @@ polr <- function(formula, data, weights, start, ..., subset,
                    "logistic"= glm.fit(X, y1, wt, family = binomial(), offset = offset),
                    "probit" = glm.fit(X, y1, wt, family = binomial("probit"), offset = offset),
                    ## this is deliberate, a better starting point
+                   "loglog" = glm.fit(X, y1, wt, family = binomial("probit"), offset = offset),
                    "cloglog" = glm.fit(X, y1, wt, family = binomial("probit"), offset = offset),
                    "cauchit" = glm.fit(X, y1, wt, family = binomial("cauchit"), offset = offset))
         if(!fit$converged)
@@ -85,7 +86,7 @@ polr <- function(formula, data, weights, start, ..., subset,
 
     eta <- if(pc) offset + drop(x %*% beta) else offset + rep(0, n)
     pfun <- switch(method, logistic = plogis, probit = pnorm,
-                   cloglog = pgumbel, cauchit = pcauchy)
+                   loglog = pgumbel, cloglog = pGumbel, cauchit = pcauchy)
     cumpr <- matrix(pfun(matrix(zeta, n, q, byrow=TRUE) - eta), , q)
     fitted <- t(apply(cumpr, 1L, function(x) diff(c(0, x, 1))))
     dimnames(fitted) <- list(row.names(m), lev)
@@ -144,7 +145,7 @@ vcov.polr <- function(object, ...)
     if(is.null(object$Hessian)) {
         message("\nRe-fitting to get Hessian\n")
 	utils::flush.console()
-        object <- update(object, Hess=TRUE,
+        object <- update(object, Hess = TRUE,
                          start = c(object$coefficients, object$zeta))
     }
     vc <- ginv(object$Hessian)
@@ -230,7 +231,7 @@ predict.polr <- function(object, newdata, type=c("class","probs"), ...)
         q <- length(object$zeta)
         eta <- drop(X %*% object$coefficients)
         pfun <- switch(object$method, logistic = plogis, probit = pnorm,
-                       cloglog = pgumbel, cauchit = pcauchy)
+                       loglog = pgumbel, cloglog = pGumbel, cauchit = pcauchy)
         cumpr <- matrix(pfun(matrix(object$zeta, n, q, byrow=TRUE) - eta), , q)
         Y <- t(apply(cumpr, 1L, function(x) diff(c(0, x, 1))))
         dimnames(Y) <- list(rownames(X), object$lev)
@@ -255,7 +256,7 @@ model.frame.polr <- function(formula, ...)
     if(length(nargs) || is.null(formula$model)) {
         m <- formula$call
         m$start <- m$Hess <- m$... <- NULL
-        m[[1L]] <- as.name("model.frame")
+        m[[1L]] <- quote(stats::model.frame)
         m[names(nargs)] <- nargs
         if (is.null(env <- environment(formula$terms))) env <- parent.frame()
         data <- eval(m, env)
@@ -278,6 +279,20 @@ pgumbel <- function(q, loc = 0, scale = 1, lower.tail = TRUE)
 dgumbel <- function (x, loc = 0, scale = 1, log = FALSE)
 {
     x <- (x - loc)/scale
+    d <- log(1/scale) - x - exp(-x)
+    if (!log) exp(d) else d
+}
+
+pGumbel <- function(q, loc = 0, scale = 1, lower.tail = TRUE)
+{
+    q <- (q - loc)/scale
+    p <- exp(-exp(q))
+    if (lower.tail) 1 - p else p
+}
+
+dGumbel <- function (x, loc = 0, scale = 1, log = FALSE)
+{
+    x <- -(x - loc)/scale
     d <- log(1/scale) - x - exp(-x)
     if (!log) exp(d) else d
 }
@@ -356,9 +371,9 @@ polr.fit <- function(x, y, wt, start, offset, method, ...)
     }
 
     pfun <- switch(method, logistic = plogis, probit = pnorm,
-                   cloglog = pgumbel, cauchit = pcauchy)
+                   loglog = pgumbel, cloglog = pGumbel, cauchit = pcauchy)
     dfun <- switch(method, logistic = dlogis, probit = dnorm,
-                   cloglog = dgumbel, cauchit = dcauchy)
+                   loglog = dgumbel, cloglog = dGumbel, cauchit = dcauchy)
     n <- nrow(x)
     pc <- ncol(x)
     ind_pc <- seq_len(pc)
@@ -385,7 +400,7 @@ polr.fit <- function(x, y, wt, start, offset, method, ...)
 profile.polr <- function(fitted, which = 1L:p, alpha = 0.01,
                          maxsteps = 10, del = zmax/5, trace = FALSE, ...)
 {
-    Pnames <- names(B0 <- coefficients(fitted))
+    Pnames <- names(B0 <- coef(fitted))
     pv0 <- t(as.matrix(B0))
     p <- length(Pnames)
     if(is.character(which)) which <- match(which, Pnames)
@@ -436,7 +451,7 @@ profile.polr <- function(fitted, which = 1L:p, alpha = 0.01,
         }
         si <- order(zi)
         prof[[pi]] <- structure(data.frame(zi[si]), names = profName)
-        prof[[pi]]$par.vals <- pvi[si, ]
+        prof[[pi]]$par.vals <- pvi[si, , drop = FALSE]
     }
     val <- structure(prof, original.fit = fitted, summary = summ)
     class(val) <- c("profile.polr", "profile")
@@ -489,6 +504,7 @@ simulate.polr <- function(object, nsim = 1, seed = NULL, ...)
         stop("weighted fits are not supported")
 
     rgumbel <- function(n, loc = 0, scale = 1) loc - scale*log(rexp(n))
+    rGumbel <- function(n, loc = 0, scale = 1) scale*log(rexp(n)) - loc
 
     ## start the same way as simulate.lm
     if(!exists(".Random.seed", envir = .GlobalEnv, inherits = FALSE))
@@ -502,7 +518,7 @@ simulate.polr <- function(object, nsim = 1, seed = NULL, ...)
         on.exit(assign(".Random.seed", R.seed, envir = .GlobalEnv))
     }
     rfun <- switch(object$method, logistic = rlogis, probit = rnorm,
-                   cloglog = rgumbel, cauchit = rcauchy)
+                   loglog = rgumbel, cloglog = rGumbel, cauchit = rcauchy)
     eta <- object$lp
     n <- length(eta)
     res <- cut(rfun(n*nsim, eta),

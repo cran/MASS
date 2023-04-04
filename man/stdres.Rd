@@ -1,9 +1,8 @@
 % file MASS/man/stdres.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 %
 \name{stdres}
 \alias{stdres}
-\alias{lmwork}
 \title{
 Extract Standardized Residuals from a Linear Model
 }

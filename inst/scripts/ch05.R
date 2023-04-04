@@ -31,7 +31,7 @@ perm.t.test <- function(d) {
 library(MASS)
 options(width=65, digits=5, height=9999)
 library(lattice)
-trellis.device(postscript, file="ch05.ps", width=8, height=6, pointsize=9)
+pdf(file="ch05.pdf", width=8, height=6, pointsize=9)
 
 rm(A, B) # precautionary clear-out
 attach(shoes)
@@ -181,7 +181,7 @@ breaks <- seq(0, 5.9, 0.1)
 counts <- numeric(length(breaks))
 for(i in (0:4)) counts[i+(1:55)] <- counts[i+(1:55)] +
     rep(hist(duration, breaks=0.1*i + seq(0, 5.5, 0.5),
-    prob=TRUE, plot=FALSE)$intensities, rep(5,11))
+    prob=TRUE, plot=FALSE)$density, rep(5,11))
 plot(breaks+0.05, counts/5, type="l", xlab="duration",
     ylab="averaged", bty="n", xlim=c(0, 6), ylim=c(0, 0.7))
 detach()

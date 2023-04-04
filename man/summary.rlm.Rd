@@ -1,5 +1,5 @@
 % file MASS/man/summary.rlm.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
 %
 \name{summary.rlm}
 \alias{summary.rlm}
@@ -77,23 +77,5 @@ class of the object.
 }
 \examples{
 summary(rlm(calls ~ year, data = phones, maxit = 50))
-\dontrun{
-Call:
-rlm(formula = calls ~ year, data = phones, maxit = 50)
-
-Residuals:
-   Min     1Q Median     3Q    Max
--18.31  -5.95  -1.68  26.46 173.77
-
-Coefficients:
-            Value    Std. Error t value
-(Intercept) -102.622   26.553   -3.86
-year           2.041    0.429    4.76
-
-Residual standard error: 9.03 on 22 degrees of freedom
-
-Correlation of Coefficients:
-[1] -0.994
-
-}}
+}
 \keyword{robust}

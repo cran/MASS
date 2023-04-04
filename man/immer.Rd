@@ -1,5 +1,5 @@
 % file MASS/man/immer.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2022 W. N. Venables and B. D. Ripley
 %
 \name{immer}
 \alias{immer}
@@ -41,9 +41,8 @@ immer
   \emph{The Design of Experiments.} 4th edition. Edinburgh: Oliver and Boyd.
 }
 \references{
-  Venables, W. N. and Ripley, B. D. (1999)
-  \emph{Modern Applied Statistics with S-PLUS.} Third
-  Edition. Springer.
+  Venables, W. N. and Ripley, B. D. (2002)
+  \emph{Modern Applied Statistics with S-PLUS.} Fourth Edition. Springer.
 }
 \examples{
 immer.aov <- aov(cbind(Y1,Y2) ~ Loc + Var, data = immer)

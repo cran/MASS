@@ -5,7 +5,7 @@
 # Chapter 12   Classification
 
 library(MASS)
-postscript(file="ch12.ps", width=8, height=6, pointsize=9)
+pdf(file="ch12.pdf", width=8, height=6, pointsize=9)
 options(width=65, digits=5)
 library(class)
 library(nnet)

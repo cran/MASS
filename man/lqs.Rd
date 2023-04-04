@@ -1,5 +1,5 @@
 % file lqs/man/lqs.Rd
-% copyright (C) 1998-9, 2007 B. D. Ripley    (C) 2001-2 R Core Development Team
+% copyright (C) 1998-2020 B. D. Ripley    (C) 2001-2 R Core Development Team
 %
 \name{lqs}
 \alias{lqs}
@@ -32,8 +32,8 @@ ltsreg(\dots)
 }
 \arguments{
   \item{formula}{a formula of the form \code{y ~ x1 + x2 + \dots}.}
-  \item{data}{data frame from which variables specified in
-    \code{formula} are preferentially to be taken.}
+  \item{data}{an optional data frame, list or environemnt from which
+    variables specified in \code{formula} are preferentially to be taken.}
   \item{subset}{an index vector specifying the cases to be used in
     fitting. (NOTE: If given, this argument must be named exactly.)}
   \item{na.action}{function to specify the action to be taken if
@@ -158,9 +158,11 @@ ltsreg(\dots)
 \code{\link{predict.lqs}}
 }
 \examples{
+## IGNORE_RDIFF_BEGIN
 set.seed(123) # make reproducible
 lqs(stack.loss ~ ., data = stackloss)
 lqs(stack.loss ~ ., data = stackloss, method = "S", nsamp = "exact")
+## IGNORE_RDIFF_END
 }
 \keyword{models}
 \keyword{robust}

@@ -1,5 +1,5 @@
 % file MASS/man/OME.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
 %
 \name{OME}
 \alias{OME}
@@ -157,22 +157,20 @@ OMEf$Resp <- with(OME, rep(rep(c(1,0), length(Trials)),
                           t(cbind(Correct, Trials-Correct))))
 OMEf <- OMEf[, -match(c("Correct", "Trials"), names(OMEf))]
 
-\dontrun{## this fails in R on some platforms
+\dontrun{## these fail in R on most platforms
 fp2 <- deriv(~ 0.5 + 0.5/(1 + exp(-(x-L75)/exp(lsc))),
              c("L75", "lsc"),
              function(x, L75, lsc) NULL)
-G1.nlme <- nlme(Resp ~ fp2(Loud, L75, lsc),
+try(summary(nlme(Resp ~ fp2(Loud, L75, lsc),
      fixed = list(L75 ~ Age, lsc ~ 1),
      random = L75 + lsc ~ 1 | UID,
      data = OMEf[OMEf$Noise == "coherent",], method = "ML",
-     start = list(fixed=c(L75=c(48.7, -0.03), lsc=0.24)), verbose = TRUE)
-summary(G1.nlme)
+     start = list(fixed=c(L75=c(48.7, -0.03), lsc=0.24)), verbose = TRUE)))
 
-G2.nlme <- nlme(Resp ~ fp2(Loud, L75, lsc),
+try(summary(nlme(Resp ~ fp2(Loud, L75, lsc),
      fixed = list(L75 ~ Age, lsc ~ 1),
      random = L75 + lsc ~ 1 | UID,
-     data = OMEf[OMEf$Noise == "incoherent",], method="ML",
-     start = list(fixed=c(L75=c(41.5, -0.1), lsc=0)), verbose = TRUE)
-summary(G2.nlme)
+     data = OMEf[OMEf$Noise == "incoherent",], method = "ML",
+     start = list(fixed=c(L75=c(41.5, -0.1), lsc=0)), verbose = TRUE)))
 }}
 \keyword{datasets}

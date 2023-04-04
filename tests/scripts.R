@@ -1,3 +1,7 @@
+### This requires packages not declared in Suggests (and not otherwise used)
+## GLMMGibbs Kernsmooth boot e1071 fastICA gee interp lattice mda
+## mgcv multcomp nlme nnet polsplin rpart spatial splines tree
+
 if(!nzchar(Sys.getenv("MASS_TESTING"))) q("no")
 unlink("scripts", recursive = TRUE)
 dir.create("scripts")
@@ -13,10 +17,9 @@ runone <- function(f)
     outfile <- paste(basename(f), "out", sep = "")
     failfile <- paste(outfile, "fail", sep=".")
     unlink(c(outfile, failfile))
-    cmd <- paste(shQuote(file.path(R.home(), "bin", "R")),
-                 "CMD BATCH --no-save",
-                 shQuote(f), shQuote(outfile))
-    res <- system(cmd)
+    res <- system2(file.path(R.home("bin"), "R"),
+                   c("CMD BATCH --vanilla", shQuote(f), shQuote(outfile)),
+                   env = paste("R_LIBS", Sys.getenv("R_LIBS"), sep = "="))
     if (res) {
         cat(tail(readLines(outfile), 20), sep="\n")
         file.rename(outfile, failfile)

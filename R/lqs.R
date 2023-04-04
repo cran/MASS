@@ -1,5 +1,5 @@
 # file lqs/R/lqs.R
-# copyright (C) 1998-2005 B. D. Ripley
+# copyright (C) 1998-2020 B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ lqs.formula <-
     method <- match.arg(method)
     mf <- match.call(expand.dots = FALSE)
     mf$method <- mf$contrasts <- mf$model <- mf$x.ret <- mf$y.ret <- mf$... <- NULL
-    mf[[1L]] <- as.name("model.frame")
+    mf[[1L]] <- quote(stats::model.frame)
     mf <- eval.parent(mf)
     if (method == "model.frame") return(mf)
     mt <- attr(mf, "terms")
@@ -34,12 +34,13 @@ lqs.formula <-
     offset <- model.offset(mf)
     if(!is.null(offset)) y <- y - offset
     x <- model.matrix(mt, mf, contrasts)
+    contr <- attr(x, "contrasts")
     xint <- match("(Intercept)", colnames(x), nomatch = 0L)
     if(xint) x <- x[, -xint, drop = FALSE]
     fit <- lqs.default(x, y, intercept = (xint > 0), method = method, ...)
     fit$terms <- mt
     fit$call <- match.call()
-    fit$contrasts <- attr(x, "contrasts")
+    fit$contrasts <- contr
     fit$xlevels <- .getXlevels(mt, mf)
     fit$na.action <- attr(mf, "na.action")
     if(model) fit$model <- mf
@@ -49,7 +50,7 @@ lqs.formula <-
 }
 
 lqs.default <-
-    function(x, y, intercept=TRUE, method = c("lts", "lqs", "lms", "S"),
+    function(x, y, intercept = TRUE, method = c("lts", "lqs", "lms", "S"),
 	     quantile, control = lqs.control(...), k0 = 1.548, seed, ...)
 {
     lqs.control <- function(psamp = NA, nsamp = "best", adjust = TRUE)
@@ -68,8 +69,10 @@ lqs.default <-
     if(is.null(nm))
 	nm <- if(p > 1) paste("X", 1L:p, sep="") else if(p == 1) "X" else NULL
     if(intercept) {
+        att <- attr(x, "contrasts")
 	x <- cbind(1, x)
 	nm <- c("(Intercept)", nm)
+        attr(x, "contrasts") <- att
     }
     p <- ncol(x)
     if(nrow(x) != n) stop("'x' and 'y' must have the same number of rows")
@@ -103,8 +106,10 @@ lqs.default <-
     if(is.character(nsamp) && nsamp == "best") {
 	nsamp <- if(nexact < 5000) "exact" else "sample"
     } else if(is.numeric(nsamp) && nsamp > nexact) {
-	warning(gettextf("only %d sets, so all sets will be tried", nexact),
-                domain = NA)
+        warning(sprintf(ngettext(nexact,
+                                 "only %d set, so all sets will be tried",
+                                 "only %d sets, so all sets will be tried"),
+                        nexact), domain = NA)
 	nsamp <- "exact"
     }
     samp <- nsamp != "exact"
@@ -128,7 +133,7 @@ lqs.default <-
 	     coefficients=double(p), as.double(k0), as.double(beta)
 	     )[c("crit", "sing", "coefficients", "bestone")]
     if(z$sing == nsamp)
-        stop("lqs failed: all the samples were singular", call.=FALSE)
+        stop("'lqs' failed: all the samples were singular", call.=FALSE)
     z$sing <- paste(z$sing, "singular samples of size", ps, "out of", nsamp)
     z$bestone <- sort(z$bestone)
     names(z$coefficients) <- nm
@@ -148,7 +153,7 @@ lqs.default <-
 	psi <- function(u, k0) (1  - pmin(1, abs(u/k0))^2)^2
 	resid <- z$residuals
 	scale <- s
-	for(i in 1L:30) {
+	for(i in 1L:30L) {
 	    w <- psi(resid/scale, k0)
 	    temp <- lm.wfit(x, y, w, method="qr")
 	    resid <- temp$residuals
@@ -156,7 +161,7 @@ lqs.default <-
 	    if(abs(s2/scale - 1) < 1e-5) break
 	    scale <- s2
 	}
-	z$coef <- temp$coefficients
+	z$coefficents <- temp$coefficients
 	z$fitted.values <- temp$fitted.values
 	z$residuals <- resid
 	z$scale <- scale
@@ -219,15 +224,22 @@ cov.rob <- function(x, cor = FALSE, quantile.used = floor((n+p+1)/2),
 	if(is.character(nsamp) && nsamp == "best")
 	    nsamp <- if(nexact < 5000) "exact" else "sample"
 	if(is.numeric(nsamp) && nsamp > nexact) {
-            warning(gettextf("only %d sets, so all sets will be tried", nexact),
-                    domain = NA)
+            warning(sprintf(ngettext(nexact,
+                                     "only %d set, so all sets will be tried",
+                                     "only %d sets, so all sets will be tried"),
+                            nexact), domain = NA)
 	    nsamp <- "exact"
 	}
 	samp <- nsamp != "exact"
 	if(samp) {
 	    if(nsamp == "sample") nsamp <- min(500*ps, 3000)
 	} else nsamp <- nexact
-
+        if (nsamp > 2147483647) {
+            if(samp)
+                stop(sprintf("Too many samples (%.3g)", nsamp))
+            else
+                stop(sprintf('Too many combinations (%.3g) for nsamp = "exact"', nsamp))
+        }
 	if(samp && !missing(seed)) {
 	    if(exists(".Random.seed", envir=.GlobalEnv, inherits=FALSE))  {
 		seed.keep <- get(".Random.seed", envir=.GlobalEnv, inherits=FALSE)

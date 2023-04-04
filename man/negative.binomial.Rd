@@ -34,9 +34,8 @@ negative.binomial(theta = stop("'theta' must be specified"), link = "log")
   \code{\link{summary.negbin}}
 }
 \references{
-  Venables, W. N. and Ripley, B. D. (1999)
-  \emph{Modern Applied Statistics with S-PLUS.} Third
-  Edition. Springer.
+  Venables, W. N. and Ripley, B. D. (2002)
+  \emph{Modern Applied Statistics with S-PLUS.} Fourth Edition. Springer.
 }
 \examples{
 # Fitting a Negative Binomial model to the quine data

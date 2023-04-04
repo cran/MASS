@@ -5,7 +5,7 @@
 # Chapter 11   Exploratory Multivariate Analysis
 
 library(MASS)
-postscript(file="ch11.ps", width=8, height=6, pointsize=9)
+pdf(file="ch11.pdf", width=8, height=6, pointsize=9)
 options(width=65, digits=5)
 
 
@@ -31,7 +31,8 @@ loadings(lcrabs.pca)
 lcrabs.pc <- predict(lcrabs.pca)
 dimnames(lcrabs.pc) <- list(NULL, paste("PC", 1:5, sep = ""))
 
-if(FALSE) { # needs interaction with XGobi, or, better, rggobi
+if(FALSE) { ## needs interaction with XGobi, or, better, rggobi
+    ## Both have been withdrawn for R.
 library(xgobi)
 xgobi(lcrabs, colors = c("SkyBlue", "SlateBlue", "Orange",
      "Red")[rep(1:4, each = 50)])
@@ -131,9 +132,9 @@ parcoord(log(ir)[, c(3, 4, 2, 1)], col = 1 + (0:149)%/%50)
 
 swiss.x <- as.matrix(swiss[,-1])
 library(cluster)
-# h <- hclust(dist(swiss.x), method = "connected")
+# S: h <- hclust(dist(swiss.x), method = "connected")
 h <- hclust(dist(swiss.x), method = "single")
-plclust(h)
+plot(h)
 cutree(h, 3)
 # S: plclust( clorder(h, cutree(h, 3) ))
 
@@ -175,7 +176,7 @@ fanny(swiss.px, 3)
 ##
 
 ## And later mclust was given a restrictive licence, so this example
-## has been removed.
+## has been removed.  Finally in 2012 it was given an OpenSource licence.
 
 
 # 11.3 Factor analysis

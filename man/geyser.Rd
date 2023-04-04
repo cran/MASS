@@ -1,3 +1,6 @@
+% file MASS/man/geyser.Rd
+% copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
+%
 \name{geyser}
 \alias{geyser}
 \usage{
@@ -17,10 +20,19 @@ geyser
 \format{A data frame with 299 observations on 2 variables.
   \tabular{lll}{
     \code{duration}  \tab numeric  \tab Eruption time in mins \cr
-    \code{waiting}   \tab numeric  \tab Waiting time to next eruption \cr
+    \code{waiting}   \tab numeric  \tab Waiting time for this eruption \cr
   }
 }
-\seealso{\code{\link{faithful}}}
+\note{
+  The \code{waiting} time was incorrectly described as the time to the
+  next eruption in the original files, and corrected for \pkg{MASS}
+  version 7.3-30.
+}
+\seealso{
+  \code{\link{faithful}}.
+
+  CRAN package \pkg{sm}.
+}
 \references{
   Azzalini, A. and Bowman, A. W. (1990) A look at some
   data on the Old Faithful geyser.  \emph{Applied Statistics}

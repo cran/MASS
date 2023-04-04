@@ -1,5 +1,5 @@
 % file MASS/man/lm.gls.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2020 W. N. Venables and B. D. Ripley
 %
 \name{lm.gls}
 \alias{lm.gls}
@@ -21,8 +21,8 @@ a formula expression as for regression models, of the form
 See the documentation of \code{formula} for other details.
 }
 \item{data}{
-an optional data frame in which to interpret the variables occurring
-in \code{formula}.
+an optional data frame, list or environment in which to interpret the
+variables occurring in \code{formula}.
 }
 \item{W}{
 a weight matrix.
