@@ -59,7 +59,9 @@ summary(house.glm0, cor = FALSE)
 addterm(house.glm0, ~. + Sat:(Infl+Type+Cont), test = "Chisq")
 
 house.glm1 <- update(house.glm0, . ~ . + Sat*(Infl+Type+Cont))
+## IGNORE_RDIFF_BEGIN
 summary(house.glm1, cor = FALSE)
+## IGNORE_RDIFF_END
 
 1 - pchisq(deviance(house.glm1), house.glm1$df.residual)
 

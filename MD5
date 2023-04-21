@@ -1,5 +1,5 @@
 5a8536600acf8f1f058152f15a0e440c *ChangeLog
-02f2f9d2d3cf7fa9567995941e1f7028 *DESCRIPTION
+ff57f171b0da21d94198ff2501793d8a *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 c7acdc0fa828f781a0a5586ab9d4fa1b *LICENCE.note
 5ae9f8060ce744604b563ddc755782f5 *NAMESPACE
@@ -47,7 +47,7 @@ f1db7f02de9bae7087fc01a7ffe4748e *R/truehist.R
 bbde4307b98d968e9b85d55f46a0cbe6 *R/ucv.R
 29fdbf836b6ebffc562ce7d2b54ab5eb *R/write.matrix.R
 4f74ab00a8fd8a8eaf56957b1e13aa52 *R/zzz.R
-7f2094c7b4d5faa522b624cffc621f8b *build/partial.rdb
+439bf689fa27cf9affd0335332142165 *build/partial.rdb
 e4aa969dc4062a5dfa605a141bf32f29 *data/Aids2.rda
 3c5a57a9f86ee32ac10f6114826a762b *data/Animals.rda
 689cd33a62093be4f53a38cc8405e083 *data/Boston.rda
@@ -188,7 +188,7 @@ a73f6ef91062b7bd5009144b5710de5a *man/abbey.Rd
 a5f53921ca9d0b1553c030db03ddfe65 *man/anorexia.Rd
 bc308c384834629fa93aca2fce82f6ff *man/anova.negbin.Rd
 47f7db230b717478b750184c02dce1c0 *man/area.Rd
-194f36aab87b6e1fb6a806828823ce31 *man/bacteria.Rd
+776675b37ae67af99bd7aa16baa121d4 *man/bacteria.Rd
 5472d70fb96f35a995e891ad9ef9a777 *man/bandwidth.nrd.Rd
 e79ea25d60ba827b71a57f7458f733d2 *man/bcv.Rd
 61fbfe12f436f23b478400e0c085731d *man/beav1.Rd
@@ -216,7 +216,7 @@ f320aaa10f4cff23eff1f1414c057eae *man/deaths.Rd
 32d46414b81cc9c21663b07a5b3e24a1 *man/drivers.Rd
 989cb309d961aca2b8d9d54df183223d *man/dropterm.Rd
 57e48204af505d9d279440f9a75fe46d *man/eagles.Rd
-5d544d4123e89ce9b4404630c3ae53b8 *man/epil.Rd
+2546dca2ae4c53fe9e89b67bebfcfcdb *man/epil.Rd
 df9ff3b3ed9842a6c2d767dfb14233d8 *man/eqscplot.Rd
 d6c9433b3ee2a9fe920dcedecbefdf06 *man/farms.Rd
 7d46e561298348eafcb2464adcfa66b2 *man/fgl.Rd
@@ -225,7 +225,7 @@ c9354f03af7c5806071ad7554b0e5306 *man/fitdistr.Rd
 a2775b0cd28bf387be56b39de0103c98 *man/fractions.Rd
 e2971220e00d364f968079d07203da26 *man/galaxies.Rd
 a980e6f05828b7c992709a22a23a2f38 *man/gamma.dispersion.Rd
-4392017c495f19761536234b1e4945a5 *man/gamma.shape.glm.Rd
+3c5110967521dd01acc9098770a91174 *man/gamma.shape.glm.Rd
 3f1ac8a8ecc476a9b8a78d8731a76bce *man/gehan.Rd
 bfea377b88c51c2483cb09fca89a7967 *man/genotype.Rd
 353d48920fe6e849fb2e0a757d277901 *man/geyser.Rd
@@ -236,7 +236,7 @@ a81ca88a2a39298dd099c015fdd3c167 *man/gilgais.Rd
 b07145bdfcdcf3d621483562aab95335 *man/glmmPQL.Rd
 e65737579ca1cd2810198d72f0260e21 *man/hills.Rd
 5440204f0acdca119adda063b91d9e17 *man/hist.scott.Rd
-4b3d83cc89b49bdbf178503b6fa33dd3 *man/housing.Rd
+16e4f5a728d37e3d423566bba03d63f3 *man/housing.Rd
 3ff54e8dfc1c1b949d3a33fcbd916fee *man/huber.Rd
 7cb24fac3e55b03ac894c3be943287bf *man/hubers.Rd
 606105b6a9c526833a3116619a07d9c9 *man/immer.Rd
@@ -302,11 +302,11 @@ c7cfb9197843a5cbd76e866013fbcce0 *man/steam.Rd
 6f7889f5e4478412a523eedaefdc91aa *man/stormer.Rd
 87595689a17d00aa5b5e98845be4ca1c *man/studres.Rd
 9120d03a6f70c2ffaf8c38ca75591429 *man/summary.loglm.Rd
-1d714038b6e5bc7641181331d095e989 *man/summary.negbin.Rd
+78b22f83769d8e25fa072d88ad6267b7 *man/summary.negbin.Rd
 b70f43a1c1766f0e3dc2ed66bebabd1c *man/summary.rlm.Rd
 156b0a165f0f7ced7f97ef8743aae7bb *man/survey.Rd
 3c044bf1596134e8329f1f9aca07b7aa *man/synth.tr.Rd
-760b565cac1dcc4db7b25f77950c71b8 *man/theta.md.Rd
+0a1cc709ddfc632c638219a05ca5855c *man/theta.md.Rd
 819320fb15b6ddb76e79f7f1a8f7d5c1 *man/topo.Rd
 0d7c0da73d17e677b7d2389ecb269642 *man/truehist.Rd
 dacb5fe1ae583a9281568436fa0fbe21 *man/ucv.Rd
@@ -324,7 +324,7 @@ b6e225a125d6368318896f92ffd91e0f *po/R-pl.po
 f47fd24f72996b91d2a1618cd105c908 *src/MASS.c
 2c7b72ca038d349935bcb4f60235bcd7 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-ec6ef25ee362a716d1d40d7906594ff0 *tests/Examples/MASS-Ex.Rout.save
+26860fec833859bcf689559b80c5deda *tests/Examples/MASS-Ex.Rout.save
 a309c9e287f72ae6fc239b0495d5685e *tests/confint.R
 e059b0451b55d1e8cb8ebf51ecce76ea *tests/cov.mcd.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
