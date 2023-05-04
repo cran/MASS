@@ -74,7 +74,7 @@ alpha <- 0.80
 stemp <- as.vector(temp - alpha*lag(temp, -1))
 sX <- X[-1, ] - alpha * X[-115,]
 beav1.ls <- lm(stemp ~ -1 + sX, na.action = na.omit)
-summary(beav1.ls, cor = FALSE)
+summary(beav1.ls, correlation = FALSE)
 rm(temp, activ)
 }
 \keyword{datasets}

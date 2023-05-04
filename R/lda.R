@@ -1,5 +1,5 @@
 # file MASS/R/lda.R
-# copyright (C) 1994-2013 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -223,7 +223,7 @@ predict.lda <- function(object, newdata, prior = object$prior, dimen,
             if (!is.null(cl <- attr(Terms, "dataClasses")))
                 .checkMFClasses(cl, newdata)
         }
-        x <- model.matrix(Terms, newdata, contrasts = object$contrasts)
+        x <- model.matrix(Terms, newdata, contrasts.arg = object$contrasts)
         xint <- match("(Intercept)", colnames(x), nomatch = 0L)
         if(xint > 0L) x <- x[, -xint, drop = FALSE]
     } else { # matrix or data-frame fit

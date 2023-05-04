@@ -1,5 +1,5 @@
 # file MASS/R/polr.R
-# copyright (C) 1994-2013 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 # Use of transformed intercepts contributed by David Firth
 #
 #  This program is free software; you can redistribute it and/or modify
@@ -224,7 +224,7 @@ predict.polr <- function(object, newdata, type=c("class","probs"), ...)
                          xlev = object$xlevels)
         if (!is.null(cl <- attr(Terms, "dataClasses")))
             .checkMFClasses(cl, m)
-        X <- model.matrix(Terms, m, contrasts = object$contrasts)
+        X <- model.matrix(Terms, m, contrasts.arg = object$contrasts)
         xint <- match("(Intercept)", colnames(X), nomatch=0L)
         if(xint > 0L) X <- X[, -xint, drop=FALSE]
         n <- nrow(X)

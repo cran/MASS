@@ -1,5 +1,5 @@
 # file lqs/R/lqs.R
-# copyright (C) 1998-2020 B. D. Ripley
+# copyright (C) 1998-2023 B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -192,7 +192,7 @@ predict.lqs <- function (object, newdata, na.action = na.pass, ...)
     m <- model.frame(Terms, newdata, na.action = na.action,
                      xlev = object$xlevels)
     if(!is.null(cl <- attr(Terms, "dataClasses"))) .checkMFClasses(cl, m)
-    X <- model.matrix(Terms, m, contrasts = object$contrasts)
+    X <- model.matrix(Terms, m, contrasts.arg = object$contrasts)
     drop(X %*% object$coefficients)
 }
 

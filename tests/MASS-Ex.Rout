@@ -445,6 +445,7 @@ Response: Days
 2 1.92836       118       -1039.324 1 vs 2     2 1.403843 0.4956319
 > anova(m2)
 Warning in anova.negbin(m2) : tests made without re-estimating 'theta'
+Calls: anova -> anova.negbin
 Analysis of Deviance Table
 
 Model: Negative Binomial(1.908), link: log
@@ -1755,6 +1756,7 @@ Number of Groups: 59
 > ## allow df to vary: not a very good idea!
 > fitdistr(x2, "t")
 Warning in dt((x - m)/s, df, log = TRUE) : NaNs produced
+Calls: fitdistr ... <Anonymous> -> <Anonymous> -> fn -> dens -> densfun -> dt
       m          s          df   
   -0.00965    1.00617    6.62729 
  ( 0.07147) ( 0.07707) ( 2.71033)
@@ -1986,6 +1988,8 @@ Call: survfit(formula = Surv(time, cens) ~ treat, data = gehan, conf.type = "log
 Call:
 survreg(formula = Surv(time, cens) ~ factor(pair) + treat, data = gehan, 
     dist = "exponential")
+Warning in x$coef : partial match of 'coef' to 'coefficients'
+Calls: <Anonymous> -> print.survreg
 
 Coefficients:
    (Intercept)  factor(pair)2  factor(pair)3  factor(pair)4  factor(pair)5 
@@ -2000,6 +2004,8 @@ factor(pair)21   treatcontrol
      1.9698390     -1.7671562 
 
 Scale fixed at 1 
+Warning in x$linear : partial match of 'linear' to 'linear.predictors'
+Calls: <Anonymous> -> print.survreg
 
 Loglik(model)= -101.6   Loglik(intercept only)= -116.8
 	Chisq= 30.27 on 21 degrees of freedom, p= 0.0866 
@@ -2043,6 +2049,8 @@ Call:
 coxph(formula = Surv(time, cens) ~ treat, data = gehan)
 
   n= 42, number of events= 30 
+Warning in x$coef : partial match of 'coef' to 'coefficients'
+Calls: <Anonymous> -> print.summary.coxph -> nrow
 
                coef exp(coef) se(coef)     z Pr(>|z|)    
 treatcontrol 1.5721    4.8169   0.4124 3.812 0.000138 ***
@@ -2147,6 +2155,7 @@ Null Deviance:	    100.2
 Residual Deviance: 90.34 	AIC: 225.6
 > try(glm.nb(y ~ lag1+lag2+lag3, link=identity))
 Warning in log(y/mu) : NaNs produced
+Calls: try ... tryCatchOne -> doTryCatch -> glm.nb -> glm.fitter -> dev.resids
 Error : no valid set of coefficients has been found: please supply starting values
 > glm.nb(y ~ lag1+lag2+lag3, link=identity,  start=c(2, 0.1, 0.1, 0.1))
 
@@ -2988,6 +2997,8 @@ Call:
 coxph(formula = Surv(time) ~ ag + log(wbc), data = leuk)
 
   n= 33, number of events= 33 
+Warning in x$coef : partial match of 'coef' to 'coefficients'
+Calls: <Anonymous> -> print.summary.coxph -> nrow
 
              coef exp(coef) se(coef)      z Pr(>|z|)   
 agpresent -1.0691    0.3433   0.4293 -2.490  0.01276 * 
@@ -3286,6 +3297,8 @@ Call:
 coxph(formula = Surv(time, cens) ~ temp, data = motors)
 
   n= 40, number of events= 17 
+Warning in x$coef : partial match of 'coef' to 'coefficients'
+Calls: <Anonymous> -> print.summary.coxph -> nrow
 
         coef exp(coef) se(coef)     z Pr(>|z|)    
 temp 0.09185   1.09620  0.02736 3.358 0.000786 ***
@@ -3731,6 +3744,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 > model.tables(oats.aov2, type = "means", se = TRUE)
 Warning in model.tables.aovlist(oats.aov2, type = "means", se = TRUE) :
   SEs for type 'means' are not yet implemented
+Calls: model.tables -> model.tables.aovlist
 Tables of means
 Grand mean
          
@@ -5124,7 +5138,7 @@ Achieved convergence tolerance: 4.389e-06
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.162 0.095 2.26 0 0 
+Time elapsed:  2.151 0.098 2.253 0 0 
 > grDevices::dev.off()
 null device 
           1 

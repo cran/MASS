@@ -1,5 +1,5 @@
 % file MASS/man/OME.Rd
-% copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 %
 \name{OME}
 \alias{OME}
@@ -121,7 +121,7 @@ OMEif <- OMEif[OMEif$L75 > 30,]
 summary(lm(L75 ~ Noise/Age, data = OMEif, na.action = na.omit))
 summary(lm(L75 ~ Noise/(Age + OME), data = OMEif,
            subset = (Age >= 30 & Age <= 60),
-           na.action = na.omit), cor = FALSE)
+           na.action = na.omit), correlation = FALSE)
 
 # Or fit by weighted least squares
 fpl75 <- deriv(~ sqrt(n)*(r/n - 0.5 - 0.5/(1 + exp(-(x-L75)/scal))),

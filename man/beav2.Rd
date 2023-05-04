@@ -1,5 +1,5 @@
 % file MASS/man/beav2.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 %
 \name{beav2}
 \alias{beav2}
@@ -68,7 +68,7 @@ arima(temp, order = c(1,0,0), xreg = cbind(active=activ, dreg))
 
 ## IGNORE_RDIFF_BEGIN
 library(nlme) # for gls and corAR1
-beav2.gls <- gls(temp ~ activ, data = beav2, corr = corAR1(0.8),
+beav2.gls <- gls(temp ~ activ, data = beav2, correlation = corAR1(0.8),
                  method = "ML")
 summary(beav2.gls)
 summary(update(beav2.gls, subset = 6:100))

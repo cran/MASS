@@ -1,5 +1,5 @@
 % file MASS/man/plot.profile.Rd
-% copyright (C) 1999-2008 W. N. Venables and B. D. Ripley
+% copyright (C) 1999-2023 W. N. Venables and B. D. Ripley
 %
 \name{plot.profile}
 \alias{plot.profile}
@@ -45,7 +45,7 @@
 
 ## a version of example(profile.nls) from R >= 2.8.0
 fm1 <- nls(demand ~ SSasympOrig(Time, A, lrc), data = BOD)
-pr1 <- profile(fm1, alpha = 0.1)
+pr1 <- profile(fm1, alphamax = 0.1)
 MASS:::plot.profile(pr1)
 pairs(pr1) # a little odd since the parameters are highly correlated
 

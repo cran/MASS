@@ -1,5 +1,5 @@
 # file MASS/R/qda.R
-# copyright (C) 1994-2013 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -204,7 +204,7 @@ predict.qda <- function(object, newdata, prior = object$prior,
                                    xlev = object$xlevels)
         }
         x <- model.matrix(delete.response(Terms), newdata,
-                          contrasts = object$contrasts)
+                          contrasts.arg = object$contrasts)
         xint <- match("(Intercept)", colnames(x), nomatch=0L)
         if(xint > 0) x <- x[, -xint, drop=FALSE]
         if(method == "looCV") g <- model.response(newdata)

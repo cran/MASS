@@ -1,3 +1,12 @@
+7.3-59
+	man/{bacteria,epil,gamma.shape,housing,summaey.negbin,theta.md}.Rd:
+	Use IGNORE_RDIFF markup for change to summary.glm in R 4.3.0.
+	Back to depending on R (>= 4.0).
+
+7.3-58.4 (released 2023-04-05)
+	Emergency fix for summary.glm late changes in 4.3.0.
+	Depends on R(>= 4.3) and has updated reference output.
+
 7.3-58.3 (released 2023-03-07)
 	Rename internal function biplot.bdr to biplotBDR
 	Update inst/CITATION.

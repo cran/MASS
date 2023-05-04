@@ -1,5 +1,5 @@
 % file MASS/man/boxcox.Rd
-% copyright (C) 1994-2005 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 %
 \name{boxcox}
 \alias{boxcox}
@@ -62,10 +62,10 @@ log-likelihood vector, invisibly if the result is plotted.
 }
 \examples{
 boxcox(Volume ~ log(Height) + log(Girth), data = trees,
-       lambda = seq(-0.25, 0.25, length = 10))
+       lambda = seq(-0.25, 0.25, length.out = 10))
 
 boxcox(Days+1 ~ Eth*Sex*Age*Lrn, data = quine,
-       lambda = seq(-0.05, 0.45, len = 20))
+       lambda = seq(-0.05, 0.45, length.out = 20))
 }
 \keyword{regression}
 \keyword{models}
