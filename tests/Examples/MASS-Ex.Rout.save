@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2023-05-02 r84376) -- "Unsuffered Consequences"
+R Under development (unstable) (2023-07-13 r84685) -- "Unsuffered Consequences"
 Copyright (C) 2023 The R Foundation for Statistical Computing
-Platform: aarch64-apple-darwin22.4.0 (64-bit)
+Platform: aarch64-apple-darwin22.5.0
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -1043,70 +1043,6 @@ Coefficients:
 (Intercept)           x1           x2           x3           x4  
     62.4054       1.5511       0.5102       0.1019      -0.1441  
 
-> 
-> 
-> 
-> cleanEx()
-> nameEx("confint")
-> ### * confint
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: confint-MASS
-> ### Title: Confidence Intervals for Model Parameters
-> ### Aliases: confint.glm confint.nls confint.profile.glm
-> ###   confint.profile.nls
-> ### Keywords: models
-> 
-> ### ** Examples
-> 
-> expn1 <- deriv(y ~ b0 + b1 * 2^(-x/th), c("b0", "b1", "th"),
-+                function(b0, b1, th, x) {})
-> 
-> wtloss.gr <- nls(Weight ~ expn1(b0, b1, th, Days),
-+    data = wtloss, start = c(b0=90, b1=95, th=120))
-> 
-> expn2 <- deriv(~b0 + b1*((w0 - b0)/b1)^(x/d0),
-+          c("b0","b1","d0"), function(b0, b1, d0, x, w0) {})
-> 
-> wtloss.init <- function(obj, w0) {
-+   p <- coef(obj)
-+   d0 <-  - log((w0 - p["b0"])/p["b1"])/log(2) * p["th"]
-+   c(p[c("b0", "b1")], d0 = as.vector(d0))
-+ }
-> 
-> out <- NULL
-> w0s <- c(110, 100, 90)
-> for(w0 in w0s) {
-+     fm <- nls(Weight ~ expn2(b0, b1, d0, Days, w0),
-+               wtloss, start = wtloss.init(wtloss.gr, w0))
-+     out <- rbind(out, c(coef(fm)["d0"], confint(fm, "d0")))
-+   }
-Waiting for profiling to be done...
-Waiting for profiling to be done...
-Waiting for profiling to be done...
-> dimnames(out) <- list(paste(w0s, "kg:"),  c("d0", "low", "high"))
-> out
-              d0      low     high
-110 kg: 261.5132 256.2303 267.5009
-100 kg: 349.4979 334.7293 368.0151
-90 kg:  507.0941 457.2637 594.8745
-> 
-> ldose <- rep(0:5, 2)
-> numdead <- c(1, 4, 9, 13, 18, 20, 0, 2, 6, 10, 12, 16)
-> sex <- factor(rep(c("M", "F"), c(6, 6)))
-> SF <- cbind(numdead, numalive = 20 - numdead)
-> budworm.lg0 <- glm(SF ~ sex + ldose - 1, family = binomial)
-> confint(budworm.lg0)
-Waiting for profiling to be done...
-           2.5 %    97.5 %
-sexF  -4.4581438 -2.613610
-sexM  -3.1728745 -1.655117
-ldose  0.8228708  1.339058
-> confint(budworm.lg0, "ldose")
-Waiting for profiling to be done...
-    2.5 %    97.5 % 
-0.8228708 1.3390581 
 > 
 > 
 > 
@@ -3817,35 +3753,6 @@ detaching ‘package:nlme’
 > 
 > 
 > cleanEx()
-> nameEx("plot.profile")
-> ### * plot.profile
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: plot.profile
-> ### Title: Plotting Functions for 'profile' Objects
-> ### Aliases: plot.profile pairs.profile
-> ### Keywords: models hplot
-> 
-> ### ** Examples
-> 
-> ## see ?profile.glm for an example using glm fits.
-> 
-> ## a version of example(profile.nls) from R >= 2.8.0
-> fm1 <- nls(demand ~ SSasympOrig(Time, A, lrc), data = BOD)
-> pr1 <- profile(fm1, alphamax = 0.1)
-> MASS:::plot.profile(pr1)
-> pairs(pr1) # a little odd since the parameters are highly correlated
-> 
-> ## an example from ?nls
-> x <- -(1:100)/10
-> y <- 100 + 10 * exp(x / 2) + rnorm(x)/10
-> nlmod <- nls(y ~  Const + A * exp(B * x), start=list(Const=100, A=10, B=1))
-> pairs(profile(nlmod))
-> 
-> 
-> 
-> cleanEx()
 > nameEx("polr")
 > ### * polr
 > 
@@ -4317,32 +4224,6 @@ Levels: c s v
 > 
 > 
 > 
-> cleanEx()
-> nameEx("profile.glm")
-> ### * profile.glm
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: profile.glm
-> ### Title: Method for Profiling glm Objects
-> ### Aliases: profile.glm
-> ### Keywords: regression models
-> 
-> ### ** Examples
-> 
-> options(contrasts = c("contr.treatment", "contr.poly"))
-> ldose <- rep(0:5, 2)
-> numdead <- c(1, 4, 9, 13, 18, 20, 0, 2, 6, 10, 12, 16)
-> sex <- factor(rep(c("M", "F"), c(6, 6)))
-> SF <- cbind(numdead, numalive = 20 - numdead)
-> budworm.lg <- glm(SF ~ sex*ldose, family = binomial)
-> pr1 <- profile(budworm.lg)
-> plot(pr1)
-> pairs(pr1)
-> 
-> 
-> 
-> base::options(contrasts = c(unordered = "contr.treatment",ordered = "contr.poly"))
 > cleanEx()
 > nameEx("qda")
 > ### * qda
@@ -5124,7 +5005,7 @@ Achieved convergence tolerance: 4.389e-06
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.162 0.095 2.26 0 0 
+Time elapsed:  2.902 0.152 3.684 0 0 
 > grDevices::dev.off()
 null device 
           1 

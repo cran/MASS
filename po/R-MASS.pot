@@ -1,14 +1,15 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: MASS 7.3-54\n"
-"POT-Creation-Date: 2021-04-17 09:40\n"
+"Project-Id-Version: MASS 7.3-60.1\n"
+"POT-Creation-Date: 2023-11-28 20:11\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 msgid "no terms in scope"
 msgstr ""
@@ -44,9 +45,6 @@ msgid "%s does not have both 'qr' and 'y' components"
 msgstr ""
 
 msgid "response variable must be positive"
-msgstr ""
-
-msgid "Waiting for profiling to be done..."
 msgstr ""
 
 msgid "invalid number of levels"
@@ -407,6 +405,9 @@ msgid "up"
 msgstr ""
 
 msgid "profiling has found a better solution, so original fit had not converged"
+msgstr ""
+
+msgid "Waiting for profiling to be done..."
 msgstr ""
 
 msgid "weighted fits are not supported"
