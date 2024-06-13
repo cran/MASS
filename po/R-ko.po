@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MASS 7.3-22\n"
-"POT-Creation-Date: 2021-02-12 09:53\n"
+"POT-Creation-Date: 2023-11-28 20:11\n"
 "PO-Revision-Date: 2013-03-11 13:47-0600\n"
 "Last-Translator: Chel Hee Lee <gnustats@gmail.com>\n"
 "Language-Team: R Development Translation Teams (Korean) <gnustats@korea.gnu."
@@ -59,9 +59,6 @@ msgstr ""
 
 msgid "response variable must be positive"
 msgstr "종속변수는 반드시 양수이어야 합니다"
-
-msgid "Waiting for profiling to be done..."
-msgstr "프로파일링이 완료되길 기다리는 중입니다..."
 
 msgid "invalid number of levels"
 msgstr "유효하지 않은 level의 수입니다"
@@ -429,6 +426,9 @@ msgid ""
 msgstr ""
 "프로파일링이 더 나은 해를 찾았으므로 초기의 적합은 수렴하지 않았음을 의미합니"
 "다"
+
+msgid "Waiting for profiling to be done..."
+msgstr "프로파일링이 완료되길 기다리는 중입니다..."
 
 msgid "weighted fits are not supported"
 msgstr "weighted fits는 지원되지 않습니다"

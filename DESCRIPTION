@@ -1,20 +1,21 @@
 Package: MASS
 Priority: recommended
-Version: 7.3-58.4
-Date: 2023-04-04
-Revision: $Rev: 3618 $
-Depends: R (>= 4.3.0), grDevices, graphics, stats, utils
+Version: 7.3-61
+Date: 2024-06-10
+Revision: $Rev: 3657 $
+Depends: R (>= 4.4.0), grDevices, graphics, stats, utils
 Imports: methods
 Suggests: lattice, nlme, nnet, survival
 Authors@R: c(person("Brian", "Ripley", role = c("aut", "cre", "cph"),
                     email = "ripley@stats.ox.ac.uk"),
-	     person("Bill", "Venables", role = "ctb"),
+	     person("Bill", "Venables", role = c("aut", "cph")),
 	     person(c("Douglas", "M."), "Bates", role = "ctb"),
 	     person("Kurt", "Hornik", role = "trl",
                      comment = "partial port ca 1998"),
 	     person("Albrecht", "Gebhardt", role = "trl",
                      comment = "partial port ca 1998"),
-	     person("David", "Firth", role = "ctb"))
+	     person("David", "Firth", role = "ctb",
+	            comment = "support functions for polr"))
 Description: Functions and datasets to support Venables and Ripley,
   "Modern Applied Statistics with S" (4th edition, 2002).
 Title: Support Functions and Datasets for Venables and Ripley's MASS
@@ -24,13 +25,13 @@ License: GPL-2 | GPL-3
 URL: http://www.stats.ox.ac.uk/pub/MASS4/
 Contact: <MASS@stats.ox.ac.uk>
 NeedsCompilation: yes
-Packaged: 2023-04-04 16:19:41 UTC; ripley
+Packaged: 2024-06-13 08:23:32 UTC; ripley
 Author: Brian Ripley [aut, cre, cph],
-  Bill Venables [ctb],
+  Bill Venables [aut, cph],
   Douglas M. Bates [ctb],
   Kurt Hornik [trl] (partial port ca 1998),
   Albrecht Gebhardt [trl] (partial port ca 1998),
-  David Firth [ctb]
+  David Firth [ctb] (support functions for polr)
 Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 Repository: CRAN
-Date/Publication: 2023-03-07 09:23:19 UTC
+Date/Publication: 2024-06-13 10:23:32

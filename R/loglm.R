@@ -1,5 +1,5 @@
 # file MASS/R/loglm.R
-# copyright (C) 1994-2015 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -242,9 +242,9 @@ summary.loglm <- function(object, fitted = FALSE, ...)
             cat("Re-fitting to find fitted values\n")
             object <- update(object, fitted = TRUE, keep.frequencies = TRUE)
         }
-        fit <- format(round(object$fit, 1L))
-        OE <- array(paste(format(object$freq), " (", fit, ")", sep = ""),
-                    dim(fit), dimnames(object$freq))
+        fit <- format(round(object$fitted, 1L))
+        OE <- array(paste(format(object$frequnecies), " (", fit, ")", sep = ""),
+                    dim(fit), dimnames(object$frequnencies))
     }  else OE <- NULL
     structure(list(formula = formula(object), tests = ts.array, oe = OE),
               class = "summary.loglm")
@@ -288,8 +288,8 @@ update.loglm <- function (object, formula, ...)
 
 fitted.loglm <- function(object, ...)
 {
-    if(!is.null(object$fit))
-        return(unclass(object$fit))
+    if(!is.null(object$fitted))
+        return(unclass(object$fitted))
     cat("Re-fitting to get fitted values\n")
     unclass(update(object, fitted = TRUE, keep.frequencies = FALSE)$fitted)
 }
@@ -298,12 +298,12 @@ residuals.loglm <-
     function(object, type = c("deviance", "pearson", "response"), ...)
 {
     type <- match.arg(type)
-    if(is.null(object$fit) || is.null(object$freq)) {
+    if(is.null(object$fitted) || is.null(object$frequencies)) {
         cat("Re-fitting to get frequencies and fitted values\n")
         object <- update(object, fitted = TRUE, keep.frequencies = TRUE)
     }
-    y <- object$freq
-    mu <- object$fit
+    y <- object$frequencies
+    mu <- object$fitted
     res <- y - mu
     nz <- mu > 0
     y <- y[nz]

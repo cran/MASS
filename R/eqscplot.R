@@ -1,5 +1,5 @@
 # file MASS/R/eqscplot.R
-# copyright (C) 1994-2005 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2024 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -20,8 +20,6 @@ eqscplot <- function(x, y, ratio = 1, tol = 0.04, uin, ...)
   Call <- match.call()
   Call$ratio <- Call$tol <- Call$uin <- NULL
   if(is.matrix(x)) {
-    y <- x[, 2]
-    x <- x[, 1]
     if(!is.null(dn <- colnames(x))) {
       xlab0 <- dn[1L]
       ylab0 <- dn[2L]
@@ -29,6 +27,8 @@ eqscplot <- function(x, y, ratio = 1, tol = 0.04, uin, ...)
       xlab0 <- ""
       ylab0 <- ""
     }
+    y <- x[, 2]
+    x <- x[, 1]
   } else if(is.list(x)) {
     y <- x$y
     x <- x$x

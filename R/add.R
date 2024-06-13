@@ -1,5 +1,5 @@
 # file MASS/R/add.R
-# copyright (C) 1994-2008 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -176,7 +176,7 @@ addterm.glm <-
     fob <- list(call = oc, terms=Terms)
     class(fob) <- class(object)
     x <- model.matrix(Terms, model.frame(fob, xlev = object$xlevels),
-                      contrasts = object$contrasts)
+                      contrasts.arg = object$contrasts)
     n <- nrow(x)
     oldn <- length(object$residuals)
     y <- object$y

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MASS 7.3-30\n"
 "Report-Msgid-Bugs-To: bugs@R-project.org\n"
-"POT-Creation-Date: 2021-02-12 09:53\n"
+"POT-Creation-Date: 2023-11-28 20:11\n"
 "PO-Revision-Date: 2014-03-24 17:44+0100\n"
 "Last-Translator: Łukasz Daniel <lukasz.daniel@gmail.com>\n"
 "Language-Team: Łukasz Daniel <lukasz.daniel@gmail.com>\n"
@@ -95,15 +95,6 @@ msgstr "%s nie posiada obydwu komponentów 'qr' oraz 'y'"
 # stop("response variable must be positive")
 msgid "response variable must be positive"
 msgstr "zmienna zależna musi być dodatnia"
-
-# MASS/R/polr.R: 451
-# message("Waiting for profiling to be done...")
-# MASS/R/confint.R: 23
-# message("Waiting for profiling to be done...")
-# MASS/R/confint.R: 60
-# message("Waiting for profiling to be done...")
-msgid "Waiting for profiling to be done..."
-msgstr "Oczekiwanie na wykonanie profilowania..."
 
 # MASS/R/contr.sdif.R: 21
 # stop("invalid number of levels")
@@ -809,6 +800,15 @@ msgid ""
 msgstr ""
 "profilowanie znalazło lepsze rozwiązanie, tak więc oryginalne dopasowanie "
 "nie uzbieżniło się"
+
+# MASS/R/polr.R: 451
+# message("Waiting for profiling to be done...")
+# MASS/R/confint.R: 23
+# message("Waiting for profiling to be done...")
+# MASS/R/confint.R: 60
+# message("Waiting for profiling to be done...")
+msgid "Waiting for profiling to be done..."
+msgstr "Oczekiwanie na wykonanie profilowania..."
 
 # MASS/R/polr.R: 489
 # stop("weighted fits are not supported")

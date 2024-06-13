@@ -1,7 +1,7 @@
 
-R version 4.3.0 alpha (2023-04-04 r84156)
+R Under development (unstable) (2023-07-13 r84685) -- "Unsuffered Consequences"
 Copyright (C) 2023 The R Foundation for Statistical Computing
-Platform: aarch64-apple-darwin22.4.0 (64-bit)
+Platform: aarch64-apple-darwin22.5.0
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -203,7 +203,7 @@ F-statistic: 72.09 on 3 and 196 DF,  p-value: < 2.2e-16
 
 > summary(lm(L75 ~ Noise/(Age + OME), data = OMEif,
 +            subset = (Age >= 30 & Age <= 60),
-+            na.action = na.omit), cor = FALSE)
++            na.action = na.omit), correlation = FALSE)
 
 Call:
 lm(formula = L75 ~ Noise/(Age + OME), data = OMEif, subset = (Age >= 
@@ -509,6 +509,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 > contrasts(bacteria$trt) <- structure(contr.sdif(3),
 +      dimnames = list(NULL, c("drug", "encourage")))
 > ## fixed effects analyses
+> ## IGNORE_RDIFF_BEGIN
 > summary(glm(y ~ trt * week, binomial, data = bacteria))
 
 Call:
@@ -577,6 +578,7 @@ AIC: 207.18
 
 Number of Fisher Scoring iterations: 5
 
+> ## IGNORE_RDIFF_END
 > 
 > # conditional random-effects analysis
 > library(survival)
@@ -620,6 +622,7 @@ n= 220, number of events= 177
 > 
 > # PQL glmm analysis
 > library(nlme)
+> ## IGNORE_RDIFF_BEGIN
 > summary(glmmPQL(y ~ trt + I(week > 2), random = ~ 1 | ID,
 +                 family = binomial, data = bacteria))
 iteration 1
@@ -659,6 +662,7 @@ Standardized Within-Group Residuals:
 
 Number of Observations: 220
 Number of Groups: 50 
+> ## IGNORE_RDIFF_END
 > 
 > 
 > 
@@ -755,7 +759,7 @@ Order selected 1  sigma^2 estimated as  0.01011
 > stemp <- as.vector(temp - alpha*lag(temp, -1))
 > sX <- X[-1, ] - alpha * X[-115,]
 > beav1.ls <- lm(stemp ~ -1 + sX, na.action = na.omit)
-> summary(beav1.ls, cor = FALSE)
+> summary(beav1.ls, correlation = FALSE)
 
 Call:
 lm(formula = stemp ~ -1 + sX, na.action = na.omit)
@@ -853,7 +857,7 @@ sigma^2 estimated as 0.01434:  log likelihood = 69.83,  aic = -127.67
 > 
 > ## IGNORE_RDIFF_BEGIN
 > library(nlme) # for gls and corAR1
-> beav2.gls <- gls(temp ~ activ, data = beav2, corr = corAR1(0.8),
+> beav2.gls <- gls(temp ~ activ, data = beav2, correlation = corAR1(0.8),
 +                  method = "ML")
 > summary(beav2.gls)
 Generalized least squares fit by maximum likelihood
@@ -974,10 +978,10 @@ Residual Deviance: 195.5 	AIC: 217.5
 > ### ** Examples
 > 
 > boxcox(Volume ~ log(Height) + log(Girth), data = trees,
-+        lambda = seq(-0.25, 0.25, length = 10))
++        lambda = seq(-0.25, 0.25, length.out = 10))
 > 
 > boxcox(Days+1 ~ Eth*Sex*Age*Lrn, data = quine,
-+        lambda = seq(-0.05, 0.45, len = 20))
++        lambda = seq(-0.05, 0.45, length.out = 20))
 > 
 > 
 > 
@@ -1039,70 +1043,6 @@ Coefficients:
 (Intercept)           x1           x2           x3           x4  
     62.4054       1.5511       0.5102       0.1019      -0.1441  
 
-> 
-> 
-> 
-> cleanEx()
-> nameEx("confint")
-> ### * confint
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: confint-MASS
-> ### Title: Confidence Intervals for Model Parameters
-> ### Aliases: confint.glm confint.nls confint.profile.glm
-> ###   confint.profile.nls
-> ### Keywords: models
-> 
-> ### ** Examples
-> 
-> expn1 <- deriv(y ~ b0 + b1 * 2^(-x/th), c("b0", "b1", "th"),
-+                function(b0, b1, th, x) {})
-> 
-> wtloss.gr <- nls(Weight ~ expn1(b0, b1, th, Days),
-+    data = wtloss, start = c(b0=90, b1=95, th=120))
-> 
-> expn2 <- deriv(~b0 + b1*((w0 - b0)/b1)^(x/d0),
-+          c("b0","b1","d0"), function(b0, b1, d0, x, w0) {})
-> 
-> wtloss.init <- function(obj, w0) {
-+   p <- coef(obj)
-+   d0 <-  - log((w0 - p["b0"])/p["b1"])/log(2) * p["th"]
-+   c(p[c("b0", "b1")], d0 = as.vector(d0))
-+ }
-> 
-> out <- NULL
-> w0s <- c(110, 100, 90)
-> for(w0 in w0s) {
-+     fm <- nls(Weight ~ expn2(b0, b1, d0, Days, w0),
-+               wtloss, start = wtloss.init(wtloss.gr, w0))
-+     out <- rbind(out, c(coef(fm)["d0"], confint(fm, "d0")))
-+   }
-Waiting for profiling to be done...
-Waiting for profiling to be done...
-Waiting for profiling to be done...
-> dimnames(out) <- list(paste(w0s, "kg:"),  c("d0", "low", "high"))
-> out
-              d0      low     high
-110 kg: 261.5132 256.2303 267.5009
-100 kg: 349.4979 334.7293 368.0151
-90 kg:  507.0941 457.2637 594.8745
-> 
-> ldose <- rep(0:5, 2)
-> numdead <- c(1, 4, 9, 13, 18, 20, 0, 2, 6, 10, 12, 16)
-> sex <- factor(rep(c("M", "F"), c(6, 6)))
-> SF <- cbind(numdead, numalive = 20 - numdead)
-> budworm.lg0 <- glm(SF ~ sex + ldose - 1, family = binomial)
-> confint(budworm.lg0)
-Waiting for profiling to be done...
-           2.5 %    97.5 %
-sexF  -4.4581438 -2.613610
-sexM  -3.1728745 -1.655117
-ldose  0.8228708  1.339058
-> confint(budworm.lg0, "ldose")
-Waiting for profiling to be done...
-    2.5 %    97.5 % 
-0.8228708 1.3390581 
 > 
 > 
 > 
@@ -1485,8 +1425,9 @@ P:A     1    6.956 27.696
 > 
 > ### ** Examples
 > 
+> ## IGNORE_RDIFF_BEGIN
 > summary(glm(y ~ lbase*trt + lage + V4, family = poisson,
-+             data = epil), cor = FALSE)
++             data = epil), correlation = FALSE)
 
 Call:
 glm(formula = y ~ lbase * trt + lage + V4, family = poisson, 
@@ -1511,6 +1452,7 @@ AIC: 1647
 
 Number of Fisher Scoring iterations: 5
 
+> ## IGNORE_RDIFF_END
 > epil2 <- epil[epil$period == 1, ]
 > epil2["period"] <- rep(0, 59); epil2["y"] <- epil2["base"]
 > epil["time"] <- 1; epil2["time"] <- 4
@@ -1526,7 +1468,7 @@ Number of Fisher Scoring iterations: 5
 +     dimnames = list(NULL, c("placebo-base", "drug-placebo")))
 > ## IGNORE_RDIFF_BEGIN
 > summary(glm(y ~ pred + factor(subject) + offset(log(time)),
-+             family = poisson, data = epil3), cor = FALSE)
++             family = poisson, data = epil3), correlation = FALSE)
 
 Call:
 glm(formula = y ~ pred + factor(subject) + offset(log(time)), 
@@ -1876,6 +1818,7 @@ Iter. 4 Alpha: 1.278345
                 
 Alpha: 1.2783449
 SE:    0.1345175
+> ## IGNORE_RDIFF_BEGIN
 > summary(gm, dispersion = gamma.dispersion(gm))  # better summary
 
 Call:
@@ -1927,6 +1870,7 @@ AIC: NA
 
 Number of Fisher Scoring iterations: 7
 
+> ## IGNORE_RDIFF_END
 > 
 > 
 > 
@@ -2333,7 +2277,7 @@ Number of Groups: 50
 > house.glm0 <- glm(Freq ~ Infl*Type*Cont + Sat, family = poisson,
 +                   data = housing)
 > ## IGNORE_RDIFF_BEGIN
-> summary(house.glm0, cor = FALSE)
+> summary(house.glm0, correlation = FALSE)
 
 Call:
 glm(formula = Freq ~ Infl * Type * Cont + Sat, family = poisson, 
@@ -2394,7 +2338,8 @@ Cont:Sat  2   212.33 609.30   5.126   0.07708 .
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 > 
 > house.glm1 <- update(house.glm0, . ~ . + Sat*(Infl+Type+Cont))
-> summary(house.glm1, cor = FALSE)
+> ## IGNORE_RDIFF_BEGIN
+> summary(house.glm1, correlation = FALSE)
 
 Call:
 glm(formula = Freq ~ Infl + Type + Cont + Sat + Infl:Type + Infl:Cont + 
@@ -2452,6 +2397,7 @@ AIC: 455.63
 
 Number of Fisher Scoring iterations: 4
 
+> ## IGNORE_RDIFF_END
 > 
 > 1 - pchisq(deviance(house.glm1), house.glm1$df.residual)
 [1] 0.2671363
@@ -3144,7 +3090,7 @@ Pearson          14.07985  5 0.01511005
 > ### ** Examples
 > 
 > logtrans(Days ~ Age*Sex*Eth*Lrn, data = quine,
-+          alpha = seq(0.75, 6.5, len=20))
++          alpha = seq(0.75, 6.5, length.out = 20))
 > 
 > 
 > 
@@ -3778,7 +3724,7 @@ Golden.rain  Marvellous     Victory
 > pet3.lme <- lme(Y ~ SG + VP + V10 + EP,
 +                 random = ~ 1 | No, data = Petrol)
 > pet3.lme <- update(pet3.lme, method = "ML")
-> pet4.lme <- update(pet3.lme, fixed = Y ~ V10 + EP)
+> pet4.lme <- update(pet3.lme, fixed. = Y ~ V10 + EP)
 > anova(pet4.lme, pet3.lme)
          Model df      AIC      BIC    logLik   Test L.Ratio p-value
 pet4.lme     1  5 149.6119 156.9406 -69.80594                       
@@ -3803,35 +3749,6 @@ detaching ‘package:nlme’
 > ### ** Examples
 > 
 > plot(mca(farms, abbrev = TRUE))
-> 
-> 
-> 
-> cleanEx()
-> nameEx("plot.profile")
-> ### * plot.profile
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: plot.profile
-> ### Title: Plotting Functions for 'profile' Objects
-> ### Aliases: plot.profile pairs.profile
-> ### Keywords: models hplot
-> 
-> ### ** Examples
-> 
-> ## see ?profile.glm for an example using glm fits.
-> 
-> ## a version of example(profile.nls) from R >= 2.8.0
-> fm1 <- nls(demand ~ SSasympOrig(Time, A, lrc), data = BOD)
-> pr1 <- profile(fm1, alpha = 0.1)
-> MASS:::plot.profile(pr1)
-> pairs(pr1) # a little odd since the parameters are highly correlated
-> 
-> ## an example from ?nls
-> x <- -(1:100)/10
-> y <- 100 + 10 * exp(x / 2) + rnorm(x)/10
-> nlmod <- nls(y ~  Const + A * exp(B * x), start=list(Const=100, A=10, B=1))
-> pairs(profile(nlmod))
 > 
 > 
 > 
@@ -4308,32 +4225,6 @@ Levels: c s v
 > 
 > 
 > cleanEx()
-> nameEx("profile.glm")
-> ### * profile.glm
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: profile.glm
-> ### Title: Method for Profiling glm Objects
-> ### Aliases: profile.glm
-> ### Keywords: regression models
-> 
-> ### ** Examples
-> 
-> options(contrasts = c("contr.treatment", "contr.poly"))
-> ldose <- rep(0:5, 2)
-> numdead <- c(1, 4, 9, 13, 18, 20, 0, 2, 6, 10, 12, 16)
-> sex <- factor(rep(c("M", "F"), c(6, 6)))
-> SF <- cbind(numdead, numalive = 20 - numdead)
-> budworm.lg <- glm(SF ~ sex*ldose, family = binomial)
-> pr1 <- profile(budworm.lg)
-> plot(pr1)
-> pairs(pr1)
-> 
-> 
-> 
-> base::options(contrasts = c(unordered = "contr.treatment",ordered = "contr.poly"))
-> cleanEx()
 > nameEx("qda")
 > ### * qda
 > 
@@ -4733,6 +4624,7 @@ Days ~ Eth + Sex + Age + Lrn + Eth:Sex + Eth:Age + Eth:Lrn +
 > 
 > ### ** Examples
 > 
+> ## IGNORE_RDIFF_BEGIN
 > summary(glm.nb(Days ~ Eth*Age*Lrn*Sex, quine, link = log))
 
 Call:
@@ -4789,6 +4681,7 @@ Number of Fisher Scoring iterations: 1
           Std. Err.:  0.269 
 
  2 x log-likelihood:  -1039.324 
+> ## IGNORE_RDIFF_END
 > 
 > 
 > 
@@ -4847,6 +4740,7 @@ attr(,"SE")
 > ## weighted example
 > yeast <- data.frame(cbind(numbers = 0:5, fr = c(213, 128, 37, 18, 3, 1)))
 > fit <- glm.nb(numbers ~ 1, weights = fr, data = yeast)
+> ## IGNORE_RDIFF_BEGIN
 > summary(fit)
 
 Call:
@@ -4872,6 +4766,7 @@ Number of Fisher Scoring iterations: 1
           Std. Err.:  1.75 
 
  2 x log-likelihood:  -893.063 
+> ## IGNORE_RDIFF_END
 > mu <- fitted(fit)
 > theta.md(yeast$numbers, mu, dfr = 399, weights = yeast$fr)
 [1] 3.027079
@@ -5110,7 +5005,7 @@ Achieved convergence tolerance: 4.389e-06
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.167 0.113 2.441 0 0 
+Time elapsed:  2.902 0.152 3.684 0 0 
 > grDevices::dev.off()
 null device 
           1 

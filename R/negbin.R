@@ -1,5 +1,5 @@
 # file MASS/R/negbin.R
-# copyright (C) 1994-2014 W. N. Venables and B. D. Ripley
+# copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 #
 anova.negbin <- function(object, ..., test = "Chisq")
 {
@@ -119,7 +119,7 @@ glm.nb <- function(formula, data, weights,
         glm.fitter <- stats::glm.fit
     }
     if(control$trace > 1) message("Initial fit:")
-    fit <- glm.fitter(x = X, y = Y, w = w, start = start,
+    fit <- glm.fitter(x = X, y = Y, weights = w, start = start,
                       etastart = etastart, mustart = mustart,
                       offset = offset, family = fam0,
                       control = list(maxit=control$maxit,
@@ -143,7 +143,7 @@ glm.nb <- function(formula, data, weights,
     while((iter <- iter + 1) <= control$maxit &&
           (abs(Lm0 - Lm)/d1 + abs(del)/d2) > control$epsilon) {
         eta <- g(mu)
-        fit <- glm.fitter(x = X, y = Y, w = w, etastart =
+        fit <- glm.fitter(x = X, y = Y, weights = w, etastart =
                           eta, offset = offset, family = fam,
                           control = list(maxit=control$maxit,
                           epsilon = control$epsilon,

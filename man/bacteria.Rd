@@ -48,9 +48,11 @@ This data frame has 220 rows and the following columns:
 contrasts(bacteria$trt) <- structure(contr.sdif(3),
      dimnames = list(NULL, c("drug", "encourage")))
 ## fixed effects analyses
+## IGNORE_RDIFF_BEGIN
 summary(glm(y ~ trt * week, binomial, data = bacteria))
 summary(glm(y ~ trt + week, binomial, data = bacteria))
 summary(glm(y ~ trt + I(week > 2), binomial, data = bacteria))
+## IGNORE_RDIFF_END
 
 # conditional random-effects analysis
 library(survival)
@@ -64,7 +66,9 @@ coxph(Surv(Time, unclass(y)) ~ I(week > 2) + strata(ID),
 
 # PQL glmm analysis
 library(nlme)
+## IGNORE_RDIFF_BEGIN
 summary(glmmPQL(y ~ trt + I(week > 2), random = ~ 1 | ID,
                 family = binomial, data = bacteria))
+## IGNORE_RDIFF_END
 }
 \keyword{datasets}

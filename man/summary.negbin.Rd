@@ -56,5 +56,7 @@ class of the object.
 }
 \keyword{models}
 \examples{
+## IGNORE_RDIFF_BEGIN
 summary(glm.nb(Days ~ Eth*Age*Lrn*Sex, quine, link = log))
+## IGNORE_RDIFF_END
 }

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MASS 7.3-49\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2021-02-12 09:53\n"
+"POT-Creation-Date: 2023-11-28 20:11\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Daniele Medri <dmedri@gmail.com>\n"
 "Language-Team: Italian https://github.com/dmedri/R-italian-lang\n"
@@ -52,9 +52,6 @@ msgstr "%s non ha entrambi le componenti 'qr' e 'y'"
 
 msgid "response variable must be positive"
 msgstr "la variabile risposta dev'essere positiva"
-
-msgid "Waiting for profiling to be done..."
-msgstr "In attesa che venga eseguita la profilazione..."
 
 msgid "invalid number of levels"
 msgstr "numero di livelli non valido"
@@ -427,6 +424,9 @@ msgid ""
 msgstr ""
 "la profilazione ha trovato una soluzione migliore, quindi la stima originale "
 "non converge"
+
+msgid "Waiting for profiling to be done..."
+msgstr "In attesa che venga eseguita la profilazione..."
 
 msgid "weighted fits are not supported"
 msgstr "gli adattamenti ponderati non sono supportati"

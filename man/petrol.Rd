@@ -1,5 +1,5 @@
 % file MASS/man/petrol.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
 %
 \name{petrol}
 \alias{petrol}
@@ -59,7 +59,7 @@ Petrol[, 2:5] <- scale(as.matrix(Petrol[, 2:5]), scale = FALSE)
 pet3.lme <- lme(Y ~ SG + VP + V10 + EP,
                 random = ~ 1 | No, data = Petrol)
 pet3.lme <- update(pet3.lme, method = "ML")
-pet4.lme <- update(pet3.lme, fixed = Y ~ V10 + EP)
+pet4.lme <- update(pet3.lme, fixed. = Y ~ V10 + EP)
 anova(pet4.lme, pet3.lme)
 }
 \keyword{datasets}

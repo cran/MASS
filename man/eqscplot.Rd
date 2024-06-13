@@ -1,5 +1,5 @@
 % file MASS/man/eqscplot.Rd
-% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2024 W. N. Venables and B. D. Ripley
 %
 \name{eqscplot}
 \alias{eqscplot}
@@ -27,7 +27,7 @@ desired ratio of units on the axes.  Units on the y axis are drawn at
 specified and of length 2.
 }
 \item{tol}{
-proportion of white space at the margins of plot
+proportion of white space at the margins of plot.
 }
 \item{uin}{
 desired values for the units-per-inch parameter. If of length 1, the
@@ -52,6 +52,10 @@ stretched by \code{1 + tol} to move points away from the axes, and the
 points plotted.
 }
 \note{
+This was originally written for S: \R's \code{\link{plot.window}} has an
+argument \code{asp} with a similar effect (including to this function's
+\code{ratio}) and can be passed from the default \code{plot} function.
+  
 Arguments \code{ratio} and \code{uin} were suggested by Bill Dunlap.
 }
 \references{

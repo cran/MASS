@@ -56,7 +56,7 @@ UScereal
 }
 \source{
   The original data are available at
-  \url{http://lib.stat.cmu.edu/datasets/1993.expo/}.
+  \url{https://lib.stat.cmu.edu/datasets/1993.expo/}.
 }
 \references{
   Venables, W. N. and Ripley, B. D. (2002)

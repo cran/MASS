@@ -1,5 +1,5 @@
 % file MASS/man/housing.Rd
-% copyright (C) 1999 W. N. Venables and B. D. Ripley
+% copyright (C) 1999-2023 W. N. Venables and B. D. Ripley
 %
 \name{housing}
 \alias{housing}
@@ -53,13 +53,15 @@ options(contrasts = c("contr.treatment", "contr.poly"))
 house.glm0 <- glm(Freq ~ Infl*Type*Cont + Sat, family = poisson,
                   data = housing)
 ## IGNORE_RDIFF_BEGIN
-summary(house.glm0, cor = FALSE)
+summary(house.glm0, correlation = FALSE)
 ## IGNORE_RDIFF_END
 
 addterm(house.glm0, ~. + Sat:(Infl+Type+Cont), test = "Chisq")
 
 house.glm1 <- update(house.glm0, . ~ . + Sat*(Infl+Type+Cont))
-summary(house.glm1, cor = FALSE)
+## IGNORE_RDIFF_BEGIN
+summary(house.glm1, correlation = FALSE)
+## IGNORE_RDIFF_END
 
 1 - pchisq(deviance(house.glm1), house.glm1$df.residual)
 

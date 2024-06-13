@@ -1,5 +1,35 @@
-7.3-58.4 (released 2023-04-05)
-	Emergency fix for summary.glm late changes in 4.3.0
+7.3.61  (released 2024-06-13)
+	Changed some partial matches.
+	eqscplot() uses the column names (if any) of a matrix as 'xlab'
+	and 'ylab'.
+
+7.3.60.2 (released 2024-01-12 only for 4.4.0/Recommended.  Also in 4.4.1)
+	Expand partial matches 'fit' and 'freq' in loglm.R (copied from 7.3-60.0.1)
+	Added tests/loglm.R to test those.
+
+7.3-60.1 (released 2023-07-14 only for 4.4.0/Recommended)
+	Remove the S3 methods
+	    profile.glm
+	    confint.{glm,profile.glm,nls,confint.nls}
+	    plot.profile
+	    pairs.profile
+	for R >= 4.4.0 so those newly in stats will be preferred.
+
+	Depend on R (>= 4.4.0).
+
+7.3-60.0.1  (released 2024-01-12)
+	Expand partial matches 'fit' and 'freq' in loglm.R.
+
+7.3-60  (released 2023-05-02)
+	Tweak some partial matches.
+
+7.3-59  (released 2023-04-21)
+	man/{bacteria,epil,gamma.shape,housing,summaey.negbin,theta.md}.Rd:
+	Use IGNORE_RDIFF markup for change to summary.glm in R 4.3.0.
+	Back to depending on R (>= 4.0).
+
+7.3-58.4 (released 2023-04-05 only for 4.3.0/Recommended)
+	Emergency fix for summary.glm late changes in 4.3.0.
 	Depends on R(>= 4.3) and has updated reference output.
 
 7.3-58.3 (released 2023-03-07)
@@ -7,7 +37,7 @@
 	Update inst/CITATION.
 
 7.3-58.2 (released 2023-01-21)
-	NAMESPACE: no longer export undocumented lmwork.
+	NAMESPACE: no longer export undocumented function lmwork.
 	man/bacteria.Rd: update URL.
 	Document as.fractions, is.fractions, gamma.shape and select.
 
@@ -46,7 +76,7 @@
 	remove basckslash from \$ in Boston.Rd and Cars93.Rd
 
 7.3-56 (released 2022-03-23)
-	offsets on lme have been disabled
+	offsets on lme have been disabled.
 
 7.3-55 (released 2022-01-13)
 	src/lqs.c include float.h explicitly (for STRICT_R_HEADERS)

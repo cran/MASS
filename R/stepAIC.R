@@ -203,7 +203,7 @@ stepAIC <-
 
 extractAIC.loglm <- function(fit, scale, k = 2, ...)
 {
-    edf <- fit$n - fit$df
+    edf <- fit$nobs - fit$df
     c(edf,  fit$deviance + k * edf)
 }
 
