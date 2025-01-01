@@ -1,3 +1,6 @@
+% file MASS/man/parcoord.Rd
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+%
 \name{parcoord}
 \alias{parcoord}
 \title{

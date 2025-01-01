@@ -1,3 +1,6 @@
+% file MASS/man/loglm1.Rd
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+%
 \name{loglm1}
 \alias{loglm1}
 \alias{loglm1.xtabs}

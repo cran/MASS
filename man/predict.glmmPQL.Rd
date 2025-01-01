@@ -1,3 +1,6 @@
+% file MASS/man/predict.glmPQL.Rd
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+%
 \name{predict.glmmPQL}
 \alias{predict.glmmPQL}
 \title{Predict Method for glmmPQL Fits}

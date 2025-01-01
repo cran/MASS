@@ -1,10 +1,19 @@
-7.3.61  (released 2024-06-13)
+7.3-63
+	Change the maintainer address to a redirector.
+
+7.3-62
+	man/{bacteria,epil,gamma.shape.glm,housing,summary.negbin,theta.md}.Rd:
+	  Remove IGNORE_RDIFF markup.
+
+7.3-61  (released 2024-06-13)
 	Changed some partial matches.
 	eqscplot() uses the column names (if any) of a matrix as 'xlab'
 	and 'ylab'.
+	Depend on R (>= 4.4.0).
 
-7.3.60.2 (released 2024-01-12 only for 4.4.0/Recommended.  Also in 4.4.1)
-	Expand partial matches 'fit' and 'freq' in loglm.R (copied from 7.3-60.0.1)
+7.3-60.2 (released 2024-01-12 only for 4.4.0/Recommended.  Also in 4.4.1)
+	Expand partial matches 'fit' and 'freq' in loglm.R
+	(copied from 7.3-60-0.1)
 	Added tests/loglm.R to test those.
 
 7.3-60.1 (released 2023-07-14 only for 4.4.0/Recommended)
@@ -24,8 +33,8 @@
 	Tweak some partial matches.
 
 7.3-59  (released 2023-04-21)
-	man/{bacteria,epil,gamma.shape,housing,summaey.negbin,theta.md}.Rd:
-	Use IGNORE_RDIFF markup for change to summary.glm in R 4.3.0.
+	man/{bacteria,epil,gamma.shape.glm,housing,summary.negbin,theta.md}.Rd:
+	  Use IGNORE_RDIFF markup for change to summary.glm in R 4.3.0.
 	Back to depending on R (>= 4.0).
 
 7.3-58.4 (released 2023-04-05 only for 4.3.0/Recommended)

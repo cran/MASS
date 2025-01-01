@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2023-07-13 r84685) -- "Unsuffered Consequences"
-Copyright (C) 2023 The R Foundation for Statistical Computing
-Platform: aarch64-apple-darwin22.5.0
+R Under development (unstable) (2024-12-10 r87437) -- "Unsuffered Consequences"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin24.2.0
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -509,7 +509,6 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 > contrasts(bacteria$trt) <- structure(contr.sdif(3),
 +      dimnames = list(NULL, c("drug", "encourage")))
 > ## fixed effects analyses
-> ## IGNORE_RDIFF_BEGIN
 > summary(glm(y ~ trt * week, binomial, data = bacteria))
 
 Call:
@@ -578,7 +577,6 @@ AIC: 207.18
 
 Number of Fisher Scoring iterations: 5
 
-> ## IGNORE_RDIFF_END
 > 
 > # conditional random-effects analysis
 > library(survival)
@@ -1425,7 +1423,6 @@ P:A     1    6.956 27.696
 > 
 > ### ** Examples
 > 
-> ## IGNORE_RDIFF_BEGIN
 > summary(glm(y ~ lbase*trt + lage + V4, family = poisson,
 +             data = epil), correlation = FALSE)
 
@@ -1452,7 +1449,6 @@ AIC: 1647
 
 Number of Fisher Scoring iterations: 5
 
-> ## IGNORE_RDIFF_END
 > epil2 <- epil[epil$period == 1, ]
 > epil2["period"] <- rep(0, 59); epil2["y"] <- epil2["base"]
 > epil["time"] <- 1; epil2["time"] <- 4
@@ -1818,7 +1814,6 @@ Iter. 4 Alpha: 1.278345
                 
 Alpha: 1.2783449
 SE:    0.1345175
-> ## IGNORE_RDIFF_BEGIN
 > summary(gm, dispersion = gamma.dispersion(gm))  # better summary
 
 Call:
@@ -1870,7 +1865,6 @@ AIC: NA
 
 Number of Fisher Scoring iterations: 7
 
-> ## IGNORE_RDIFF_END
 > 
 > 
 > 
@@ -2276,7 +2270,6 @@ Number of Groups: 50
 > # Surrogate Poisson models
 > house.glm0 <- glm(Freq ~ Infl*Type*Cont + Sat, family = poisson,
 +                   data = housing)
-> ## IGNORE_RDIFF_BEGIN
 > summary(house.glm0, correlation = FALSE)
 
 Call:
@@ -2322,7 +2315,6 @@ AIC: 610.43
 
 Number of Fisher Scoring iterations: 5
 
-> ## IGNORE_RDIFF_END
 > 
 > addterm(house.glm0, ~. + Sat:(Infl+Type+Cont), test = "Chisq")
 Single term additions
@@ -2338,7 +2330,6 @@ Cont:Sat  2   212.33 609.30   5.126   0.07708 .
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 > 
 > house.glm1 <- update(house.glm0, . ~ . + Sat*(Infl+Type+Cont))
-> ## IGNORE_RDIFF_BEGIN
 > summary(house.glm1, correlation = FALSE)
 
 Call:
@@ -2397,7 +2388,6 @@ AIC: 455.63
 
 Number of Fisher Scoring iterations: 4
 
-> ## IGNORE_RDIFF_END
 > 
 > 1 - pchisq(deviance(house.glm1), house.glm1$df.residual)
 [1] 0.2671363
@@ -3194,6 +3184,7 @@ Correlations 0.806 0.745  cumulative % explained 26.87 51.71
 > plot(survfit(Surv(time, cens) ~ factor(temp), motors), conf.int = FALSE)
 > # fit Weibull model
 > motor.wei <- survreg(Surv(time, cens) ~ temp, motors)
+> ## IGNORE_RDIFF_BEGIN
 > summary(motor.wei)
 
 Call:
@@ -3208,9 +3199,10 @@ Scale= 0.334
 Weibull distribution
 Loglik(model)= -147.4   Loglik(intercept only)= -169.5
 	Chisq= 44.32 on 1 degrees of freedom, p= 2.8e-11 
-Number of Newton-Raphson Iterations: 7 
+Number of Newton-Raphson Iterations: 8 
 n= 40 
 
+> ## IGNORE_RDIFF_END
 > # and predict at 130C
 > unlist(predict(motor.wei, data.frame(temp=130), se.fit = TRUE))
    fit.1 se.fit.1 
@@ -4624,7 +4616,6 @@ Days ~ Eth + Sex + Age + Lrn + Eth:Sex + Eth:Age + Eth:Lrn +
 > 
 > ### ** Examples
 > 
-> ## IGNORE_RDIFF_BEGIN
 > summary(glm.nb(Days ~ Eth*Age*Lrn*Sex, quine, link = log))
 
 Call:
@@ -4681,7 +4672,6 @@ Number of Fisher Scoring iterations: 1
           Std. Err.:  0.269 
 
  2 x log-likelihood:  -1039.324 
-> ## IGNORE_RDIFF_END
 > 
 > 
 > 
@@ -4740,7 +4730,6 @@ attr(,"SE")
 > ## weighted example
 > yeast <- data.frame(cbind(numbers = 0:5, fr = c(213, 128, 37, 18, 3, 1)))
 > fit <- glm.nb(numbers ~ 1, weights = fr, data = yeast)
-> ## IGNORE_RDIFF_BEGIN
 > summary(fit)
 
 Call:
@@ -4766,7 +4755,6 @@ Number of Fisher Scoring iterations: 1
           Std. Err.:  1.75 
 
  2 x log-likelihood:  -893.063 
-> ## IGNORE_RDIFF_END
 > mu <- fitted(fit)
 > theta.md(yeast$numbers, mu, dfr = 399, weights = yeast$fr)
 [1] 3.027079
@@ -5005,7 +4993,7 @@ Achieved convergence tolerance: 4.389e-06
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.902 0.152 3.684 0 0 
+Time elapsed:  2.027 0.1 2.143 0 0 
 > grDevices::dev.off()
 null device 
           1 

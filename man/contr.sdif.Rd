@@ -1,3 +1,6 @@
+% file MASS/man/contr.sdif.Rd
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+%
 \name{contr.sdif}
 \alias{contr.sdif}
 \title{

@@ -1,3 +1,6 @@
+% file MASS/man/epil.Rd
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+%
 \name{epil}
 \alias{epil}
 \title{
@@ -56,10 +59,8 @@ epil
   \emph{Modern Applied Statistics with S.} Fourth Edition. Springer.
 }
 \examples{
-## IGNORE_RDIFF_BEGIN
 summary(glm(y ~ lbase*trt + lage + V4, family = poisson,
             data = epil), correlation = FALSE)
-## IGNORE_RDIFF_END
 epil2 <- epil[epil$period == 1, ]
 epil2["period"] <- rep(0, 59); epil2["y"] <- epil2["base"]
 epil["time"] <- 1; epil2["time"] <- 4

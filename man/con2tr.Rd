@@ -1,3 +1,6 @@
+% file MASS/man/con2tr.Rd
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+%
 \name{con2tr}
 \alias{con2tr}
 \title{

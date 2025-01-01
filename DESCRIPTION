@@ -1,13 +1,13 @@
 Package: MASS
 Priority: recommended
-Version: 7.3-61
-Date: 2024-06-10
-Revision: $Rev: 3657 $
+Version: 7.3-63
+Date: 2025-01-01
+Revision: $Rev: 3672 $
 Depends: R (>= 4.4.0), grDevices, graphics, stats, utils
 Imports: methods
 Suggests: lattice, nlme, nnet, survival
 Authors@R: c(person("Brian", "Ripley", role = c("aut", "cre", "cph"),
-                    email = "ripley@stats.ox.ac.uk"),
+                    email = "Brian.Ripley@R-project.org"),
 	     person("Bill", "Venables", role = c("aut", "cph")),
 	     person(c("Douglas", "M."), "Bates", role = "ctb"),
 	     person("Kurt", "Hornik", role = "trl",
@@ -25,13 +25,13 @@ License: GPL-2 | GPL-3
 URL: http://www.stats.ox.ac.uk/pub/MASS4/
 Contact: <MASS@stats.ox.ac.uk>
 NeedsCompilation: yes
-Packaged: 2024-06-13 08:23:32 UTC; ripley
+Packaged: 2025-01-01 07:07:12 UTC; ripley
 Author: Brian Ripley [aut, cre, cph],
   Bill Venables [aut, cph],
   Douglas M. Bates [ctb],
   Kurt Hornik [trl] (partial port ca 1998),
   Albrecht Gebhardt [trl] (partial port ca 1998),
   David Firth [ctb] (support functions for polr)
-Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
+Maintainer: Brian Ripley <Brian.Ripley@R-project.org>
 Repository: CRAN
-Date/Publication: 2024-06-13 10:23:32
+Date/Publication: 2025-01-01 10:25:38 UTC

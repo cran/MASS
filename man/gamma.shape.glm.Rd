@@ -1,5 +1,5 @@
 % file MASS/man/gamma.shape.glm.Rd
-% copyright (C) 1994-2023 W. N. Venables and B. D. Ripley
+% copyright (C) 1994-2024 W. N. Venables and B. D. Ripley
 %
 \name{gamma.shape}
 \alias{gamma.shape}
@@ -75,8 +75,6 @@ gm <- glm(Days + 0.1 ~ Age*Eth*Sex*Lrn,
           quasi(link=log, variance="mu^2"), quine,
           start = c(3, rep(0,31)))
 gamma.shape(gm, verbose = TRUE)
-## IGNORE_RDIFF_BEGIN
 summary(gm, dispersion = gamma.dispersion(gm))  # better summary
-## IGNORE_RDIFF_END
 }
 \keyword{models}

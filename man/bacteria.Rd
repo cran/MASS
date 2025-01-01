@@ -1,3 +1,6 @@
+% file MASS/man/bacteria.Rd
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+%
 \name{bacteria}
 \alias{bacteria}
 \title{
@@ -48,11 +51,9 @@ This data frame has 220 rows and the following columns:
 contrasts(bacteria$trt) <- structure(contr.sdif(3),
      dimnames = list(NULL, c("drug", "encourage")))
 ## fixed effects analyses
-## IGNORE_RDIFF_BEGIN
 summary(glm(y ~ trt * week, binomial, data = bacteria))
 summary(glm(y ~ trt + week, binomial, data = bacteria))
 summary(glm(y ~ trt + I(week > 2), binomial, data = bacteria))
-## IGNORE_RDIFF_END
 
 # conditional random-effects analysis
 library(survival)

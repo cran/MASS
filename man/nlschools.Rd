@@ -1,3 +1,6 @@
+% file MASS/man/nlschools.Rd
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+%
 \name{nlschools}
 \alias{nlschools}
 \title{

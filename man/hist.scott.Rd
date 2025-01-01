@@ -1,3 +1,6 @@
+% file MASS/man/hist.scott.Rd
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+%
 \name{hist.scott}
 \alias{hist.scott}
 \alias{hist.FD}

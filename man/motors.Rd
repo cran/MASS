@@ -49,7 +49,9 @@ library(survival)
 plot(survfit(Surv(time, cens) ~ factor(temp), motors), conf.int = FALSE)
 # fit Weibull model
 motor.wei <- survreg(Surv(time, cens) ~ temp, motors)
+## IGNORE_RDIFF_BEGIN
 summary(motor.wei)
+## IGNORE_RDIFF_END
 # and predict at 130C
 unlist(predict(motor.wei, data.frame(temp=130), se.fit = TRUE))
 

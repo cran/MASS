@@ -1,3 +1,6 @@
+% file MASS/man/dose.p.Rd
+% copyright (C) 1994-9 W. N. Venables and B. D. Ripley
+%
 \name{dose.p}
 \alias{dose.p}
 \alias{print.glm.dose}

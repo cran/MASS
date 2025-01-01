@@ -64,7 +64,7 @@ VR_sammon(double *dd, int *nn, int *kd, double *Y, int *niter,
 		d1 += xd * xd;
 	    }
 	    ee = d - sqrt(d1);
-	    if(d1 == 0) error("initial configuration has duplicates");
+	    if(d1 == 0) Rf_error("initial configuration has duplicates");
 	    e += (ee * ee / d);
 	}
     e /= tot;
@@ -445,7 +445,7 @@ VR_den_bin(int *n, int *nb, double *d, double *x, int *cnt)
 	    jj = (int) (x[j] / dd);
 	    iij = abs((ii - jj));
 	    if(cnt[iij] == INT_MAX)
-		error("maximum count exceeded in pairwise distance binning");
+		Rf_error("maximum count exceeded in pairwise distance binning");
 	    cnt[iij]++;
 	}
     }
