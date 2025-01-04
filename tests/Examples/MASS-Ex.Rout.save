@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2024-12-10 r87437) -- "Unsuffered Consequences"
+R Under development (unstable) (2024-12-30 r87492) -- "Unsuffered Consequences"
 Copyright (C) 2024 The R Foundation for Statistical Computing
 Platform: aarch64-apple-darwin24.2.0
 
@@ -2270,6 +2270,7 @@ Number of Groups: 50
 > # Surrogate Poisson models
 > house.glm0 <- glm(Freq ~ Infl*Type*Cont + Sat, family = poisson,
 +                   data = housing)
+> ## IGNORE_RDIFF_BEGIN
 > summary(house.glm0, correlation = FALSE)
 
 Call:
@@ -2315,6 +2316,7 @@ AIC: 610.43
 
 Number of Fisher Scoring iterations: 5
 
+> ## IGNORE_RDIFF_END
 > 
 > addterm(house.glm0, ~. + Sat:(Infl+Type+Cont), test = "Chisq")
 Single term additions
@@ -4993,7 +4995,7 @@ Achieved convergence tolerance: 4.389e-06
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.027 0.1 2.143 0 0 
+Time elapsed:  2.543 0.128 2.704 0 0 
 > grDevices::dev.off()
 null device 
           1 

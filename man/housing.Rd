@@ -1,5 +1,5 @@
 % file MASS/man/housing.Rd
-% copyright (C) 1999-2024 W. N. Venables and B. D. Ripley
+% copyright (C) 1999-2025 W. N. Venables and B. D. Ripley
 %
 \name{housing}
 \alias{housing}
@@ -52,7 +52,9 @@ options(contrasts = c("contr.treatment", "contr.poly"))
 # Surrogate Poisson models
 house.glm0 <- glm(Freq ~ Infl*Type*Cont + Sat, family = poisson,
                   data = housing)
+## IGNORE_RDIFF_BEGIN
 summary(house.glm0, correlation = FALSE)
+## IGNORE_RDIFF_END
 
 addterm(house.glm0, ~. + Sat:(Infl+Type+Cont), test = "Chisq")
 

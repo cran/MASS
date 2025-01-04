@@ -1,5 +1,5 @@
-d03b39336f6bb336e42a4ca1f1da307d *ChangeLog
-ca973faa73f71f3f008b2012effa2710 *DESCRIPTION
+e2fae35caca900d7ee33abd6c370dba7 *ChangeLog
+a85b25551cd10db788e61a5672d82d5e *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 c7acdc0fa828f781a0a5586ab9d4fa1b *LICENCE.note
 09d7d680cfa398e07d149e8724110385 *NAMESPACE
@@ -234,7 +234,7 @@ a81ca88a2a39298dd099c015fdd3c167 *man/gilgais.Rd
 beac3c6294f524ed10317c0ec605afb1 *man/glmmPQL.Rd
 e65737579ca1cd2810198d72f0260e21 *man/hills.Rd
 4934bcc8fdecca91e1ad21c294677974 *man/hist.scott.Rd
-7766fc225853e1f86f9dae75878b1235 *man/housing.Rd
+394e21f4b3db6dbd706905234b993333 *man/housing.Rd
 3ff54e8dfc1c1b949d3a33fcbd916fee *man/huber.Rd
 7cb24fac3e55b03ac894c3be943287bf *man/hubers.Rd
 606105b6a9c526833a3116619a07d9c9 *man/immer.Rd
@@ -321,7 +321,7 @@ ceefe8e558dfa70a28f54fcae1ca3df0 *man/whiteside.Rd
 d6628b6db6ed160eb389a8c15ef5e43c *src/MASS.c
 2c7b72ca038d349935bcb4f60235bcd7 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-79efc72f418411208a23f9a7e89e5b19 *tests/Examples/MASS-Ex.Rout.save
+5ff05cc8f2c480b715ca0a4fe889a6f3 *tests/Examples/MASS-Ex.Rout.save
 a309c9e287f72ae6fc239b0495d5685e *tests/confint.R
 e059b0451b55d1e8cb8ebf51ecce76ea *tests/cov.mcd.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
