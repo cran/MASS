@@ -49,6 +49,10 @@ epil
     }
   }
 }
+\note{
+  The value of \code{y} in row 31 was corrected from \code{21} to
+  \code{23} in version 7.3-65.
+}
 \source{
   Thall, P. F. and Vail, S. C. (1990)
   Some covariance models for longitudinal count data with over-dispersion.

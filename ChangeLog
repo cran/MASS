@@ -1,4 +1,9 @@
-7.3-64  (released 2025-01-06)
+7.3-65  (unrelased)
+	data/epil: The value of 'y' in line 31 was corrected from 21 to 23.
+	Reported by 'Tan Siew Li, Linda'.
+	tests/MASS-Ex.Rout.save: updated.
+
+7.3-64  (released 2025-02-06)
 	man/housing.Rd: add IGNORE_RDIFF markup
 	(M1mac vs x86_64 Linux vs MKL vs Windows).
 	Update MASS-Ex.Rout.save

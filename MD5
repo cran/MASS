@@ -1,5 +1,5 @@
-e2fae35caca900d7ee33abd6c370dba7 *ChangeLog
-a85b25551cd10db788e61a5672d82d5e *DESCRIPTION
+c00399cb1430b03d26d2854a8b35e3f2 *ChangeLog
+e410ad3625cf2d54f3f622a5b4c4d32e *DESCRIPTION
 35aff05a505ecf7e81e0473767794ca9 *INDEX
 c7acdc0fa828f781a0a5586ab9d4fa1b *LICENCE.note
 09d7d680cfa398e07d149e8724110385 *NAMESPACE
@@ -45,7 +45,7 @@ f1db7f02de9bae7087fc01a7ffe4748e *R/truehist.R
 bbde4307b98d968e9b85d55f46a0cbe6 *R/ucv.R
 29fdbf836b6ebffc562ce7d2b54ab5eb *R/write.matrix.R
 4f74ab00a8fd8a8eaf56957b1e13aa52 *R/zzz.R
-76161b65639451c966be75488458b3c3 *build/partial.rdb
+4454e632feb75ce4f508807d50b3b12f *build/partial.rdb
 e4aa969dc4062a5dfa605a141bf32f29 *data/Aids2.rda
 3c5a57a9f86ee32ac10f6114826a762b *data/Animals.rda
 689cd33a62093be4f53a38cc8405e083 *data/Boston.rda
@@ -88,7 +88,7 @@ cf7bcacd3cd2a6d63ccdba4611ca179d *data/crabs.rda
 665394ac9507b22d52b82ec1accef296 *data/deaths.rda
 ad66308f102eeca1c7627961d86b9a44 *data/drivers.rda
 743ac2ba92af57dfefc244efea7c5f03 *data/eagles.rda
-51c779af36175c18d5b895dd22f78458 *data/epil.rda
+5efce882109cc54d53d4958ed9947386 *data/epil.rda
 dc3772aa97fe25117cc713a70a478357 *data/farms.rda
 3e8e9fb873d94b2081962e67f17ffcd6 *data/fgl.rda
 1ff45906d2f92ccb13e5ae880362b216 *data/forbes.rda
@@ -214,7 +214,7 @@ f320aaa10f4cff23eff1f1414c057eae *man/deaths.Rd
 32d46414b81cc9c21663b07a5b3e24a1 *man/drivers.Rd
 989cb309d961aca2b8d9d54df183223d *man/dropterm.Rd
 57e48204af505d9d279440f9a75fe46d *man/eagles.Rd
-47b27072792e259e505285f1eb8ab1c1 *man/epil.Rd
+cf4538d4c395b47706c514281847f0b2 *man/epil.Rd
 46a1fdaf4b73638aba0cb9cc9880ef5d *man/eqscplot.Rd
 d6c9433b3ee2a9fe920dcedecbefdf06 *man/farms.Rd
 7d46e561298348eafcb2464adcfa66b2 *man/fgl.Rd
@@ -321,7 +321,7 @@ ceefe8e558dfa70a28f54fcae1ca3df0 *man/whiteside.Rd
 d6628b6db6ed160eb389a8c15ef5e43c *src/MASS.c
 2c7b72ca038d349935bcb4f60235bcd7 *src/lqs.c
 7b1360150b8598b576e82534b12345a2 *tests/BankWages.rda
-5ff05cc8f2c480b715ca0a4fe889a6f3 *tests/Examples/MASS-Ex.Rout.save
+5d17a401397d829c5b7f52314fa98eb7 *tests/Examples/MASS-Ex.Rout.save
 a309c9e287f72ae6fc239b0495d5685e *tests/confint.R
 e059b0451b55d1e8cb8ebf51ecce76ea *tests/cov.mcd.R
 a0854fee9b36691ca1d0880da31d6f79 *tests/fitdistr.R
